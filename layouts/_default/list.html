@@ -20,14 +20,15 @@
 
 {{ $avatar_url := $.Scratch.Get "avatar_url" }}<!---->
 {{ if or $avatar_url site.Params.name }}
-<div class="-mt-2 mb-16 flex items-center">
+<div class="mt-1 mb-16 flex items-center">
   {{ if $avatar_url }}
   <div
     class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
   >
     <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 hover:animate-spin dark:!bg-black/80"
-      src="{{ $avatar_url }}"
+      class="my-0 aspect-square rounded-full "
+      style="width: 6rem; height: 6rem;"
+      src="/me.jpeg"
       alt="{{ site.Params.name | default site.Title }}"
     />
   </div>
@@ -45,6 +46,8 @@
 {{ end }}<!---->
 
 {{ end }}
+
+
 
 <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
   {{ if gt .Weight 0 }}
