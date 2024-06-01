@@ -1,0 +1,324 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Postgres Just In Time Compiler and Worker Processes - My New Hugo Site</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.
+For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store." />
+  <meta name="author" content="My New Hugo Site" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.126.1">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >My New Hugo Site</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Postgres Just In Time Compiler and Worker Processes</h1>
+
+    
+  </header>
+
+  <section><p>Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__IOAxGZtt5VJcHT__v.jpg" alt=""></p>
+<p>For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store. Many products have one store referenced by the <code>store_id</code> column. Here is a rough command for SQL `CREATE TABLE` statement</p>
+<p>CREATE TABLE store (<br>
+id SERIAL PRIMARY KEY,<br>
+name VARCHAR(255),<br>
+address VARCHAR(255),<br>
+phone_number VARCHAR(15)<br>
+);</p>
+<p>CREATE TABLE product (<br>
+id SERIAL PRIMARY KEY,<br>
+name VARCHAR(255),<br>
+price DECIMAL(10,2),<br>
+description TEXT,<br>
+store_id INT,<br>
+FOREIGN KEY (store_id) REFERENCES store (id)<br>
+);</p>
+<p>I have around 29k stores and around 12 million products. Here is the count of the both</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__wwdEf4Q__Cr2jRDe9.jpg" alt="">
+<img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__fMmJZzvtpc0TTGz9.jpg" alt=""></p>
+<p>I haven’t placed any indexing structure for the product table. Now let’s interact with the product table.</p>
+<h3 id="where-clause-andcount">WHERE clause and Count:</h3>
+<p>EXPLAIN ANALYSE SELECT COUNT(*) FROM &ldquo;product&rdquo;<br>
+WHERE &ldquo;price&rdquo; &lt; 10;</p>
+<p>The result of <code>EXPLAIN ANALYZE</code> shows the following info</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__ST4__Mgte__z1JpRl__.jpg" alt=""></p>
+<h4 id="planning-stagejit">Planning stage/JIT:</h4>
+<p>The planning stage for the command used the Just In Time compilation. I think every analytical serverless function should use this. Due to JIT compilation, the planning phase time is almost doubled.</p>
+<p>Just In Time Compilation (JIT)</p>
+<p>Suggestions:</p>
+<ol>
+<li>Use JIT for analytical queries.</li>
+<li>Use JIT for complex sorting queries.</li>
+</ol>
+<h4 id="execution-stageworker-process">Execution stage/Worker process:</h4>
+<p>The execution stage of the query is executed using 2 workers, each of the worker processes scans the table from opposite ends. Each worker is filtering the rows and count results were gathered and a final aggregation was done to get the final count.</p>
+<p>On worker process:</p>
+<p>The worker process strategy used spawns 2 process that parallel scans the product and returns the matching rows, here the worker uses the <code>gather</code> node and has done the here partial and the final aggregation used is the <code>COUNT</code> aggregation. Here is a graphic that can help you understand the working principle.</p>
+<h3 id="whats-in-thepicture">Whats in the picture</h3>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0____E2__Ug2Sr__O8TzNQ.jpg" alt=""></p>
+<p>I hope you can clearly understand the picture now, but here are the steps involved.</p>
+<ol>
+<li>The parent process spawns two processes.</li>
+<li>Two processes work from either end of the table</li>
+<li>The processing or scanning takes place in our case, it scans via the native CPU code generated due to JIT compilation.</li>
+<li>The result is partially aggregated meaning total count is generated.</li>
+<li>The count is handed over to the parent process by the worker process.</li>
+<li>The 2 worker processes are killed and their result is combined and the output is given to the user.</li>
+</ol>
+<p>Now you might be wondering what if we increase the total number of workers in the query, let’s do that. Note that this will increase the execution speed of the query but as more processes are used, it will use more memory. Lets me increase the <code>max_parallel_workers</code> and <code>max_parallel_workers_per_gather</code> parameter to and 4 respectively to get more workers to do the task. Learn about them more here.</p>
+<p><a href="https://www.postgresql.org/docs/current/how-parallel-query-works.html">How does the Postgres parallel worker work</a></p>
+<p>My PC is 8 core CPU PC and my CS knowledge says that my computer shouldn’t lag till 8 worker processes. Managing process is also time-consuming as launching and killing a process is a time-consuming and expensive time as well. But hey, I am postgres with docker and other background apps are running simultaneously as well. So leaving the theory aside lets make the hands dirty.</p>
+<p>I ran the following query</p>
+<p>-- the value x is the total worker allowed<br>
+SET max_parallel_workers = x;<br>
+SET max_parallel_workers_per_gather = x;<br>
+EXPLAIN ANALYSE SELECT COUNT(*) FROM &ldquo;product&rdquo; WHERE &ldquo;price&rdquo; &lt; 10</p>
+<p>Upon running the query I got the following results</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__qnI3tIP97fDsVrAN______J2w.png" alt=""></p>
+<p>Postgres query planner is a clever piece of tool and it detected that the execution time was not going to be much better after 5 worker processes and stopped spawning more worker processes when it reached the value of x greater than 5. Even when I was allowed to go more than 5 workers per execution, I didn’t do that and insisted on using 5 worker processes.</p>
+<h3 id="big-but">BIG BUT</h3>
+<p>Here’s a big but for y’all. The query I used is pretty simple, right? count the total, so let me spice things up a little bit more with the following query.</p>
+<p>EXPLAIN ANALYSE<br>
+SELECT id FROM &ldquo;product&rdquo; WHERE &ldquo;price&rdquo; &gt; 10<br>
+ORDER BY store_id DESC<br>
+LIMIT 1000</p>
+<p>The query provided below is more “complex” as it has sorting and limiting in it and the query planner looks like this with no worker. Not only that the querying condition has changed as well resulting in more data to look for.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__w2ZhiLEXbvCMUyos.jpg" alt=""></p>
+<p>Here I forced the query planner to not use worker processes.</p>
+<h4 id="planning-stage">Planning stage:</h4>
+<p>The planning stage remains almost all the same with JIT enforced but here the parameters of the JIT is changed. Options like optimizations, and expressions are set to true. The overall number of functions is changed as well. Planning time is consistent.</p>
+<h4 id="execution-stage">Execution stage:</h4>
+<p>I forced only one worker to be used at this time. To see all the activities it performs, here parallel seq scan is used. Top-N heapsort is used, it shares the time complexity of heapsort but only sorts the top N members( for our case it’s 1000 ) and finally limit happens.</p>
+<p>Now let’s add workers to the picture</p>
+<p>Gather Merge node is used as it is expected to be used for queries with sorting enabled.</p>
+<p>Here is the result for various query times.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__xbJrtzyN__qk2xN1zbb9Qxg.png" alt=""></p>
+<p>As you can see that using the worker process has significantly decreased the planning time by almost half compared to not being used in both queries. This is a general introduction to worker processes and JIT in Postgresql but do you still with 5 workers used, the query is considered really slow. This is due to the use of seq scan to filter the product table. In the next writing, I would help you on how to improve on that with an introduction to index in Postgres and its type. Until then, you can follow me on my LinkedIn here. <a href="https://linkedin.com/in/nirjalpaudel">My Linkedin Profile</a>.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">My New Hugo Site</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

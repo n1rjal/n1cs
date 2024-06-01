@@ -1,0 +1,302 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Best way to count documents in MongoDB - My New Hugo Site</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Hello everyone 👋👋
+I created a MongoDB database with 10 million documents.😄 My schema is simple and is for a very very basic inventory management system.
+Before we begin name: string,
+quantity: number,
+Here is a sample of some of the documents.
+The schema looks simple enough but I have been working with a huge number of documents. To be precise, I am working with 12734005 documents. For those wondering how did I insert these documents here is the python code that helped me did it." />
+  <meta name="author" content="My New Hugo Site" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.126.1">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >My New Hugo Site</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Best way to count documents in MongoDB</h1>
+
+    
+  </header>
+
+  <section><p>Hello everyone 👋👋</p>
+<p>I created a MongoDB database with 10 million documents.😄 My schema is simple and is for a very very basic inventory management system.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__JogoK9GIXwjCikNF.png" alt=""></p>
+<h3 id="before-webegin">Before we begin</h3>
+<p>name: string,<br>
+quantity: number,</p>
+<p>Here is a sample of some of the documents.</p>
+<p>The schema looks simple enough but I have been working with a huge number of documents. To be precise, I am working with 12734005 documents. For those wondering how did I insert these documents here is the python code that helped me did it.</p>
+<p><a href="https://pastebin.com/8dmqMYc9">Link to python Code</a></p>
+<h3 id="lets-talk-aboutcount">Let’s talk about count</h3>
+<blockquote>
+<p><em>let’s find out which is better in which situation</em></p>
+</blockquote>
+<p>By default, In MongoDB provides us with 3 different count methods.</p>
+<ul>
+<li>countDocuments()</li>
+<li>cursor.count()</li>
+<li>estimatedDocumentCount()</li>
+</ul>
+<h3 id="1-countdocuments">1. countDocuments()</h3>
+<blockquote>
+<p><em>it took somewhere between 4 to 10 seconds. Probably caching helped reduce its speed. Let’s discuss this below.</em></p>
+</blockquote>
+<p>If you know aggregation, you can see that <code>countDocuments()</code> is the most accurate but slowest count query among the three. Behind the scene, it does a sequential scan, ** fancy way of saying goes through all documents **, in all documents for the query gets the count. This is the slowest count I found.</p>
+<blockquote>
+<p><em>db.collection.countDocuments() wraps the following aggregation operation and returns just the value of n:</em></p>
+</blockquote>
+<p>db.collection.aggregate([<br>
+{ $match: <!-- raw HTML omitted --> },<br>
+{ $group: { _id: null, n: { $sum: 1 } } }<br>
+])</p>
+<p><a href="https://docs.mongodb.com/manual/reference/method/db.collection.countDocuments/">Source: MongoDb Official Documentation</a></p>
+<h3 id="2-cursorcount">2. cursor.count()</h3>
+<p>MongoDB returns a cursor for <code>collection.find(&lt;query&gt;)</code> type of queries. The cursor has many methods and <code>.count()</code> is one of them. <code>cursor.count()</code> is same as <code>countDocuments()</code> but when its about <code>.find().count()</code> it returns count from collstats. It takes constant time</p>
+<blockquote>
+<p><em>The collStats command returns a variety of storage statistics for a given collection.</em> <a href="https://docs.mongodb.com/manual/reference/command/collStats/"><em>Source : MongoDb official documentation</em></a></p>
+</blockquote>
+<h3 id="3-estimateddocumentcount">3. estimatedDocumentCount()</h3>
+<p>Unlike <code>cursor.count()</code> and <code>countDocuments()</code>, <code>estimatedDocumentCount()</code> does not take any query parameters. It returns the total count of documents. This is an estimated count. <strong>But I think it is ok to return the estimated count as no one would actually bother about if the count is right or wrong up to million.</strong> <a href="https://docs.mongodb.com/manual/reference/method/db.collection.estimatedDocumentCount/">Source : MongoDb official documentation</a></p>
+<h3 id="suggestions">Suggestions:</h3>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__v0VOFTfI0YYcrH1d.png" alt=""></p>
+<ol>
+<li>Don’t be that guy above</li>
+<li>Use <code>estimatedDocumentCount()</code> when counting total number of documents.</li>
+<li>Use <code>find.count()</code> when dealing with the counting of total number of documents with <strong>query filters</strong></li>
+<li>Whenever <strong>using query filters, always filter by indexes</strong>, as it makes querying faster resulting in faster counts.</li>
+<li>Try <strong>storing count with query filters in</strong> a data store like <strong>Redis or a new collection and update it periodically</strong>.</li>
+<li>It is <strong>better to use pre-computed counts</strong> than to hog your database’s CPU.</li>
+<li><strong>Best way to deal with million documents is by not dealing with millions at one time.</strong></li>
+</ol>
+<h3 id="conclusion">Conclusion:</h3>
+<p>I am not the “know all” type of guy. I might be wrong in this blog or you might have some better way to count the documents. Let’s discuss. I like to be proven wrong and I want an opportunity to learn from you guys as well but until then peace out. 😄</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">My New Hugo Site</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

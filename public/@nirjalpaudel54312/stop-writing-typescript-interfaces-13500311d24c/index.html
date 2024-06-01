@@ -1,0 +1,303 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Stop Writing TypeScript Interfaces, Automate It - My New Hugo Site</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="EDIT 1: After many requests from users of this tools, I have decided to remove I prefix from the name of the interface
+Yeah, the title is kind of misleading. Who would not write typescript interfaces right? I am not saying to stop writing typescript interfaces, but automate it 🫡
+What ? How do we automate creating types ?
+Postman is an API testing tool that can help us test API." />
+  <meta name="author" content="My New Hugo Site" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.126.1">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >My New Hugo Site</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Stop Writing TypeScript Interfaces, Automate It</h1>
+
+    
+  </header>
+
+  <section><p><strong>EDIT 1: After many requests from users of this tools, I have decided to remove I prefix from the name of the interface</strong></p>
+<p>Yeah, the title is kind of misleading. Who would not write typescript interfaces right? I am not saying to stop writing typescript interfaces, but automate it 🫡</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__Fts__rpfhNFBBerKiLVESDw.png" alt=""></p>
+<blockquote>
+<p>What ? How do we automate creating types ?</p>
+</blockquote>
+<p>Postman is an API testing tool that can help us test API. It can be used to test API both locally and hosted. It also acts as a documentation for the API you are building and it is programming language independent.</p>
+<p>Now, imagine this, you have full documentation for your API as a postman collection (A Postman collections can be thought of as a folder that contains requests or other collection inside it). Each collection in Postman can be downloaded/saved as a JSON file which has two schema versions. They are collection v2 and collection v2.1 and share the collection as a JSON file.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__nnf5KGwQxeuyIkDEce4Ysg.png" alt=""></p>
+<p>Now, lets come back to typescript and interfaces. An interface has a signature for a object that defines all the type of keys inside the object.</p>
+<p>// example of a typescript interface<br>
+interface Human{<br>
+name: string;<br>
+age: number;<br>
+isMarried: boolean;<br>
+}</p>
+<p>Now imagine this is your collection. This collection here has more than 20 requests. Now lets create type for each requests, query parameters and for every response in the examples.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__38ztbN1cQT5T3SLekuyHQw.png" alt=""></p>
+<p>A simple typescript type can be created at around 10–15 seconds approximately (without AI tools) and can be created at around 5–7 seconds (with AI tools). Now lets calculate how much time does total interface creation takes? Very long right ? Now how about for 500 requests ? 1000 requests ?</p>
+<p>But it only takes me 5 seonds to do 500 request. Wow really ? Actually yes. I have a small script that does it for me. It looks at the json file of collection export and generates the typescript types based on the content of the json and creates the typescript interface based on the name of the request or the response name and put the creates a folder with all the interfaces.</p>
+<p>You can use this command.</p>
+<p>npx @n1rjal/pm_ts -i <!-- raw HTML omitted --> -o <!-- raw HTML omitted --></p>
+<p>Here</p>
+<ul>
+<li>-i means the input json file</li>
+<li>-o means the output directory where the types shall be placed</li>
+</ul>
+<p>Now, lets try the command and see the results. Here is my work dir in vscode without runing the script.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__RKQlD41__SzbgAfg9PJdP4Q.png" alt=""></p>
+<p>Now lets run the script as</p>
+<p>npx @n1rjal/pm_ts -i export.json -o types</p>
+<p>Now a types folder is created with the following content</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__H61z2oP0OzDe8nG__QaSn5w.png" alt=""></p>
+<p>Now lets inspect one of the postman requests</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__hnN__a23SNF5Z__aDOI__llOg.png" alt=""></p>
+<p>Now lets see it equivalent type for body. The interface generated has the following content. See how the naming of the request and the url is mapped to the content of the file</p>
+<p>/*<br>
+Calculate Winners<br>
+POST: {{host}}/competition/:compId/calculate/winners<br>
+*/<br>
+export interface ICalculateWinners {<br>
+name: string;<br>
+count: number;<br>
+prizes: string[];<br>
+}</p>
+<p>This script is now available and registered as a public script in npx and you can give it a star 🌟 if you like what I am doing here.</p>
+<p><a href="https://github.com/n1rjal/postman-to-typescript" title="https://github.com/n1rjal/postman-to-typescript"><strong>GitHub - n1rjal/postman-to-typescript: A simple nodejs script that looks into the postman…</strong><br>
+_A simple nodejs script that looks into the postman collection json and produces typescript interfaces - GitHub …_github.com</a><a href="https://github.com/n1rjal/postman-to-typescript"></a></p>
+<h3 id="stackademic">Stackademic</h3>
+<p><em>Thank you for reading until the end. Before you go:</em></p>
+<ul>
+<li><em>Please consider</em> <strong><em>clapping</em></strong> <em>and</em> <strong><em>following</em></strong> <em>the writer! 👏</em></li>
+<li><em>Follow us on</em> <a href="https://twitter.com/stackademichq"><strong><em>Twitter(X)</em></strong></a><em>,</em> <a href="https://www.linkedin.com/company/stackademic"><strong><em>LinkedIn</em></strong></a><em>, and</em> <a href="https://www.youtube.com/c/stackademic"><strong><em>YouTube</em></strong></a><strong><em>.</em></strong></li>
+<li><em>Visit</em> <a href="http://stackademic.com/"><strong><em>Stackademic.com</em></strong></a> <em>to find out more about how we are democratizing free programming education around the world.</em></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">My New Hugo Site</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

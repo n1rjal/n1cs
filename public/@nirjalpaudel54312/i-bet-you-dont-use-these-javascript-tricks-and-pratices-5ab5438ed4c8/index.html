@@ -1,0 +1,376 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>I Bet You Don’t Use These JavaScript Tricks and Practices - My New Hugo Site</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Tell me how many did you know by responding to the article and you may share this with your network to find out how many they know. These are some of the most underrated features in typescript. So, let&rsquo;s begin shall we?
+Using FlatMap Flat Map in javascript is a great technique which you can learn here. Flat map essentially conbines techniques of map and filter Array method into one. I will suggest you to use flatMap() over combination of filter() and map()." />
+  <meta name="author" content="My New Hugo Site" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.126.1">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >My New Hugo Site</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">I Bet You Don’t Use These JavaScript Tricks and Practices</h1>
+
+    
+  </header>
+
+  <section><p>Tell me how many did you know by responding to the article and you may share this with your network to find out how many they know. These are some of the most underrated features in typescript. So, let&rsquo;s begin shall we?</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__nmnULubrz2ncLsRj.jpg" alt=""></p>
+<ol>
+<li><strong>Using FlatMap</strong></li>
+</ol>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap">Flat Map in javascript is a great technique which you can learn here</a>. Flat map essentially conbines techniques of map and filter Array method into one. I will suggest you to use flatMap() over combination of filter() and map().</p>
+<blockquote>
+<p>FlatMap takes single pass and doesn’t produce intermediate array but filter ()and map() combination produces an intermediate array.</p>
+</blockquote>
+<p>// using filterAndMap<br>
+console.time(&ldquo;filterAndMap&rdquo;)<br>
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</p>
+<p>const squaredOddNumbers = numbers<br>
+.filter(num =&gt; num % 2 !== 0)<br>
+.map(num =&gt; num * num)</p>
+<p>console.log(squaredOddNumbers); // [1, 9, 25, 49, 81]<br>
+console.timeEnd(&ldquo;filterAndMap&rdquo;)</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__a9cMhpzzQmQQ__ivIOwvXQw.png" alt=""></p>
+<p>console.time(&ldquo;filterAndMap&rdquo;)<br>
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</p>
+<p>const squaredOddNumbers = numbers.flatMap(num =&gt;<br>
+num % 2 !== 0 ? [num * num] : []<br>
+);</p>
+<p>console.log(squaredOddNumbers); // [1, 9, 25, 49, 81]<br>
+console.timeEnd(&ldquo;filterAndMap&rdquo;)</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__wDkxp8xJhcm__rCUASgnYmw.png" alt=""></p>
+<p><strong>2. Order of Array methods</strong></p>
+<p>Array method are some of the most important methods that helps us to interact with an array. There are many array methods in javascript. Most popular array methods are <strong>.filter(), .find(), .map(), .reduce()</strong>. They can be merged together to produce some wonderful patterns like these</p>
+<p>// a array methods that sorts only the array<br>
+// for only odd numbers and raises it by power of 3<br>
+numbers<br>
+.sort((a, b) =&gt; a - b)<br>
+.filter((n) =&gt; n % 2 !== 0)<br>
+.map((n) =&gt; n ** 3);</p>
+<p>In a glance, the program above looks nice right but here is a big problem. Notice how we sorted for numbers 1st and then we moved on to filter right. We could have done <strong>less task if we used filter 1st and then sort and raise the power</strong>. This way, we can optimize a group of array methods chanined by (.)</p>
+<p>The optimal code for above is</p>
+<p>const numbers = [9, 3, 6, 4, 8, 1, 2, 5, 7];</p>
+<p>// a array methods that sorts only the array<br>
+// for only odd numbers and raises it by power of 3<br>
+numbers<br>
+.filter((n) =&gt; n % 2 !== 0)<br>
+.sort((a, b) =&gt; a - b)<br>
+.map((n) =&gt; n ** 3);</p>
+<p><strong>3. Not using reduce enough.</strong></p>
+<p>I have seen this problem with a lot of frontend developers. While a package like react-charts asks data in object like structure and but the implementation of react-charts asks data in a format grouped by a key so I have seen most developers using .forEach() method or incorectly using map() method like these</p>
+<p>fetch(&ldquo;<a href="https://jsonplaceholder.typicode.com/todos/%22">https://jsonplaceholder.typicode.com/todos/&quot;</a>)<br>
+.then(res=&gt;res.json())<br>
+.then(todos=&gt;{</p>
+<pre><code>// using Map  
+const todosForUserMap = {};  
+todos.forEach(todo\=&gt;{  
+  if (todosForUserMap\[todo.userId\]){  
+    todosForUserMap\[todo.userId\].push(todo);    
+  }else{  
+    todosForUserMap\[todo.userId\] = \[todo\];  
+  }    
+})  
+
+console.log(todosForUserMap)  
+</code></pre>
+<p>})</p>
+<p>This method here is good as it uses forEach method and not map method. Map method is clearly not to be used here as an array will be build for each of the elements behind the scene. Lets say if array if of 1000 entries then a 1000 entries null array will be created in map, this creation of array will not happen in forEach()</p>
+<p>Instead of using any of the methods shown above, a rather clean and readable approach would have been to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"><strong>Array reduce method</strong></a> the above code is now corrected as</p>
+<p>fetch(&ldquo;<a href="https://jsonplaceholder.typicode.com/todos/%22">https://jsonplaceholder.typicode.com/todos/&quot;</a>)<br>
+.then(res=&gt;res.json())<br>
+.then(todos=&gt;{</p>
+<pre><code>// using Map  
+const todosForUserMap = todos.reduce((accumulator, todo)=&gt;{  
+  if (accumulator\[todo.userId\]) accumulator\[todo.userId\].push(todo);  
+  if (!accumulator\[todo.userId\]) accumulator\[todo.userId\] = \[todo\];  
+  return accumulator;  
+},{})  
+
+console.log(todosForUserMap)  
+</code></pre>
+<p>})</p>
+<p>This doesn’t create any unnecessary arrays and is much cleaner and is better to use. It is as similar to forEach() but I will suggest this as it is more cleaner and easier to understand.</p>
+<p><strong>4. Not using Generators enough</strong></p>
+<p>Generators and Iterators are probably among those peice of code a javascript developers doesn’t use and its knowledge is only limited to coding interview. In data fetching scenario, the data can be unlimited in the database/API in huge volume and you will have to stream it in the frontend. In this case, the most used solution in react is the <strong>infinite loading solution.</strong></p>
+<blockquote>
+<p><strong>How would you implement infinite loading like feature in nodejs server or vanilla javascript ?</strong></p>
+</blockquote>
+<p>This is where iterators are really useful. Instead of streaming the flood of data in request in local storage or some places where you can retrieve for later uses. This is one of the methods of doing so using async generators. By this way we can solve infinite loading like problem in JS.</p>
+<p>async function *fetchProducts(){<br>
+while (true){<br>
+const productUrl = &ldquo;<a href="https://fakestoreapi.com/products?limit=2%22;">https://fakestoreapi.com/products?limit=2&quot;;</a><br>
+const res = await fetch(productUrl)<br>
+const data = await res.json()<br>
+yield data;<br>
+// manipulate the UI here like<br>
+// or save it in DB or somewhere else<br>
+// use it as a side effect place<br>
+// even if some condition matches, break the flow<br>
+}<br>
+}</p>
+<p>async function main() {<br>
+const itr = fetchProducts();<br>
+// this should be called based on user interaction<br>
+// or other tricks as you don&rsquo;t want inifinite loading.<br>
+console.log( await itr.next() );<br>
+}</p>
+<p>return main()</p>
+<p><strong>5. Not using native Javascript classes enough</strong></p>
+<p>Javascript comes pack with native javascript classes that can help you create/instantiate things like URL, Headers, etc pretty easily. We might have seen someone trying to query params in URL like this.</p>
+<p>async function getUrl(userId, limit, category){<br>
+return `https://fakestoreapi.com/products${category ? `/category/${category}` : &ldquo;&rdquo;}${limit ? Number(limit):&rdquo;&rdquo;}${userId? Number(userId):&rdquo;&quot;}`;   <br>
+}</p>
+<p>The code above is messy and is likely to break and will require you to add some rule in the end each time, some other parameter is to be added, by using the native class like <strong>URL</strong> we can improve our code. Improved code looks like this.</p>
+<p>function constructURL(category, limit, userId) {<br>
+const baseURL = &ldquo;<a href="https://fakestoreapi.com/products%22;">https://fakestoreapi.com/products&quot;;</a><br>
+const url = new URL(baseURL);<br>
+const params = new URLSearchParams();</p>
+<p>if (category) url.pathname += `/category/${category}`;<br>
+if (limit) params.append(&rsquo;limit&rsquo;, Number(limit).toString());<br>
+if (userId) params.append(&lsquo;userId&rsquo;, Number(userId).toString());</p>
+<p>url.search = params.toString();<br>
+return url.toString();<br>
+}</p>
+<p>This way, you can handle complex URL-building conditions within the same file. Did you know that the the URL object over here follows BuilderPattern, it is one of the many design patterns you can implement in your code to hide complex logic away in a separate place and it improves readability.</p>
+<p>I like to write about technology and programming on LinkedIn. So, let&rsquo;s get connected there. Here are my socials where you can follow me.</p>
+<p><a href="https://www.linkedin.com/in/nirjalpaudel/">https://www.linkedin.com/in/nirjalpaudel/</a><br>
+<a href="https://github.com/n1rjal/">https://github.com/n1rjal/</a></p>
+<h3 id="in-plainenglish">In Plain English</h3>
+<p><em>Thank you for being a part of our community! Before you go:</em></p>
+<ul>
+<li><em>Be sure to</em> <strong><em>clap</em></strong> <em>and</em> <strong><em>follow</em></strong> <em>the writer! 👏</em></li>
+<li><em>You can find even more content at</em> <a href="https://plainenglish.io/"><strong><em>PlainEnglish.io</em></strong></a> <strong><em>🚀</em></strong></li>
+<li><em>Sign up for our</em> <a href="http://newsletter.plainenglish.io/"><strong><em>free weekly newsletter</em></strong></a><em>. 🗞️</em></li>
+<li><em>Follow us on</em> <a href="https://twitter.com/inPlainEngHQ"><strong><em>Twitter</em></strong></a><strong><em>(X</em></strong>), <a href="https://www.linkedin.com/company/inplainenglish/"><strong><em>LinkedIn</em></strong></a>, <a href="https://www.youtube.com/channel/UCtipWUghju290NWcn8jhyAw"><strong><em>YouTube</em></strong></a>, and <a href="https://discord.gg/XxRS92b2"><strong><em>Discord</em></strong></a><strong><em>.</em></strong></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">My New Hugo Site</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

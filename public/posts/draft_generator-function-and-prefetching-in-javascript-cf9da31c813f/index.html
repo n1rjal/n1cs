@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width"><meta name="description" content="There are many JS tricks that are unknown to many people. Here are some of the examples that I have been using in my projects." />
+
+<title>
+    
+    Generator function and prefetching in javascript | Blogs | Nirjal Paudel 
+    
+</title>
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.b357350626e456d3eb0a6cc6a6195c39ef417483bca875072ff17ad8b0c6db9c.css" media="all">
+
+
+
+  </head>
+
+  
+
+  
+  
+  
+
+  <body class="auto">
+
+    <div class="content">
+      <header>
+        
+
+<div class="header">
+    <h1 class="header-title">Blogs | Nirjal Paudel </h1>
+
+    <div class="flex">
+        
+
+        
+        
+        <p class="small ">
+            <a href="/">
+                /home
+            </a>
+        </p>
+        
+        <p class="small ">
+            <a href="/posts">
+                /posts
+            </a>
+        </p>
+        
+        <p class="small ">
+            <a href="/about">
+                /about
+            </a>
+        </p>
+        
+        
+    </div>
+
+</div>
+      </header>
+
+      <main class="main">
+        
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a class="breadcrumbs-current" href="/posts/draft_generator-function-and-prefetching-in-javascript-cf9da31c813f/">Generator function and prefetching in javascript</a>
+</div>
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Generator function and prefetching in javascript</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>There are many JS tricks that are unknown to many people. Here are some of the examples that I have been using in my projects.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+<figure class="">
+
+    <div>
+        <img loading="lazy" alt="" src=" /Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__NB8mEkBSECLMV8yt.png">
+    </div>
+
+    
+</figure></p>
+<h3 id="generator-functions">Generator Functions:</h3>
+<p>Generator functions in JavaScript are a special kind of function that can be paused and resumed, which allows you to write code that can be executed in a stop-and-start manner.</p>
+<p>To define a generator function, you use the <strong>function*</strong> syntax. Inside a generator function, you use the <strong>yield</strong> keyword to pause the function. When the generator’s <strong>next()</strong> method is called, the function resumes execution until it reaches the next `yield` statement.</p>
+<p>Here is an example of a simple generator function:</p>
+<p>function* simpleGenerator() {<br>
+yield 1;<br>
+yield 2;<br>
+yield 3;<br>
+}<br>
+const gen = simpleGenerator();<br>
+console.log(gen.next()); // {value: 1, done: false}<br>
+console.log(gen.next()); // {value: 2, done: false}<br>
+console.log(gen.next()); // {value: 3, done: false}<br>
+console.log(gen.next()); // {value: undefined, done: true}</p>
+<p>In the example above, <strong>simpleGenerator</strong> is a generator function that yields the values 1, 2, and 3. When we call <strong>simpleGenerator()</strong>, we get a generator <strong>object (`gen`)</strong>, which has a <strong>next()</strong> method. Each call to <strong>next()</strong> resumes the generator function until it reaches the next <strong>yield</strong>, and returns an object with the yielded value and a boolean indicating whether the generator is done.</p>
+<p>Generator functions can also receive input through the <strong>next()</strong> method:</p>
+<p>function* echoGenerator() {<br>
+while(true) {<br>
+const input = yield;<br>
+console.log(input);<br>
+}<br>
+}<br>
+const echo = echoGenerator();<br>
+echo.next(); // Starts the generator<br>
+echo.next(&lsquo;Hello, World!&rsquo;); // Logs: Hello, World!<br>
+echo.next(&lsquo;Generators are cool!&rsquo;); // Logs: Generators are cool!</p>
+<p>In this example, `echoGenerator` is an infinite generator function that logs whatever input it receives. We first need to call `next()` to start the generator, and then we can pass values using `next()`.</p>
+<p>Generator functions are a powerful feature of JavaScript that allow you to write asynchronous code in a synchronous style, among other things.</p>
+<h3 id="data-prefetching">Data prefetching</h3>
+<p>Now let us trying to make infinite scroll Reactjs component using asynchronous generator function and we will fetch</p>
+
+    
+  </div>
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+      </main>
+    </div>
+
+    <footer>
+      <p>Powered by
+    <a href="https://gohugo.io/">Hugo</a>
+    and
+    <a href="https://github.com/tomfran/typo">tomfran/typo</a>
+</p>
+
+
+    </footer>
+
+  </body>
+
+  <script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+</html>

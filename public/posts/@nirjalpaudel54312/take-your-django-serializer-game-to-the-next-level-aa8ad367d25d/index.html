@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Take Your Django Serializer Game to the Next Level :: Blogs | Nirjal Paudel  - Example site for hugo-theme-tailwind</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.
+The need of serializer Serializing and deserializing is the process of converting a value from one representation to another."
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" />
+<meta property="og:url" content="http://localhost:1313/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/">
+  <meta property="og:site_name" content="Blogs | Nirjal Paudel ">
+  <meta property="og:title" content="Take Your Django Serializer Game to the Next Level">
+  <meta property="og:description" content="Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to…">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-05-22T05:44:47+00:00">
+    <meta property="article:modified_time" content="2024-05-22T05:44:47+00:00">
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Take Your Django Serializer Game to the Next Level">
+  <meta name="twitter:description" content="Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to…">
+
+
+<link rel="canonical" href="http://localhost:1313/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.4573e47dcfff49700db206601116cd2f48db1912c244b1d0b312713d4ca4a32e.css">
+
+
+
+
+
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EW6BB7P3VN"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-EW6BB7P3VN');
+        }
+      </script>
+    
+  
+
+
+
+
+
+
+  
+  
+
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+    
+<div class="fixed right-0 top-0 z-50 flex items-center justify-center bg-gray-200 p-2 text-sm uppercase text-black sm:bg-red-200 md:bg-yellow-200 lg:bg-green-200 xl:bg-blue-200 2xl:bg-pink-200">
+  <span class="block sm:hidden">all</span>
+  <span class="hidden sm:block md:hidden">sm</span>
+  <span class="hidden md:block lg:hidden">md</span>
+  <span class="hidden lg:block xl:hidden">lg</span>
+  <span class="hidden xl:block 2xl:hidden">xl</span>
+  <span class="hidden 2xl:block">2xl</span>
+</div>
+
+  <header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="about" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="" title="About">About</a>
+        </li>
+      
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/posts/" title="Post">Post</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
+    <div>
+      <a href="/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/">
+        
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-3 p-6">
+      <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+        <a href="/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/">Take Your Django Serializer Game to the Next Level</a>
+      </h1>
+
+      
+      <h2 class="my-4 text-large text-slate-600 dark:text-slate-300">
+        Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to…
+      </h2>
+      
+      
+
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-05-22T05:44:47&#43;00:00">
+      2024-05-22
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      7 minutes to read
+    </span>
+  </div>
+</div>
+
+
+      
+        
+        <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+          <h2>Table of Contents</h2>
+          <aside><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#dynamically-modifying-fieldshttpswwwdjango-rest-frameworkorgapi-guideserializersdynamically-modifying-fields"><a href="https://www.django-rest-framework.org/api-guide/serializers/#dynamically-modifying-fields">Dynamically modifying fields</a></a></li>
+        <li><a href="#stackademic-">Stackademic 🎓</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></aside>
+        </section>
+        
+      
+
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+        <p>Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.</p>
+<h4 id="the-need-of-serializer">The need of serializer</h4>
+<p>Serializing and deserializing is the process of converting a value from one representation to another. It acts as a translator that translates one form of data to another and vice versa.</p>
+<p><div class="not-prose">
+<figure>
+    <img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__DPwNh9Itnq4s11FJ8ShMGg.png"
+      alt="" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<h4 id="serializer-vs-model-serializer">Serializer vs Model Serializer</h4>
+<p>Serializer in DRF is the class that is responsible for changing one form of object to another. Mostly python object to JSON and vice versa. It has various fields shown below</p>
+<p><div class="not-prose">
+<figure>
+    <img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__tpB__lwLDdCyoTskraVtWMg.png"
+      alt="" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<p>I highly suggest you look into the documentation.</p>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py" title="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py" target="_blank" rel="noopener"><strong>django-rest-framework/rest_framework/fields.py at master · encode/django-rest-framework</strong>
+_Web APIs for Django. 🎸. Contribute to encode/django-rest-framework development by creating an account on GitHub._github.com</a>
+<a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py" target="_blank" rel="noopener"></a>
+</p>
+<p>Model Serializer is an abstract form of Serializer. It makes it easy to make a serializer for a Django model. If we look into the source code. There you will see a mapping from Django models fields to DRF serializer fields.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ModelSerializer</span><span class="p">(</span><span class="n">Serializer</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    A `ModelSerializer` is just a regular `Serializer`, except that:
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    * A set of default fields are automatically populated.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    * A set of default validators are automatically populated.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    * Default `.create()` and `.update()` implementations are provided.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The process of automatically determining a set of serializer fields
+</span></span></span><span class="line"><span class="cl"><span class="s2">    based on the model fields is reasonably complex, but you almost certainly
+</span></span></span><span class="line"><span class="cl"><span class="s2">    don&#39;t need to dig into the implementation.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    If the `ModelSerializer` class doesn&#39;t generate the set of fields that
+</span></span></span><span class="line"><span class="cl"><span class="s2">    you need you should either declare the extragdiffering fields explicitly on
+</span></span></span><span class="line"><span class="cl"><span class="s2">    the serializer class, or simply use a `Serializer` class.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serializer_field_mapping</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">AutoField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">BigIntegerField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">:</span> <span class="n">BooleanField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">:</span> <span class="n">CharField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">CommaSeparatedIntegerField</span><span class="p">:</span> <span class="n">CharField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">:</span> <span class="n">DateField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">:</span> <span class="n">DateTimeField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">:</span> <span class="n">DecimalField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">DurationField</span><span class="p">:</span> <span class="n">DurationField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">:</span> <span class="n">EmailField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">Field</span><span class="p">:</span> <span class="n">ModelField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">:</span> <span class="n">FileField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">FloatField</span><span class="p">:</span> <span class="n">FloatField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">:</span> <span class="n">ImageField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">NullBooleanField</span><span class="p">:</span> <span class="n">BooleanField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">PositiveSmallIntegerField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">:</span> <span class="n">SlugField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">:</span> <span class="n">IntegerField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">:</span> <span class="n">CharField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">TimeField</span><span class="p">:</span> <span class="n">TimeField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">:</span> <span class="n">URLField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">:</span> <span class="n">UUIDField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">GenericIPAddressField</span><span class="p">:</span> <span class="n">IPAddressField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">models</span><span class="o">.</span><span class="n">FilePathField</span><span class="p">:</span> <span class="n">FilePathField</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="s1">&#39;JSONField&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">serializer_field_mapping</span><span class="p">[</span><span class="n">models</span><span class="o">.</span><span class="n">JSONField</span><span class="p">]</span> <span class="o">=</span> <span class="n">JSONField</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">postgres_fields</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">serializer_field_mapping</span><span class="p">[</span><span class="n">postgres_fields</span><span class="o">.</span><span class="n">HStoreField</span><span class="p">]</span> <span class="o">=</span> <span class="n">HStoreField</span>
+</span></span><span class="line"><span class="cl">        <span class="n">serializer_field_mapping</span><span class="p">[</span><span class="n">postgres_fields</span><span class="o">.</span><span class="n">ArrayField</span><span class="p">]</span> <span class="o">=</span> <span class="n">ListField</span>
+</span></span><span class="line"><span class="cl">        <span class="n">serializer_field_mapping</span><span class="p">[</span><span class="n">postgres_fields</span><span class="o">.</span><span class="n">JSONField</span><span class="p">]</span> <span class="o">=</span> <span class="n">JSONField</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serializer_related_field</span> <span class="o">=</span> <span class="n">PrimaryKeyRelatedField</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serializer_related_to_field</span> <span class="o">=</span> <span class="n">SlugRelatedField</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serializer_url_field</span> <span class="o">=</span> <span class="n">HyperlinkedIdentityField</span>
+</span></span><span class="line"><span class="cl">    <span class="n">serializer_choice_field</span> <span class="o">=</span> <span class="n">ChoiceField</span>
+</span></span></code></pre></div><p># continue reading the source at <a href="https://github.com/encode/django-rest-framework/blob/master/rest" target="_blank" rel="noopener">https://github.com/encode/django-rest-framework/blob/master/rest</a>
+_framework/serializers.py#L889</p>
+<h4 id="serializer-methods">Serializer Methods:</h4>
+<p>In particular, if a `data=` argument is passed, then:</p>
+<ul>
+<li>is_valid() — Available.</li>
+<li>initial_data — Available.</li>
+<li>validated_data — Only available after calling `is_valid()`</li>
+<li>errors — Only available after calling `is_valid()`</li>
+<li>data — Only available after calling `is_valid()`</li>
+</ul>
+<p>If a `data=` argument is not passed, then:</p>
+<ul>
+<li>is_valid() — Not available.</li>
+<li>initial_data — Not available.</li>
+<li>validated_data — Not available.</li>
+<li>errors — Not available.</li>
+<li>data — Available.</li>
+</ul>
+<p>There are few other methods that can be used with a serializer, but you must define it yourself (for Serializer class) but it is not required for Model serializers meaning that you can save time using Model Serializer</p>
+<ul>
+<li>create(): A serializer method used to create data using the serializer’s validated data. Not implemented by default</li>
+<li>update(): Update the instance passed to the serializer using the new validated data</li>
+<li>delete(): Delete the instance passed to the serializer</li>
+<li>validate_<fieldname>(): Used to validate single value for a particular field</li>
+</ul>
+<h4 id="make-serializer-for-some-commonaccess">Make serializer for some common access</h4>
+<p>There is no right or wrong way on where to put your business logic in Django. But with the introduction of Django rest framework serializer and the various built-in classes it provides like Viewsets, Generics, etc. We could use serializer as the way to hold our business logic or way to perform some tasks that are a bit hard. Plain Serializer will help you a lot in doing so. Here is a plain serializer that will help us upload a file to R2.</p>
+<p>class FileUploadSerializer(serializers.Serializer):
+file = serializers.FileField(required=True, write_only=True)
+key = serializers.CharField(required=True)
+file_url = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>def get\_file\_url(self, obj):
+    if not obj:
+        return None
+    if hasattr(obj, &quot;key&quot;):
+        return obj.key
+    if obj.get(&quot;key&quot;):
+        return boto3.get\_presigned\_url(obj.get(&quot;key&quot;))
+    return None
+
+def validate\_key(self, value):
+    if not value:
+        raise serializers.ValidationError(&quot;Key is required&quot;)
+    return value
+
+def create(self, validated\_data):
+    \# here file is temporary file
+    file = validated\_data.pop(&quot;file&quot;)
+    key = validated\_data.get(&quot;key&quot;)
+    boto3.upload\_temporary\_file\_to\_s3(file, key)
+    return validated\_data
+</code></pre>
+<blockquote>
+<p>R2 is an alternative to S3 provided by Cloudflare and is too cheap compared to what AWS charges. Downside being that there is no way to replicate data. But it doesn’t incur bandwidth out charge.</p>
+</blockquote>
+<h4 id="use-serializermethodfield-for-custom-getlogic">Use SerializerMethodField for custom get logic</h4>
+<p>You can also use SerializerMethodField() to put custom business logic in the viewsets. This is particularly useful when using doing some complex operation on the data. Here is an example where I get pre-signed URL from R2</p>
+<p>class PostSerializer:
+mp3_url = serializers.SerializerMethodField(read_only=True)
+like_id = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>seconds\_played = serializers.SerializerMethodField(read\_only=True)
+
+
+
+def get\_seconds\_played(self, obj):
+    request = self.context.get(&quot;request&quot;)
+    if not request:
+        return 0
+    if not request.user.is\_authenticated:
+        return 0
+
+    beats\_played = BeatPlay.objects.filter(user=request.user, beat=obj).first()
+    print(&quot;beats\_played&quot;, beats\_played)
+    if not beats\_played:
+        return 0
+    return beats\_played.seconds\_played
+
+def get\_like\_id(self, obj):
+    request = self.context.get(&quot;request&quot;)
+    if not request:
+        return None
+    if not request.user.is\_authenticated:
+        return None
+
+    like = BeatLike.objects.filter(user=request.user, beat=obj).first()
+    if like:
+        return like.pk
+    return None
+
+def get\_mp3\_url(self, obj):
+    return boto3.get\_presigned\_url(obj.mp3)
+</code></pre>
+<h4 id="serializer-context">Serializer Context:</h4>
+<p>Serializer context is an extra dict argument passed with the serializers so that it can be used later on from within the serializer. It is generally used to pass the request to the serializer and later in the data validation or any of the serializer methods.</p>
+<p>from rest_framework import serializers
+from examples.models import Resource</p>
+<p>resource = Resource.objects.get(id=1)
+serializer = ResourceSerializer(resource, context={&lsquo;key&rsquo;: &lsquo;value&rsquo;})</p>
+<p>Then you can fetch it inside the serializer class from the <code>self.context</code> dictionary like so:</p>
+<p>from rest_framework import serializers
+from examples.models import Resource</p>
+<p>class ResourceSerializer(serializers.ModelSerializer):
+class Meta:
+model = Resource
+fields = &lsquo;__all__&rsquo;
+def to_representation(self, instance):
+representation = super().to_representation(instance)
+representation[&lsquo;key&rsquo;] = self.context[&lsquo;key&rsquo;]
+return representation</p>
+<p>Our serializer output will now contain <code>key</code> with <code>value</code>. This is also useful when you want to get in user specific data. Say <strong>get_user_has_liked_the_post</strong> method. This output of this method is relative to each user, and for the serializer field method we can use self.context and user to get the like_id of the user.</p>
+<p>class BeatSerializer(serializers.ModelSerializer):
+like_id = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>def get\_like\_id(self, obj):
+    request = self.context.get(&quot;request&quot;)
+    if not request:
+        return None
+    if not request.user.is\_authenticated:
+        return None
+
+    like = BeatLike.objects.filter(user=request.user, beat=obj).first()
+    if like:
+        return like.pk
+    return None
+</code></pre>
+<p>To pass in the context to serializer we use `context=` parameter.</p>
+<h3 id="dynamically-modifying-fieldshttpswwwdjango-rest-frameworkorgapi-guideserializersdynamically-modifying-fields"><a href="https://www.django-rest-framework.org/api-guide/serializers/#dynamically-modifying-fields" target="_blank" rel="noopener">Dynamically modifying fields</a>
+</h3>
+<p>Once a serializer has been initialized, the dictionary of fields that are set on the serializer may be accessed using the <code>.fields</code> attribute. Accessing and modifying this attribute allows you to dynamically modify the serializer.</p>
+<p>Modifying the <code>fields</code> argument directly allows you to do interesting things, such as changing the arguments on serializer fields at runtime, rather than at the point of declaring the serializer.</p>
+<p>class DynamicFieldsModelSerializer(serializers.ModelSerializer):
+&quot;&quot;&quot;
+A ModelSerializer that takes an additional `fields` argument that
+controls which fields should be displayed.
+&quot;&quot;&quot;</p>
+<pre><code>def \_\_init\_\_(self, \*args, \*\*kwargs):
+    \# Don't pass the 'fields' arg up to the superclass
+    fields = kwargs.pop('fields', None)
+
+    \# Instantiate the superclass normally
+    super().\_\_init\_\_(\*args, \*\*kwargs)
+
+    if fields is not None:
+        \# Drop any fields that are not specified in the \`fields\` argument.
+        allowed = set(fields)
+        existing = set(self.fields)
+        for field\_name in existing - allowed:
+            self.fields.pop(field\_name)
+</code></pre>
+<p><div class="not-prose">
+<figure>
+    <img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__erqijEVb4lMzFqXJGiAutw.png"
+      alt="" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<p>This is how we can change update Django serializers to load dynamic fields.</p>
+<p>But these are not the only tricks that you can achieve in serializers. There are many other tricks. Why not do one thing ? You comment your tricks so that the medium Django devs can learn from it. 😌</p>
+<p><a href="https://www.linkedin.com/in/nirjalpaudel/" target="_blank" rel="noopener">Oh Hello, thanks for staying till the end. Do you know I am available on LinkedIn too? Let&rsquo;s connect there, dear.</a>
+ Click me pita shree 🤌</p>
+<p>Also, I have a template for quick Django projects. Comes preinstalled with Django, DRF, celery, CORS headers, etc. Why not give a look</p>
+<p><a href="https://github.com/n1rjal/djate" title="https://github.com/n1rjal/djate" target="_blank" rel="noopener"><strong>GitHub - n1rjal/djate: My Django template to use</strong>
+_My Django template to use. Contribute to n1rjal/djate development by creating an account on GitHub._github.com</a>
+<a href="https://github.com/n1rjal/djate" target="_blank" rel="noopener"></a>
+</p>
+<h3 id="stackademic-">Stackademic 🎓</h3>
+<p>Thank you for reading until the end. Before you go:</p>
+<ul>
+<li>Please consider <strong>clapping</strong> and <strong>following</strong> the writer! 👏</li>
+<li>Follow us <a href="https://twitter.com/stackademichq" target="_blank" rel="noopener"><strong>X</strong></a>
+ <strong>|</strong> <a href="https://www.linkedin.com/company/stackademic" target="_blank" rel="noopener"><strong>LinkedIn</strong></a>
+ <strong>|</strong> <a href="https://www.youtube.com/c/stackademic" target="_blank" rel="noopener"><strong>YouTube</strong></a>
+ <strong>|</strong> <a href="https://discord.gg/in-plain-english-709094664682340443" target="_blank" rel="noopener"><strong>Discord</strong></a>
+</li>
+<li>Visit our other platforms: <a href="https://plainenglish.io" target="_blank" rel="noopener"><strong>In Plain English</strong></a>
+ <strong>|</strong> <a href="https://cofeed.app/" target="_blank" rel="noopener"><strong>CoFeed</strong></a>
+ <strong>|</strong> <a href="https://venturemagazine.net/" target="_blank" rel="noopener"><strong>Venture</strong></a>
+ <strong>|</strong> <a href="https://blog.cubed.run" target="_blank" rel="noopener"><strong>Cubed</strong></a>
+</li>
+<li>Tired of blogging platforms that force you to deal with algorithmic content? Try <a href="https://differ.blog/" target="_blank" rel="noopener"><strong>Differ</strong></a>
+</li>
+<li>More content at <a href="https://stackademic.com" target="_blank" rel="noopener"><strong>Stackademic.com</strong></a>
+</li>
+</ul>
+
+      </article>
+
+      
+
+
+
+
+    </div>
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+    <a href="https://github.com/n1rjal" target="_blank" title="Github" class="flex flex-row mr-2">
+      <span class="hidden">Github</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://www.linkedin.com/in/nirjalpaudel/" target="_blank" title="LinkedIn" class="flex flex-row mr-2">
+      <span class="hidden">LinkedIn</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+   <path d="M8 11l0 5"></path>
+   <path d="M8 8l0 .01"></path>
+   <path d="M12 16l0 -5"></path>
+   <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2024 
+    
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/main.js"></script>
+
+<div class="hidden top-1 right-1" id="code-copy">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+  <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+</svg>
+
+  </i>
+</div>
+<div class="hidden top-1 right-1" id="code-copy-done">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l5 5l10 -10" />
+</svg>
+
+  </i>
+</div><script src="/code-copy.js"></script>
+
+
+
+
+
+</body>
+</html>

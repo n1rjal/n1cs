@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Blogs | Nirjal Paudel </title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Blogs | Nirjal Paudel </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>user@example.com (Hugo Author)</managingEditor>
+    <webMaster>user@example.com (Hugo Author)</webMaster>
+    <lastBuildDate>Wed, 22 May 2024 05:44:47 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Take Your Django Serializer Game to the Next Level</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/</link>
+      <pubDate>Wed, 22 May 2024 05:44:47 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d/</guid>
+      <description>Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.&#xA;The need of serializer Serializing and deserializing is the process of converting a value from one representation to another.</description>
+    </item>
+    <item>
+      <title>Vim Selection Groups</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/vim-selection-groups-6bd0ed330298/</link>
+      <pubDate>Mon, 04 Dec 2023 11:45:03 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/vim-selection-groups-6bd0ed330298/</guid>
+      <description>In Neovim, the scope that regular expression select group is out of this world. Here is a screencast of me making a json object out of just text data. 🧑‍💻&#xA;Neovim has been one of those tool, that I had been procastinating on for majority of my carrer. Now, I have come to embrace it and I am a month old neovim users. You can read more about this here.</description>
+    </item>
+    <item>
+      <title>With this rust tool, I don’t see feeds now</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/with-this-rust-tool-i-dont-see-feeds-now-e3f2d013ea80/</link>
+      <pubDate>Fri, 22 Sep 2023 17:11:19 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/with-this-rust-tool-i-dont-see-feeds-now-e3f2d013ea80/</guid>
+      <description>I have been diving into the working of rust and I am loving how rust is just opposite of my primary language like typescript/javascript enums and structs just works like C++ or C. I am loving rust and will probably add more content on comparing rust with typescript.&#xA;The CLI tool is linked to the github repository below. Do give a visit and decide if it is worthy of a star or not.</description>
+    </item>
+    <item>
+      <title>Every Class in NestJS and Its Functionalities</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/every-little-cute-classes-in-nestjs-and-its-functionalities-96b76cd259df/</link>
+      <pubDate>Fri, 15 Sep 2023 12:04:30 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/every-little-cute-classes-in-nestjs-and-its-functionalities-96b76cd259df/</guid>
+      <description>NestJS is a huge framework built on top of TypeScript, JavaScript also uses Express or Fasitfy as an underlying mechanism to route requests. It uses decorator-based syntax and the concept in NestJS is similar to that of Angular. The source code looks similar to that of Spring boot, Dotnet MVC. Similar in the sense that they all follow dependency injection and IOC principles.&#xA;Nestjs is heavily inspired by Angular&#xA;I am trying to conclude the documentation of NestJS which can be found here.</description>
+    </item>
+    <item>
+      <title>I Bet You Don’t Use These JavaScript Tricks and Practices</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/i-bet-you-dont-use-these-javascript-tricks-and-pratices-5ab5438ed4c8/</link>
+      <pubDate>Mon, 04 Sep 2023 07:03:01 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/i-bet-you-dont-use-these-javascript-tricks-and-pratices-5ab5438ed4c8/</guid>
+      <description>Tell me how many did you know by responding to the article and you may share this with your network to find out how many they know. These are some of the most underrated features in typescript. So, let&amp;rsquo;s begin shall we?&#xA;Using FlatMap Flat Map in javascript is a great technique which you can learn here . Flat map essentially conbines techniques of map and filter Array method into one.</description>
+    </item>
+    <item>
+      <title>Overloading TypeScript Constructors like C&#43;&#43; or Java with a Catch</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/overloading-typescript-constructor-like-c-java-or-c-with-a-catch-b23267daec62/</link>
+      <pubDate>Thu, 31 Aug 2023 14:33:12 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/overloading-typescript-constructor-like-c-java-or-c-with-a-catch-b23267daec62/</guid>
+      <description>Whenever I was looking into the TypeScript Date class constructor implementation, I always wondered how its constructor signature worked like that, how it can have many signature, how can it work with 1st argument as number or string or an instance of itself. Every time I tried to implement the constructor signature in TypeScript using the documentation like TypeScript says I was getting type error shown below.&#xA;I was working on node-nepali-datetime open source package in github.</description>
+    </item>
+    <item>
+      <title>Best way to count documents in MongoDB</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/best-way-to-count-documents-in-mongodb-b0c7e7861286/</link>
+      <pubDate>Mon, 31 Jul 2023 01:40:05 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/best-way-to-count-documents-in-mongodb-b0c7e7861286/</guid>
+      <description>Hello everyone 👋👋&#xA;I created a MongoDB database with 10 million documents.😄 My schema is simple and is for a very very basic inventory management system.&#xA;Before we begin name: string,&#xA;quantity: number,&#xA;Here is a sample of some of the documents.&#xA;The schema looks simple enough but I have been working with a huge number of documents. To be precise, I am working with 12734005 documents. For those wondering how did I insert these documents here is the python code that helped me did it.</description>
+    </item>
+    <item>
+      <title>Stop Writing TypeScript Interfaces, Automate It</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/stop-writing-typescript-interfaces-13500311d24c/</link>
+      <pubDate>Thu, 27 Jul 2023 09:11:50 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/stop-writing-typescript-interfaces-13500311d24c/</guid>
+      <description>EDIT 1: After many requests from users of this tools, I have decided to remove I prefix from the name of the interface&#xA;Yeah, the title is kind of misleading. Who would not write typescript interfaces right? I am not saying to stop writing typescript interfaces, but automate it 🫡&#xA;What ? How do we automate creating types ?&#xA;Postman is an API testing tool that can help us test API.</description>
+    </item>
+    <item>
+      <title>Postgres Just In Time Compiler and Worker Processes</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/postgres-just-in-time-compiler-and-worker-processes-6c7434864078/</link>
+      <pubDate>Wed, 28 Jun 2023 05:54:08 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/postgres-just-in-time-compiler-and-worker-processes-6c7434864078/</guid>
+      <description>Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.&#xA;For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store.</description>
+    </item>
+    <item>
+      <title>Eat the frog: MongoDB Design Patterns</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/mongodb-design-patterns-708100c07bcb/</link>
+      <pubDate>Sat, 01 Apr 2023 03:54:19 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/mongodb-design-patterns-708100c07bcb/</guid>
+      <description>Here are some of the few design patterns that you can use to better your MongoDB schema, so you’ll keep your team happy and yourself happier.&#xA;MongoDB is a flexible schema based document database. Flexibility was something that we were craving after many years with SQL. Flexibility is so fun to code and enjoy until your application code is suffering from “What was the schema again?” problem. MongoDB follows document based design principle for modelling things.</description>
+    </item>
+    <item>
+      <title>The new challenge format</title>
+      <link>http://localhost:1313/posts/@nirjalpaudel54312/the-new-challenge-format-20253ebc536e/</link>
+      <pubDate>Fri, 09 Oct 2020 08:57:45 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>http://localhost:1313/posts/@nirjalpaudel54312/the-new-challenge-format-20253ebc536e/</guid>
+      <description>Recently in my country, many hashtag challenges are going viral. Challenges like #couplechallenge, #singlechallenge, #dropyourdopephoto, #dropyourpout etc are coming and going around in social media platform. Is it a good thing? Is it a showoff? I can’t tell you that because I don’t know the reason behind that. LOL&#xA;Progressive Challenges I have seen both sides these challenges. Challenges were made jokes, commitments and many more. One day, I came across #30dayschallenge.</description>
+    </item>
+  </channel>
+</rss>

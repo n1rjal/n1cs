@@ -1,0 +1,474 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Take Your Django Serializer Game to the Next Level - My New Hugo Site</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.
+The need of serializer Serializing and deserializing is the process of converting a value from one representation to another." />
+  <meta name="author" content="My New Hugo Site" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="http://localhost:1313/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="http://localhost:1313/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="http://localhost:1313/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.126.1">
+
+  
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="http://localhost:1313/"
+      >My New Hugo Site</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Take Your Django Serializer Game to the Next Level</h1>
+
+    
+  </header>
+
+  <section><p>Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.</p>
+<h4 id="the-need-of-serializer">The need of serializer</h4>
+<p>Serializing and deserializing is the process of converting a value from one representation to another. It acts as a translator that translates one form of data to another and vice versa.</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__DPwNh9Itnq4s11FJ8ShMGg.png" alt=""></p>
+<h4 id="serializer-vs-model-serializer">Serializer vs Model Serializer</h4>
+<p>Serializer in DRF is the class that is responsible for changing one form of object to another. Mostly python object to JSON and vice versa. It has various fields shown below</p>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__tpB__lwLDdCyoTskraVtWMg.png" alt=""></p>
+<p>I highly suggest you look into the documentation.</p>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py" title="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py"><strong>django-rest-framework/rest_framework/fields.py at master · encode/django-rest-framework</strong><br>
+_Web APIs for Django. 🎸. Contribute to encode/django-rest-framework development by creating an account on GitHub._github.com</a><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/fields.py"></a></p>
+<p>Model Serializer is an abstract form of Serializer. It makes it easy to make a serializer for a Django model. If we look into the source code. There you will see a mapping from Django models fields to DRF serializer fields.</p>
+<p>class ModelSerializer(Serializer):<br>
+&quot;&quot;&quot;<br>
+A `ModelSerializer` is just a regular `Serializer`, except that:</p>
+<pre><code>\* A set of default fields are automatically populated.  
+\* A set of default validators are automatically populated.  
+\* Default \`.create()\` and \`.update()\` implementations are provided.  
+
+The process of automatically determining a set of serializer fields  
+based on the model fields is reasonably complex, but you almost certainly  
+don't need to dig into the implementation.  
+
+If the \`ModelSerializer\` class \*doesn't\* generate the set of fields that  
+you need you should either declare the extra/differing fields explicitly on  
+the serializer class, or simply use a \`Serializer\` class.  
+&quot;&quot;&quot;  
+serializer\_field\_mapping = {  
+    models.AutoField: IntegerField,  
+    models.BigIntegerField: IntegerField,  
+    models.BooleanField: BooleanField,  
+    models.CharField: CharField,  
+    models.CommaSeparatedIntegerField: CharField,  
+    models.DateField: DateField,  
+    models.DateTimeField: DateTimeField,  
+    models.DecimalField: DecimalField,  
+    models.DurationField: DurationField,  
+    models.EmailField: EmailField,  
+    models.Field: ModelField,  
+    models.FileField: FileField,  
+    models.FloatField: FloatField,  
+    models.ImageField: ImageField,  
+    models.IntegerField: IntegerField,  
+    models.NullBooleanField: BooleanField,  
+    models.PositiveIntegerField: IntegerField,  
+    models.PositiveSmallIntegerField: IntegerField,  
+    models.SlugField: SlugField,  
+    models.SmallIntegerField: IntegerField,  
+    models.TextField: CharField,  
+    models.TimeField: TimeField,  
+    models.URLField: URLField,  
+    models.UUIDField: UUIDField,  
+    models.GenericIPAddressField: IPAddressField,  
+    models.FilePathField: FilePathField,  
+}  
+if hasattr(models, 'JSONField'):  
+    serializer\_field\_mapping\[models.JSONField\] = JSONField  
+if postgres\_fields:  
+    serializer\_field\_mapping\[postgres\_fields.HStoreField\] = HStoreField  
+    serializer\_field\_mapping\[postgres\_fields.ArrayField\] = ListField  
+    serializer\_field\_mapping\[postgres\_fields.JSONField\] = JSONField  
+serializer\_related\_field = PrimaryKeyRelatedField  
+serializer\_related\_to\_field = SlugRelatedField  
+serializer\_url\_field = HyperlinkedIdentityField  
+serializer\_choice\_field = ChoiceField  
+</code></pre>
+<p># continue reading the source at <a href="https://github.com/encode/django-rest-framework/blob/master/rest">https://github.com/encode/django-rest-framework/blob/master/rest</a>_framework/serializers.py#L889</p>
+<h4 id="serializer-methods">Serializer Methods:</h4>
+<p>In particular, if a `data=` argument is passed, then:</p>
+<ul>
+<li>is_valid() — Available.</li>
+<li>initial_data — Available.</li>
+<li>validated_data — Only available after calling `is_valid()`</li>
+<li>errors — Only available after calling `is_valid()`</li>
+<li>data — Only available after calling `is_valid()`</li>
+</ul>
+<p>If a `data=` argument is not passed, then:</p>
+<ul>
+<li>is_valid() — Not available.</li>
+<li>initial_data — Not available.</li>
+<li>validated_data — Not available.</li>
+<li>errors — Not available.</li>
+<li>data — Available.</li>
+</ul>
+<p>There are few other methods that can be used with a serializer, but you must define it yourself (for Serializer class) but it is not required for Model serializers meaning that you can save time using Model Serializer</p>
+<ul>
+<li>create(): A serializer method used to create data using the serializer’s validated data. Not implemented by default</li>
+<li>update(): Update the instance passed to the serializer using the new validated data</li>
+<li>delete(): Delete the instance passed to the serializer</li>
+<li>validate_<!-- raw HTML omitted -->(): Used to validate single value for a particular field</li>
+</ul>
+<h4 id="make-serializer-for-some-commonaccess">Make serializer for some common access</h4>
+<p>There is no right or wrong way on where to put your business logic in Django. But with the introduction of Django rest framework serializer and the various built-in classes it provides like Viewsets, Generics, etc. We could use serializer as the way to hold our business logic or way to perform some tasks that are a bit hard. Plain Serializer will help you a lot in doing so. Here is a plain serializer that will help us upload a file to R2.</p>
+<p>class FileUploadSerializer(serializers.Serializer):<br>
+file = serializers.FileField(required=True, write_only=True)<br>
+key = serializers.CharField(required=True)<br>
+file_url = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>def get\_file\_url(self, obj):  
+    if not obj:  
+        return None  
+    if hasattr(obj, &quot;key&quot;):  
+        return obj.key  
+    if obj.get(&quot;key&quot;):  
+        return boto3.get\_presigned\_url(obj.get(&quot;key&quot;))  
+    return None  
+
+def validate\_key(self, value):  
+    if not value:  
+        raise serializers.ValidationError(&quot;Key is required&quot;)  
+    return value  
+
+def create(self, validated\_data):  
+    \# here file is temporary file  
+    file = validated\_data.pop(&quot;file&quot;)  
+    key = validated\_data.get(&quot;key&quot;)  
+    boto3.upload\_temporary\_file\_to\_s3(file, key)  
+    return validated\_data
+</code></pre>
+<blockquote>
+<p>R2 is an alternative to S3 provided by Cloudflare and is too cheap compared to what AWS charges. Downside being that there is no way to replicate data. But it doesn’t incur bandwidth out charge.</p>
+</blockquote>
+<h4 id="use-serializermethodfield-for-custom-getlogic">Use SerializerMethodField for custom get logic</h4>
+<p>You can also use SerializerMethodField() to put custom business logic in the viewsets. This is particularly useful when using doing some complex operation on the data. Here is an example where I get pre-signed URL from R2</p>
+<p>class PostSerializer:<br>
+mp3_url = serializers.SerializerMethodField(read_only=True)<br>
+like_id = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>seconds\_played = serializers.SerializerMethodField(read\_only=True)  
+
+  
+
+def get\_seconds\_played(self, obj):  
+    request = self.context.get(&quot;request&quot;)  
+    if not request:  
+        return 0  
+    if not request.user.is\_authenticated:  
+        return 0  
+
+    beats\_played = BeatPlay.objects.filter(user=request.user, beat=obj).first()  
+    print(&quot;beats\_played&quot;, beats\_played)  
+    if not beats\_played:  
+        return 0  
+    return beats\_played.seconds\_played  
+
+def get\_like\_id(self, obj):  
+    request = self.context.get(&quot;request&quot;)  
+    if not request:  
+        return None  
+    if not request.user.is\_authenticated:  
+        return None  
+
+    like = BeatLike.objects.filter(user=request.user, beat=obj).first()  
+    if like:  
+        return like.pk  
+    return None  
+
+def get\_mp3\_url(self, obj):  
+    return boto3.get\_presigned\_url(obj.mp3)
+</code></pre>
+<h4 id="serializer-context">Serializer Context:</h4>
+<p>Serializer context is an extra dict argument passed with the serializers so that it can be used later on from within the serializer. It is generally used to pass the request to the serializer and later in the data validation or any of the serializer methods.</p>
+<p>from rest_framework import serializers<br>
+from examples.models import Resource</p>
+<p>resource = Resource.objects.get(id=1)<br>
+serializer = ResourceSerializer(resource, context={&lsquo;key&rsquo;: &lsquo;value&rsquo;})</p>
+<p>Then you can fetch it inside the serializer class from the <code>self.context</code> dictionary like so:</p>
+<p>from rest_framework import serializers<br>
+from examples.models import Resource</p>
+<p>class ResourceSerializer(serializers.ModelSerializer):<br>
+class Meta:<br>
+model = Resource<br>
+fields = &lsquo;__all__&rsquo;<br>
+def to_representation(self, instance):<br>
+representation = super().to_representation(instance)<br>
+representation[&lsquo;key&rsquo;] = self.context[&lsquo;key&rsquo;]<br>
+return representation</p>
+<p>Our serializer output will now contain <code>key</code> with <code>value</code>. This is also useful when you want to get in user specific data. Say <strong>get_user_has_liked_the_post</strong> method. This output of this method is relative to each user, and for the serializer field method we can use self.context and user to get the like_id of the user.</p>
+<p>class BeatSerializer(serializers.ModelSerializer):<br>
+like_id = serializers.SerializerMethodField(read_only=True)</p>
+<pre><code>def get\_like\_id(self, obj):  
+    request = self.context.get(&quot;request&quot;)  
+    if not request:  
+        return None  
+    if not request.user.is\_authenticated:  
+        return None  
+
+    like = BeatLike.objects.filter(user=request.user, beat=obj).first()  
+    if like:  
+        return like.pk  
+    return None
+</code></pre>
+<p>To pass in the context to serializer we use `context=` parameter.</p>
+<h3 id="dynamically-modifying-fieldshttpswwwdjango-rest-frameworkorgapi-guideserializersdynamically-modifying-fields"><a href="https://www.django-rest-framework.org/api-guide/serializers/#dynamically-modifying-fields">Dynamically modifying fields</a></h3>
+<p>Once a serializer has been initialized, the dictionary of fields that are set on the serializer may be accessed using the <code>.fields</code> attribute. Accessing and modifying this attribute allows you to dynamically modify the serializer.</p>
+<p>Modifying the <code>fields</code> argument directly allows you to do interesting things, such as changing the arguments on serializer fields at runtime, rather than at the point of declaring the serializer.</p>
+<p>class DynamicFieldsModelSerializer(serializers.ModelSerializer):<br>
+&quot;&quot;&quot;<br>
+A ModelSerializer that takes an additional `fields` argument that<br>
+controls which fields should be displayed.<br>
+&quot;&quot;&quot;</p>
+<pre><code>def \_\_init\_\_(self, \*args, \*\*kwargs):  
+    \# Don't pass the 'fields' arg up to the superclass  
+    fields = kwargs.pop('fields', None)  
+
+    \# Instantiate the superclass normally  
+    super().\_\_init\_\_(\*args, \*\*kwargs)  
+
+    if fields is not None:  
+        \# Drop any fields that are not specified in the \`fields\` argument.  
+        allowed = set(fields)  
+        existing = set(self.fields)  
+        for field\_name in existing - allowed:  
+            self.fields.pop(field\_name)
+</code></pre>
+<p><img src="/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__erqijEVb4lMzFqXJGiAutw.png" alt=""></p>
+<p>This is how we can change update Django serializers to load dynamic fields.</p>
+<p>But these are not the only tricks that you can achieve in serializers. There are many other tricks. Why not do one thing ? You comment your tricks so that the medium Django devs can learn from it. 😌</p>
+<p><a href="https://www.linkedin.com/in/nirjalpaudel/">Oh Hello, thanks for staying till the end. Do you know I am available on LinkedIn too? Let&rsquo;s connect there, dear.</a> Click me pita shree 🤌</p>
+<p>Also, I have a template for quick Django projects. Comes preinstalled with Django, DRF, celery, CORS headers, etc. Why not give a look</p>
+<p><a href="https://github.com/n1rjal/djate" title="https://github.com/n1rjal/djate"><strong>GitHub - n1rjal/djate: My Django template to use</strong><br>
+_My Django template to use. Contribute to n1rjal/djate development by creating an account on GitHub._github.com</a><a href="https://github.com/n1rjal/djate"></a></p>
+<h3 id="stackademic-">Stackademic 🎓</h3>
+<p>Thank you for reading until the end. Before you go:</p>
+<ul>
+<li>Please consider <strong>clapping</strong> and <strong>following</strong> the writer! 👏</li>
+<li>Follow us <a href="https://twitter.com/stackademichq"><strong>X</strong></a> <strong>|</strong> <a href="https://www.linkedin.com/company/stackademic"><strong>LinkedIn</strong></a> <strong>|</strong> <a href="https://www.youtube.com/c/stackademic"><strong>YouTube</strong></a> <strong>|</strong> <a href="https://discord.gg/in-plain-english-709094664682340443"><strong>Discord</strong></a></li>
+<li>Visit our other platforms: <a href="https://plainenglish.io"><strong>In Plain English</strong></a> <strong>|</strong> <a href="https://cofeed.app/"><strong>CoFeed</strong></a> <strong>|</strong> <a href="https://venturemagazine.net/"><strong>Venture</strong></a> <strong>|</strong> <a href="https://blog.cubed.run"><strong>Cubed</strong></a></li>
+<li>Tired of blogging platforms that force you to deal with algorithmic content? Try <a href="https://differ.blog/"><strong>Differ</strong></a></li>
+<li>More content at <a href="https://stackademic.com"><strong>Stackademic.com</strong></a></li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="http://localhost:1313/">My New Hugo Site</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>
