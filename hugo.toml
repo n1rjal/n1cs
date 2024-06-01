@@ -17,6 +17,8 @@ summaryLength = 20
   category = "categories"
   series = "series"
 
+[permalinks]
+  post = "/blogs/:year/:month/:slug/"
 
 [params]
   # color style
