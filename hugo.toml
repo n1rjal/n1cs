@@ -1,7 +1,7 @@
 baseURL = 'https://n1cs.nirjalpaudel.com.np'
 languageCode = 'en-us'
-title = 'Blogs | Nirjal Paudel '
-theme = 'Tailwind'
+title = 'Blogs | Nirjal Paudel'
+theme = 'paper'
 author = 'Nirjal Paudel'
 paginate = 20
 
@@ -10,133 +10,35 @@ enableEmoji = true
 enableGitInfo = true
 # Google analytics code
 googleAnalytics = "G-EW6BB7P3VN"
+summaryLength = 20
 
-# [params]
-# # Meta description
-# description = "Personal blog of Nirjal Paudel. I write about software development, programming, and technology."
-
-# # Appearance settings
-# theme = 'auto'
-
-# # Intro on main page, content is markdown
-# homeIntroTitle = 'Hello World'
-# homeIntroContent = """
-# I am Nirjal Paudel, a software engineer. I write about software development, programming, and technology. I am passionate about learning new things and sharing my knowledge with others. I hope you find my blog helpful and informative.
-# """
-
-# # Collection to display on home
-# homeCollectionTitle = 'Posts'
-# homeCollection = 'posts'
-
-# # Lists parameters
-# paginationSize = 100
-# listSummaries = true
-# listDateFormat = '2 Jan 2006'
-
-# # Breadcrumbs
-# breadcrumbs = true
-# readTime = true
-
-
-# # Social icons
-# [[params.social]]
-# name = "linkedin"
-# url = "https://www.linkedin.com/in/nirjalpaudel/"
-
-# [[params.social]]
-# name = "medium"
-# url = "https://medium.com/@nirjalpaudel"
-
-# [[params.social]]
-# name = "github"
-# url = "https://github.com/n1rjal"
-
-# # Main menu pages
-# [[params.menu]]
-# name = "home"
-# url = "/"
-
-# [[params.menu]]
-# name = "posts"
-# url = "/posts"
-
-# [[params.menu]]
-# name = "about"
-# url = "/about"
-
-
-
-
-# # Syntax highligth on code blocks
-# [markup]
-# [markup.highlight]
-# style = 'algol'
-
-# # Giscus comments
-# [params.giscus]
-# enable = false
-# repo = "user/repo"
-# repoid = "repoId"
-# category = "General"
-# categoryid = "categoryId"
-# mapping = "pathname"
-# theme = "preferred_color_scheme"
-
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
 
 
 [params]
-  # dir name of your blog content (default is `content/posts`).
-  # the list of set content will show up on your index page (baseurl).
-  contentTypeName = "posts"
+  # color style
+  color = 'gray'                           # linen, wheat, gray, light
 
-  [params.header]
-    logo = "logo.webp"
+  # header social icons
+  twitter = 'n1rjal'               # twitter.com/YOUR_TWITTER_ID
+  github = 'n1rjal'                 # github.com/YOUR_GITHUB_ID
+  instagram = 'n1rjal'           # instagram.com/YOUR_INSTAGRAM_ID
+  linkedin = 'nirjalpaudel'             # linkedin.com/in/YOUR_LINKEDIN_ID
+  rss = true                                # show rss icon
 
-  [params.footer]
-    since = ""
-    poweredby = false
-
-  [[params.social_media.items]]
-    enabled = true
-    title = "Github"
-    icon = "brand-github"
-    link = "https://github.com/n1rjal"
-
-  [[params.social_media.items]]
-    enabled = true
-    title = "LinkedIn"
-    icon = "brand-linkedin"
-    link = "https://www.linkedin.com/in/nirjalpaudel/"
+  # home page profile
+  avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
+  name = 'Nirjal Paudel'
+  bio = 'Hello world, I am Nirjal Paudel. I am a software engineer and a tech enthusiast. I love to write about technology, programming, and life.'
 
 
-[markup]
-[markup.highlight]
-  # lineNos = true
-  noClasses = false
-[markup.goldmark]
-  [markup.goldmark.renderer]
-    unsafe = true
-  [markup.goldmark.extensions]
-    [markup.goldmark.extensions.cjk]
-      enable = true
-      eastAsianLineBreaks = true
-      escapedSpace = true
-
-[menu]
-
-  [[menu.main]]
-    identifier = "post"
-    name = "Post"
-    pageRef = "/posts"
-    weight = 0
-
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    pageRef = "/about"
-    weight = 10
-
-[taxonomies]
-category = "categories"
-tag = "tags"
-series = "series"
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  math = true                               # enable KaTeX math typesetting globally
+  localKatex = false                        # use local KaTeX js/css instead of CDN
+  favicon = "favicon.ico"                   # customize the default favicon
