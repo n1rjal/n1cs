@@ -3,7 +3,7 @@ name: Update rnaomd blogs
 on:
   schedule:
     - cron: '0 */6 * * *'  # Schedule to run every 6 hours
-    - workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   curl-rest:
