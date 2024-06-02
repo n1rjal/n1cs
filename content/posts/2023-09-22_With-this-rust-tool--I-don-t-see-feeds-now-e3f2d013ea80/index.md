@@ -17,7 +17,7 @@ categories:
 
 I have been diving into the working of rust and I am loving how rust is just opposite of my primary language like typescript/javascript enums and structs just works like C++ or C. I am loving rust and will probably add more content on comparing rust with typescript.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__y7ZNpVAJJVr3NSjX.jpg)
+![](img/0__y7ZNpVAJJVr3NSjX.jpg)
 
 The CLI tool is linked to the github repository below. Do give a visit and decide if it is worthy of a star or not.
 
@@ -30,29 +30,29 @@ The tool mentioned here can be a great tool or some sort of timewaste depending 
 
 It does 3 tasks:
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__fi7lgy9oI76FbMZOzsHIZw.png)
+![](img/1__fi7lgy9oI76FbMZOzsHIZw.png)
 
 **Source Adding**
 
 It simply means that we are adding a source for a blog provider. A blog provider can be many things like a medium publication, medium user or any blog providers that support rss feed and obeys the structure declared in the source code.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__M4UXD3zy04G6E1OWtOUS3A.png)
+![](img/1__M4UXD3zy04G6E1OWtOUS3A.png)
 
 To get source of your favorite blogger, technical writer please use any of these rules
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__SQhkgMEkJQOOIQk8qgDXwA.png)
+![](img/1__SQhkgMEkJQOOIQk8qgDXwA.png)
 
 **Syncing**
 
 Syncing is simply the process of adding the latest blogs from all of the source. The command is simple. It loops through all the source and parses the latest blogs from every single one of the sources.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__2xgB__loOnQeNcqouZPGgGA.png)
+![](img/1__2xgB__loOnQeNcqouZPGgGA.png)
 
 **Searching**
 
 Searching is a process where you search for blogs based on the title based on LIKE query in sqlite and has and features like page number and limit.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__6AVdBNuVPpGB2YvnptErGw.png)
+![](img/1__6AVdBNuVPpGB2YvnptErGw.png)
 
 In a modern terminal like warp, I can click the url here and read the blog over there.
 

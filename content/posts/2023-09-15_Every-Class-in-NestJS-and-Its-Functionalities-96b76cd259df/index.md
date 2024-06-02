@@ -21,14 +21,14 @@ NestJS is a huge framework built on top of TypeScript, JavaScript also uses Expr
 
 I am trying to conclude the documentation of NestJS which can be found here. [https://docs.nestjs.com/](https://docs.nestjs.com/) in this writing.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__VTSKq5eIs3KyOyLYShI67Q.png)
+![](img/1__VTSKq5eIs3KyOyLYShI67Q.png)
 
 I have been working on a code base built on nestjs for the last 3 years and I have seen how things changed over time in nestjs. Now, lets leave me out of the discussion and lets disscuss on tiny cute classes in nestjs and its functionalities. Shall we ?
 
 1.  **Controller**
 
 Controller as name suggest is a class that are used to define our routes to the class. It’s is decorated with Controller class and the decorator expects a url path string that will trigger its excution. Every methods in controllers are decorated with method specific decorators like Get, Post, Patch, Put, Delete and it assumes you provide it with a path.
-
+```ts
 @Controller('/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -51,7 +51,7 @@ export class UserController {
   }
 
 }
-
+```
 Each of the methods can also be decorated with decorators like @Body, @Query, or @Param that puts request body, query params or url path params into it. Each one of it expects a string to be provided to it which will map the string to the value there. See how userService is provided in controller and how it is being called even without an instance of it being provided.
 
 **2\. Service**
@@ -59,7 +59,7 @@ Each of the methods can also be decorated with decorators like @Body, @Query, or
 Service is where our business logic resides. Generally, services are injected with other services or repository layers. Here is an example of service in Nestjs. Now here you can see that it has some other services and repositories in its parameter.
 
 You saw the same in controllers as well, the object will be in place all thanks to Dependency injection and IOC container.
-
+```ts
 @Injectable()
 export class UserService {
   constructor(    @InjectRepository(User)
@@ -67,19 +67,19 @@ export class UserService {
     private readonly em: EntityManager,
     private readonly authService: AuthService,  ) {}
 
-  /\*\*
-   \* This function creates a new user with email, password, and metadata, persists it to the database,
-   \* and returns a sign-in response for the newly created user.
-   \* @param {SignInUserDto} signUpUser - The parameter \`signUpUser\` is of type \`SignInUserDto\`, which
-   \* is likely a data transfer object containing information about a user signing up for an account,
-   \* such as their email and password.
-   \* @returns The function \`signUpUser\` returns a Promise that resolves to a \`SignInResponse\` object.
-   \*/
-  async signUpUser(signUpUser: SignInUserDto): Promise<SignInResponse\> {
+  /**
+   * This function creates a new user with email, password, and metadata, persists it to the database,
+   * and returns a sign-in response for the newly created user.
+   * @param {SignInUserDto} signUpUser - The parameter `signUpUser` is of type `SignInUserDto`, which
+   * is likely a data transfer object containing information about a user signing up for an account,
+   * such as their email and password.
+   * @returns The function `signUpUser` returns a Promise that resolves to a `SignInResponse` object.
+   */
+  async signUpUser(signUpUser: SignInUserDto): Promise<SignInResponse> {
     const newUser = this.userRepository.create({
       email: signUpUser.email,
       password: signUpUser.password,
-      metaData: this.INITIAL\_BUDGET\_METADATA,
+      metaData: this.INITIAL_BUDGET_METADATA,
     });
     await this.em.persistAndFlush(newUser);
     return await this.signInUser({
@@ -89,14 +89,14 @@ export class UserService {
   }
 
 
-  /\*\*
-   \* This function retrieves a user's profile by their ID and throws an exception if the user is not
-   \* found.
-   \* @param {string} userId - The \`userId\` parameter is a string that represents the unique identifier of
-   \* a user. It is used to search for a user's profile in the database.
-   \* @returns The function \`getUserProfile\` returns a Promise that resolves to a \`User\` object.
-   \*/
-  async getUserProfile(userId: string): Promise<User\> {
+  /**
+   * This function retrieves a user's profile by their ID and throws an exception if the user is not
+   * found.
+   * @param {string} userId - The `userId` parameter is a string that represents the unique identifier of
+   * a user. It is used to search for a user's profile in the database.
+   * @returns The function `getUserProfile` returns a Promise that resolves to a `User` object.
+   */
+  async getUserProfile(userId: string): Promise<User> {
     const userProfile = await this.userRepository.findOne({
       id: userId,
     });
@@ -105,15 +105,15 @@ export class UserService {
   }
 
 }
-
-[**Leanr more aboutDependency injection**
+```
+[**Learn more aboutDependency injection**
 _Nest is a framework for building efficient, scalable Node.js server-side applications. It uses progressive JavaScript…_docs.nestjs.com](https://docs.nestjs.com/ "https://docs.nestjs.com/")[](https://docs.nestjs.com/)
 
 These are the building block of nestjs but there are many other types of classes in nestjs, some of them are disscussed below in brief
 
 Before we move into other classes, please remember this peice of information from nestjs
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__ZQrQHAlCeGR8adP2D6UPKQ.png)
+![](img/1__ZQrQHAlCeGR8adP2D6UPKQ.png)
 
 **3\. Guards**
 
@@ -123,13 +123,13 @@ Before we move into other classes, please remember this peice of information fro
 *   returns `boolean | Promise<boolean> | Observable<boolean>`
 *   proceeds to next part of lifecycle on truthy result
 *   apply globally or use @UseGuards() method
-
+```ts
 // example of guard thats accepts only medium authorization
 @Injectable()
 export class MediumGuard implements CanActivate {
   constructor() {}
 
-  async canActivate(context: ExecutionContext): Promise<boolean\> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) {
@@ -143,7 +143,7 @@ export class MediumGuard implements CanActivate {
     }
     return true;
   }
-
+```
 **4\. Interceptors**
 
 *   use for modifying request or response
@@ -152,7 +152,7 @@ export class MediumGuard implements CanActivate {
 *   must know RxJS
 *   apply it globally or use @UseInterceptors() method
 
-
+```ts
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -160,18 +160,18 @@ import { tap } from 'rxjs/operators';
 // a simple logging interceptor
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any\> {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     console.log('Before...');
 
     const now = Date.now();
     return next
       .handle()
       .pipe(
-        tap(() => console.log(\`After... ${Date.now() - now}ms\`)),
+        tap(() => console.log(`After... ${Date.now() - now}ms`)),
       );
   }
 }
-
+```
 **5\. Pipes**
 
 *   Use for validation/transformation of controller params
@@ -182,28 +182,28 @@ export class LoggingInterceptor implements NestInterceptor {
 *   custom logic in transform method
 
 import { ArgumentMetadata, Injectable, PipeTransform } from "@nestjs/common";
-
+```ts
 // a simple comma seperated string value to array transform pipe
 @Injectable()
 export class ParseCommaSeparatedPipe<I extends string, J>
   implements PipeTransform
 {
-  commaRegex = /\[,\]/;
+  commaRegex = /[,]/;
 
-  transform(value: I, metadata: ArgumentMetadata): J\[\] {
-    if (value.length === 0) return \[\];
+  transform(value: I, metadata: ArgumentMetadata): J[] {
+    if (value.length === 0) return [];
 
     return value.split(",").map((item) => item as J);
   }
 }
-
+```
 **6\. Filters**
 
 *   can be though of as a catch block like in cpp or python
 *   can be generic catch or specific catch
 *   code in catch() method
 *   Decorated by Catch decorator which takes HttpException
-
+```ts
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { Request, Response } from 'express';
 
@@ -211,8 +211,8 @@ import { Request, Response } from 'express';
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<Response\>();
-    const request = ctx.getRequest<Request\>();
+    const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
 
     response
@@ -224,7 +224,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
       });
   }
 }
-
+```
 There are many other types of classes in nestjs. which you can find in the official docs. I do nestjs most of the time and make sure you respond with what I left here. I may do part 2 and may write many things on nestjs. if you love it.
 
 [**Documentation | NestJS - A progressive Node.js framework**
@@ -234,12 +234,3 @@ I like to write about technology and programming on LinkedIn. So, let’s get co
 
 [https://www.linkedin.com/in/nirjalpaudel/](https://www.linkedin.com/in/nirjalpaudel/)
 [https://github.com/n1rjal/](https://github.com/n1rjal/)
-
-### In Plain English
-
-_Thank you for being a part of our community! Before you go:_
-
-*   _Be sure to_ **_clap_** _and_ **_follow_** _the writer! 👏_
-*   _You can find even more content at_ [**_PlainEnglish.io_**](https://plainenglish.io/) **_🚀_**
-*   _Sign up for our_ [**_free weekly newsletter_**](http://newsletter.plainenglish.io/)_. 🗞️_
-*   _Follow us on_ [**_Twitter_**](https://twitter.com/inPlainEngHQ)**_(X_**), [**_LinkedIn_**](https://www.linkedin.com/company/inplainenglish/), [**_YouTube_**](https://www.youtube.com/channel/UCtipWUghju290NWcn8jhyAw), and [**_Discord_**](https://discord.gg/XxRS92b2)**_._**

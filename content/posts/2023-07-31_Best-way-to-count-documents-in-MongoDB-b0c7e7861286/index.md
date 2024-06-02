@@ -5,19 +5,24 @@ date: '2023-07-31T01:40:05.476Z'
 categories: []
 keywords: []
 slug: /@nirjalpaudel54312/best-way-to-count-documents-in-mongodb-b0c7e7861286
+tags:
+- optimization
+- mongodb
+categories:
+- database
 ---
 
 Hello everyone 👋👋
 
 I created a MongoDB database with 10 million documents.😄 My schema is simple and is for a very very basic inventory management system.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__JogoK9GIXwjCikNF.png)
+![](img/0__JogoK9GIXwjCikNF.png)
 
 ### Before we begin
-
-name: string,  
+```
+name: string,
 quantity: number,
-
+```
 Here is a sample of some of the documents.
 
 The schema looks simple enough but I have been working with a huge number of documents. To be precise, I am working with 12734005 documents. For those wondering how did I insert these documents here is the python code that helped me did it.
@@ -26,7 +31,7 @@ The schema looks simple enough but I have been working with a huge number of doc
 
 ### Let’s talk about count
 
-> _let’s find out which is better in which situation_
+> let’s find out which is better in which situation
 
 By default, In MongoDB provides us with 3 different count methods.
 
@@ -34,19 +39,19 @@ By default, In MongoDB provides us with 3 different count methods.
 *   cursor.count()
 *   estimatedDocumentCount()
 
-### 1\. countDocuments()
+### 1. countDocuments()
 
-> _it took somewhere between 4 to 10 seconds. Probably caching helped reduce its speed. Let’s discuss this below._
+> it took somewhere between 4 to 10 seconds. Probably caching helped reduce its speed. Let’s discuss this below.
 
 If you know aggregation, you can see that `countDocuments()` is the most accurate but slowest count query among the three. Behind the scene, it does a sequential scan, \*\* fancy way of saying goes through all documents \*\*, in all documents for the query gets the count. This is the slowest count I found.
 
-> _db.collection.countDocuments() wraps the following aggregation operation and returns just the value of n:_
-
-db.collection.aggregate(\[  
-       { $match: <query> },  
-       { $group: { \_id: null, n: { $sum: 1 } } }  
-\])
-
+> db.collection.countDocuments() wraps the following aggregation operation and returns just the value of n:
+```
+db.collection.aggregate([
+       { $match: <query> },
+       { $group: { _id: null, n: { $sum: 1 } } }
+])
+```
 [Source: MongoDb Official Documentation](https://docs.mongodb.com/manual/reference/method/db.collection.countDocuments/)
 
 ### 2\. cursor.count()
@@ -61,7 +66,7 @@ Unlike `cursor.count()` and `countDocuments()`, `estimatedDocumentCount()` does 
 
 ### Suggestions:
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__v0VOFTfI0YYcrH1d.png)
+![](img/0__v0VOFTfI0YYcrH1d.png)
 
 1.  Don’t be that guy above
 2.  Use `estimatedDocumentCount()` when counting total number of documents.

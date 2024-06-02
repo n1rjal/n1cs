@@ -12,41 +12,42 @@ slug: >-
 
 Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__IOAxGZtt5VJcHT__v.jpg)
+![](img/0____E2__Ug2Sr__O8TzNQ.jpg)
 
-For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store. Many products have one store referenced by the `store_id` column. Here is a rough command for SQL \`CREATE TABLE\` statement
-
-CREATE TABLE store (  
-    id SERIAL PRIMARY KEY,  
-    name VARCHAR(255),  
-    address VARCHAR(255),  
-    phone\_number VARCHAR(15)  
+For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store. Many products have one store referenced by the `store_id` column. Here is a rough command for SQL `CREATE TABLE` statement
+```sql
+CREATE TABLE store (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255),
+    phone_number VARCHAR(15)
 );
 
-CREATE TABLE product (  
-    id SERIAL PRIMARY KEY,  
-    name VARCHAR(255),  
-    price DECIMAL(10,2),  
-    description TEXT,  
-    store\_id INT,  
-    FOREIGN KEY (store\_id) REFERENCES store (id)  
+CREATE TABLE product (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    price DECIMAL(10,2),
+    description TEXT,
+    store_id INT,
+    FOREIGN KEY (store_id) REFERENCES store (id)
 );
 
+```
 I have around 29k stores and around 12 million products. Here is the count of the both
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__wwdEf4Q__Cr2jRDe9.jpg)
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__fMmJZzvtpc0TTGz9.jpg)
+![](img/0__wwdEf4Q__Cr2jRDe9.jpg)
+![](img/0__fMmJZzvtpc0TTGz9.jpg)
 
 I haven’t placed any indexing structure for the product table. Now let’s interact with the product table.
 
 ### WHERE clause and Count:
 
-EXPLAIN ANALYSE SELECT COUNT(\*) FROM "product"   
+EXPLAIN ANALYSE SELECT COUNT(\*) FROM "product"
 WHERE "price" < 10;
 
 The result of `EXPLAIN ANALYZE` shows the following info
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__ST4__Mgte__z1JpRl__.jpg)
+![](img/0__ST4__Mgte__z1JpRl__.jpg)
 
 #### Planning stage/JIT:
 
@@ -69,7 +70,7 @@ The worker process strategy used spawns 2 process that parallel scans the produc
 
 ### Whats in the picture
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0____E2__Ug2Sr__O8TzNQ.jpg)
+![](img/0____E2__Ug2Sr__O8TzNQ.jpg)
 
 I hope you can clearly understand the picture now, but here are the steps involved.
 
@@ -87,15 +88,15 @@ Now you might be wondering what if we increase the total number of workers in th
 My PC is 8 core CPU PC and my CS knowledge says that my computer shouldn’t lag till 8 worker processes. Managing process is also time-consuming as launching and killing a process is a time-consuming and expensive time as well. But hey, I am postgres with docker and other background apps are running simultaneously as well. So leaving the theory aside lets make the hands dirty.
 
 I ran the following query
-
-\-- the value x is the total worker allowed  
-SET max\_parallel\_workers \= x;  
-SET max\_parallel\_workers\_per\_gather \= x;  
-EXPLAIN ANALYSE SELECT COUNT(\*) FROM "product" WHERE "price" < 10
-
+```sql
+-- the value x is the total worker allowed
+SET max_parallel_workers = x;
+SET max_parallel_workers_per_gather = x;
+EXPLAIN ANALYSE SELECT COUNT(*) FROM "product" WHERE "price" < 10
+```
 Upon running the query I got the following results
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__qnI3tIP97fDsVrAN______J2w.png)
+![](img/1__qnI3tIP97fDsVrAN______J2w.png)
 
 Postgres query planner is a clever piece of tool and it detected that the execution time was not going to be much better after 5 worker processes and stopped spawning more worker processes when it reached the value of x greater than 5. Even when I was allowed to go more than 5 workers per execution, I didn’t do that and insisted on using 5 worker processes.
 
@@ -103,14 +104,16 @@ Postgres query planner is a clever piece of tool and it detected that the execut
 
 Here’s a big but for y’all. The query I used is pretty simple, right? count the total, so let me spice things up a little bit more with the following query.
 
-EXPLAIN ANALYSE   
-SELECT id FROM "product" WHERE "price" \> 10  
-ORDER BY store\_id DESC  
+```sql
+EXPLAIN ANALYSE
+SELECT id FROM "product" WHERE "price" > 10
+ORDER BY store_id DESC
 LIMIT 1000
+```
 
 The query provided below is more “complex” as it has sorting and limiting in it and the query planner looks like this with no worker. Not only that the querying condition has changed as well resulting in more data to look for.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/0__w2ZhiLEXbvCMUyos.jpg)
+![](img/0__w2ZhiLEXbvCMUyos.jpg)
 
 Here I forced the query planner to not use worker processes.
 
@@ -128,6 +131,6 @@ Gather Merge node is used as it is expected to be used for queries with sorting 
 
 Here is the result for various query times.
 
-![](/Users/nirjalpaudel/Downloads/me/posts/md_1717232175977/img/1__xbJrtzyN__qk2xN1zbb9Qxg.png)
+![](img/1__xbJrtzyN__qk2xN1zbb9Qxg.png)
 
 As you can see that using the worker process has significantly decreased the planning time by almost half compared to not being used in both queries. This is a general introduction to worker processes and JIT in Postgresql but do you still with 5 workers used, the query is considered really slow. This is due to the use of seq scan to filter the product table. In the next writing, I would help you on how to improve on that with an introduction to index in Postgres and its type. Until then, you can follow me on my LinkedIn here. [My Linkedin Profile](https://linkedin.com/in/nirjalpaudel).
