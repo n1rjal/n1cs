@@ -1,0 +1,16 @@
+name: Update rnaomd blogs
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Schedule to run every 6 hours
+    - workflow_dispatch
+
+jobs:
+  curl-rest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Perform REST request using curl
+        run: curl -d {} ${{ secrets.PAGES_WEBHOOK_URL }}
+        env:
+          PAGES_WEBHOOK_URL: ${{ secrets.PAGES_WEBHOOK_URL }}
