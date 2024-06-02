@@ -7,6 +7,12 @@ date: '2023-04-01T03:54:19.874Z'
 categories: []
 keywords: []
 slug: /@nirjalpaudel54312/mongodb-design-patterns-708100c07bcb
+tags:
+- nosql
+- db
+- design-patterns
+categories:
+- database
 ---
 
 Here are some of the few design patterns that you can use to better your MongoDB schema, so you’ll keep your team happy and yourself happier.

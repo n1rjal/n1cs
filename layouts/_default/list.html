@@ -7,44 +7,59 @@
 
 <!-- $pages -->
 {{ $pages := union .RegularPages .Sections }}<!---->
+
 {{ if .IsHome }}<!---->
 {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
 {{ end }}
 
+
 <!-- Articles -->
-{{ $paginator := .Paginate $pages }} {{ range $index, $page := $paginator.Pages
-}}<!---->
+{{ $paginator := .Paginate $pages }}
+
+{{ range $index, $page := $paginator.Pages }}<!---->
 
 <!-- avatar -->
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
 
-{{ $avatar_url := $.Scratch.Get "avatar_url" }}<!---->
-{{ if or $avatar_url site.Params.name }}
-<div class="mt-1 mb-16 flex items-center">
-  {{ if $avatar_url }}
-  <div
-    class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
-  >
-    <img
-      class="my-0 aspect-square rounded-full "
-      style="width: 6rem; height: 6rem;"
-      src="/me.jpeg"
-      alt="{{ site.Params.name | default site.Title }}"
-    />
-  </div>
-  {{ end }}<!---->
-  {{ if site.Params.name }}
-  <div>
-    <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">{{ site.Params.name }}</h1>
-    <div class="break-words">
-      {{ site.Params.bio | default (print `A personal blog by `
-      site.Params.name) }}
-    </div>
-  </div>
-  {{ end }}
-</div>
-{{ end }}<!---->
-
+    {{ $avatar_url := $.Scratch.Get "avatar_url" }}<!---->
+    {{ if or $avatar_url site.Params.name }}
+        <div class="mt-1 mb-16 flex items-center">
+          {{ if $avatar_url }}
+          <div
+            class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
+          >
+            <img
+              class="my-0 aspect-square rounded-full "
+              style="width: 6rem; height: 6rem;"
+              src="/me.jpeg"
+              alt="{{ site.Params.name | default site.Title }}"
+            />
+          </div>
+          {{ end }}<!---->
+          {{ if site.Params.name }}
+          <div>
+            <h1 class="mb-2 mt-3 text-[1.6rem] font-bold">{{ site.Params.name }}</h1>
+            <div class="break-words">
+              {{ site.Params.bio | default (print `A personal blog by `
+              site.Params.name) }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        <div class="my-10 bg-light">
+            {{ $allPosts := (where site.RegularPages "Type" "posts") }}
+            {{ $categories := slice }}
+            {{ range $allPosts }}
+                {{ $categories = union $categories .Params.categories }}
+            {{ end }}
+            {{ range $categories }}
+                <a
+                  class="ml-4 no-underline roboto-thin text-sm mb-2 uppercase text-white opacity-70"
+                  href="{{ printf "/categories/%s" . | urlize }}"
+                  >{{ . }}</a>
+            {{end}}
+        </div>
+    {{ end }}<!---->
 {{ end }}
 
 

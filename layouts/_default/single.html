@@ -35,6 +35,108 @@
   </footer>
   {{ end }}
 
+  <!-- Lets calculate related blogs -->
+    {{ $relatedPosts := (where .Site.RegularPages "Type" "posts") | shuffle }}
+    <!-- Exclude the current post and keep only those with intersecting tags -->
+    {{ $relatedPosts := where $relatedPosts "Params.tags" "intersect" .Params.tags }}
+    <!-- related posts is calculated by tags -->
+    <!-- tags are defined in Params.tags and don't display posts with same slug -->
+    {{ $relatedPosts := where $relatedPosts "Params.slug" "ne" .Params.slug }}
+    {{ $relatedPosts := first 4 $relatedPosts }}
+
+  {{ if gt (len $relatedPosts) 0 }}
+    <h2 class="mt-16 mb-8 font-bold">Related Posts</h2>
+    {{ range $relatedPosts }}
+        <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
+          {{ if gt .Weight 0 }}
+          <span
+            class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+            >Featured</span
+          >
+          {{ end }}
+          <div>
+            {{ if .Params.categories }}
+            {{ range .Params.categories }}
+                    <a
+                      class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase text-white opacity-70"
+                      href="{{ printf "/categories/%s" . | urlize }}"
+                      >{{ . }}</a>
+            {{end}}
+            {{end}}
+              <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+          </div>
+          <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
+          <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+          <span>
+
+          <time class="text-sm antialiased opacity-60">{{ .Date | time.Format ":date_medium" }}</time>
+          <!-- • -->
+          </span>
+
+        </section>
+        {{end}}
+  {{ end }}
+
+  <!-- Lets get some random blogs -->
+      {{ $randomPosts := (where .Site.RegularPages "Type" "posts") | shuffle | first 5 }}
+    <!-- Exclude the current post and keep only those with intersecting tags -->
+    <!-- related posts is calculated by tags -->
+    <!-- tags are defined in Params.tags and don't display posts with same slug -->
+
+    <hr />
+
+  {{ if gt (len $randomPosts) 0 }}
+      <h2 class="mt-16 mb-1 font-bold">You might also like</h2>
+    {{ range $randomPosts }}
+        {{ if ne .RelPermalink .Params.RelPermalink }}
+        <section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
+          {{ if gt .Weight 0 }}
+          <span
+            class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+            >Featured</span
+          >
+          {{ end }}
+          <div>
+            {{ if .Params.categories }}
+            {{ range .Params.categories }}
+                    <a
+                      class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase text-white opacity-70"
+                      href="{{ printf "/categories/%s" . | urlize }}"
+                      >{{ . }}</a>
+            {{end}}
+            {{end}}
+              <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+          </div>
+          <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
+          <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+          <span>
+
+              <time class="text-sm antialiased opacity-60">{{ .Date | time.Format ":date_medium" }}</time>
+
+          -
+
+          {{ range .Params.tags }}
+            <a
+                class="ml-2 mr-4 no-underline lowercase roboto-thin text-sm mb-2 text-white opacity-70"
+                href="{{ printf "/tags/%s" . | urlize }}"
+                >{{ . }} </a>
+
+            <!-- for not last put comma -->
+
+
+
+
+          {{ end }}
+
+          </span>
+
+        </section>
+        {{end}}
+    {{end}}
+  {{ end }}
+
+
+
   <!-- Post Nav -->
   {{ if not site.Params.disablePostNavigation }}<!---->
   {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->

@@ -8,6 +8,11 @@ categories: []
 keywords: []
 slug: >-
   /@nirjalpaudel54312/postgres-just-in-time-compiler-and-worker-processes-6c7434864078
+tags:
+- postgres
+- optimization
+categories:
+- database
 ---
 
 Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.

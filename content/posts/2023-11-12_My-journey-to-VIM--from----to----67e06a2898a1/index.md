@@ -7,6 +7,11 @@ date: '2023-11-12T17:22:12.436Z'
 categories: []
 keywords: []
 slug: /@nirjalpaudel54312/my-journey-to-vim-from-to-67e06a2898a1
+tags:
+- vim
+- neovim
+categories:
+- productivity
 ---
 
 Vim has been throne till my software development. Something that I always ignored and looked away from. Here I would love to reverse time a by few years and see how my programming journey went and vim has made the journey better making me a more productive software enginner overall. By the way, fireship has the best introduction video about neovim

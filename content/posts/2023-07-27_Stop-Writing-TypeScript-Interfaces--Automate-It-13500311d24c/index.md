@@ -7,6 +7,11 @@ date: '2023-07-27T09:11:50.235Z'
 categories: []
 keywords: []
 slug: /@nirjalpaudel54312/stop-writing-typescript-interfaces-13500311d24c
+tags:
+- cli
+- tools
+categories:
+- productivity
 ---
 
 **EDIT 1: After many requests from users of this tools, I have decided to remove I prefix from the name of the interface**
