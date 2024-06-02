@@ -1,6 +1,6 @@
 baseURL = 'https://n1cs.blog'
 languageCode = 'en-us'
-title = 'N1CS Blog'
+title = 'N1CS - Lifely blog'
 theme = 'paper'
 author = 'Nirjal Paudel'
 paginate = 20
@@ -35,8 +35,8 @@ summaryLength = 20
 
   # home page profile
   avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
-  name = 'N1cs'
-  bio = 'Hola Mundo, this is n1cs. A place where Nirjal Paudel will write about various things going on his cs life and other aspects'
+  name = 'n1cs'
+  bio = 'Dviving deep into personal life, growth, tech and more.'
 
 
   # misc
