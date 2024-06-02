@@ -39,6 +39,16 @@
   lang="{{ or site.LanguageCode site.Language.Lang }}"
 >
   {{ partial "head.html" . }}
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-93B66H9SSN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-93B66H9SSN');
+</script>
   <body class="text-black duration-200 ease-out dark:text-white">
     {{ partial "header.html" . }}
 

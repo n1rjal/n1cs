@@ -1,9 +1,10 @@
 baseURL = 'https://n1cs.blog'
 languageCode = 'en-us'
-title = 'Beinvenido a N1CS'
+title = 'N1CS Blog'
 theme = 'paper'
 author = 'Nirjal Paudel'
 paginate = 20
+
 
 enableRobotsTXT = true
 enableEmoji = true
@@ -23,6 +24,7 @@ summaryLength = 20
 [params]
   # color style
   color = 'gray'                           # linen, wheat, gray, light
+  email = "nirjalpaudel54312@gmail.com"
 
   # header social icons
   twitter = 'n1rjal'               # twitter.com/YOUR_TWITTER_ID
