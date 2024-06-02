@@ -1,4 +1,4 @@
-baseURL = 'https://n1cs.tech'
+baseURL = 'https://n1cs.blog'
 languageCode = 'en-us'
 title = 'Beinvenido a N1CS'
 theme = 'paper'
