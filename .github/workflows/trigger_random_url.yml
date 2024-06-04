@@ -1,4 +1,4 @@
-name: Update rnaomd blogs
+name: Update random blogs
 
 on:
   schedule:

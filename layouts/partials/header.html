@@ -1,0 +1,220 @@
+<div>
+<header class="mx-auto flex h-[4.5rem] max-w-3xl px-8">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="{{ `` | absURL }}"
+      >{{ site.Title }}</a
+    >
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  {{ $bg_color := $.Scratch.Get "bg_color" }}<!---->
+
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    {{ $url := .RelPermalink }}<!---->
+    {{ with site.Menus.main }}
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      {{ range . }}
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="{{ .URL }}"
+        >{{ .Name }}</a
+      >
+      {{ end }}
+    </nav>
+    {{ end }}<!---->
+
+    {{ with $.Scratch.Get "social_list" }}
+    <nav
+      class="mt-12 flex justify-center space-x-10 text-dark dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      {{ range . }}<!---->
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./{{ . }}.svg)"
+        href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else }}https://{{ . }}{{ if eq . `threads` }}.net{{ else }}.com{{ end }}/{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
+        target="_blank"
+        rel="{{ if eq . `rss` }}alternate{{ else }}me{{ end }}"
+      >
+        {{ . }}
+      </a>
+      {{ end }}<!---->
+
+    </nav>
+    {{ end }}<!---->
+
+  </div>
+
+  <script>
+    // base
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    // mobile menu
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    // dark theme
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '{{ $bg_color }}'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    // init
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    // listen system
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    // manual switch
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+</header>
+    <div class="relative h-[4.5rem] w-full">
+        <div class="grid items-center absolute left-[0.2cm] top-0 justify-center h-full z-50">
+            <!-- left arrow -->
+            <button
+                id="scroll-left-btn"
+                class="bg-[#4aaced] rounded-full p-2 btn-dark flex absolute items-center justify-center w-8 h-8 z-100">
+            <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="white"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                ></path>
+            </svg>
+        </button>
+        </div>
+
+
+        <div class="grid items-center absolute right-[1cm] top-0 justify-center h-full z-50">
+
+            <button id="scroll-right-btn"
+                class="bg-[#4aaced] p-2 rounded-full btn-dark flex absolute items-center justify-center w-8 h-8 z-1000">
+            <!-- right arrow -->
+            <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="white"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                ></path>
+            </svg>
+        </button>
+        </div>
+    <div class="dark:text-light light:text-dark h-[4.5rem] px-8
+        py-4 border-b-[1px] border-b-white/4 border-t-[1px] w-max-[100vw]
+        dark:border-t-white/10
+        shadow-sm
+        flex flex-center
+        flex-no-wrap
+        items center relative
+        overflow-x-hidden
+        overflow-y-hidden
+    "
+    id="content-banner"
+    >
+
+        {{ $allPosts := (where site.RegularPages "Type" "posts") }}
+        {{ $categories := slice }}
+        {{ range $allPosts }}
+            {{ $categories = union $categories .Params.tags }}
+        {{ end }}
+        {{ $categories = $categories }}
+        {{ range $categories }}
+        <span class="m-2
+            uppercase first:ml-0 last:mr-0
+            ">
+            <a
+              class="no-underline roboto-bold text-sm
+              first:ml-0 last:m-0 border-[1px]
+              light:border-black/20
+              dark:border-white/20 hover:border-[1px]
+              hover:border-white ease-in-out duration-500
+              px-3 py-2 whitespace-nowrap
+              "
+              href="{{ printf "/tags/%s" . | urlize }}"
+              >{{ . }}</a>
+        </span>
+        {{end}}
+
+        </div>
+        <script>
+            const contentBanner = document.getElementById('content-banner');
+            const scrollLeftBtn = document.getElementById('scroll-left-btn');
+            const scrollRightBtn = document.getElementById('scroll-right-btn');
+
+            const checkIfMobile = () => {
+                const isMobile = window.matchMedia('(max-width: 768px)').matches;
+                return isMobile;
+            };
+
+            scrollLeftBtn.addEventListener('click', () => {
+                // check if the scroll is at the end
+                const alreadyAtEnd = contentBanner.scrollLeft === 0;
+                if (alreadyAtEnd) {
+                    return;
+                }
+                contentBanner.scrollBy({
+                    left: checkIfMobile() ? -100 : -500,
+                    behavior: 'smooth'
+                });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                const alreadyAtEnd = contentBanner.scrollLeft + contentBanner.clientWidth >= contentBanner.scrollWidth;
+                if (alreadyAtEnd) {
+                    return;
+                }
+                contentBanner.scrollBy({
+                    left: checkIfMobile() ? 100 : 500,
+                    behavior: 'smooth'
+                });
+            });
+
+        </script>
+    </div>
+    </div>
+
+</div>

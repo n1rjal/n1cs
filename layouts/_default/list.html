@@ -46,25 +46,12 @@
           </div>
           {{ end }}
         </div>
-        <div class="my-10 bg-light">
-            {{ $allPosts := (where site.RegularPages "Type" "posts") }}
-            {{ $categories := slice }}
-            {{ range $allPosts }}
-                {{ $categories = union $categories .Params.categories }}
-            {{ end }}
-            {{ range $categories }}
-                <a
-                  class="ml-4 no-underline roboto-thin text-sm mb-2 uppercase text-white opacity-70"
-                  href="{{ printf "/categories/%s" . | urlize }}"
-                  >{{ . }}</a>
-            {{end}}
-        </div>
     {{ end }}<!---->
 {{ end }}
 
 
 
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
+<section class="relative mt-10 last-of-type:mb-0">
   {{ if gt .Weight 0 }}
   <span
     class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
@@ -75,7 +62,7 @@
     {{ if .Params.categories }}
     {{ range .Params.categories }}
             <a
-              class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase text-white opacity-70"
+              class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
               href="{{ printf "/categories/%s" . | urlize }}"
               >{{ . }}</a>
     {{end}}
