@@ -68,7 +68,7 @@ As you can see above we created a temp table, deleted every record from it just 
 
 Ok, this looks good conceptually but what can be the pros and cons of using temporary tables. Lets discuss that.
 
-### **Personal Story Here**
+## Personal Story Here
 
 ---
 
@@ -99,7 +99,7 @@ We had around 200k items in our database and 200k  network calls were certainly 
 
 </aside>
 
-### Some uses of Temporary tables in SQL
+## Some uses of Temporary tables in SQL
 
 ---
 
