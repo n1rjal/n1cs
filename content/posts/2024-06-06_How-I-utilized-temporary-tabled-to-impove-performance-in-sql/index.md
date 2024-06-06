@@ -16,16 +16,16 @@ draft: false
 
 <aside>
 📌 **TLDR** We can utilize the temporary tables in SQL to quickly ingest data to use it later
-
 </aside>
 
 In PostgreSQL, a temporary table is a table that exists only during a database session. It is created and used within a single database session and is automatically dropped at the end of the session.
 
 [Read more here](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-temporary-table/#:~:text=Intermediate%20storage%3A%20Temporary%20tables%20can,for%20storing%20the%20partial%20results)
-
+![Postgres logo ](img/pg.png)
 ## Using a temporary table
 
 ---
+
 
 To create a temporary table, we can use `CREATE TEMPORARY TABLE` statement:
 
