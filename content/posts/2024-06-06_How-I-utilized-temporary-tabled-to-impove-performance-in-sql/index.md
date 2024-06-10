@@ -142,9 +142,7 @@ class Command(BaseCommand):
         temp_data = []
 
         for item in items:
-            stock = Stock.objects.filter(item=item).first()
-            temp_data.append((item.id, stock.quantity))
-
+            temp_data.append((item.id, item.net_stock))
             if len(temp_data) >= chunk_size:
                 self.bulk_insert(temp_data)
                 temp_data = []
