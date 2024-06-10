@@ -3,7 +3,6 @@ title: Temporary tables in SQL and How I used it to improve performance
 description: >-
     Discover how temporary tables in PostgreSQL helped me optimize data management in my Django application. Learn how these ephemeral structures provide a temporary workspace for quick data manipulations, streamlining bulk updates on large datasets. Say goodbye to bottlenecks and slow processing times with this efficient solution.
 date: '2024-06-05T08:57:45.903Z'
-categories: []
 keywords: []
 slug: /@nirjalpaudel54312/temporary-tables-in-sql-and-how-i-used-it-to-imporve-performance
 categories:
@@ -154,6 +153,9 @@ class Command(BaseCommand):
             self.bulk_insert(temp_data)
 
     def bulk_insert(self, temp_data):
+        # I get temp_data from rest api
+        # around 55k items and new stock
+        # { item_id: 1212, stock: 1} from rest api as an array
         with connection.cursor() as cursor:
             insert_query = """
                 INSERT INTO temp_stock (item_id, quantity)

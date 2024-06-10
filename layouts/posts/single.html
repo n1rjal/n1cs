@@ -1,0 +1,234 @@
+
+{{ define "main" }}
+
+<article>
+  <header class="mb-16">
+      <div class="flex mb-2 w-3xl">
+    {{ range .Params.categories }}
+
+    <a
+      class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
+      href="{{ printf "/categories/%s" . | urlize }}"
+      >{{ . }}</a>
+    {{ end }}
+
+
+      </div>
+    <h1 class="!my-0 pb-2.5 leading-[120%] ">{{ .Title }}</h1>
+
+        {{ if ne .Type "page" }}
+        <div class="text-sm">
+          {{ if .Date }}
+          <span class="text-sm font-bold opacity-80">{{ .Date | time.Format ":date_medium" }}</span>
+          {{ end }}<!---->
+          {{ $single_author := or .Params.Author site.Author.name }}
+          <!---->
+          {{ if $single_author }}
+          <span class="mx-1">&middot;</span>
+          <span>{{ $single_author }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+  </header>
+
+  <section class="leading-[150%]">{{ .Content }}</section>
+
+  <!-- Post Tags -->
+  {{ if .Params.tags }}
+  <footer class="mt-12 flex flex-wrap">
+    {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="{{ $href }}"
+      >{{ . }}</a
+    >
+    {{ end }}
+  </footer>
+  {{ end }}
+
+  <!-- Lets calculate related blogs -->
+    {{ $relatedPosts := (where .Site.RegularPages "Type" "posts") | shuffle }}
+    <!-- Exclude the current post and keep only those with intersecting tags -->
+    {{ $relatedPosts := where $relatedPosts "Params.tags" "intersect" .Params.tags }}
+    <!-- related posts is calculated by tags -->
+    <!-- tags are defined in Params.tags and don't display posts with same slug -->
+    {{ $relatedPosts := where $relatedPosts "Params.slug" "ne" .Params.slug }}
+    {{ $relatedPosts := first 4 $relatedPosts }}
+
+  {{ if gt (len $relatedPosts) 0 }}
+    <h2 class="mt-16 mb-8 font-bold">Related Posts</h2>
+    <div class="grid grid-cols-2 gap-4 w-full">
+    {{ range $relatedPosts }}
+        <section class="relative w-full first-of-type:mt-0 last-of-type:mb-0">
+          {{ if gt .Weight 0 }}
+          <span
+            class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+            >Featured</span
+          >
+          {{ end }}
+          <div>
+            {{ if .Params.categories }}
+            {{ range .Params.categories }}
+                    <a
+                      class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
+                      href="{{ printf "/categories/%s" . | urlize }}"
+                      >{{ . }}</a>
+            {{end}}
+            {{end}}
+              <h2 class="!my-0 font-bold font-[14px] !leading-none mb-2 min-h-[2cm]">{{ .Title }}</h2>
+              <div class="opacity-60 dark:text-[#fff] mt-4 font-[10px] leading-[20px] h-[1cm] truncate-2-lines">{{ .Summary }}</div>
+          </div>
+          <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
+          <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+          <span>
+
+          <time class="first:ml-0 ml-1 mr-1 no-underline font-bold text-sm mb-2 text-dark opacity-70 dark:text-[#fff]">{{ .Date | time.Format ":date_medium" }}</time>
+          <!-- • -->
+          </span>
+
+        </section>
+        {{end}}
+    </div>
+  {{ end }}
+
+
+  <!-- Lets get some random blogs -->
+      {{ $randomPosts := (where .Site.RegularPages "Type" "posts") | shuffle | first 4 }}
+    <!-- Exclude the current post and keep only those with intersecting tags -->
+    <!-- related posts is calculated by tags -->
+    <!-- tags are defined in Params.tags and don't display posts with same slug -->
+
+    <hr />
+
+  {{ if gt (len $randomPosts) 0 }}
+    <h2 class="mt-16 mb-8 font-bold">You many also like</h2>
+    <div class="grid grid-cols-2 gap-4 w-full">
+    {{ range $randomPosts }}
+        <section class="p-1 border-black-2 relative w-full first-of-type:mt-0 last-of-type:mb-0">
+          {{ if gt .Weight 0 }}
+          <span
+            class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+            >Featured</span
+          >
+          {{ end }}
+          <div>
+            {{ if .Params.categories }}
+            {{ range .Params.categories }}
+                    <a
+                      class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
+                      href="{{ printf "/categories/%s" . | urlize }}"
+                      >{{ . }}</a>
+            {{end}}
+            {{end}}
+              <h2 class="!my-0 font-bold font-[14px] !leading-none mb-2 min-h-[2cm]">{{ .Title }}</h2>
+              <div class="opacity-60 dark:text-[#fff] font-[10px] leading-[20px] h-[1cm] truncate-2-lines">{{ .Summary }}</div>
+          </div>
+          <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
+          <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+          <span>
+
+          <time class="first:ml-0 ml-1 mr-1 no-underline font-bold text-sm mb-2 text-dark opacity-70 dark:text-[#fff]">{{ .Date | time.Format ":date_medium" }}</time>
+          <!-- • -->
+          </span>
+
+        </section>
+        {{end}}
+    </div>
+  {{ end }}
+
+
+
+  <!-- Post Nav -->
+  {{ if not site.Params.disablePostNavigation }}<!---->
+  {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
+  {{ if and (gt (len $pages) 1) (in $pages . ) }}
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    {{ with $pages.Next . }}
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="{{ .Permalink }}"
+      ><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
+    >
+    {{ end }}<!---->
+    {{ with $pages.Prev . }}
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="{{ .Permalink }}"
+      ><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
+    >
+    {{ end }}
+  </nav>
+  {{ end }}<!---->
+  {{ end }}
+
+  <!-- Disqus -->
+  {{ if and site.DisqusShortname (not (eq .Params.comments false)) }}
+  <div class="mt-24" id="disqus_thread"></div>
+  <script>
+    const disqusShortname = '{{ site.DisqusShortname }}';
+    const script = document.createElement('script');
+    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    document.head.appendChild(script);
+  </script>
+  {{ end }}
+
+  <!-- GraphComment -->
+  {{ if and site.Params.graphCommentId (not (eq .Params.comments false)) }}
+  <div class="mt-24" id="graphcomment"></div>
+  <script type="text/javascript">
+    var __semio__params = {
+      graphcommentId: '{{ site.Params.graphCommentId  }}',
+      behaviour: {
+        //  uid: "...",
+      },
+      // configure your variables here
+    };
+
+    function __semio__onload() {
+      __semio__gc_graphlogin(__semio__params);
+    }
+
+    (function () {
+      var gc = document.createElement('script');
+      gc.type = 'text/javascript';
+      gc.async = true;
+      gc.onload = __semio__onload;
+      gc.defer = true;
+      gc.src =
+        'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
+      (
+        document.getElementsByTagName('head')[0] ||
+        document.getElementsByTagName('body')[0]
+      ).appendChild(gc);
+    })();
+  </script>
+  {{ end }}
+
+  <!-- mermaid -->
+  {{- partial "mermaid.html" . -}}
+
+  <!-- giscus comment -->
+  {{ if and site.Params.giscus.repo (not (eq .Params.comments false)) }}
+  <div class="giscus mt-24"></div>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="{{ site.Params.giscus.repo }}"
+    data-repo-id="{{ site.Params.giscus.repoId }}"
+    data-category="{{ site.Params.giscus.category }}"
+    data-category-id="{{ site.Params.giscus.categoryId }}"
+    data-mapping="{{ site.Params.giscus.mapping | default (print `pathname`) }}"
+    data-strict="{{ site.Params.giscus.strict | default (print `1`) }}"
+    data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default (print `0`) }}"
+    data-emit-metadata="{{ site.Params.giscus.emitMetadata | default (print `0`) }}"
+    data-input-position="{{ site.Params.giscus.inputPosition | default (print `top`) }}"
+    data-theme="{{ site.Params.giscus.theme | default (print `light`) }}"
+    data-lang="{{ site.Params.giscus.lang | default (print `en`) }}"
+    data-loading="{{ site.Params.giscus.loading | default (print `lazy`) }}"
+    crossorigin="anonymous"
+    async
+  ></script>
+  {{ end }}
+</article>
+
+{{ end }}
