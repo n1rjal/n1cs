@@ -67,13 +67,21 @@
               >{{ . }}</a>
     {{end}}
     {{end}}
-      <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+  <time class="text-sm uppercase antialiased">{{ .Date | time.Format ":date_medium" }}</time>
+      <h2 class="!my-2 font-bold !leading-none">{{ .Title }}</h2>
   </div>
-  <div class="mt-3 mb-5">{{.Summary }}</div>
-  <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+  <div class="mt-3">
+      {{.Summary }}
+
+       
+  </div>
+  <div>
+      <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline hover:underline duration-500" href="{{ .Permalink }}">Learn More
+          <span class="ml-2">→</span>
+      </a>
+  </div>
   <span>
 
-  <time class="text-sm antialiased opacity-60">{{ .Date | time.Format ":date_medium" }}</time>
   <!-- • -->
   </span>
 

@@ -14,11 +14,12 @@ categories:
 - tips and tricks
 ---
 
+
 Tell me how many did you know by responding to the article and you may share this with your network to find out how many they know. These are some of the most underrated features in typescript. So, let's begin shall we?
 
 ![](img/0__nmnULubrz2ncLsRj.jpg)
 
-1.  **Using FlatMap**
+## Using FlatMap
 
 [Flat Map in javascript is a great technique which you can learn here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap). Flat map essentially conbines techniques of map and filter Array method into one. I will suggest you to use flatMap() over combination of filter() and map().
 
@@ -51,7 +52,7 @@ console.timeEnd("filterAndMap")
 ```
 ![](img/1__wDkxp8xJhcm__rCUASgnYmw.png)
 
-**2\. Order of Array methods**
+## Order of Array methods
 
 Array method are some of the most important methods that helps us to interact with an array. There are many array methods in javascript. Most popular array methods are **.filter(), .find(), .map(), .reduce()**. They can be merged together to produce some wonderful patterns like these
 ```js
@@ -76,7 +77,7 @@ numbers
   .sort((a, b) => a - b)
   .map((n) => n ** 3);
 ```
-**3\. Not using reduce enough.**
+## Not using reduce enough
 
 I have seen this problem with a lot of frontend developers. While a package like react-charts asks data in object like structure and but the implementation of react-charts asks data in a format grouped by a key so I have seen most developers using .forEach() method or incorectly using map() method like these
 ```js
@@ -119,7 +120,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/")
 
 This doesn’t create any unnecessary arrays and is much cleaner and is better to use. It is as similar to forEach() but I will suggest this as it is more cleaner and easier to understand.
 
-**4\. Not using Generators enough**
+## Not using Generators enough
 
 Generators and Iterators are probably among those peice of code a javascript developers doesn’t use and its knowledge is only limited to coding interview. In data fetching scenario, the data can be unlimited in the database/API in huge volume and you will have to stream it in the frontend. In this case, the most used solution in react is the **infinite loading solution.**
 
@@ -149,7 +150,7 @@ async function main() {
 
 return main()
 ```
-**5\. Not using native Javascript classes enough**
+## Not using native Javascript classes enough
 
 Javascript comes pack with native javascript classes that can help you create/instantiate things like URL, Headers, etc pretty easily. We might have seen someone trying to query params in URL like this.
 ```js

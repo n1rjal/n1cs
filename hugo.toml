@@ -21,6 +21,12 @@ summaryLength = 20
 [permalinks]
   post = "/blogs/:year/:month/:slug/"
 
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
 [params]
   # color style
   color = 'gray'                           # linen, wheat, gray, light
@@ -36,7 +42,7 @@ summaryLength = 20
   # home page profile
   avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
   name = 'n1cs'
-  bio = 'Dviving deep into personal life, growth, tech and more.'
+  bio = 'Diving deep into personal life, growth, tech and more.'
 
 
   # misc

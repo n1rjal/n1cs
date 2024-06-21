@@ -1,4 +1,5 @@
 <div>
+<div class="progress" id="progress"></div>
 <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8">
   <div class="relative z-50 mr-auto flex items-center">
     <a
@@ -40,7 +41,7 @@
       {{ range . }}<!---->
       <a
         class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
-        style="--url: url(./{{ . }}.svg)"
+        style="--url: url(/{{ . }}.svg)"
         href="{{ if eq . `rss` }}{{ `index.xml` | absURL }}{{ else if eq . `mastodon` }}{{ index site.Params . }}{{ else }}https://{{ . }}{{ if eq . `threads` }}.net{{ else }}.com{{ end }}/{{ if eq . `linkedin` }}in/{{ end }}{{ index site.Params . }}{{ end }}"
         target="_blank"
         rel="{{ if eq . `rss` }}alternate{{ else }}me{{ end }}"
@@ -56,6 +57,9 @@
 
   <script>
     // base
+
+
+
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
       htmlClass.remove('not-ready');
@@ -72,7 +76,7 @@
     const lightBg = '{{ $bg_color }}'.replace(/"/g, '');
     const setDark = (isDark) => {
       metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
-      htmlClass[isDark ? 'add' : 'remove']('dark');
+       htmlClass[isDark ? 'add' : 'remove']('dark');
       localStorage.setItem('dark', isDark);
     };
 
@@ -92,37 +96,51 @@
 
     // manual switch
     const btnDark = document.querySelector('.btn-dark');
-    btnDark.addEventListener('click', () => {
+    btnDark && btnDark.addEventListener('click', () => {
       setDark(localStorage.getItem('dark') !== 'true');
     });
+
+
+    window.onload = function() {
+        const htmlClass = document.documentElement.classList;
+        console.log({
+            darkScheme
+        })
+        if (htmlClass.contains('dark')) {
+          setDark(true);
+        } else {
+          const darkVal = localStorage.getItem('dark');
+          setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+        }
+    }
   </script>
 
-</header>
-    <div class="relative h-[4.5rem] w-full">
-        <div class="grid items-center absolute left-[0.2cm] top-0 justify-center h-full z-50">
-            <!-- left arrow -->
-            <button
-                id="scroll-left-btn"
-                class="bg-[#4aaced] rounded-full p-2 btn-dark flex absolute items-center justify-center w-8 h-8 z-100">
-            <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="white"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 19l-7-7 7-7"
-                ></path>
-            </svg>
-        </button>
-        </div>
+    </header>
+        <div class="relative h-[4.5rem] w-full">
+            <div class="grid items-center absolute left-[0.2cm] top-0 justify-center h-full z-50">
+                <!-- left arrow -->
+                <button
+                    id="scroll-left-btn"
+                    class="bg-[#4aaced] rounded-full p-2 btn-dark flex absolute items-center justify-center w-8 h-8 z-100">
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"
+                    ></path>
+                </svg>
+            </button>
+            </div>
 
 
-        <div class="grid items-center absolute right-[1cm] top-0 justify-center h-full z-50">
+            <div class="grid items-center absolute right-[1cm] top-0 justify-center h-full z-50">
 
             <button id="scroll-right-btn"
                 class="bg-[#4aaced] p-2 rounded-full btn-dark flex absolute items-center justify-center w-8 h-8 z-1000">
@@ -212,9 +230,9 @@
                     behavior: 'smooth'
                 });
             });
-
         </script>
+
     </div>
     </div>
 
-</div>
+    </div>

@@ -24,7 +24,7 @@ So, _chances of you never discovering the problem until it is very late is high.
 
 Here are some of the design patterns you can model your schema with
 
-1.  **Schema versioning Pattern:**
+## Schema versioning Pattern
 
 In MongoDB schema, or any NoSQL based DB, schema versioning is a method in which we add a field representing the version of schema that the document obeys. Schema will be read by the application code, and a logic must be in place for handling every possible schema version value.
 
@@ -44,7 +44,7 @@ Cons:
 *   The database can grow inconsistent over time.
 *   Database may be harder to navigate without application logic making it logically coupled with each other.
 
-2. **Computed Pattern:**
+## Computed Pattern
 
 Have you ever wondered, how can YouTube get the real time total views of a video?
 
@@ -77,7 +77,7 @@ Cons:
 *   It may be harder to maintain, if you are computing the values in very short intervals.
 *   The data may be incorrect if transactions are not in place
 
-3. **Subset Pattern:**
+## Subset Pattern
 
 Subset pattern in MongoDB is a pattern in we store a subset of field of a document in a foreign collection. It can be thought of as materialized view for MongoDB. For a big document, say user as
 ```js
@@ -183,7 +183,7 @@ Cons:
 *   In case of transaction not being used, the collections may become inconsistent
 *   Additional trips to the DB in case of create, update or delete operations
 
-4. **Bucket Pattern**
+## Bucket Pattern
 
 > In computer science, a bucket refers to a logical collection that holds similar items together.
 

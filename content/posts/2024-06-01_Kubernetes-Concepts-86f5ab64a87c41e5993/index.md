@@ -134,7 +134,7 @@ kubectl describe pod <pod_name> # is more detailed compared to get pod
 
 </aside>
 
-![Untitled](/img/Untitled%204.png)
+![Untitled](img/Untitled%204.png)
 
 ```yaml
 ## This must be named pod-defination.yml file
