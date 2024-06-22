@@ -51,34 +51,34 @@
 
 
 
-<section class="relative mt-10 last-of-type:mb-0">
+<section class="relative my-7 last-of-type:mb-0">
   {{ if gt .Weight 0 }}
   <span
     class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
     >Featured</span
   >
   {{ end }}
-  <div>
-    {{ if .Params.categories }}
-    {{ range .Params.categories }}
-            <a
-              class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
-              href="{{ printf "/categories/%s" . | urlize }}"
-              >{{ . }}</a>
-    {{end}}
-    {{end}}
-  <time class="text-sm uppercase antialiased">{{ .Date | time.Format ":date_medium" }}</time>
+  <div class="flex flex-row align-items-center">
+        {{ if .Params.categories }}
+        {{ range .Params.categories }}
+                <a
+                  class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
+                  href="{{ printf "/categories/%s" . | urlize }}"
+                  ># {{ . }}</a>
+        {{end}}
+        {{end}}  
+      <time class="text-sm uppercase antialiased"><i class="fa fa-calendar"></i> {{ .Date | time.Format ":date_medium" }}</time>
+  </div>
       <a class="relative no-underline" href="{{ .Permalink }}">
-          <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+          <h2 class="!my-0 font-bold leading-[120%]">{{ .Title }}</h2>
       </a>
-  </div>
-  <div class="mt-3">
+  <div class="my-3">
       {{.Summary }}
-
-       
   </div>
+
+   
   <div>
-      <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline hover:underline duration-500" href="{{ .Permalink }}">Learn More
+      <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">Learn More
           <span class="ml-2">→</span>
       </a>
   </div>

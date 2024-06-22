@@ -18,13 +18,13 @@ slug: >-
 
 Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.
 
-#### The need of serializer
+## The need of serializer
 
 Serializing and deserializing is the process of converting a value from one representation to another. It acts as a translator that translates one form of data to another and vice versa.
 
 ![](img/1__DPwNh9Itnq4s11FJ8ShMGg.png)
 
-#### Serializer vs Model Serializer
+## Serializer vs Model Serializer
 
 Serializer in DRF is the class that is responsible for changing one form of object to another. Mostly python object to JSON and vice versa. It has various fields shown below
 
@@ -96,7 +96,7 @@ class ModelSerializer(Serializer):
 
 \# continue reading the source at https://github.com/encode/django-rest-framework/blob/master/rest\_framework/serializers.py#L889
 
-#### Serializer Methods:
+### Serializer Methods:
 
 In particular, if a \`data=\` argument is passed, then:
 
@@ -121,7 +121,7 @@ There are few other methods that can be used with a serializer, but you must def
 *   delete(): Delete the instance passed to the serializer
 *   validate\_<fieldname>(): Used to validate single value for a particular field
 
-#### Make serializer for some common access
+## Make serializer for some common use cases
 
 There is no right or wrong way on where to put your business logic in Django. But with the introduction of Django rest framework serializer and the various built-in classes it provides like Viewsets, Generics, etc. We could use serializer as the way to hold our business logic or way to perform some tasks that are a bit hard. Plain Serializer will help you a lot in doing so. Here is a plain serializer that will help us upload a file to R2.
 
@@ -156,7 +156,7 @@ class FileUploadSerializer(serializers.Serializer):
 
 > R2 is an alternative to S3 provided by Cloudflare and is too cheap compared to what AWS charges. Downside being that there is no way to replicate data. But it doesn’t incur bandwidth out charge.
 
-#### Use SerializerMethodField for custom get logic
+## Use SerializerMethodField for custom get logic
 
 You can also use SerializerMethodField() to put custom business logic in the viewsets. This is particularly useful when using doing some complex operation on the data. Here is an example where I get pre-signed URL from R2
 
@@ -197,7 +197,7 @@ class PostSerializer:
     def get_mp3_url(self, obj):
         return boto3.get_presigned_url(obj.mp3)
 ```
-#### Serializer Context:
+## Serializer Context:
 
 Serializer context is an extra dict argument passed with the serializers so that it can be used later on from within the serializer. It is generally used to pass the request to the serializer and later in the data validation or any of the serializer methods.
 
@@ -243,8 +243,7 @@ class BeatSerializer(serializers.ModelSerializer):
 ```
 
 To pass in the context to serializer we use \`context=\` parameter.
-
-### [Dynamically modifying fields](https://www.django-rest-framework.org/api-guide/serializers/#dynamically-modifying-fields)
+>  [Dynamically modifying fields](https://www.django-rest-framework.org/api-guide/serializers/#dynamically-modifying-fields)
 
 Once a serializer has been initialized, the dictionary of fields that are set on the serializer may be accessed using the `.fields` attribute. Accessing and modifying this attribute allows you to dynamically modify the serializer.
 

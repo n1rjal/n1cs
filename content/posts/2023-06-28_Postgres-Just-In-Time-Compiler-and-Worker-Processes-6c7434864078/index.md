@@ -17,7 +17,7 @@ categories:
 
 Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.
 
-![](img/0____E2__Ug2Sr__O8TzNQ.jpg)
+![](img/0_IOAxGZtt5VJcHT-v.webp)
 
 For this article, I have created a couple of Postgres tables with huge rows, each of the rows has a relationship with another table. The relationship between them is many-to-one. One of the tables is a product and the other table is a store. Many products have one store referenced by the `store_id` column. Here is a rough command for SQL `CREATE TABLE` statement
 ```sql
@@ -45,7 +45,7 @@ I have around 29k stores and around 12 million products. Here is the count of th
 
 I haven’t placed any indexing structure for the product table. Now let’s interact with the product table.
 
-### WHERE clause and Count:
+## WHERE clause and Count:
 
 EXPLAIN ANALYSE SELECT COUNT(\*) FROM "product"
 WHERE "price" < 10;
@@ -54,7 +54,7 @@ The result of `EXPLAIN ANALYZE` shows the following info
 
 ![](img/0__ST4__Mgte__z1JpRl__.jpg)
 
-#### Planning stage/JIT:
+### Planning stage/JIT:
 
 The planning stage for the command used the Just In Time compilation. I think every analytical serverless function should use this. Due to JIT compilation, the planning phase time is almost doubled.
 
@@ -65,7 +65,7 @@ Suggestions:
 1.  Use JIT for analytical queries.
 2.  Use JIT for complex sorting queries.
 
-#### Execution stage/Worker process:
+### Execution stage/Worker process:
 
 The execution stage of the query is executed using 2 workers, each of the worker processes scans the table from opposite ends. Each worker is filtering the rows and count results were gathered and a final aggregation was done to get the final count.
 
@@ -73,7 +73,7 @@ On worker process:
 
 The worker process strategy used spawns 2 process that parallel scans the product and returns the matching rows, here the worker uses the `gather` node and has done the here partial and the final aggregation used is the `COUNT` aggregation. Here is a graphic that can help you understand the working principle.
 
-### Whats in the picture
+## Whats in the picture
 
 ![](img/0____E2__Ug2Sr__O8TzNQ.jpg)
 
@@ -105,7 +105,7 @@ Upon running the query I got the following results
 
 Postgres query planner is a clever piece of tool and it detected that the execution time was not going to be much better after 5 worker processes and stopped spawning more worker processes when it reached the value of x greater than 5. Even when I was allowed to go more than 5 workers per execution, I didn’t do that and insisted on using 5 worker processes.
 
-### BIG BUT
+## BIG BUT
 
 Here’s a big but for y’all. The query I used is pretty simple, right? count the total, so let me spice things up a little bit more with the following query.
 
@@ -122,11 +122,11 @@ The query provided below is more “complex” as it has sorting and limiting in
 
 Here I forced the query planner to not use worker processes.
 
-#### Planning stage:
+### Planning stage:
 
 The planning stage remains almost all the same with JIT enforced but here the parameters of the JIT is changed. Options like optimizations, and expressions are set to true. The overall number of functions is changed as well. Planning time is consistent.
 
-#### Execution stage:
+### Execution stage:
 
 I forced only one worker to be used at this time. To see all the activities it performs, here parallel seq scan is used. Top-N heapsort is used, it shares the time complexity of heapsort but only sorts the top N members( for our case it’s 1000 ) and finally limit happens.
 
