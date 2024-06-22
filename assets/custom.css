@@ -25,6 +25,7 @@ h1 {
     line-height: 120%;
 }
 
+
 code {
     font-family: "Fira Code", monospace !important;
     font-optical-sizing: auto;
@@ -153,7 +154,7 @@ h1,h2,h3,h4,h5,h6{
             padding: 0;
             a {
                 text-decoration: none;
-                font-size: 20px;
+                font-size: 18px;
                 color: #2a6bd4;
             }
         }
@@ -186,6 +187,13 @@ h1,h2,h3,h4,h5,h6{
 #content-banner{
     overflow-x:hidden;
 }
+.js-reading-content{
+    *{
+        font-size: 20px;
+        line-height: 150%;
+    }
+}
+
 @media only screen and (max-width:500px){
     #content-banner{
         overflow-x: auto;
@@ -197,6 +205,8 @@ h1,h2,h3,h4,h5,h6{
         display: none;
     }
 
-    .js-reading-content{
+    .js-reading-content {
+    
     }
+
 }

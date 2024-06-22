@@ -46,10 +46,10 @@ I have around 29k stores and around 12 million products. Here is the count of th
 I haven’t placed any indexing structure for the product table. Now let’s interact with the product table.
 
 ## WHERE clause and Count:
-
-EXPLAIN ANALYSE SELECT COUNT(\*) FROM "product"
+```sql
+EXPLAIN ANALYSE SELECT COUNT(*) FROM "product"
 WHERE "price" < 10;
-
+```
 The result of `EXPLAIN ANALYZE` shows the following info
 
 ![](img/0__ST4__Mgte__z1JpRl__.jpg)
