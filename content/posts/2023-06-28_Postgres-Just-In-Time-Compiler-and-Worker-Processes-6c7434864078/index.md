@@ -75,7 +75,7 @@ The worker process strategy used spawns 2 process that parallel scans the produc
 
 ## Whats in the picture
 
-![](img/0____E2__Ug2Sr__O8TzNQ.jpg)
+![](img/0_IOAxGZtt5VJcHT-v.webp)
 
 I hope you can clearly understand the picture now, but here are the steps involved.
 
