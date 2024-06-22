@@ -189,7 +189,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .js-reading-content{
     *{
-        font-size: 20px;
+        font-size: 18px;
         line-height: 150%;
     }
 }
@@ -206,7 +206,7 @@ h1,h2,h3,h4,h5,h6{
     }
 
     .js-reading-content {
-    
+        font-size: 18px;
     }
 
 }

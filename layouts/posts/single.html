@@ -1,7 +1,13 @@
 
 {{ define "main" }}
-<div class="absolute w-[100%] h-[100%]" style="display:none; z-index:10000;">
-    <img id="fs_img" src="#" class="h-100 w-100" />
+<div class=" fixed top-0 left-0 w-[100vw] bg-[#000000] bg-opacity-80 h-[100vh]" id="fs_img_container" style="display:none; z-index:10000;">
+    
+    <div class="flex relative items-center justify-center h-[100%] w-[100%]">
+        <div>
+            <img id="fs_img" class="opacity-100" src="#" />
+            <center class="text-[#000] dark:text-[#fff] pointer">Click here to escape full screen</center>
+        </div>
+    </div>
 </div>
 <article id="article">
   <header class="mb-10">
