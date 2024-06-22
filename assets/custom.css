@@ -182,3 +182,18 @@ h1,h2,h3,h4,h5,h6{
     position: relative
 
 }
+
+@media only screen and (max-width:500px){
+    #content-banner{
+        overflow-x: auto;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    }
+
+    #scroll-left-btn, #scroll-right-btn{
+        display: none;
+    }
+
+    .js-reading-content{
+    }
+}

@@ -67,7 +67,9 @@
               >{{ . }}</a>
     {{end}}
     {{end}}
-      <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+      <a class="relative" href="{{ .Permalink }}">
+          <h2 class="!my-0 font-bold !leading-none">{{ .Title }}</h2>
+      </a>
   </div>
   <div class="mt-3">{{.Summary }}</div>
   <a class="relative" href="{{ .Permalink }}">Learn More</a>

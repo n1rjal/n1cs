@@ -2109,3 +2109,4 @@ article .highlight > div table tr td:last-of-type {
 :is(:where(.dark) .dark\:hover\:bg-white\/\[3\%\]:hover) {
   background-color: rgb(255 255 255 / 3%);
 }
+
