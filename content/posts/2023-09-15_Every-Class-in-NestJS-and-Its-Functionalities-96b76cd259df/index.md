@@ -25,7 +25,7 @@ I am trying to conclude the documentation of NestJS which can be found here. [ht
 
 I have been working on a code base built on nestjs for the last 3 years and I have seen how things changed over time in nestjs. Now, lets leave me out of the discussion and lets disscuss on tiny cute classes in nestjs and its functionalities. Shall we ?
 
-1.  **Controller**
+## Controller
 
 Controller as name suggest is a class that are used to define our routes to the class. It’s is decorated with Controller class and the decorator expects a url path string that will trigger its excution. Every methods in controllers are decorated with method specific decorators like Get, Post, Patch, Put, Delete and it assumes you provide it with a path.
 ```ts
@@ -54,7 +54,7 @@ export class UserController {
 ```
 Each of the methods can also be decorated with decorators like @Body, @Query, or @Param that puts request body, query params or url path params into it. Each one of it expects a string to be provided to it which will map the string to the value there. See how userService is provided in controller and how it is being called even without an instance of it being provided.
 
-**2\. Service**
+## Service
 
 Service is where our business logic resides. Generally, services are injected with other services or repository layers. Here is an example of service in Nestjs. Now here you can see that it has some other services and repositories in its parameter.
 
@@ -106,7 +106,7 @@ export class UserService {
 
 }
 ```
-[**Learn more aboutDependency injection**
+[**Learn more about dependency injection**
 _Nest is a framework for building efficient, scalable Node.js server-side applications. It uses progressive JavaScript…_docs.nestjs.com](https://docs.nestjs.com/ "https://docs.nestjs.com/")[](https://docs.nestjs.com/)
 
 These are the building block of nestjs but there are many other types of classes in nestjs, some of them are disscussed below in brief
@@ -115,7 +115,7 @@ Before we move into other classes, please remember this peice of information fro
 
 ![](img/1__ZQrQHAlCeGR8adP2D6UPKQ.png)
 
-**3\. Guards**
+## Guards
 
 *   Use for authorizing user
 *   implements CanActivate Interface
@@ -144,7 +144,7 @@ export class MediumGuard implements CanActivate {
     return true;
   }
 ```
-**4\. Interceptors**
+## Interceptors
 
 *   use for modifying request or response
 *   implements NestInterceptor
@@ -172,7 +172,7 @@ export class LoggingInterceptor implements NestInterceptor {
   }
 }
 ```
-**5\. Pipes**
+## Pipes
 
 *   Use for validation/transformation of controller params
 *   [Use builtin pipes for validation](https://docs.nestjs.com/pipes#built-in-pipes) by providing
@@ -181,8 +181,8 @@ export class LoggingInterceptor implements NestInterceptor {
 *   create a class which implements PipeTransform
 *   custom logic in transform method
 
-import { ArgumentMetadata, Injectable, PipeTransform } from "@nestjs/common";
 ```ts
+import { ArgumentMetadata, Injectable, PipeTransform } from "@nestjs/common";
 // a simple comma seperated string value to array transform pipe
 @Injectable()
 export class ParseCommaSeparatedPipe<I extends string, J>
@@ -197,7 +197,7 @@ export class ParseCommaSeparatedPipe<I extends string, J>
   }
 }
 ```
-**6\. Filters**
+## Filters
 
 *   can be though of as a catch block like in cpp or python
 *   can be generic catch or specific catch

@@ -18,7 +18,7 @@ I created a MongoDB database with 10 million documents.😄 My schema is simple 
 
 ![](img/0__JogoK9GIXwjCikNF.png)
 
-### Before we begin
+## Before we begin
 ```
 name: string,
 quantity: number,
@@ -29,7 +29,7 @@ The schema looks simple enough but I have been working with a huge number of doc
 
 [Link to python Code](https://pastebin.com/8dmqMYc9)
 
-### Let’s talk about count
+## Let’s talk about count
 
 > let’s find out which is better in which situation
 
@@ -64,7 +64,7 @@ MongoDB returns a cursor for `collection.find(<query>)` type of queries. The cur
 
 Unlike `cursor.count()` and `countDocuments()`, `estimatedDocumentCount()` does not take any query parameters. It returns the total count of documents. This is an estimated count. **But I think it is ok to return the estimated count as no one would actually bother about if the count is right or wrong up to million.** [Source : MongoDb official documentation](https://docs.mongodb.com/manual/reference/method/db.collection.estimatedDocumentCount/)
 
-### Suggestions:
+## Suggestions
 
 ![](img/0__v0VOFTfI0YYcrH1d.png)
 
@@ -76,6 +76,6 @@ Unlike `cursor.count()` and `countDocuments()`, `estimatedDocumentCount()` does 
 6.  It is **better to use pre-computed counts** than to hog your database’s CPU.
 7.  **Best way to deal with million documents is by not dealing with millions at one time.**
 
-### Conclusion:
+## Conclusion
 
 I am not the “know all” type of guy. I might be wrong in this blog or you might have some better way to count the documents. Let’s discuss. I like to be proven wrong and I want an opportunity to learn from you guys as well but until then peace out. 😄

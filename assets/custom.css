@@ -26,10 +26,17 @@ h1 {
 }
 
 
+.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    * {
+        font-style: italic;
+        font-size: 1.80rem !important;
+        height: fit-content;
+        line-height: normal;
+    }
+}
 code {
     font-family: "Fira Code", monospace !important;
     font-optical-sizing: auto;
-    font-weight: <weight>;
     font-style: normal;
 }
 
@@ -131,6 +138,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
+
 /* For progress bar */
 
 
@@ -187,11 +195,10 @@ h1,h2,h3,h4,h5,h6{
 #content-banner{
     overflow-x:hidden;
 }
-.js-reading-content{
-    *{
-        font-size: 18px;
-        line-height: 150%;
-    }
+
+.js-reading-content {
+    font-size: 18px !important;
+    line-height: 1.75 !important;
 }
 
 @media only screen and (max-width:500px){
@@ -206,7 +213,10 @@ h1,h2,h3,h4,h5,h6{
     }
 
     .js-reading-content {
-        font-size: 18px;
+        font-size: 18px !important;
+        line-height: 1.75 !important;
     }
 
 }
+
+
