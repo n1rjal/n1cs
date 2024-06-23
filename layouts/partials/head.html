@@ -62,49 +62,64 @@
 
   <!-- Highlight JS -->
   {{ if and .IsPage (not site.Params.disableHLJS) }}
-  <script
-    defer
-    src="{{ `highlight.min.js` | absURL }}"
-    onload="hljs.initHighlightingOnLoad();"
-  ></script>
-  {{ end }}
+<script
+defer
+src="{{ `highlight.min.js` | absURL }}"
+onload="hljs.initHighlightingOnLoad();"
+></script>
 
-  <!-- Math -->
-  {{ if or .Params.math site.Params.math }}
-  <!---->
-  {{ partial "math.html" . }}
-  <!---->
-  {{ end }}
-  <!---->
+<!-- Math -->
+{{ if or .Params.math site.Params.math }}
+<!---->
+{{ partial "math.html" . }}
+<!---->
+{{ end }}
+<!---->
+<!--HUGO CUSTOM OG IMAGE -->
+{{ $content := .Content }}
+{{ $regex := `!\[.*?\]\((.*?)\)` }}
+{{ $matches := findRE $regex $content }}
+{{ if $matches }}
+{{ $image = index $matches 1 }}
+{{ if $image }}
+  <meta property="image" content="{{ $image | absURL }} ">
+  <meta property="og:image" content="{{ $image | absURL }}">
+  <meta name="twitter:image" content="{{ $image | absURL }}">
+{{ end}}
+{{ end }}
 
-  <!-- Favicon -->
-  <link rel="icon" href="{{ site.Params.favicon | default `favicon.ico` | absURL }}" />
-  <link rel="apple-touch-icon" href="{{ site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL }}" />
+<!-- Generator -->
+{{ hugo.Generator }}
 
-  <!-- Generator -->
-  {{ hugo.Generator }}
+<!-- Favicon -->
+<link rel="icon" href="{{ site.Params.favicon | default `favicon.ico` | absURL }}" />
+<link rel="apple-touch-icon" href="{{ site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL }}" />
 
-  <!-- Production -->
-  {{ if or hugo.IsProduction (eq site.Params.env "production") }}
-  <!---->
-  {{ template "_internal/google_analytics.html" . }}
-  <!---->
-  {{ template "_internal/schema.html" . }}
-  <!---->
-  {{ template "_internal/opengraph.html" . }}
-  <!---->
-  {{ template "_internal/twitter_cards.html" . }}
-  <!-- RSS -->
-  {{ range .AlternativeOutputFormats }}
-  <link
-    rel="{{ .Rel }}"
-    type="{{ .MediaType.Type }}"
-    href="{{ .Permalink }}"
-    title="{{ site.Title }}"
-  />
-  {{ end }}
-  <!-- Canonical -->
-  <link rel="canonical" href="{{ .Permalink }}" />
-  {{ end }}
-  <!---->
+
+<!-- Production -->
+{{ if or hugo.IsProduction (eq site.Params.env "production") }}
+<!---->
+{{ template "_internal/google_analytics.html" . }}
+<!---->
+{{ template "_internal/schema.html" . }}
+<!---->
+{{ template "_internal/opengraph.html" . }}
+<!---->
+{{ template "_internal/twitter_cards.html" . }}
+<!-- RSS -->
+{{ range .AlternativeOutputFormats }}
+<link
+rel="{{ .Rel }}"
+type="{{ .MediaType.Type }}"
+href="{{ .Permalink }}"
+title="{{ site.Title }}"
+/>
+{{ end }}
+{{end}}
+<!-- Canonical -->
+<link rel="canonical" href="{{ .Permalink }}" />
+<!---->
+
 </head>
+
+{{ end }}
