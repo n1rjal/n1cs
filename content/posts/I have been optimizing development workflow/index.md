@@ -3,7 +3,7 @@
 title: I have been optimizing my development productivity
 date: '2024-06-23T08:57:45.903Z'
 categories: []
-keywords: []
+keywords: ['productivity', 'nirjal paudel', 'tmux', 'developer', 'developer productivity']
 slug: /@nirjalpaudel54312/i-have-been-optimizing-my-development-productivity
 categories:
 - productivity
@@ -14,6 +14,8 @@ tags:
 - tmux
 - bash
 summary: 'How I enhanced developer productivity with personal tools, bash scripts, aliases and organizational practices'
+params:
+  author: Nirjal Paudel
 
 ---
 
