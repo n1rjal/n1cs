@@ -13,7 +13,7 @@ tags:
 - vim
 - tmux
 - bash
-summary: 'How I enhanced developer productivity with personal tools (Neovim, Tmux) and organizational practices (template repositories, pre-commit hooks, GitHub actions).'
+summary: 'How I enhanced developer productivity with personal tools, bash scripts, aliases and organizational practices'
 
 ---
 
