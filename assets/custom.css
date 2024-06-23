@@ -201,6 +201,37 @@ h1,h2,h3,h4,h5,h6{
     line-height: 1.75 !important;
 }
 
+#main_container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-width: 95vw;
+    margin: 1cm auto;
+}
+
+.social-icon{
+    font-size: 30px !important;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+}
+
+@media only screen and (max-width:1024px){
+
+    #main_container {
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 95vw;
+        margin: 1cm auto;
+    }
+
+    #related_side_posts{
+        display: none;
+    }
+
+}
 @media only screen and (max-width:500px){
     #content-banner{
         overflow-x: auto;
@@ -217,6 +248,40 @@ h1,h2,h3,h4,h5,h6{
         line-height: 1.75 !important;
     }
 
+    #main_container {
+        display: block;
+    }
+
+
 }
 
+.highlight {
+    position: relative;
+    display: block;
+}
 
+.copy-button {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    border: none;
+    background-color: #026638;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover, .copy-button.copied {
+    background-color: #01522d;
+}
+
+.copy-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}

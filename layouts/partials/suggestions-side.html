@@ -1,0 +1,27 @@
+<section class="p-1 border-black-2 relative w-full first-of-type:mt-0 last-of-type:mb-0">
+  {{ if gt .Weight 0 }}
+  <span
+    class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
+    >Featured</span
+  >
+  {{ end }}
+  <div>
+    {{ if .Params.categories }}
+    {{ range .Params.categories }}
+            <a
+              class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
+              href="{{ printf "/categories/%s" . | urlize }}"
+              >{{ . }}</a>
+    {{end}}
+    {{end}}
+    <h3 class=" font-medium mt-2 font-[14px] leading-[120%]">{{ .Title }}</h3>
+  </div>
+  <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
+  <a class="absolute inset-0 text-[0]" href="{{ .Permalink }}">{{ .Title }}</a>
+  <span>
+
+  <time class="first:ml-0 ml-1 mr-1 no-underline font-bold text-sm mb-2 text-dark opacity-70 dark:text-[#fff]">{{ .Date | time.Format ":date_medium" }}</time>
+  <!-- • -->
+  </span>
+
+</section>

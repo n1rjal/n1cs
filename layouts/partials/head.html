@@ -37,6 +37,7 @@
   <!---->
   {{ $css := slice $main $custom | resources.Concat "main.css" | minify }}
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Dark Icon -->
   {{ $dark_icon := "theme.png" }}
