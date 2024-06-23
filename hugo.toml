@@ -27,6 +27,9 @@ summaryLength = 20
     ordered = false
     startLevel = 2
 
+[services]
+  [services.disqus]
+    shortname = 'n1cs-blog'
 
 [params]
   # color style
