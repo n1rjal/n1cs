@@ -60,11 +60,6 @@
   {{ end }}
   <!---->
 
-{{ $image := .Params.image }}
-{{ if $image }}
-      <meta property="og:image" content="{{ $image | absURL }}">
-      <meta property="twitter:image" content={{ $image | absURL }}">
-{{ end }}
   <!-- Highlight JS -->
   {{ if and .IsPage (not site.Params.disableHLJS) }}
 <script
