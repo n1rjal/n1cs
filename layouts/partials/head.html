@@ -77,16 +77,6 @@ onload="hljs.initHighlightingOnLoad();"
 <!---->
 <!--HUGO CUSTOM OG IMAGE -->
 {{ $content := .Content }}
-{{ $regex := `!\[.*?\]\((.*?)\)` }}
-{{ $matches := findRE $regex $content }}
-{{ if $matches }}
-{{ $image = index $matches 1 }}
-{{ if $image }}
-  <meta property="image" content="{{ $image | absURL }} ">
-  <meta property="og:image" content="{{ $image | absURL }}">
-  <meta name="twitter:image" content="{{ $image | absURL }}">
-{{ end}}
-{{ end }}
 
 <!-- Generator -->
 {{ hugo.Generator }}
@@ -118,8 +108,11 @@ title="{{ site.Title }}"
 {{end}}
 <!-- Canonical -->
 <link rel="canonical" href="{{ .Permalink }}" />
+{{ $image := .Params.image }}
+{{ if $image }}
+      <meta property="og:image" content="{{ $image | absURL }}">
+{{ end }}
 <!---->
-
 </head>
 
 {{ end }}

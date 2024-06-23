@@ -14,8 +14,9 @@ tags:
 - tmux
 - bash
 summary: 'How I enhanced developer productivity with personal tools, bash scripts, aliases and organizational practices'
-Params:
+params:
   author: Nirjal Paudel
+  image: og_dev_prod.png
 
 ---
 
