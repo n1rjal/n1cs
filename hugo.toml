@@ -8,7 +8,7 @@ enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
 # Google analytics code
-googleAnalytics = "G-EW6BB7P3VN"
+googleAnalytics = "G-LZ4S5KBNWY"
 summaryLength = 20
 
 [taxonomies]
