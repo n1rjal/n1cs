@@ -1,11 +1,9 @@
-baseURL = 'https://n1cs.blog'
+baseURL = 'https://nirjalpaudel.com.np'
 languageCode = 'en-us'
-title = 'N1CS - Lifely blog'
+title = "Nirjal's blog"
 theme = 'paper'
 author = 'Nirjal Paudel'
 paginate = 20
-
-
 enableRobotsTXT = true
 enableEmoji = true
 enableGitInfo = true
