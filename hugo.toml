@@ -27,7 +27,7 @@ summaryLength = 20
 
 [services]
   [services.disqus]
-    shortname = 'n1cs-blog'
+    shortname = 'nirjalpaudel-com-np'
 
 [params]
   # color style
