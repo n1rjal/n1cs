@@ -1,6 +1,6 @@
 baseURL = 'https://nirjalpaudel.com.np'
 languageCode = 'en-us'
-title = "Nirjal's blog"
+title = "Nirjal's Blog"
 theme = 'paper'
 author = 'Nirjal Paudel'
 paginate = 20
@@ -43,8 +43,9 @@ summaryLength = 20
 
   # home page profile
   avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
-  name = 'n1cs'
+  name = 'Nirjal Paudel'
   bio = "I'm Nirjal Paudel, a software developer specializing in database and backend technology, optimization and cloud"
+  description = "I'm Nirjal Paudel, a software developer specializing in database and backend technology, optimization and cloud. Here I will share my tech experience"
 
 
   # misc
