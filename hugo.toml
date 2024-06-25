@@ -29,6 +29,12 @@ summaryLength = 20
   [services.disqus]
     shortname = 'nirjalpaudel-com-np'
 
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.js]
+      keepVarNames = true
+      
+
 [params]
   # color style
   color = 'gray'                           # linen, wheat, gray, light

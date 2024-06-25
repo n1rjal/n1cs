@@ -1,3 +1,5 @@
+
+
 import os
 from urllib.parse import quote
 from PIL import Image
@@ -45,4 +47,7 @@ for root, dirs, files in  os.walk("./content/posts", topdown=True):
         if file_changed:
             with open(root + "/index.md", "w") as f:
                 f.write(content)
-                        
+
+
+
+

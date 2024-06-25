@@ -13,7 +13,7 @@
 @layer base {
   html,
   body {
-    @apply h-full bg-red;
+    @apply h-full;
   }
 
   html {
