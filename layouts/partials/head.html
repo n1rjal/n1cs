@@ -30,6 +30,27 @@
 
   {{ end }}
 
+<!-- Canonical -->
+CANONCIAL HERE
+<link rel="canonical" href="{{ .Permalink }}" />
+<!-- Production -->
+<!---->
+{{ template "_internal/google_analytics.html" . }}
+<!---->
+{{ template "_internal/schema.html" . }}
+<!---->
+{{ template "_internal/opengraph.html" . }}
+<!---->
+{{ template "_internal/twitter_cards.html" . }}
+<!-- RSS -->
+{{ range .AlternativeOutputFormats }}
+<link
+rel="{{ .Rel }}"
+type="{{ .MediaType.Type }}"
+href="{{ .Permalink }}"
+title="{{ site.Title }}"
+/>
+{{end}}
   <!-- CSS & JS -->
   {{ $main := resources.Get "main.css" }}
   <!---->
@@ -75,40 +96,16 @@ onload="hljs.initHighlightingOnLoad();"
 <!---->
 {{ end }}
 <!---->
-<!--HUGO CUSTOM OG IMAGE -->
-{{ $content := .Content }}
 
 <!-- Generator -->
 {{ hugo.Generator }}
+
 
 <!-- Favicon -->
 <link rel="icon" href="{{ site.Params.favicon | default `favicon.ico` | absURL }}" />
 <link rel="apple-touch-icon" href="{{ site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL }}" />
 
 
-<!-- Production -->
-{{ if or hugo.IsProduction (eq site.Params.env "production") }}
-<!---->
-{{ template "_internal/google_analytics.html" . }}
-<!---->
-{{ template "_internal/schema.html" . }}
-<!---->
-{{ template "_internal/opengraph.html" . }}
-<!---->
-{{ template "_internal/twitter_cards.html" . }}
-<!-- RSS -->
-{{ range .AlternativeOutputFormats }}
-<link
-rel="{{ .Rel }}"
-type="{{ .MediaType.Type }}"
-href="{{ .Permalink }}"
-title="{{ site.Title }}"
-/>
-{{ end }}
-{{end}}
-<!-- Canonical -->
-<link rel="canonical" href="{{ .Permalink }}" />
-<!---->
 </head>
 
 {{ end }}
