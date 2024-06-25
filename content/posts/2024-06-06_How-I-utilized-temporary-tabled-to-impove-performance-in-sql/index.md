@@ -20,7 +20,7 @@ draft: false
 In PostgreSQL, a temporary table is a table that exists only during a database session. It is created and used within a single database session and is automatically dropped at the end of the session.
 
 [Read more here](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-temporary-table/#:~:text=Intermediate%20storage%3A%20Temporary%20tables%20can,for%20storing%20the%20partial%20results)
-![Postgres logo ](img/pg.png)
+![Postgres logo ](img/pg.webp)
 ## Using a temporary table
 
 ---
@@ -61,7 +61,7 @@ WHERE score::int > 93;
 SELECT * FROM temp_student;
 ```
 
-![Result of operations performed by the query above](img/Untitled.png)
+![Result of operations performed by the query above](img/Untitled.webp)
 
 As you can see above we created a temp table, deleted every record from it just in case if it was created later. Inserted few values there and updated the score there and shown all the records there.
 

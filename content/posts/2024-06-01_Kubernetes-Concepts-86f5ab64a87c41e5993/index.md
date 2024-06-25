@@ -104,15 +104,15 @@ kubectl get pods
 <aside>
 📌 Flag -o is used to get the ip address of the nodes too within the cluster
 
-![Untitled](img/Untitled.png)
+![Untitled](img/Untitled.webp)
 
 </aside>
 
-![Untitled](img/Untitled%201.png)
+![Untitled](img/Untitled%201.webp)
 
 Containers will be creating to created state
 
-![Untitled](img/Untitled%202.png)
+![Untitled](img/Untitled%202.webp)
 
 ```bash
 
@@ -124,7 +124,7 @@ kubectl describe pod <pod_name> # is more detailed compared to get pod
         - All the events which ran after the creation of pod
     - Containers
 
-    ![Untitled](img/Untitled%203.png)
+    ![Untitled](img/Untitled%203.webp)
 
 
 ### Making pod using YAML in kubernetes
@@ -134,7 +134,7 @@ kubectl describe pod <pod_name> # is more detailed compared to get pod
 
 </aside>
 
-![Untitled](img/Untitled%204.png)
+![Untitled](img/Untitled%204.webp)
 
 ```yaml
 ## This must be named pod-defination.yml file
@@ -168,7 +168,7 @@ Replication Controller:
 - older tech
 - replaced by replica set
 
-![Untitled](img/Untitled%205.png)
+![Untitled](img/Untitled%205.webp)
 
 <aside>
 📌 kubectl create -f rc-defination.yml
@@ -183,9 +183,9 @@ Replication Controller:
 - Primary method of managing pod replicas and their lifecycle to provide self-healing capabilities
 - Their job is to always ensure the desired number of pods are running
 
-![Untitled](img/Untitled%206.png)
+![Untitled](img/Untitled%206.webp)
 
-![Untitled](img/Untitled%207.png)
+![Untitled](img/Untitled%207.webp)
 
 </aside>
 
@@ -251,7 +251,7 @@ spec:
 
 ## Kubernetes Deployment
 
-![Untitled](img/Untitled%208.png)
+![Untitled](img/Untitled%208.webp)
 
 - For production
 - For updates: Blue green, Rolling, Rollback etc
@@ -263,7 +263,7 @@ spec:
 
 </aside>
 
-![Untitled](img/Untitled%209.png)
+![Untitled](img/Untitled%209.webp)
 
 ```yaml
 apiVersion: apps/v1
@@ -290,7 +290,7 @@ spec:
 
 ```
 
-![Untitled](img/Untitled%2010.png)
+![Untitled](img/Untitled%2010.webp)
 
 ### Updates
 
@@ -310,9 +310,9 @@ spec:
     - Running a logs collection daemon on every node
     - Running a node monitoring daemon on every node
 
-![Untitled](img/Untitled%2011.png)
+![Untitled](img/Untitled%2011.webp)
 
-![Untitled](img/Untitled%2012.png)
+![Untitled](img/Untitled%2012.webp)
 
 ---
 
@@ -320,13 +320,13 @@ spec:
 
 - For Pods that must persist or maintain state
 
-![Untitled](img/Untitled%2013.png)
+![Untitled](img/Untitled%2013.webp)
 
-![Untitled](img/Untitled%2014.png)
+![Untitled](img/Untitled%2014.webp)
 
-![Untitled](img/Untitled%2015.png)
+![Untitled](img/Untitled%2015.webp)
 
-![Untitled](img/Untitled%2016.png)
+![Untitled](img/Untitled%2016.webp)
 
 ---
 
@@ -357,7 +357,7 @@ Subject to change when pods are recreated
 - Loose coupling between microservices
 - Connection between FE to BE, Users to FE, etc
 
-![Untitled](img/Untitled%2017.png)
+![Untitled](img/Untitled%2017.webp)
 
 ### NodePort
 
@@ -371,36 +371,36 @@ ClusterIP
 
 ## Kubernetes Namespaces
 
-![Untitled](img/Untitled%2018.png)
+![Untitled](img/Untitled%2018.webp)
 
 <aside>
 📌 Create namespace in morning, assign it resources/objects and end of the day, delete it and remove all of it
 
-![Untitled](img/Untitled%2019.png)
+![Untitled](img/Untitled%2019.webp)
 
 </aside>
 
-![Untitled](img/Untitled%2020.png)
+![Untitled](img/Untitled%2020.webp)
 
-![Untitled](img/Untitled%2021.png)
+![Untitled](img/Untitled%2021.webp)
 
-![Untitled](img/Untitled%2022.png)
+![Untitled](img/Untitled%2022.webp)
 
 ---
 
 ## Kubernetes Job
 
-![Untitled](img/Untitled%2023.png)
+![Untitled](img/Untitled%2023.webp)
 
-![Untitled](img/Untitled%2024.png)
+![Untitled](img/Untitled%2024.webp)
 
-![Untitled](img/Untitled%2025.png)
+![Untitled](img/Untitled%2025.webp)
 
 ### Cronjob In UTC
 
-![Untitled](img/Untitled%2026.png)
+![Untitled](img/Untitled%2026.webp)
 
-![Untitled](img/Untitled%2027.png)
+![Untitled](img/Untitled%2027.webp)
 
 ---
 
@@ -408,7 +408,7 @@ ClusterIP
 
 ## Volumes
 
-![Untitled](img/Untitled%2028.png)
+![Untitled](img/Untitled%2028.webp)
 
 ### Storage - Static Way
 
@@ -421,7 +421,7 @@ ClusterIP
 - One or more pods can use a persistent volume Claom
 - Can be consumed by any of the conatiners within the pod
 
-![Untitled](img/Untitled%2029.png)
+![Untitled](img/Untitled%2029.webp)
 
 ## Drawback
 
@@ -429,11 +429,11 @@ ClusterIP
 
 ### Persistent volumes and claims
 
-![Untitled](img/Untitled%2030.png)
+![Untitled](img/Untitled%2030.webp)
 
-![Untitled](img/Untitled%2031.png)
+![Untitled](img/Untitled%2031.webp)
 
-![Untitled](img/Untitled%2032.png)
+![Untitled](img/Untitled%2032.webp)
 
 ### Reclaim Policies
 
@@ -447,7 +447,7 @@ ClusterIP
 <aside>
 ⚠️
 
-![Untitled](img/Untitled%2033.png)
+![Untitled](img/Untitled%2033.webp)
 
 </aside>
 
@@ -455,44 +455,44 @@ ClusterIP
 
 ## Kubernetes ConfigMaps
 
-![Untitled](img/Untitled%2034.png)
+![Untitled](img/Untitled%2034.webp)
 
-![Untitled](img/Untitled%2035.png)
+![Untitled](img/Untitled%2035.webp)
 
-![Untitled](img/Untitled%2036.png)
+![Untitled](img/Untitled%2036.webp)
 
-![Untitled](img/Untitled%2037.png)
+![Untitled](img/Untitled%2037.webp)
 
-![Untitled](img/Untitled%2038.png)
+![Untitled](img/Untitled%2038.webp)
 
 ---
 
 ## Kubernetes Secrets
 
-![Untitled](img/Untitled%2039.png)
+![Untitled](img/Untitled%2039.webp)
 
-![Untitled](img/Untitled%2040.png)
+![Untitled](img/Untitled%2040.webp)
 
-![Untitled](img/Untitled%2041.png)
+![Untitled](img/Untitled%2041.webp)
 
-![Untitled](img/Untitled%2042.png)
+![Untitled](img/Untitled%2042.webp)
 
 ---
 
 ## Kubernetes Observability - Probes
 
-![Untitled](img/Untitled%2043.png)
+![Untitled](img/Untitled%2043.webp)
 
-![Untitled](img/Untitled%2044.png)
+![Untitled](img/Untitled%2044.webp)
 
-![Untitled](img/Untitled%2045.png)
+![Untitled](img/Untitled%2045.webp)
 
 ---
 
 ## Kubernetes HPA
 
-![Untitled](img/Untitled%2046.png)
+![Untitled](img/Untitled%2046.webp)
 
-![Untitled](img/Untitled%2047.png)
+![Untitled](img/Untitled%2047.webp)
 
 ---

@@ -21,7 +21,7 @@ params:
 
 ---
 
-![Untitled](img/Untitled.png)
+![Untitled](img/Untitled.webp)
 As a developer, we write many code and most of the times, we as a developer all do is repeatedly do some things. Coding is mostly copying things, I mean apart from the logical part where you need to put some mental energy into coding. We mostly write some piece of code which are always repeated. I have been finding the patterns like this in my workflow and as a big fan of automation. I knew that some kind of automation can be done to make this process faster and efficient.
 
 ## What is developer productivity ?
@@ -47,11 +47,11 @@ I have been using neovim to make my coding process really efficient and you are 
 
 Tmux is a terminal multiplexer. Learn more about Tmux here. It has a huge list of plugin that can be plugged into your tmux config and it makes it easier for you to work on multiple terminal session at once. 
 
-![Untitled](img/Untitled%201.png)
+![Untitled](img/Untitled%201.webp)
 
 Imagine instead of opening folder everytime you switch project you search by name of the folder and open  it right away. Its <Ctrl+A>f button away in my tmux config. In the above photo, all of them are like separate vscode folders
 
-![Untitled](img/Untitled%202.png)
+![Untitled](img/Untitled%202.webp)
 
 Here is what a typical development would look like in my terminal. 
 
@@ -104,7 +104,7 @@ alias pdw="NODE_ENV=\"production\" pnpm start:debug"
 alias sshserv="ssh -i ~/sshkey.pem ubuntu@<ip>"
 ```
 
-![Untitled](img/Untitled%203.png)
+![Untitled](img/Untitled%203.webp)
 
 ### Command Line Functions
 
@@ -168,7 +168,7 @@ jj() {
 > Here is an example below of using the command line functions. The acp function here git add, commit with the given message and then pushing it to the remote( origin )
 > 
 
-![Untitled](img/Untitled%204.png)
+![Untitled](img/Untitled%204.webp)
 
 ### Command line tools
 
@@ -182,7 +182,7 @@ Jq is a tools that I allows us to parse JSON content from the command line itsel
 curl https://raw.githubusercontent.com/n1rjal/next-portfolio-in-json/main/public/entries/next-portfolio.nirjalpaudel.com.np.json | jq '.socials'
 ```
 
-![Untitled](img/Untitled%205.png)
+![Untitled](img/Untitled%205.webp)
 
 **Fzf**
 
@@ -192,7 +192,7 @@ Fzf is a fuzzy finder tool that makes it easier to fuzzy find content inside ter
 cd ** # and then I press TAB
 ```
 
-![Untitled](img/ef7906fc-bc03-4db2-a72a-7cfbc9db1b58.png)
+![Untitled](img/ef7906fc-bc03-4db2-a72a-7cfbc9db1b58.webp)
 
 ## Organizational Productivity
 

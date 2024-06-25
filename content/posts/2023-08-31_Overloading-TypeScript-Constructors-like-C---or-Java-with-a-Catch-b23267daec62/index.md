@@ -25,7 +25,7 @@ Whenever I was looking into the TypeScript Date class constructor implementation
 
 But whenever I looked into typescript implementation for date. I could see something that there were 5 different overload for date.
 
-![](img/1__ECDFLU6d4P6CGrbV6CzEDQ.jpeg)
+![](img/1__ECDFLU6d4P6CGrbV6CzEDQ.webp)
 
 In the fifth constructor implementation, I obeserved that the [typescript doc string](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html) can be the reason behind this implementation then I tried putting doc string in places.
 ```ts

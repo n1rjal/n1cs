@@ -16,7 +16,7 @@ tags:
 
 Recently in my country, many hashtag challenges are going viral. Challenges like #couplechallenge, #singlechallenge, #dropyourdopephoto, #dropyourpout etc are coming and going around in social media platform. Is it a good thing? Is it a showoff? I can’t tell you that because I don’t know the reason behind that. LOL
 
-![](img/0__BO__s84MPfJ7BARdE.jpg)
+![](img/0__BO__s84MPfJ7BARdE.webp)
 
 #### Progressive Challenges
 
@@ -30,7 +30,7 @@ A year passes and I am sitting pissed off, angry with myself that I couldn’t a
 
 > Only 8% complete their new year’s resolution
 
-![](img/1__ChdPTZCy6AgjaZQBb8rkNg.jpeg)
+![](img/1__ChdPTZCy6AgjaZQBb8rkNg.webp)
 
 #### Why #30dayschallenge
 

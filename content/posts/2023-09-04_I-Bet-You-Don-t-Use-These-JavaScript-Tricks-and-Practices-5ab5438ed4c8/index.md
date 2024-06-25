@@ -17,7 +17,7 @@ categories:
 
 Tell me how many did you know by responding to the article and you may share this with your network to find out how many they know. These are some of the most underrated features in typescript. So, let's begin shall we?
 
-![](img/0__nmnULubrz2ncLsRj.jpg)
+![](img/0__nmnULubrz2ncLsRj.webp)
 
 ## Using FlatMap
 
@@ -36,7 +36,7 @@ const squaredOddNumbers = numbers
 console.log(squaredOddNumbers); // [1, 9, 25, 49, 81]
 console.timeEnd("filterAndMap")
 ```
-![](img/1__a9cMhpzzQmQQ__ivIOwvXQw.png)
+![](img/1__a9cMhpzzQmQQ__ivIOwvXQw.webp)
 
 ```js
 console.time("filterAndMap")

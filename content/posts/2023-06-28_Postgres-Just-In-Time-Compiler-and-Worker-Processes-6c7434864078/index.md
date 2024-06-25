@@ -40,8 +40,8 @@ CREATE TABLE product (
 ```
 I have around 29k stores and around 12 million products. Here is the count of the both
 
-![](img/0__wwdEf4Q__Cr2jRDe9.jpg)
-![](img/0__fMmJZzvtpc0TTGz9.jpg)
+![](img/0__wwdEf4Q__Cr2jRDe9.webp)
+![](img/0__fMmJZzvtpc0TTGz9.webp)
 
 I haven’t placed any indexing structure for the product table. Now let’s interact with the product table.
 
@@ -52,7 +52,7 @@ WHERE "price" < 10;
 ```
 The result of `EXPLAIN ANALYZE` shows the following info
 
-![](img/0__ST4__Mgte__z1JpRl__.jpg)
+![](img/0__ST4__Mgte__z1JpRl__.webp)
 
 ### Planning stage/JIT:
 
@@ -101,7 +101,7 @@ EXPLAIN ANALYSE SELECT COUNT(*) FROM "product" WHERE "price" < 10
 ```
 Upon running the query I got the following results
 
-![](img/1__qnI3tIP97fDsVrAN______J2w.png)
+![](img/1__qnI3tIP97fDsVrAN______J2w.webp)
 
 Postgres query planner is a clever piece of tool and it detected that the execution time was not going to be much better after 5 worker processes and stopped spawning more worker processes when it reached the value of x greater than 5. Even when I was allowed to go more than 5 workers per execution, I didn’t do that and insisted on using 5 worker processes.
 
@@ -118,7 +118,7 @@ LIMIT 1000
 
 The query provided below is more “complex” as it has sorting and limiting in it and the query planner looks like this with no worker. Not only that the querying condition has changed as well resulting in more data to look for.
 
-![](img/0__w2ZhiLEXbvCMUyos.jpg)
+![](img/0__w2ZhiLEXbvCMUyos.webp)
 
 Here I forced the query planner to not use worker processes.
 
@@ -136,6 +136,6 @@ Gather Merge node is used as it is expected to be used for queries with sorting 
 
 Here is the result for various query times.
 
-![](img/1__xbJrtzyN__qk2xN1zbb9Qxg.png)
+![](img/1__xbJrtzyN__qk2xN1zbb9Qxg.webp)
 
 As you can see that using the worker process has significantly decreased the planning time by almost half compared to not being used in both queries. This is a general introduction to worker processes and JIT in Postgresql but do you still with 5 workers used, the query is considered really slow. This is due to the use of seq scan to filter the product table. In the next writing, I would help you on how to improve on that with an introduction to index in Postgres and its type. Until then, you can follow me on my LinkedIn here. [My Linkedin Profile](https://linkedin.com/in/nirjalpaudel).

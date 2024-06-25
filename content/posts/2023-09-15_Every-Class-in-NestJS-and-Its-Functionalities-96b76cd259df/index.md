@@ -21,7 +21,7 @@ NestJS is a huge framework built on top of TypeScript, JavaScript also uses Expr
 
 I am trying to conclude the documentation of NestJS which can be found here. [https://docs.nestjs.com/](https://docs.nestjs.com/) in this writing.
 
-![](img/1__VTSKq5eIs3KyOyLYShI67Q.png)
+![](img/1__VTSKq5eIs3KyOyLYShI67Q.webp)
 
 I have been working on a code base built on nestjs for the last 3 years and I have seen how things changed over time in nestjs. Now, lets leave me out of the discussion and lets disscuss on tiny cute classes in nestjs and its functionalities. Shall we ?
 
@@ -113,7 +113,7 @@ These are the building block of nestjs but there are many other types of classes
 
 Before we move into other classes, please remember this peice of information from nestjs
 
-![](img/1__ZQrQHAlCeGR8adP2D6UPKQ.png)
+![](img/1__ZQrQHAlCeGR8adP2D6UPKQ.webp)
 
 ## Guards
 

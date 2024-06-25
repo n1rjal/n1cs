@@ -22,13 +22,13 @@ Django has always been a quick go to framework that I mostly use when I need som
 
 Serializing and deserializing is the process of converting a value from one representation to another. It acts as a translator that translates one form of data to another and vice versa.
 
-![](img/1__DPwNh9Itnq4s11FJ8ShMGg.png)
+![](img/1__DPwNh9Itnq4s11FJ8ShMGg.webp)
 
 ## Serializer vs Model Serializer
 
 Serializer in DRF is the class that is responsible for changing one form of object to another. Mostly python object to JSON and vice versa. It has various fields shown below
 
-![](img/1__tpB__lwLDdCyoTskraVtWMg.png)
+![](img/1__tpB__lwLDdCyoTskraVtWMg.webp)
 
 I highly suggest you look into the documentation.
 
@@ -270,7 +270,7 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
 ```
-![](img/1__erqijEVb4lMzFqXJGiAutw.png)
+![](img/1__erqijEVb4lMzFqXJGiAutw.webp)
 
 This is how we can change update Django serializers to load dynamic fields.
 

@@ -16,7 +16,7 @@ Hello everyone 👋👋
 
 I created a MongoDB database with 10 million documents.😄 My schema is simple and is for a very very basic inventory management system.
 
-![](img/0__JogoK9GIXwjCikNF.png)
+![](img/0__JogoK9GIXwjCikNF.webp)
 
 ## Before we begin
 ```
@@ -66,7 +66,7 @@ Unlike `cursor.count()` and `countDocuments()`, `estimatedDocumentCount()` does 
 
 ## Suggestions
 
-![](img/0__v0VOFTfI0YYcrH1d.png)
+![](img/0__v0VOFTfI0YYcrH1d.webp)
 
 1.  Don’t be that guy above
 2.  Use `estimatedDocumentCount()` when counting total number of documents.

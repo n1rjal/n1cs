@@ -18,7 +18,7 @@ categories:
 
 Yeah, the title is kind of misleading. Who would not write typescript interfaces right? I am not saying to stop writing typescript interfaces, but automate it 🫡
 
-![](img/1__Fts__rpfhNFBBerKiLVESDw.png)
+![](img/1__Fts__rpfhNFBBerKiLVESDw.webp)
 
 > What ? How do we automate creating types ?
 
@@ -26,7 +26,7 @@ Postman is an API testing tool that can help us test API. It can be used to test
 
 Now, imagine this, you have full documentation for your API as a postman collection (A Postman collections can be thought of as a folder that contains requests or other collection inside it). Each collection in Postman can be downloaded/saved as a JSON file which has two schema versions. They are collection v2 and collection v2.1 and share the collection as a JSON file.
 
-![](img/1__nnf5KGwQxeuyIkDEce4Ysg.png)
+![](img/1__nnf5KGwQxeuyIkDEce4Ysg.webp)
 
 Now, lets come back to typescript and interfaces. An interface has a signature for a object that defines all the type of keys inside the object.
 ```ts
@@ -39,7 +39,7 @@ interface Human{
 ```
 Now imagine this is your collection. This collection here has more than 20 requests. Now lets create type for each requests, query parameters and for every response in the examples.
 
-![](img/1__38ztbN1cQT5T3SLekuyHQw.png)
+![](img/1__38ztbN1cQT5T3SLekuyHQw.webp)
 
 A simple typescript type can be created at around 10–15 seconds approximately (without AI tools) and can be created at around 5–7 seconds (with AI tools). Now lets calculate how much time does total interface creation takes? Very long right ? Now how about for 500 requests ? 1000 requests ?
 
@@ -56,7 +56,7 @@ Here
 
 Now, lets try the command and see the results. Here is my work dir in vscode without runing the script.
 
-![](img/1__RKQlD41__SzbgAfg9PJdP4Q.png)
+![](img/1__RKQlD41__SzbgAfg9PJdP4Q.webp)
 
 Now lets run the script as
 ```bash
@@ -65,11 +65,11 @@ npx @n1rjal/pm_ts -i export.json -o types
 
 Now a types folder is created with the following content
 
-![](img/1__H61z2oP0OzDe8nG__QaSn5w.png)
+![](img/1__H61z2oP0OzDe8nG__QaSn5w.webp)
 
 Now lets inspect one of the postman requests
 
-![](img/1__hnN__a23SNF5Z__aDOI__llOg.png)
+![](img/1__hnN__a23SNF5Z__aDOI__llOg.webp)
 
 Now lets see it equivalent type for body. The interface generated has the following content. See how the naming of the request and the url is mapped to the content of the file
 ```ts

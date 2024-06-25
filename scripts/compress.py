@@ -23,6 +23,7 @@ def compress_image(image_path, output_path, quality=85):
 
 for root, dirs, files in  os.walk("./content/posts", topdown=True):
     if "index.md" in files and "img" in dirs:
+        file_changed = False
         content = open(root + "/index.md").read()
         with os.scandir(root + "/img") as img_dir_entries:
             for entry in img_dir_entries:
@@ -38,9 +39,10 @@ for root, dirs, files in  os.walk("./content/posts", topdown=True):
                     new_image_name= image_name.replace(ext, "webp")
                     content = content.replace(image_name, new_image_name)
                     os.remove(image_path)
+                    file_changed=True
 
 
-        print("webp" in content.lower())
-        with open(root + "/index.md", "w") as f:
-            f.write(content)
-                    
+        if file_changed:
+            with open(root + "/index.md", "w") as f:
+                f.write(content)
+                        

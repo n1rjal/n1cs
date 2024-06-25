@@ -17,7 +17,7 @@ categories:
 
 Here are some of the few design patterns that you can use to better your MongoDB schema, so you’ll keep your team happy and yourself happier.
 
-![](img/0__RjTdnRANRE0XW2Rn.jpg)
+![](img/0__RjTdnRANRE0XW2Rn.webp)
 
 MongoDB is a flexible schema based document database. Flexibility was something that we were craving after many years with SQL. Flexibility is so fun to code and enjoy until your application code is suffering from “What was the schema again?” problem. MongoDB follows document based design principle for modelling things. You can insert as many objects/arrays in MongoDB as long as you don’t hit the limit of 16mb. 
 So, _chances of you never discovering the problem until it is very late is high._
@@ -28,7 +28,7 @@ Here are some of the design patterns you can model your schema with
 
 In MongoDB schema, or any NoSQL based DB, schema versioning is a method in which we add a field representing the version of schema that the document obeys. Schema will be read by the application code, and a logic must be in place for handling every possible schema version value.
 
-![](img/0__Cv4uXguspMGLfnMN.jpg)
+![](img/0__Cv4uXguspMGLfnMN.webp)
 
 Schema version has its own pros and cons.
 
@@ -48,7 +48,7 @@ Cons:
 
 Have you ever wondered, how can YouTube get the real time total views of a video?
 
-![](img/1__1Wk5YcjMLDmpnrElHzV4eQ.png)
+![](img/1__1Wk5YcjMLDmpnrElHzV4eQ.webp)
 
 The video above has 1.3B views, but if you were to count that in any DB using
 ```js
@@ -56,7 +56,7 @@ db.getCollection("video-views").find({}).count();
 ```
 The query above would take ages to count the total views of the video. But on YouTube you can see the total view in an instant right. So let me introduce you to the computed value pattern. Instead of counting the video views every time, you introduce a field in video, say view which will get updated every time when a user views the video and now instead of counting the total views, you can present users with that value.
 
-![](img/1__3VZvZpH8p89PYUJw__1fABQ.png)
+![](img/1__3VZvZpH8p89PYUJw__1fABQ.webp)
 
 The new documents would be something like this, and your application service should increment the value of views every time someone views the video.
 ```json
@@ -191,7 +191,7 @@ For a log based application that has write heavy usage, _the application receive
 
 Let’s say that you are tracking temperature of a room using some devices and storing it in a database. Then a bucket based division can divide the written data records as
 
-![](img/1__n69B281qDhy90Ifad1Amew.png)
+![](img/1__n69B281qDhy90Ifad1Amew.webp)
 
 We can run analytics based on the bucket data, we can also add bucket pattern with computed data pattern to accommodate statistical data for our simplicity, the newer version of documents would look as
 
@@ -227,7 +227,7 @@ Cons:
 
 There are few more design pattern in MongoDB like the outlier pattern, Polymorphic pattern for your use cases. Each one of them have their pros and cons. [Here is a link to learn more about them.](https://www.mongodb.com/blog/post/building-with-patterns-a-summary) Here are some of the use cases of MongoDB design patterns
 
-![](img/1__e997BZwNZlrMfOgY2X4HUw.png)
+![](img/1__e997BZwNZlrMfOgY2X4HUw.webp)
 
 [You can follow me on LinkedIn, as I like to rant about technologies over there.](https://www.linkedin.com/in/nirjalpaudel/)
 

@@ -33,7 +33,7 @@ I never knew anything about the terminal based editor that I love today. But I o
 
 After nth ocuurances with the problem, I figured out that I need to do something with this. I searched the error and straight away I swicthed the git terminal to use **nano.** I didn’t have any mate or colleagues to guide me with the process of switching to vim.
 
-![](img/0__M0HiSs0Fbulxq9.jpg)
+![](img/0__M0HiSs0Fbulxq9.webp)
 
 ## Few years passed
 
@@ -58,7 +58,7 @@ NvChad, a popular beginner friendly neovim plugin that made me come into neovim 
 
 Apart from hjkl and :wq and :%d I knew nothing about neovim or vim mappings. I decided that this is the time to learn neovim and wrote all the shortcurts in a paper and put it aside my working place. Here is a photo of shortcuts and you can use it if you are a vim beginner.
 
-![](img/1__682fV7tMHRjciUNtZoZbkQ.jpeg)
+![](img/1__682fV7tMHRjciUNtZoZbkQ.webp)
 
 ## Why better ?
 
@@ -66,7 +66,7 @@ Now, it been a couple of month I have used neovim and I am loving the neovim. I 
 
 I do rust, python, javascript and laravel in neovim. I am loving neovim and I think I will not moving away from it in the near future. I am using [**warp terminal**](https://www.warp.dev/) and I am loving my workflow with neovim. Now, I can power of using one visual studio code per terminal tabs. 😆 This is how my development looks now.
 
-![](img/1__1Gb0d__qu9PY15whUje99PA.jpeg)
+![](img/1__1Gb0d__qu9PY15whUje99PA.webp)
 
 Here is my neovim config as a github repo. Mostly it is as similar as that of the above primeagen’s video.
 
