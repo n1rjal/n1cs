@@ -49,16 +49,15 @@
           {{ end }}
         </div>
     {{ end }}<!---->
-
     </div>
-
-
 {{ end }}
 
 
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
 {{ partial "newsletter.html" . }}
+
 <h1 id="recent_blogs" class="text-4xl mt-8 mb-16">Recent Blogs</h1>
+
 {{end}}
 
 <section class="relative my-7 last-of-type:mb-0">
@@ -70,28 +69,29 @@
   {{ end }}
   <div class="flex flex-row align-items-center">
         {{ if .Params.categories }}
-        {{ range .Params.categories }}
-                <a
-                  class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
-                  href="{{ printf "/categories/%s" . | urlize }}"
-                  ># {{ . }}</a>
-        {{end}}
+            {{ range .Params.categories }}
+                    <a
+                      class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
+                      href="{{ printf "/categories/%s" . | urlize }}"
+                      ># {{ . }}</a>
+            {{end}}
         {{end}}  
-      <time class="text-sm uppercase antialiased"><i class="fa fa-calendar"></i> {{ .Date | time.Format ":date_medium" }}</time>
+      <time class="text-sm uppercase antialiased">
+          <i class="fa fa-calendar"></i> {{ .Date | time.Format ":date_medium" }}
+      </time>
   </div>
       <a class="relative no-underline" href="{{ .Permalink }}">
           <h2 class="!my-0 font-bold leading-[120%]">{{ .Title }}</h2>
       </a>
-  <div class="my-3">
-      {{.Summary }}
-  </div>
-
-   
-  <div>
-      <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">Learn More
-          <span class="ml-2">→</span>
-      </a>
-  </div>
+      <div class="my-3">
+          {{.Summary }}
+      </div>
+            <div>
+          <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">
+              Learn More
+              <span class="ml-2">→</span>
+          </a>
+      </div>
   <span>
 
   <!-- • -->

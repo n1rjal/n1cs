@@ -47,6 +47,7 @@ summaryLength = 20
   linkedin = 'nirjalpaudel'             # linkedin.com/in/YOUR_LINKEDIN_ID
   rss = true                                # show rss icon
 
+
   # home page profile
   avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
   name = 'Nirjal Paudel'
@@ -63,3 +64,7 @@ summaryLength = 20
   favicon = "favicon.ico"                   # customize the default favicon
   stacks = ["python", "javascript", "typescript", "mongodb", "postgres", "node", "docker", "nestjs", "git", "nginx", "optimization", "vim"]
   foo = "bar"
+  [pagination]
+    disableAliases = false
+    pagerSize = 10
+    path = 'page'
