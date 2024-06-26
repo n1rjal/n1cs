@@ -43,7 +43,7 @@
   <!-- Google tag (gtag.js) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <body class="text-[#1d1d1f] bg-[#fafafa] dark:bg-[#222224] duration-200 ease-out dark:text-[#EDEDED]">
+ <body class="text-[#1d1d1f] bg-[#fafafa] dark:bg-[#222224] duration-200 ease-out dark:text-[#EDEDED]">
     {{ partial "header.html" . }}
     <div>
         <main
@@ -57,24 +57,25 @@
 
     {{ block "follow_author" . }} {{end}}
 
-{{ partial "footer.html" . }}
+    {{ partial "footer.html" . }}
 
-<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/b6088a7da5e588b35ee18a982/e21bd9f6de92c6df2a4e539f4.js");</script>
-<script>
-    // init
-    if (htmlClass.contains('dark')) {
-      setDark(true);
-    } else {
-      const darkVal = localStorage.getItem('dark');
-      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
-    }
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/b6088a7da5e588b35ee18a982/e21bd9f6de92c6df2a4e539f4.js");</script>
 
-    // listen system
-    darkScheme.addEventListener('change', (event) => {
-      setDark(event.matches);
-    });
+    <script>
+        // init
+        if (htmlClass.contains('dark')) {
+          setDark(true);
+        } else {
+          const darkVal = localStorage.getItem('dark');
+          setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+        }
 
-</script>
+        // listen system
+        darkScheme.addEventListener('change', (event) => {
+          setDark(event.matches);
+        });
+
+    </script>
   </body>
 
 </html>
