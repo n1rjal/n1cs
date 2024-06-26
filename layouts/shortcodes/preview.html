@@ -3,7 +3,7 @@
 <section id="articleNext" class="section narrow py-4 px-1 mx-1 border-2 border-purple">
         <div class="post-row">
             <a href="{{ $page.RelPermalink }}" class="no-underline" id="article-link-bigger">
-                <div class="grid grid-cols-4 p-3 py-1 gap-x-3 relative h-10 items-center">
+                <div class="grid grid-cols-4 p-3 py-1 gap-x-3 relative items-center">
                     {{ with $page.Params.hero }}
                         {{ if gt (len .) 0 }}
                             <div class="image-container my-0">

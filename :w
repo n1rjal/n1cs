@@ -17,7 +17,7 @@
     {{ range .Params.categories }}
 
     <a
-      class="mr-2 no-underline bg-gray-700 bg-[#fff] text-[#000] px-2 font-bold text-sm uppercase rounded"
+      class="mr-2 no-underline text-[#000] bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
       href="{{ printf "/categories/%s" . | urlize }}"
       >{{ . }}</a>
     {{ end }}

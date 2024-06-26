@@ -20,11 +20,6 @@ params:
 ---
 Postgres is a SQL database. It is powerful and I have written various other articles in postgres and its optimization. 
 
-{{<preview 
-    link="/tags/postgres/" 
-    description="Learn on various topics about postgres and sql as a whole"
-    image="/postgres.svg"
->}}
 
 After covering topics like temporary tables, which I used in production, I am yet again covering another trick that I have utilized to make the database query efficient. 
 
@@ -77,6 +72,12 @@ SELECT '{"foo": {"bar": "baz"}}'::jsonb @> '{"foo": {}}'::jsonb;
 ## Jsonb indexing
 
 We will be using GIN indexes to efficiently search for keys or key/value pairs occuring within a large number of jsonb documents. [Learn more about it here](https://www.postgresql.org/docs/current/datatype-json.html#jsonb-indexing)
+
+{{<preview 
+    link="/tags/postgres/" 
+    description="Learn on various topics about postgres and sql as a whole"
+    image="/postgres.svg"
+>}}
 
 ## Why use JSONB documents
 
