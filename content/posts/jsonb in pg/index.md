@@ -8,7 +8,7 @@ categories:
 - database
 tags:
 - jsonb
-- postgresql
+- postgres
 - database
 - optimization
 summary: 'Postgres is a powerful SQL database with extensive features. It supports two JSON data types, json and jsonb, offering various functions and operators. Using JSONB can optimize database queries and reduce joins, as illustrated by examples like Netflix profiles and inflation-resistant order data.'
@@ -18,7 +18,15 @@ params:
   - pg_json.png
 
 ---
-Postgres is a SQL database. It is powerful and I have written various other articles in postgres and its optimization. After covering topics like temporary tables, which I used in production, I am yet again covering another trick that I have utilized to make the database query efficient. 
+Postgres is a SQL database. It is powerful and I have written various other articles in postgres and its optimization. 
+
+{{<preview 
+    link="/tags/postgres/" 
+    description="Learn on various topics about postgres and sql as a whole"
+    image="/postgres.svg"
+>}}
+
+After covering topics like temporary tables, which I used in production, I am yet again covering another trick that I have utilized to make the database query efficient. 
 
 ![postgresql jsonb types and its daily use](img/Untitled.webp)
 

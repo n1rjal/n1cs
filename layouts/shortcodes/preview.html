@@ -1,0 +1,34 @@
+{{$page := .Site.GetPage (.Get `link`)}}
+{{$image := .Get `image` }}
+<section id="articleNext" class="section narrow py-4 px-1 mx-1 border-2 border-purple">
+        <div class="post-row">
+            <a href="{{ $page.RelPermalink }}" class="no-underline" id="article-link-bigger">
+                <div class="grid grid-cols-4 p-3 py-1 gap-x-3 relative h-10 items-center">
+                    {{ with $page.Params.hero }}
+                        {{ if gt (len .) 0 }}
+                            <div class="image-container my-0">
+                                <img src="{{ . }}" class="article-image" />
+                            </div>
+                        {{ end }}
+                    {{ else }}
+                        <div class="image-container">
+                            <img src="{{$image}}" class="article-image w-10" />
+                        </div>
+                    {{ end }}
+                    
+                    <div class="col-span-3">
+                        <h2 class="article-title !py-0 !my-0">
+                            {{ $page.Title }}
+                        </h2>
+                        <p class="article-excerpt">
+                            {{ with $page.Summary }} 
+                                {{ . }}
+                            {{ else }} 
+                                {{ .Get "description" }}
+                            {{end}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+</section>

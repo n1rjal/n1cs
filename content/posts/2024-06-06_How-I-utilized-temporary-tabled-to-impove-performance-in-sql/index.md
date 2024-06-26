@@ -10,6 +10,8 @@ categories:
 tags:
 - database
 - optimization
+- postgres
+- sql
 draft: false
 ---
 
