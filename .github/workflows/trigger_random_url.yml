@@ -30,6 +30,10 @@ jobs:
           git config --global user.name github.actions
           git config --global user.email github-actions@github.com
           git add .
-          git commit -m "chore: generate new reading list"
-          git push
+          if ! git diff --cached --quiet; then
+              git commit -m "chore: generate new reading list"
+              git push
+          else
+              curl -d {} ${{ secrets.PAGES_WEBHOOK_URL }}
+          fi
 
