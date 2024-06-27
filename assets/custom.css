@@ -308,13 +308,13 @@ h1,h2,h3,h4,h5,h6{
     h2 {
       font-weight: 600;
       margin: 4px 0;
-      font-size: 18px;
+      font-size: 15px important;
     }
 
 
     span {
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
     }
 }
 

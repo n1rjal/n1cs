@@ -17,21 +17,17 @@
 {{ range $date, $entries := $by_date }}
 <section class="mb-7">
     <h1 class="by_date text-xl no-underline"><i class="fa fa-calendar"></i> {{ $date }}</h1>
-    <ol class="ml-5 list-decimal listed">
     {{ range $index, $entry := $entries }}
         <a href="{{ $entry.url }}" class="no-underline my-1" target="_blank">
-            <li>
                 <div class="reading_list_entry">
-                    <h2 class="!text-[14px] my-1 font-normal">{{ $entry.name }}</h2>
+                    <h2 class="my-1">{{ $entry.name }}</h2>
                     <div class="grid grid-cols-1 w-100 justify-between">
                         <span># {{ $entry.category }}</span>
-                        <span><i class="fa fa-calendar"></i>{{ $entry.created_at | time.Format ":date_medium" }}</span>
+                        <span><i class="fa fa-calendar"></i> {{ $entry.created_at | time.Format ":date_medium" }}</span>
                     </div>
                 </div>
-            </li>
         </a>
     {{ end }}
-    </ol>
 </section>
 {{ end }}
 
