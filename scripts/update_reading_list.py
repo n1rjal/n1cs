@@ -3,8 +3,8 @@ from datetime import datetime
 import json
 import os
 
-NOTION_DATABASE = os.getenv("NOTION_DATABASE")
-NOTION_SECRET = os.getenv("NOTION_SECRET")
+NOTION_DATABASE = os.getenv("NOTION_DATABASE").strip()
+NOTION_SECRET = os.getenv("NOTION_SECRET").strip()
 
 
 def query_notion_database(start_cursor):
