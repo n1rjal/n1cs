@@ -42,7 +42,11 @@ def query_notion_database(start_cursor):
         properties = res.get("properties")
         entry = {}
         entry["url"] = properties.get("URL").get("url")
-        entry["category"] = properties.get("Category").get("select").get("name")
+        try:
+            entry["category"] = properties.get("Category").get("select").get("name")
+        except:
+            entry["category"] = "Uncategorized"
+
         entry["created_at"] = properties.get("Created").get("created_time")
         entry["name"] = properties.get("Name").get("title")[0].get("plain_text")
         entries.append(entry)
