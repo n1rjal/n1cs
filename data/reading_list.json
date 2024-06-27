@@ -1,6 +1,12 @@
 {
   "June, 2024": [
     {
+      "url": "https://newsletter.systemdesigncodex.com/p/3-types-of-event-patterns-in-eda?ref=dailydev",
+      "category": "System Design",
+      "created_at": "2024-06-27T04:14:00.000Z",
+      "name": "3 Types of Event Patterns in EDA - by Saurabh Dashora"
+    },
+    {
       "url": "https://stripe.com/blog/how-stripes-document-databases-supported-99.999-uptime-with-zero-downtime-data-migrations",
       "category": "Migration",
       "created_at": "2024-06-20T12:50:00.000Z",
