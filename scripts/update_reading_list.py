@@ -1,9 +1,13 @@
 import requests
 from datetime import datetime
 import json
+import os
+
+NOTION_DATABASE = os.getenv("NOTION_DATABASE")
+NOTION_SECRET = os.getenv("NOTION_SECRET")
 
 def query_notion_database(start_cursor):
-    url = "https://api.notion.com/v1/databases/2f9e511d9a074163bd3a813b80fccbbd/query"
+    url = f"https://api.notion.com/v1/databases/{NOTION_DATABASE}/query"
 
     payload = {
       "sorts": [
@@ -19,16 +23,15 @@ def query_notion_database(start_cursor):
 
     payload = json.dumps(payload)
     headers = {
-      'Authorization': 'Bearer secret_tAl9cuams6aDzo21TNHnPvSlr0uY0gpcIUdHs4EDcyT',
+      'Authorization': f'Bearer {NOTION_SECRET}',
       'Content-Type': 'application/json',
       'Notion-Version': '2022-02-22',
-      'Cookie': '__cf_bm=GtRReduBKyvsYsgUpS64yfBeP00cc0pbpiLRPo6w2co-1719416595-1.0.1.1-gZl0OpSO52FDFgI83jFz4.RhkbWkTsj6IgDiaIYoJMTJGemb3cTsLqc7K7gWQhRMkh0rVTEIQqnppy6Q5KSNUg'
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
     if response.status_code != 200:
         print(response.json())
-        exit(1)
+        raise Exception("Notion api error")
 
     data = response.json()
     next_cursor = data.get("next_cursor")
@@ -56,8 +59,7 @@ while True:
     else:
         break
 
-md = """
----
+md = """---
 title: Nirjal Paudel - Reading List 
 date: '2024-06-26T03:14:32.068Z'
 categories: []
@@ -82,17 +84,12 @@ for entry in reading_list_entries:
     if not mapped.get(key):
         mapped[key] = []
 
-    content = f"### [{entry.get("name")}]({entry.get('url')})"
-    mapped[key].append(content)
+    mapped[key].append(entry)
 
-for time in mapped.keys():
-    md+= f"\n## {time}\n\n"
-    contents = mapped[time]
-    for i, content in enumerate(contents):
-        md+= f"{i+1}. {content}\n\n"
-
-
-
-with open("content/posts/reading-list/index.md", "w") as f:
-    f.write(md)
+with open("data/reading_list.json", "w") as f:
+    json.dump(
+        mapped, f,
+        ensure_ascii=False,
+        indent=2
+    )
 
