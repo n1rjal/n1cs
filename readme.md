@@ -16,7 +16,7 @@ I have one pre-commit here and it changes any png, jpg or jpeg images and change
 
 ## Scripts files
 I have 2 scripts file here and it does the following
-1. Updates the reading list with my notion reading list. If you want to peek into my reading list.[Click me](https://nirjalpaudel.com.np/reading-list/)
+1. Updates the reading list with my notion reading list. If you want to peek into my reading list. [Click me](https://nirjalpaudel.com.np/reading-list/)
 2. Changes all the png, jpg images into webp as discussed in precommit portion above.
 
 ## Github Actions
