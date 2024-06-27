@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Install requiremnts.txt
+      - name: Install requirements.txt
         run: pip install -r requirements.txt
           
       - name: Update reading list data 
@@ -19,6 +19,7 @@ jobs:
         env:
           NOTION_DATABASE: ${{ secrets.NOTION_DATABASE }}
           NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
+          
       - name: Commit reading list data
         run: |
           git config --global user.name github.actions

@@ -6,6 +6,7 @@ import os
 NOTION_DATABASE = os.getenv("NOTION_DATABASE")
 NOTION_SECRET = os.getenv("NOTION_SECRET")
 
+
 def query_notion_database(start_cursor):
     url = f"https://api.notion.com/v1/databases/{NOTION_DATABASE}/query"
 
