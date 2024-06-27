@@ -1,6 +1,12 @@
 {
   "June, 2024": [
     {
+      "url": "https://databasearchitects.blogspot.com/2024/06/b-trees-require-fewer-comparisons-than.html?ref=dailydev",
+      "category": "Uncategorized",
+      "created_at": "2024-06-27T16:35:00.000Z",
+      "name": "Database Architects: B-trees Require Fewer Comparisons Than Balanced Binary Search Trees"
+    },
+    {
       "url": "https://medium.com/@joudwawad/school-bus-tracker-system-architecture-6dd3307e3860#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjJhZjkwZTg3YmUxNDBjMjAwMzg4OThhNmVmYTExMjgzZGFiNjAzMWQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTIyOTM1NzczODYwNTYwMDExOTgiLCJlbWFpbCI6ImJpa3JhbWd5YXdhbGk1N0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmJmIjoxNzE5NDYyMTQ3LCJuYW1lIjoiQmlrcmFtIEd5YXdhbGkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS1B5ZUJXRXlaQ1RhZXYtVzV3NHhUMlRqMFFOcnVpMmxNU3B5UmEyTHVnRXpoT05hWT1zOTYtYyIsImdpdmVuX25hbWUiOiJCaWtyYW0iLCJmYW1pbHlfbmFtZSI6Ikd5YXdhbGkiLCJpYXQiOjE3MTk0NjI0NDcsImV4cCI6MTcxOTQ2NjA0NywianRpIjoiNGI2NmY2Y2E5YmZmMzUzMmQ5YmIxOTQ1MGZmYjRhMGEzZjA5YzE4NyJ9.pxhvL7ugY17CyQXXoV1TIVPfVdEb0qi8rKf2Huff27opDpyGb65VtKqRxd1iM5WGe7k6HUbA3eFXquSXqgwlAYMLmmQ6as2xf9yK9lx5JnLHjcOX4GvlnLNuk4klWwgjetR0lMD6XTYhmv02qd6dMUn9HKS_eFa9aQ4PLQ6tnTXgYLM8YDUuYHRa89NYWAslF9KzqXh03pcVu7GUt1y74KxF1h_fbDVWiWj9Ekr8vStAcN16rSrGy111b8VzBBaXY2H0HrmLh7xiE99ajjbE-Xcbld4ITL4wU9jdhOwv9938ibd2Nl0HrWdL_XQsR06SewDIsbWPeX09ECHiQ0XLug",
       "category": "System Design",
       "created_at": "2024-06-27T07:08:00.000Z",
