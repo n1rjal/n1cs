@@ -9,15 +9,13 @@
 {{ $pages := union .RegularPages .Sections }}<!---->
 
 {{ if .IsHome }}<!---->
-{{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
+    {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections | first 3 }}<!---->
 {{ end }}
-
 
 
 <!-- Articles -->
 {{ $paginator := .Paginate $pages }}
-
-{{ range $index, $page := $paginator.Pages }}<!---->
+{{ range $index, $page := $paginator.Pages}}<!---->
 
 <!-- avatar -->
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
@@ -55,10 +53,9 @@
 
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
 {{ partial "newsletter.html" . }}
-
-<h1 id="recent_blogs" class="text-4xl mt-8 mb-16">Recent Blogs</h1>
-
+    <h1 id="recent_blogs" class="text-4xl mt-5 mb-16">Recent Blogs</h1>
 {{end}}
+
 
 <section class="relative my-7 last-of-type:mb-0">
   {{ if gt .Weight 0 }}
@@ -101,17 +98,10 @@
 {{ end }}
 
 <!-- Main Nav -->
-{{ if gt $paginator.TotalPages 1 }}
 <nav class="mt-16 flex">
-  {{ if $paginator.HasPrev }}
-  <a class="btn" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
-  {{ end }}<!---->
-  {{ if $paginator.HasNext }}
-  <a class="btn ml-auto" href="{{ $paginator.Next.URL }}"
-    >{{ i18n "next_page" }} →</a
-  >
-  {{ end }}
+  <a class="btn ml-auto" href="/posts">
+      View All Blogs
+  </a>
 </nav>
-{{ end }}<!---->
 
 {{ end }}

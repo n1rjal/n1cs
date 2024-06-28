@@ -64,22 +64,6 @@ while True:
     else:
         break
 
-md = """---
-title: Nirjal Paudel - Reading List 
-date: '2024-06-26T03:14:32.068Z'
-categories: []
-keywords: ['reading', 'nirjal paudel', 'reading-list']
-slug: /@nirjalpaudel54312/reading-list
-type: list
-categories:
-- reading-list
-summary: 'Here is my reading list. These are all the blogs that I find really inreesting to read and will suggest you read as well. These are really really great engineering content'
-params:
-  author: Nirjal Paudel
-  images: 
-  - read_list.png
----
-"""
 mapped = {}
 for entry in reading_list_entries:
     date = entry.get("created_at")

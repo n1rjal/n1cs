@@ -127,48 +127,6 @@
 
         </div>
     </div>
-    <div id="main_container" class="relative">
-        <div class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert">
-              <!-- Lets calculate related blogs -->
-                {{ $relatedPosts := (where .Site.RegularPages "Type" "posts") | shuffle }}
-                <!-- Exclude the current post and keep only those with intersecting tags -->
-                {{ $relatedPosts := where $relatedPosts "Params.tags" "intersect" .Params.tags }}
-                <!-- related posts is calculated by tags -->
-                <!-- tags are defined in Params.tags and don't display posts with same slug -->
-                {{ $relatedPosts := where $relatedPosts "Params.slug" "ne" .Params.slug }}
-                {{ $relatedPosts := first 4 $relatedPosts }}
-
-              {{ if gt (len $relatedPosts) 0 }}
-              <div>
-                    <h2 class="mt-16 mb-8 font-bold">Related Posts</h2>
-                    <div class="grid grid-cols-2 gap-4 gap-x-6 w-full">
-                    {{ range $relatedPosts }}
-                        {{ partial "suggestions.html" . }}
-                    {{end}}
-                    </div>
-              </div>
-              {{ end }}
-
-
-              <!-- Lets get some random blogs -->
-                  {{ $randomPosts := (where .Site.RegularPages "Type" "posts") | shuffle | first 4 }}
-                <!-- Exclude the current post and keep only those with intersecting tags -->
-                <!-- related posts is calculated by tags -->
-                <!-- tags are defined in Params.tags and don't display posts with same slug -->
-
-                <hr />
-
-              {{ if gt (len $randomPosts) 0 }}
-                <h2 class="mt-16 mb-8 font-bold">You many also like</h2>
-                <div class="grid grid-cols-2 gap-4 w-full">
-                {{ range $randomPosts }}
-                    {{ partial "suggestions.html" . }}
-                {{end}}
-                </div>
-              {{ end }}
-        </div>
-        <div></div>
-    </div>
 
     {{ block "follow_author" . }} {{end}}
 

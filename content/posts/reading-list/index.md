@@ -13,6 +13,7 @@ params:
   author: Nirjal Paudel
   images: 
   - read_list.png
+draft: true
 ---
 
 ## June, 2024

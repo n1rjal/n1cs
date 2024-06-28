@@ -323,6 +323,23 @@ h1,h2,h3,h4,h5,h6{
     li {
         font-size: 20px;
     }
+}
 
+.view_all_blogs {
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin: 1.5cm 0;
+    justify-items: flex-end;
 
+    a {
+        position:absolute;
+        top:0;
+        right: 10px;
+        max-width: 5cm;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #081f45; 
+        border: 1px solid rgb(137 181 250);
+    }
 }
