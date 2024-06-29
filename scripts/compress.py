@@ -4,6 +4,8 @@ import os
 from urllib.parse import quote
 from PIL import Image
 
+RESIZE_FACTOR = 1.5
+
 def is_image(name):
     exts = ["png", "jpeg", "jpg"]
     for ext in exts:
@@ -16,7 +18,7 @@ def compress_image(image_path, output_path, quality=85):
     try:
         with Image.open(image_path) as img:
             w, h = img.size
-            new_size = (int(w/1.5), int(h/1.5))
+            new_size = (int(w/RESIZE_FACTOR), int(h/RESIZE_FACTOR))
             img.resize(new_size)
             img.save(output_path, "webp",optimize=True,  quality=quality,)
     except Exception as e:
@@ -26,7 +28,8 @@ def compress_image(image_path, output_path, quality=85):
 for root, dirs, files in  os.walk("./content/posts", topdown=True):
     if "index.md" in files and "img" in dirs:
         file_changed = False
-        content = open(root + "/index.md").read()
+        with open(root + "/index.md") as md_file:
+            content = md_file.read()
         with os.scandir(root + "/img") as img_dir_entries:
             for entry in img_dir_entries:
                 if is_image(entry.name):
