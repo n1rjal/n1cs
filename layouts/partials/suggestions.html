@@ -6,8 +6,7 @@
         >Featured</span
       >
       {{ end }}
-      <!-- <div class="mt-3 mb-5">{{.Summary }}</div> -->
-      <a href="{{ .Permalink }}">
+      <a href="{{ .Permalink }}" name="{{.Title}}">
 
           <div>
             {{ if .Params.categories }}

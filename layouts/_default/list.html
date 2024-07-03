@@ -70,7 +70,7 @@
                     <a
                       class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
                       href="{{ printf "/categories/%s" . | urlize }}"
-                      name="{{.}}"
+                      name="{{ . }}"
                       ># {{ . }}</a>
             {{end}}
         {{end}}  
@@ -86,7 +86,7 @@
       </div>
             <div>
           <a 
-              name="{{.Title}}"
+              name="{{ .Title }}"
               class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">
               Learn More
               <span class="ml-2">→</span>
