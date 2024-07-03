@@ -14,6 +14,7 @@
             {{ range .Params.categories }}
                     <a
                           class="text-sm no-underline text-sm font-light my-0 opacity-80 uppercase rounded"
+                          name="{{.}}"
                           href="{{ printf "/categories/%s" . | urlize }}"
                     >#{{ . }}</a>
             {{end}}

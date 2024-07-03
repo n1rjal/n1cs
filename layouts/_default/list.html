@@ -70,6 +70,7 @@
                     <a
                       class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
                       href="{{ printf "/categories/%s" . | urlize }}"
+                      name="{{.}}"
                       ># {{ . }}</a>
             {{end}}
         {{end}}  
@@ -77,14 +78,16 @@
           <i class="fa fa-calendar"></i> {{ .Date | time.Format ":date_medium" }}
       </time>
   </div>
-      <a class="relative no-underline" href="{{ .Permalink }}">
+      <a class="relative no-underline" name="{{.Title}}" href="{{ .Permalink }}">
           <h2 class="!my-0 font-bold leading-[120%]">{{ .Title }}</h2>
       </a>
       <div class="my-3">
           {{.Summary }}
       </div>
             <div>
-          <a class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">
+          <a 
+              name="{{.Title}}"
+              class="relative learn_more text-[#2a6bd4] dark:text-[#89b5fa] no-underline" href="{{ .Permalink }}">
               Learn More
               <span class="ml-2">→</span>
           </a>

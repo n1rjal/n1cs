@@ -9,6 +9,7 @@
     <a
       class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
       href="{{ printf "/categories/%s" . | urlize }}"
+      name="{{.}}"
       >{{ . }}</a>
     {{ end }}
 

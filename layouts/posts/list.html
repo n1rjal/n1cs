@@ -34,6 +34,7 @@
                         <a
                           class="mr-2 no-underline roboto-thin text-sm mb-2 uppercase light:text-dark dark:text-white opacity-70"
                           href="{{ printf "/categories/%s" . | urlize }}"
+                          name="{{ . }}"
                           ># {{ . }}</a>
                 {{end}}
             {{end}}  
