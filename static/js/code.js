@@ -29,3 +29,23 @@ document.addEventListener("DOMContentLoaded", function() {
         pre.parentNode.insertBefore(button, pre);
     });
 });
+
+
+function load_disqus( disqus_shortname ) {
+  // Prepare the trigger and target
+  var disqus_trigger = document.getElementById('disqus-trigger'),
+      disqus_target = document.getElementById('disqus_thread'),
+      disqus_disclaimer = document.getElementById('disqus-disclaimer'),
+      disqus_embed  = document.createElement('script'),
+      disqus_hook   = (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]);
+
+  // Load script asynchronously only when the trigger and target exist
+  if( disqus_target && disqus_trigger ) {
+    disqus_embed.type = 'text/javascript';
+    disqus_embed.async = true;
+    disqus_embed.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    disqus_hook.appendChild(disqus_embed);
+    disqus_disclaimer.remove();
+    console.log('Disqus loaded.');
+  }
+}

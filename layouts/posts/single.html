@@ -120,14 +120,17 @@
 
   <!-- Disqus -->
   {{ if and site.DisqusShortname (not (eq .Params.comments false)) }}
-  <div class="mt-24" id="disqus_thread"></div>
-  <script>
-    const disqusShortname = '{{ site.DisqusShortname }}';
-    const script = document.createElement('script');
-    script.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
-    script.setAttribute('data-timestamp', +new Date());
-    document.head.appendChild(script);
-  </script>
+  <div class="mt-24" id="disqus_thread">
+      <div id="disqus-disclaimer">
+        <p>
+          For the time being, comments are managed by Disqus, a third-party library. I will eventually replace it with another solution, but the timeline is unclear. Considering the amount of data being loaded, if you would like to view comments or post a comment, click on the button below. For more information about why you see this button, take a look at the following <a href="/articles/load_disqus_comments_on_click/">article</a>.
+        </p>
+        <button id="disqus-trigger" class="btn w-[100%] mt-16 radius-0" onclick="load_disqus('jimmybonney'); this.disabled=true;">
+          Load Comments
+        </button>
+      </div>
+  </div>
+
   {{ end }}
 
   <!-- GraphComment -->
@@ -165,27 +168,8 @@
   <!-- mermaid -->
   {{- partial "mermaid.html" . -}}
 
-  <!-- giscus comment -->
-  {{ if and site.Params.giscus.repo (not (eq .Params.comments false)) }}
-  <div class="giscus mt-24"></div>
-  <script
-    src="https://giscus.app/client.js"
-    data-repo="{{ site.Params.giscus.repo }}"
-    data-repo-id="{{ site.Params.giscus.repoId }}"
-    data-category="{{ site.Params.giscus.category }}"
-    data-category-id="{{ site.Params.giscus.categoryId }}"
-    data-mapping="{{ site.Params.giscus.mapping | default (print `pathname`) }}"
-    data-strict="{{ site.Params.giscus.strict | default (print `1`) }}"
-    data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default (print `0`) }}"
-    data-emit-metadata="{{ site.Params.giscus.emitMetadata | default (print `0`) }}"
-    data-input-position="{{ site.Params.giscus.inputPosition | default (print `top`) }}"
-    data-theme="{{ site.Params.giscus.theme | default (print `light`) }}"
-    data-lang="{{ site.Params.giscus.lang | default (print `en`) }}"
-    data-loading="{{ site.Params.giscus.loading | default (print `lazy`) }}"
-    crossorigin="anonymous"
-    async
-  ></script>
-  {{ end }}
+
+
 </article>
 
 <script src="/js/image.js" type="text/javascript"></script>

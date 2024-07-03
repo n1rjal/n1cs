@@ -7,7 +7,7 @@
                     {{ with $page.Params.hero }}
                         {{ if gt (len .) 0 }}
                             <div class="image-container my-0">
-                                <img src="{{ . }}" class="article-image" />
+                                <img src="{{ . }}" alt="{{ . }}" class="article-image" />
                             </div>
                         {{ end }}
                     {{ else }}
