@@ -9,10 +9,10 @@
     {{ if .Params.categories }}
     {{ range .Params.categories }}
             <a
-              class="mr-2 no-underline text-white bg-gray-700 dark:bg-[#fff] dark:text-[#000] px-2 font-bold text-sm uppercase rounded"
+              class="text-sm no-underline text-sm font-light my-0 opacity-80 uppercase rounded"
               href="{{ printf `/categories/%s` . | urlize }}"
               name="{{.}}"
-              >{{ . }}</a>
+              >#{{ . }}</a>
     {{end}}
     {{end}}
     <h3 class=" font-medium mt-2 font-[14px] leading-[120%]">{{ .Title }}</h3>
