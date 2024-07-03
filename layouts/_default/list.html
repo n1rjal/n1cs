@@ -13,10 +13,10 @@
 {{ end }}
 
 
+
 <!-- Articles -->
 {{ $paginator := .Paginate $pages }}
 {{ range $index, $page := $paginator.Pages}}<!---->
-
 <!-- avatar -->
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
     <div class="mb-16">
@@ -52,7 +52,7 @@
 
 
 {{ if and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) }}<!---->
-{{ partial "newsletter.html" . }}
+    {{ partial "newsletter.html" . }}
     <h1 id="recent_blogs" class="text-4xl mt-5 mb-16">Recent Blogs</h1>
 {{end}}
 
@@ -98,10 +98,27 @@
 {{ end }}
 
 <!-- Main Nav -->
-<nav class="mt-16 flex">
-  <a class="btn ml-auto" href="/posts">
-      View All Blogs
-  </a>
-</nav>
+{{ if gt $paginator.TotalPages 1 }}
+    <nav class="mt-16 flex">
+      {{ if $paginator.HasPrev }}
+      <a class="btn" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
+      {{ end }}<!---->
+      {{ if $paginator.HasNext }}
+      <a class="btn ml-auto" href="{{ $paginator.Next.URL }}"
+        >{{ i18n "next_page" }} →</a
+      >
+      {{ end }}
+    </nav>
+{{ end }}<!---->
+
+<!-- Main Nav -->
+
+{{ if eq .RelPermalink "/" }}
+    <nav class="mt-16 flex">
+      <a class="btn ml-auto" href="/posts">
+          View All Blogs
+      </a>
+    </nav>
+{{ end }}
 
 {{ end }}

@@ -39,6 +39,11 @@
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    {{ $url := .RelPermalink }}
+    {{ if or (strings.HasPrefix $url "/categories/") (strings.HasPrefix $url "/tags/") }}
+    <meta name="robots" content="noindex">
+    {{ end }}
+
   <!-- Dark Icon -->
   {{ $dark_icon := "theme.png" }}
   <!---->
