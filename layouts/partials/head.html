@@ -9,7 +9,7 @@
   <link href="{{ `app.css`| relURL }}" rel="stylesheet" />
 
   <!-- Title -->
-  <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Params.web_title }}</title>
 
   <!-- Meta -->
   <meta name="theme-color" />
