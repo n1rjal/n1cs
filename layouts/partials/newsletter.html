@@ -18,7 +18,9 @@
 
                     <div id="tech_stacks" class="flex w-[100%] flex-wrap justify-start">
                         {{ range site.Params.stacks }}
-                        <img src="/{{.}}.svg" width="40" heigh="40" class="w-[40px] mx-2 first:ml-0 last:mr-0" alt="{{.}}"/>
+                        <img src="/{{.}}.svg" 
+                            width="40" heigh="40" class="w-[40px] mx-2 first:ml-0 last:mr-0" alt="{{.}}"
+                        />
                         {{end}}
                     </div>
                     <div aria-hidden="true" style="position: absolute; left: -5000px;">
