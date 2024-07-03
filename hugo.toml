@@ -37,7 +37,7 @@ summaryLength = 20
 
 [params]
   # color style
-  web_title = "Nirjal's Blog - Software Developer"
+  web_title = "Nirjal's Blog - Software Developer "
   color = 'gray'                           # linen, wheat, gray, light
   email = "nirjalpaudel54312@gmail.com"
 
