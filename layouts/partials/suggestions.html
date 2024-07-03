@@ -6,23 +6,24 @@
         >Featured</span
       >
       {{ end }}
-      <a href="{{ .Permalink }}" name="{{.Title}}">
 
           <div>
-            {{ if .Params.categories }}
-            {{ range .Params.categories }}
-                    <a
-                          class="text-sm no-underline text-sm font-light my-0 opacity-80 uppercase rounded"
-                          name="{{.}}"
-                          href="{{ printf "/categories/%s" . | urlize }}"
-                    >#{{ . }}</a>
-            {{end}}
-            {{end}}
-            <h3 class=" font-medium my-0 font-[14px] leading-[120%]">{{ .Title }}</h3>
-              <div class="opacity-60 dark:text-[#fff] font-[10px] leading-[20px] h-[1cm] truncate-2-lines">{{ .Summary }}</div>
+                {{ if .Params.categories }}
+                {{ range .Params.categories }}
+                        <a
+                              class="text-sm no-underline text-sm font-light my-0 opacity-80 uppercase rounded"
+                              name="{{.}}"
+                              href="{{ printf "/categories/%s" . | urlize }}"
+                              aria-label="{{.}}"
+                        >#{{ . }}</a>
+                {{end}}
+                {{end}}
+                <a href="{{ .Permalink }}" class="no-underline" aria-label="{{.Title}}" name="{{ .Title }}">
+                    <h3 class=" font-medium my-0 font-[14px] leading-[120%]">{{ .Title }}</h3>
+                      <div class="opacity-60 dark:text-[#fff] font-[10px] leading-[20px] h-[1cm] truncate-2-lines">{{ .Summary }}</div>
+              </a>
           </div>
 
-      </a>
       <span>
 
       <time class="first:ml-0 ml-1 mr-1 no-underline font-bold text-sm mb-2 text-dark opacity-70 dark:text-[#fff]">{{ .Date | time.Format ":date_medium" }}</time>
