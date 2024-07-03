@@ -6,7 +6,6 @@
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
-  <link href="{{ `app.css`| relURL }}" rel="stylesheet" />
 
   <!-- Title -->
   <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Params.web_title }}</title>
@@ -36,8 +35,9 @@
   {{ $custom := resources.Get "custom.css" }}
   <!---->
   {{ $css := slice $main $custom | resources.Concat "main.css" | minify }}
+  <link href="{{ `app.css`| relURL }}" rel="preload stylesheet" />
   <link rel="preload stylesheet" as="style" href="{{ $css.Permalink }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     {{ $url := .RelPermalink }}
     {{ if or (strings.HasPrefix $url "/categories/") (strings.HasPrefix $url "/tags/") }}
