@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
-
+grid grid-cols-2 gap-4 gap-x-6 w-full
 * {
 
     font-family: "Inter", sans-serif;
@@ -343,3 +343,23 @@ h1,h2,h3,h4,h5,h6{
         border: 1px solid rgb(137 181 250);
     }
 }
+
+
+.suggested_blogs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; /* This sets the gap between rows and columns */
+    gap: 1.5rem; /* This sets the horizontal gap between columns */
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .suggested_blogs {
+        grid-template-columns: 1fr; /* Switch to a single column layout on mobile view */
+    }
+    .title_heading{
+        font-size: 40px;
+
+    }
+}
+

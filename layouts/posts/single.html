@@ -24,7 +24,7 @@
 
 
       </div>
-    <h1 class="!my-0 pb-2.5 leading-[120%] ">{{ .Title }}</h1>
+    <h1 class="!my-0 pb-2.5 leading-[120%] title_heading">{{ .Title }}</h1>
     {{ if ne .Type "page" }}
         <div class="text-sm">
           {{ if .Date }}
@@ -175,8 +175,8 @@
 
 <script src="/js/image.js" type="text/javascript"></script>
 
-<div id="main_container" class="relative">
-    <div class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert">
+<div id="" class="relative">
+    <div class="w-[100%] px-8 pb-16 pt-12 dark:prose-invert">
           <!-- Lets calculate related blogs -->
             {{ $relatedPosts := (where .Site.RegularPages "Type" "posts") | shuffle }}
             <!-- Exclude the current post and keep only those with intersecting tags -->
@@ -189,7 +189,7 @@
           {{ if gt (len $relatedPosts) 0 }}
           <div>
                 <h2 class="mt-16 mb-8 font-bold">Related Posts</h2>
-                <div class="grid grid-cols-2 gap-4 gap-x-6 w-full">
+                <div class="suggested_blogs">
                 {{ range $relatedPosts }}
                     {{ partial "suggestions.html" . }}
                 {{end}}
@@ -208,13 +208,12 @@
 
           {{ if gt (len $randomPosts) 0 }}
             <h2 class="mt-16 mb-8 font-bold">You may also like</h2>
-            <div class="grid grid-cols-2 gap-4 w-full">
+            <div class="suggested_blogs">
             {{ range $randomPosts }}
                 {{ partial "suggestions.html" . }}
             {{end}}
             </div>
           {{ end }}
     </div>
-    <div></div>
 </div>
 {{ end }}
