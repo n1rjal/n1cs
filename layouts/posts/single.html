@@ -176,7 +176,7 @@
 <script src="/js/image.js" type="text/javascript"></script>
 
 <div id="" class="relative">
-    <div class="w-[100%] px-8 pb-16 pt-12 dark:prose-invert">
+    <div class="w-[100%] pb-16 pt-12 dark:prose-invert">
           <!-- Lets calculate related blogs -->
             {{ $relatedPosts := (where .Site.RegularPages "Type" "posts") | shuffle }}
             <!-- Exclude the current post and keep only those with intersecting tags -->
