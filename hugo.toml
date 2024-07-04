@@ -50,7 +50,7 @@ summaryLength = 20
 
 
   # home page profile
-  avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
+  # avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
   name = 'Nirjal Paudel'
   bio = "I'm Nirjal Paudel, a software developer specializing in database and backend technology, optimization and cloud"
   description = "I'm Nirjal Paudel, a software developer specializing in database and backend technology, optimization and cloud. Here I will share my tech experience"

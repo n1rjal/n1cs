@@ -53,7 +53,6 @@ This writing is about my learning with kubernetes. This blog might be a quick lo
 
 <aside>
 💡 We scale by adding more pods in either in same node or in a different node in the same cluster
-
 </aside>
 
 ### Multi-container pods

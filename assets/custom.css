@@ -363,3 +363,16 @@ h1,h2,h3,h4,h5,h6{
     }
 }
 
+
+/*   For aside */
+
+.custom-aside {
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 10px 15px;
+    margin: 20px 0;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+}
+
