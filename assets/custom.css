@@ -207,6 +207,13 @@ h1,h2,h3,h4,h5,h6{
     line-height: 1.75 !important;
 }
 
+:is(:where(.dark) .js-reading-content),
+:is(:where(.dark) summary)
+{
+    
+    color: #D5D4D9 !important
+}
+
 #main_container {
     display: grid;
     grid-template-columns: 3fr 1fr;

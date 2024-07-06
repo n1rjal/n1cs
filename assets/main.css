@@ -1050,19 +1050,19 @@ body {
   --tw-prose-th-borders: #d1d5db;
   --tw-prose-td-borders: #e5e7eb;
   --tw-prose-invert-body: #d1d5db;
-  --tw-prose-invert-headings: #fff;
+  --tw-prose-invert-headings: #A5A5A9;
   --tw-prose-invert-lead: #9ca3af;
-  --tw-prose-invert-links: #fff;
-  --tw-prose-invert-bold: #fff;
+  --tw-prose-invert-links: #A5A5A9;
+  --tw-prose-invert-bold: #A5A5A9;
   --tw-prose-invert-counters: #9ca3af;
   --tw-prose-invert-bullets: #4b5563;
   --tw-prose-invert-hr: #374151;
   --tw-prose-invert-quotes: #f3f4f6;
   --tw-prose-invert-quote-borders: #374151;
   --tw-prose-invert-captions: #9ca3af;
-  --tw-prose-invert-kbd: #fff;
+  --tw-prose-invert-kbd: #A5A5A9;
   --tw-prose-invert-kbd-shadows: 255 255 255;
-  --tw-prose-invert-code: #fff;
+  --tw-prose-invert-code: #A5A5A9;
   --tw-prose-invert-pre-code: #d1d5db;
   --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
   --tw-prose-invert-th-borders: #4b5563;
@@ -1251,19 +1251,19 @@ body {
   --tw-prose-th-borders: #d4d4d4;
   --tw-prose-td-borders: #e5e5e5;
   --tw-prose-invert-body: #d4d4d4;
-  --tw-prose-invert-headings: #fff;
+  --tw-prose-invert-headings: #fefefe;
   --tw-prose-invert-lead: #a3a3a3;
-  --tw-prose-invert-links: #fff;
-  --tw-prose-invert-bold: #fff;
+  --tw-prose-invert-links: #fefefe;
+  --tw-prose-invert-bold: #fefefe;
   --tw-prose-invert-counters: #a3a3a3;
   --tw-prose-invert-bullets: #525252;
   --tw-prose-invert-hr: #404040;
   --tw-prose-invert-quotes: #f5f5f5;
   --tw-prose-invert-quote-borders: #404040;
   --tw-prose-invert-captions: #a3a3a3;
-  --tw-prose-invert-kbd: #fff;
+  --tw-prose-invert-kbd: #fefefe;
   --tw-prose-invert-kbd-shadows: 255 255 255;
-  --tw-prose-invert-code: #fff;
+  --tw-prose-invert-code: #fefefe;
   --tw-prose-invert-pre-code: #d4d4d4;
   --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
   --tw-prose-invert-th-borders: #525252;
@@ -1870,7 +1870,7 @@ article {
 }
 
 :is(:where(.dark) article) {
-  --tw-text-opacity: 1;
+  --tw-text-opacity: 0.6;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
@@ -2091,7 +2091,7 @@ article .highlight > div table tr td:last-of-type {
 }
 
 :is(:where(.dark) .dark\:text-white) {
-  --tw-text-opacity: 1;
+  --tw-text-opacity: 60%;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
