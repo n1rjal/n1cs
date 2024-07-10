@@ -11,6 +11,13 @@ enableGitInfo = true
 googleAnalytics = "G-LZ4S5KBNWY"
 summaryLength = 20
 
+[sitemap]
+  changeFreq = 'daily'
+  priority = 1
+  Weight = [["main", "1"], ["sub2", "0.8"], ["sub3", "0.6"]]
+  enableRobotsTXT = true
+
+
 [taxonomies]
   tag = "tags"
   category = "categories"
@@ -33,7 +40,7 @@ summaryLength = 20
   [minify.tdewolff]
     [minify.tdewolff.js]
       keepVarNames = true
-      
+
 
 [params]
   # color style
