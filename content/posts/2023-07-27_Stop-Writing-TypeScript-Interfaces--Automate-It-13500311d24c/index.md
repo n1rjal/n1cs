@@ -12,6 +12,11 @@ tags:
 - tools
 categories:
 - productivity
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 **EDIT 1: After many requests from users of this tools, I have decided to remove I prefix from the name of the interface**

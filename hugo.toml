@@ -11,12 +11,13 @@ enableGitInfo = true
 googleAnalytics = "G-LZ4S5KBNWY"
 summaryLength = 20
 
-[sitemap]
-  changeFreq = 'daily'
-  priority = 1
-  Weight = [["main", "1"], ["sub2", "0.8"], ["sub3", "0.6"]]
-  enableRobotsTXT = true
+[outputs]
+  home = ["HTML", "RSS", "SITEMAP"]
 
+[sitemap]
+  changefreq = "monthly"
+  priority = -0.5
+  filename = "sitemap.xml"
 
 [taxonomies]
   tag = "tags"

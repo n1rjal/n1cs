@@ -10,6 +10,11 @@ tags:
 - mongodb
 categories:
 - database
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Hello everyone 👋👋

@@ -12,6 +12,11 @@ categories:
 tags:
 - Habit
 - New things
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Recently in my country, many hashtag challenges are going viral. Challenges like #couplechallenge, #singlechallenge, #dropyourdopephoto, #dropyourpout etc are coming and going around in social media platform. Is it a good thing? Is it a showoff? I can’t tell you that because I don’t know the reason behind that. LOL

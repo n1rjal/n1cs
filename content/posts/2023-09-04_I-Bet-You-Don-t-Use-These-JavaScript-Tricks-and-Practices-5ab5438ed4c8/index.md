@@ -12,6 +12,11 @@ tags:
 - js
 categories:
 - tips and tricks
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 

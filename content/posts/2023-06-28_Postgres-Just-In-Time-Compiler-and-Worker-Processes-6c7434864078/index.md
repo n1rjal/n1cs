@@ -13,6 +13,11 @@ tags:
 - optimization
 categories:
 - database
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Both Just In Time compiler or JIT and worker processes could be news to you. By the end of this article, you would be able to understand the picture I have provided.

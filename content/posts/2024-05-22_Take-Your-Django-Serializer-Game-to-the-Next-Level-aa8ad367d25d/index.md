@@ -14,6 +14,11 @@ categories:
 - backend
 slug: >-
   /@nirjalpaudel54312/take-your-django-serializer-game-to-the-next-level-aa8ad367d25d
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Django has always been a quick go to framework that I mostly use when I need some result quickly. Start with the server or when I want to set up a quick server. DRF is used to create rest framework on top of Django. It has various components like viewsets, routers, serializes, etc. This article is going to be about serializer only.

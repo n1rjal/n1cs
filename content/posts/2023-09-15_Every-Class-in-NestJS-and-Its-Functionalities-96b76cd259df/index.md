@@ -13,6 +13,11 @@ tags:
 - summary
 categories:
 - backend
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 NestJS is a huge framework built on top of TypeScript, JavaScript also uses Express or Fasitfy as an underlying mechanism to route requests. It uses decorator-based syntax and the concept in NestJS is similar to that of Angular. The source code looks similar to that of Spring boot, Dotnet MVC. Similar in the sense that they all follow dependency injection and IOC principles.

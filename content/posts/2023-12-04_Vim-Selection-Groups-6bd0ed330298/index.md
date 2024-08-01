@@ -12,6 +12,11 @@ tags:
 - setup
 categories:
 - productivity
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 In Neovim, the scope that regular expression select group is out of this world. Here is a screencast of me making a json object out of just text data. 🧑‍💻

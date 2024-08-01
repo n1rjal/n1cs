@@ -13,6 +13,11 @@ tags:
 - tools
 categories:
 - projects
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 I have been diving into the working of rust and I am loving how rust is just opposite of my primary language like typescript/javascript enums and structs just works like C++ or C. I am loving rust and will probably add more content on comparing rust with typescript.

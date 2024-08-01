@@ -12,6 +12,11 @@ tags:
 - neovim
 categories:
 - productivity
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Vim has been throne till my software development. Something that I always ignored and looked away from. Here I would love to reverse time a by few years and see how my programming journey went and vim has made the journey better making me a more productive software enginner overall. By the way, fireship has the best introduction video about neovim

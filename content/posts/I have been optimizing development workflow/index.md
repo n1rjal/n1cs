@@ -16,9 +16,13 @@ tags:
 summary: 'How I enhanced developer productivity with personal tools, bash scripts, aliases and organizational practices'
 params:
   author: Nirjal Paudel
-  images: 
+  images:
   - og_dev_prod.png
-
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 ![Untitled](img/Untitled.webp)
@@ -29,11 +33,11 @@ As a developer, we write many code and most of the times, we as a developer all 
 ### According to ChatGPT
 
 > Developer productivity refers to the efficiency and effectiveness with which software developers can produce high-quality software and achieve project goals. It encompasses various aspects including coding speed, code quality, problem-solving abilities, and the overall impact of a developer's work on the project's success
-> 
+>
 
 ### According to Myself
 
-Developers productivity is something that makes my process of coding, working and making software more fast and efficient. I have been following some extreme and some easy ways to make the code cycle more effective. 
+Developers productivity is something that makes my process of coding, working and making software more fast and efficient. I have been following some extreme and some easy ways to make the code cycle more effective.
 
 Here are some of the practices that I have been following to make myself efficient.
 
@@ -45,7 +49,7 @@ This part of the blog involves most of the steps/tools that I use to make my cod
 
 I have been using neovim to make my coding process really efficient and you are a VScode user 🤣 (pun intended). Neovim has many features like registers, macros, and a effective way to navigate the codebase.
 
-Tmux is a terminal multiplexer. Learn more about Tmux here. It has a huge list of plugin that can be plugged into your tmux config and it makes it easier for you to work on multiple terminal session at once. 
+Tmux is a terminal multiplexer. Learn more about Tmux here. It has a huge list of plugin that can be plugged into your tmux config and it makes it easier for you to work on multiple terminal session at once.
 
 ![Untitled](img/Untitled%201.webp)
 
@@ -53,18 +57,18 @@ Imagine instead of opening folder everytime you switch project you search by nam
 
 ![Untitled](img/Untitled%202.webp)
 
-Here is what a typical development would look like in my terminal. 
+Here is what a typical development would look like in my terminal.
 
 I will have one part of terminal (also called **tmux panes**) one runs neovim, one runs server and the other one is for interactive REPL session. Jumping between them is as easy as pressing 2 buttons.
 
 ### Command line Aliases
 
-Aliases can be created by using bashrc or .zshrc files or any files if you source if it. Aliases makes it easy to reference the commands. Here are some of the command line alisases you can use to make your development process one bit easier. 
+Aliases can be created by using bashrc or .zshrc files or any files if you source if it. Aliases makes it easy to reference the commands. Here are some of the command line alisases you can use to make your development process one bit easier.
 
 Using commands like these, I can make my process I bit easier. Here is an example to show you example of how I can use dc to start docker compose
 
 ```bash
-# for git 
+# for git
 alias g="git"
 alias gf="git-flow"
 
@@ -108,7 +112,7 @@ alias sshserv="ssh -i ~/sshkey.pem ubuntu@<ip>"
 
 ### Command Line Functions
 
-Command line functions are functions that you declare in your .bashrc or .zshrc files. I have some functions that helps me perform some tasks easily. Here are some of the functions that I have build to make my process that bit easier. 
+Command line functions are functions that you declare in your .bashrc or .zshrc files. I have some functions that helps me perform some tasks easily. Here are some of the functions that I have build to make my process that bit easier.
 
 ```bash
 function sdrr () {
@@ -166,7 +170,7 @@ jj() {
 ```
 
 > Here is an example below of using the command line functions. The acp function here git add, commit with the given message and then pushing it to the remote( origin )
-> 
+>
 
 ![Untitled](img/Untitled%204.webp)
 
@@ -174,7 +178,7 @@ jj() {
 
 I have been using some of the command line tools to make it easier to perform some boring to do but important tasks. Here are some of the tools that I use.
 
-**Curl and jq** 
+**Curl and jq**
 
 Jq is a tools that I allows us to parse JSON content from the command line itself, it works well with curl. Curl is a http client tool mostly comes preinstalled in most linux OS. Here is how I use jq and curl to navigate the response of the rest api in the terminal. Here is what I will see the response.
 
@@ -196,11 +200,11 @@ cd ** # and then I press TAB
 
 ## Organizational Productivity
 
-Organization productivity is generally achieved by following various cultural and decisions that makes it easier to integrate new people and makes it easier to implement high quality code. 
+Organization productivity is generally achieved by following various cultural and decisions that makes it easier to integrate new people and makes it easier to implement high quality code.
 
 ### Organizational template repository
 
-Organizational templates are those templates that my organization uses when starting a new project. It has some of the dot files, that we use like `pretteric.json` `eslintric.json` and all the `docker-compose.yml` files that makes it easier to setup the required infrastructure for the project and all the packages that may or will be used also comes preinstalled here. 
+Organizational templates are those templates that my organization uses when starting a new project. It has some of the dot files, that we use like `pretteric.json` `eslintric.json` and all the `docker-compose.yml` files that makes it easier to setup the required infrastructure for the project and all the packages that may or will be used also comes preinstalled here.
 
 Here are two public repository that we use.
 
@@ -210,7 +214,7 @@ Here are two public repository that we use.
 
 ### Pre-commit hooks
 
-Pre-commit hooks are those hooks that will run before commit ( so called pre-commit ). There are various pre commit hooks that we use. Generally in Nestjs code base there is a pre-commit hook that will do the prettier formatting and also eslint standard checks and also unit tests, if there are any. 
+Pre-commit hooks are those hooks that will run before commit ( so called pre-commit ). There are various pre commit hooks that we use. Generally in Nestjs code base there is a pre-commit hook that will do the prettier formatting and also eslint standard checks and also unit tests, if there are any.
 
 ### Github actions
 
@@ -221,7 +225,7 @@ Github actions are some actions/code that will run when a specific actions happe
 3. Manual dispatch
 4. Periodic dispatch via cron job
 
-When events like this happen, some action will be triggered. I cannot show the code of Github action used in my organization but here is one I use to re-trigger the blog site you are seeing right now. 
+When events like this happen, some action will be triggered. I cannot show the code of Github action used in my organization but here is one I use to re-trigger the blog site you are seeing right now.
 
 ```yaml
 name: Update random blogs
@@ -243,11 +247,11 @@ jobs:
 ```
 
 We also use one app on our organization that will receive notifications on successful execution of organizational process and once we don’t get regular notifications. Then we come to realize that something is wrong and we are fucked probably via a bug or some random breakage in code. I will publish more on this later sometimes.
-> 
+>
 
 ## Conclusion
 
-Being productive has many angles and I only talked about the development part here. Offcourse there are other types of productivity as well. Lets say, cutting out disturbances while working, etc. There are enough videos out there on this topic. 
+Being productive has many angles and I only talked about the development part here. Offcourse there are other types of productivity as well. Lets say, cutting out disturbances while working, etc. There are enough videos out there on this topic.
 
 > I will always try to make my process more effective. So, if I missed something lets connect on linkedin at [https://www.linkedin.com/in/nirjalpaudel](https://www.linkedin.com/in/nirjalpaudel)
 >

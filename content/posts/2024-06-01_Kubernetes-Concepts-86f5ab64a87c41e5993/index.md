@@ -11,6 +11,11 @@ tags:
 - courses
 categories:
 - devops
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 This writing is about my learning with kubernetes. This blog might be a quick look for my day to day uses with kubernetes. Hope you like it 🤌
 

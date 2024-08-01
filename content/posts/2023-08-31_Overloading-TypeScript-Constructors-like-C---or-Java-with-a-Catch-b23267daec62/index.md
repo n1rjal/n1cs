@@ -14,9 +14,12 @@ categories:
 tags:
 - js
 - overloading
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
-
-
 Whenever I was looking into the TypeScript Date class constructor implementation, I always wondered how its constructor signature worked like that, how it can have many signature, how can it work with 1st argument as number or string or an instance of itself. Every time I tried to implement the constructor signature in TypeScript using the documentation like TypeScript says I was getting type error shown below.
 
 ![](img/1__gSrFHn2__nTLUEDVZdI5QQw.png)

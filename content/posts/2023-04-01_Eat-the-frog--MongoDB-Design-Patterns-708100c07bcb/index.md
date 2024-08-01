@@ -13,6 +13,11 @@ tags:
 - design-patterns
 categories:
 - database
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 Here are some of the few design patterns that you can use to better your MongoDB schema, so you’ll keep your team happy and yourself happier.

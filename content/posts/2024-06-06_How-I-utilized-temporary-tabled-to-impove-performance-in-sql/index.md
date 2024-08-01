@@ -13,6 +13,11 @@ tags:
 - postgres
 - sql
 draft: false
+sitemap:
+  changeFreq: ""
+  disable: false
+  filename: sitemap.xml
+  priority: 1
 ---
 
 <aside>

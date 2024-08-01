@@ -6,6 +6,12 @@ type: reading-list
 summary: All the quality blogs that I have gone through and will suggest you go through as well
 params:
   author: Nirjal Paudel
-  images: 
+  images:
   - read_list.png
+sitemap:
+  changeFreq: "weekly"
+  disable: false
+  filename: sitemap.xml
+  priority: 10
+
 ---
