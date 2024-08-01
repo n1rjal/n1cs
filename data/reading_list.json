@@ -1,4 +1,12 @@
 {
+  "August, 2024": [
+    {
+      "url": "https://swizec.com/blog/90p-of-performance-is-data-access-patterns/?ref=dailydev",
+      "category": "Uncategorized",
+      "created_at": "2024-08-01T04:35:00.000Z",
+      "name": "90% of performance is data access patterns | Swizec Teller"
+    }
+  ],
   "July, 2024": [
     {
       "url": "https://medium.com/databasss/on-disk-io-part-1-flavours-of-io-8e1ace1de017",
