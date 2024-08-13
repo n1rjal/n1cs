@@ -19,19 +19,17 @@ sitemap:
 
 Lambda can be deployed using .zip archive function container image with OCI or docker container image
 
-<aside>
 📌 We can use reserved concurrency to limit the number of maximum concurrent invocations for your function.
 
 ---
 
 **Function’s Maximum request rate per second (RPS)**
 
-`10 * maximum reserved concurrency`
+10 * maximum reserved concurrency
 
 > Reserved concurrency = 0 means, function is deactivated
 >
 
-</aside>
 
 <aside>
 ⚠️ Use AWS SAM for making lambda
