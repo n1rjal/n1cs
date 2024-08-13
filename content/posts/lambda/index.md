@@ -1,22 +1,19 @@
 ---
-title: LAMBDA
-description: >-
-  Recently in my country, many hashtag challenges are going viral. Challenges
-  like #couplechallenge, #singlechallenge, #dropyourdopephoto…
+title: "Aws Lambda"
+description: "AWS Lambda deployment and best practices overview."
 date: '2024-08-09T08:57:45.903Z'
-categories: []
-keywords: []
-slug: /@nirjalpaudel54312/lambda
 categories:
-- learning
+  - learning
 tags:
-- Habit
-- New things
+  - Lambda
+  - AWS
+  - Serverless
 sitemap:
-  changeFreq: ""
+  changeFreq: "monthly"
   disable: false
   filename: sitemap.xml
-  priority: 1
+  priority: 0.8
+
 ---
 # Lambda
 
@@ -48,7 +45,7 @@ Can find paterns here.
 ![Untitled](./img/Untitled.webp)
 
 <aside>
-⚠️ **Lifecycle**
+## Lifecycle
 
 ![Untitled](./img/Untitled%201.webp)
 
@@ -57,7 +54,7 @@ Can find paterns here.
 </aside>
 
 <aside>
-📌 Design Best Practices
+## Design Best Practices
 
 - Separate business logic from handler method
 - Single purpose function. Rather use 3 seperate functions instead of 3 things in one function
@@ -68,7 +65,7 @@ Can find paterns here.
 ![Untitled](./img/Untitled%203.webp)
 
 <aside>
-📌 Security
+## Security
 
 **IAM resource policy:** Think what has access to trigger.
 
@@ -81,7 +78,7 @@ SAM only allows permissions of resources mentioned in the template.
 ![Untitled](./img/Untitled%204.webp)
 
 <aside>
-📌 Billing
+## Billing
 
 - Pay as you go, Pay for value
 - Based on number of requests / number of invokes
@@ -98,7 +95,7 @@ SAM only allows permissions of resources mentioned in the template.
 ![Untitled](./img/Untitled%207.webp)
 
 <aside>
-📌 Lambda Networking
+## Lambda Networking
 
 ![Untitled](./img/Untitled%208.webp)
 
@@ -108,7 +105,7 @@ SAM only allows permissions of resources mentioned in the template.
 
 </aside>
 
-### Lambda Scaling
+## Lambda Scaling
 
 ---
 
@@ -183,7 +180,7 @@ Concurrency = (5,000 requests/second) / (5 requests/second) = 1,000
 </aside>
 
 <aside>
-⚠️ 10 execution environment instances can handle at least 100 request per second, as concurrency * 10
+10 execution environment instances can handle at least 100 request per second, as concurrency * 10
 
 > Because an execution environment can only handle 10 RPS
 >
@@ -196,7 +193,7 @@ But the an execution environment can only handle 10 * concurrent meaning that, i
 
 </aside>
 
-### **Concurrency control in Lambda**
+## **Concurrency control in Lambda**
 
 <aside>
 ⚠️ At maximum, you will have 1000 concurrent executions across all functions in a region. - **On Demand Basis -  429 if you run out of provisioned concurrency**
@@ -248,7 +245,7 @@ The diagram below is similar and must be done like this in production to limit u
 </aside>
 
 <aside>
-📌 Lambda Deployments
+##  Lambda Deployments
 
 - Add aliases. Latest is $LATEST
 - Alias is a function version pointer
