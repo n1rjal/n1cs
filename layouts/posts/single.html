@@ -51,23 +51,21 @@
 
   <section class="text-black sm:text-[15px] dark:text-white leading-[150%] js-reading-content">{{ .Content }}</section>
 
-    <script> 
+    <script>
         const article = document.getElementById("article");
         let prog = document.getElementById('progress');
 
         let body = document.body,
         html = document.documentElement;
+        let content = document.querySelector(".js-reading-content");
 
-        let height = Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-        );
 
         const setProgress = () => {
             let scrollFromTop = document.documentElement.scrollTop;
+
+            height = Math.max(
+                content.scrollHeight,
+            );
             let width = (scrollFromTop / height) * 100;
             if (width>100) width=100;
             width = width + "%";
@@ -122,6 +120,7 @@
   <!-- Disqus -->
   {{ if and site.DisqusShortname (not (eq .Params.comments false)) }}
   <div class="mt-24" id="disqus_thread">
+      <hr />
       <div id="disqus-disclaimer">
         <p>
           For the time being, comments are managed by Disqus, a third-party library. I will eventually replace it with another solution, but the timeline is unclear. Considering the amount of data being loaded, if you would like to view comments or post a comment, click on the button below. For more information about why you see this button, take a look at the following <a href="/articles/load_disqus_comments_on_click/">article</a>.

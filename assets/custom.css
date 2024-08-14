@@ -210,7 +210,7 @@ h1,h2,h3,h4,h5,h6{
 :is(:where(.dark) .js-reading-content),
 :is(:where(.dark) summary)
 {
-    
+
     color: #D5D4D9 !important
 }
 
@@ -346,7 +346,7 @@ h1,h2,h3,h4,h5,h6{
         max-width: 5cm;
         padding: 10px 20px;
         color: #fff;
-        background-color: #081f45; 
+        background-color: #081f45;
         border: 1px solid rgb(137 181 250);
     }
 }
@@ -375,4 +375,3 @@ h1,h2,h3,h4,h5,h6{
     display: flex;
     align-items: center;
 }
-
