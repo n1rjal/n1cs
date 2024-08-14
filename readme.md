@@ -1,8 +1,8 @@
 ## N1CS
 Nirjal Paudel & Computer science
 
-## General Info 
-This repo powers my blog which is about my love with computer science and my passion put into words. 
+## General Info
+This repo powers my blog which is about my love with computer science and my passion put into words.
 
 ## Tech Stack Used:
 1. [GoHugo - Static Site generator](https://gohugo.io/)
@@ -23,3 +23,7 @@ I have 2 scripts file here and it does the following
 I have a github actions that does the following
 1. Redeploys the server in cloudflare, You may also like section in the blogs are supposed to be random and static sites aren't random so, this action refresh it and making it somewhat random.
 2. Syncs my notion reading list with reading list data over here, commmits the changes and the reading list in the site updates
+
+
+
+
