@@ -1,6 +1,12 @@
 {
   "August, 2024": [
     {
+      "url": "https://medium.com/aws-in-plain-english/how-disney-uses-amazon-dynamodb-to-serve-billions-of-customer-actions-daily-aa14b9a638dc",
+      "category": "Uncategorized",
+      "created_at": "2024-08-30T15:36:00.000Z",
+      "name": "How Disney+ Uses Amazon DynamoDB To Serve Billions Of Customer Actions Daily | by Uriel Bitton | Jul, 2024 | AWS in Plain English"
+    },
+    {
       "url": "https://vivekbansal.substack.com/p/mysql-vs-postgresql-indexing",
       "category": "Uncategorized",
       "created_at": "2024-08-26T06:39:00.000Z",
