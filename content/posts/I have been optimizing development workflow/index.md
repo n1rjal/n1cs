@@ -1,4 +1,3 @@
-
 ---
 title: I have been optimizing my development productivity
 date: '2024-06-23T08:57:45.903Z'
