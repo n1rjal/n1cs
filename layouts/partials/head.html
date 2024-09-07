@@ -60,7 +60,6 @@
       <link rel="preload" as="image" href="{{ $avatar_url }}" />
   {{ end }}
   <!---->
-
   <!-- Social List -->
   {{ range $.Scratch.Get "social_list" }}
       <link rel="preload" as="image" href="{{ printf `%s.svg` . | absURL }}" />
@@ -95,6 +94,8 @@
     <link rel="apple-touch-icon" href="{{ site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL }}" />
 
 
+
+
     <!-- Production -->
     {{ if or hugo.IsProduction (eq site.Params.env "production") }}
         <!---->
@@ -114,6 +115,7 @@
         title="{{ site.Title }}"
         />
     {{ end }}
+
 
 
 <!---->

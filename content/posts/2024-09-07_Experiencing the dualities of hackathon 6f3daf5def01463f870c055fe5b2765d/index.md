@@ -22,14 +22,14 @@ sitemap:
 params:
   author: Nirjal Paudel
   images:
-  - duality.png
+  - duality.webp
 ---
 
 ## Background
 
 The room was tidy and amid the hustle and bustle, three professional looking person walked up to us. The atmosphere shifted to one of seriousness as a bell rang, signalling that it was our team’s turn to present. I let out a big sigh and feeling all the air molecules travelling to my diaphragm and back again.
 
-![](img/image.webp)
+![](img/duality.webp)
 
 Well fast forward 4 years, a week ago the planned published date, I received a call - it was an invitation to judge Ideas for hackathon. Talking about IdeaX, it’s a hackathon organized by my [college](https://www.mbmc.edu.np/). Amid the blooming room of the pre-teej daar program organized in my home felt a bit anxious questioning whether I got it ? As time stood still, I thought for a while and accepted the invitation.
 
