@@ -1,3 +1,5 @@
+/* This JavaScript code snippet is adding an event listener to the `DOMContentLoaded` event of the
+document. When the DOM content is fully loaded, the provided function is executed. */
 document.addEventListener("DOMContentLoaded", function () {
   // Function to create a copy button
   function createCopyButton(pre) {
