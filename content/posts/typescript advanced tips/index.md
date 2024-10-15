@@ -22,7 +22,7 @@ date: "2024-10-15T00:28:47.959Z"
 
 ## Looking back
 
-Around a year ago, I wrote and article saying “[I bet you don’t know these javascript tips and tricks](https://nirjalpaudel.com.np/posts/@nirjalpaudel54312/i-bet-you-dont-use-these-javascript-tricks-and-pratices-5ab5438ed4c8/)”. Well this is going to be an upgrade on that. I truly bet that you don’t use these typescript tips and tricks. So keeping the old vows, tell me how many you know and are being used in your day to day life. So let’s begin shall we ?
+Around a year ago, I wrote an article saying “[I bet you don’t know these javascript tips and tricks](https://nirjalpaudel.com.np/posts/@nirjalpaudel54312/i-bet-you-dont-use-these-javascript-tricks-and-pratices-5ab5438ed4c8/)”. Well this is going to be an upgrade on that. I truly bet that you don’t use these typescript tips and tricks. So keeping the old vows, tell me how many you know and are being used in your day to day life. So let’s begin shall we ?
 
 ![image.webp](img/image.webp)
 
