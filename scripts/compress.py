@@ -30,6 +30,7 @@ def compress_image(image_path, output_path, quality=85):
         print(f"Error compressing {image_path}: {e}")
 
 
+print("Running script to replace images")
 for root, dirs, files in os.walk("./content/posts", topdown=True):
     if "index.md" in files and "img" in dirs:
         file_changed = False
