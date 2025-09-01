@@ -10,7 +10,7 @@ tags:
 - open source
 - foss
 - ubucon 2025
-summary: 'I wrote a blog post about my experience at Ubucon 2025 in Nepal, a major event for the open-source community that I was thrilled to attend as a participant. I had the opportunity to meet and talk with many interesting people, including Jianfeng Li about AI, Frank Karlitschek from Nextcloud, and Joey Zeng and Jane Yang who are building a new computer motherboard. I also got to dive into a variety of technical topics, from RISC vs. CISC to vertical vs. horizontal scaling. The whole event was a huge success for me, leaving me inspired and ready to get more involved in organizing similar events in the future.'
+summary: 'I wrote a blog post about my experience at Ubucon 2025 in Nepal, a major event for the open-source community. I had the opportunity to meet and talk with many interesting people. I also got to dive into a variety of technical topics, from RISC vs. CISC to vertical vs. horizontal scaling. The whole event was a huge success for me, leaving me inspired and ready to get more involved in organizing similar events in the future.'
 params:
   author: Nirjal Paudel
   images:
