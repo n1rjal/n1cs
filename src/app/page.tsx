@@ -14,8 +14,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import TrustedCompanies from "@/components/TrustedCompanies";
 import ResumeDownloadButton from "@/components/ResumeDownloadButton";
+import { getBlogPosts } from "@/lib/notion";
+import BlogListPageWrapper from "@/components/BlogListPageWrapper";
 
 export default async function Home() {
+  const blogPosts = await getBlogPosts();
   return (
     <Box
       sx={{
@@ -143,53 +146,18 @@ export default async function Home() {
       <TrustedCompanies />
 
       <Container maxWidth="md" sx={{ mt: 4 }}>
-        <Typography variant="h3" component="h3" gutterBottom>
-          Latest Blog Posts
-        </Typography>
         <Box
           sx={{
-            display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
             gap: 3,
           }}
         >
-          {blogPosts.length > 0 ? (
-            blogPosts.map((post) => (
-              <Card
-                key={post.id}
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h6" component="h2">
-                    {post.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Published:{" "}
-                    {new Date(post.createdTime).toISOString().split("T")[0]}
-                  </Typography>
-                  <Button
-                    size="small"
-                    component={Link}
-                    href={`/blog/${post.slug}`}
-                  >
-                    Read More
-                  </Button>
-                </CardContent>
-              </Card>
-            ))
-          ) : (
-            <Typography variant="body2">
-              No blog posts found. Please ensure your Notion database is set up
-              correctly and has published posts.
-            </Typography>
-          )}
+          <BlogListPageWrapper
+            title="Latest Blog Posts"
+            blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
+          />
         </Box>
 
-        {/* Newsletter Section */}
         <Box
           sx={{
             bgcolor: "background.paper",
@@ -202,7 +170,8 @@ export default async function Home() {
         >
           <Container maxWidth="sm">
             <Typography variant="h5" component="h2" gutterBottom>
-              Subscribe to My Newsletter
+              Want more <GlowedLink href="/blog">Read blogs</GlowedLink> or{" "}
+              <GlowedLink href="/reading-list">Reading Lists</GlowedLink>
             </Typography>
             <Typography variant="body1" paragraph>
               Stay up-to-date with my latest projects, articles, and insights.

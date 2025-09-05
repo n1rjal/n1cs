@@ -128,7 +128,6 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                     );
                   }
 
-                  // Block code
                   return (
                     <Box
                       component="pre"
@@ -187,6 +186,7 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 ),
                 p: ({ node, ...props }) => (
                   <Typography
+                    component="div"
                     variant="body1"
                     sx={{
                       color: theme.palette.text.primary,

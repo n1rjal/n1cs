@@ -27,7 +27,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
       </Typography>
       <Box>
         {blogPosts.map((post) => (
-          <Box my="30px">
+          <Box my="30px" key={post.id}>
             <BlogHeader post={post} />
             <Button
               size="small"
