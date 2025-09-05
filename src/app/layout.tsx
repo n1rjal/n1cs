@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google"; // Import Roboto
 import "./globals.css";
 import "highlight.js/styles/github.css";
-import Sidebar from "../components/Sidebar"; // Import Sidebar
+import Sidebar from "../components/Sidebar";
 import ThemeRegistry from "./ThemeRegistry";
-
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"], // Specify weights to load
-  subsets: ["latin"],
-  display: "swap", // Optimize font loading
-}); // Initialize Roboto
 
 export const metadata: Metadata = {
   title: {
@@ -65,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
+    <html suppressHydrationWarning={true} data-lt-installed="true">
       <body>
         <ThemeRegistry>
           <Sidebar>{children}</Sidebar>
