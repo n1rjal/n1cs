@@ -37,7 +37,7 @@ export default async function Home() {
         mb: 0,
       }}
     >
-      <Container maxWidth="md" sx={{ mt: { lg: 4, xl: 4, sl: 0, xs: 0 } }}>
+      <Container maxWidth="md" sx={{ pt: { lg: 8, xl: 8, sl: 4, xs: 4 } }}>
         <Box>
           <Typography
             variant="h6"
@@ -147,11 +147,23 @@ export default async function Home() {
               }}
               display="flex"
             >
-              <Link href="/abouts" passHref>
-                <Button variant="outlined" color="secondary" fullWidth>
+              <Box
+                sx={{
+                  width: {
+                    sm: "100%",
+                    xs: "100%",
+                  },
+                }}
+              >
+                <Button
+                  href="/abouts"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                >
                   About me
                 </Button>
-              </Link>
+              </Box>
             </Grid>
 
             <Grid
@@ -163,19 +175,22 @@ export default async function Home() {
               }}
               display="flex"
             >
-              <Link href="/#keep-in-touch" passHref>
-                <Button variant="outlined" color="secondary" fullWidth>
-                  Get In Touch
-                </Button>
-              </Link>
+              <Button
+                href="/#keep-in-touch"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+              >
+                Get In Touch
+              </Button>
             </Grid>
 
             <Grid
               size={{
                 xs: 12,
-                sm: 6,
+                sm: 5,
                 md: 4,
-                lg: 3,
+                lg: 2,
               }}
               display="flex"
             >
@@ -198,7 +213,8 @@ export default async function Home() {
             }}
           >
             <BlogListPageWrapper
-              title="Latest Blog Posts"
+              center
+              title="Latest Blogs"
               blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
             />
           </Box>
@@ -213,7 +229,12 @@ export default async function Home() {
         }}
       >
         <Container maxWidth="md">
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography
+            variant="h4"
+            textAlign="center"
+            component="h1"
+            gutterBottom
+          >
             <GradientText>My Projects</GradientText>
           </Typography>
           <Typography variant="body1" paragraph>

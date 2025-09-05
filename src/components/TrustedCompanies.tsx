@@ -5,6 +5,8 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import ResponsiveGrid from "./ResponsiveGrid";
+import GradientText from "./GradientText";
 
 const companies = [
   {
@@ -35,9 +37,9 @@ const companies = [
 
 const TrustedCompanies = () => {
   return (
-    <Container>
-      <Typography align="center" variant="h4" component="h4" gutterBottom>
-        Trusted by Companies
+    <ResponsiveGrid sx={{ my: "20px" }}>
+      <Typography textAlign="center" variant="h4" component="h4" gutterBottom>
+        <GradientText>Trusted by Companies</GradientText>
       </Typography>
       <Stack
         direction="row"
@@ -68,7 +70,7 @@ const TrustedCompanies = () => {
           </Box>
         ))}
       </Stack>
-    </Container>
+    </ResponsiveGrid>
   );
 };
 

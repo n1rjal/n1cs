@@ -17,16 +17,26 @@ interface BlogListPageProps {
   blogPosts: BlogPost[];
   title: string;
   renderGradient?: boolean;
+  center?: boolean;
 }
 
 const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
   title,
   blogPosts,
   renderGradient,
+  center,
 }) => {
   return (
     <Box sx={{ my: "10px" }}>
-      <Typography component="h3" variant="h3" my="20px" mb="30px">
+      <Typography
+        {...{
+          component: "h3",
+          variant: "h3",
+          my: "20px",
+          mb: "30px",
+          ...(center && { textAlign: "center" }),
+        }}
+      >
         <GradientText>{title}</GradientText>
       </Typography>
       <Box>
