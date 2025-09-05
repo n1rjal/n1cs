@@ -116,11 +116,13 @@ export default function Sidebar(props: Props) {
           Nirjal&apos;s Blog
         </Typography>
         <IconButton
-          color={theme.palette.mode === "light" ? "#000000" : "inherit"}
           aria-label="close drawer"
           edge="end"
           onClick={handleDrawerClose}
-          sx={{ display: { sm: "none" } }} // Only show on mobile
+          sx={{
+            display: { sm: "none" },
+            color: theme.palette.mode === "light" ? "#000000" : "inherit",
+          }} // Only show on mobile
         >
           <CloseIcon />
         </IconButton>
@@ -315,11 +317,15 @@ export default function Sidebar(props: Props) {
       >
         <Toolbar>
           <IconButton
-            color={theme.palette.mode === "light" ? "#000000" : "inherit"}
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{
+              mr: 2,
+              display: { sm: "none" },
+
+              color: theme.palette.mode === "light" ? "#000000" : "inherit",
+            }}
           >
             <MenuIcon />
           </IconButton>
@@ -333,9 +339,12 @@ export default function Sidebar(props: Props) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
-            sx={{ ml: 1 }}
+            sx={{
+              ml: 1,
+
+              color: theme.palette.mode === "light" ? "#000000" : "inherit",
+            }}
             onClick={colorMode.toggleColorMode}
-            color={theme.palette.mode === "light" ? "#000000" : "inherit"}
           >
             {theme.palette.mode === "dark" ? (
               <Brightness7Icon />
@@ -350,7 +359,6 @@ export default function Sidebar(props: Props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of the NavLink */}
         <Drawer
           container={container}
           variant="temporary"
@@ -393,7 +401,7 @@ export default function Sidebar(props: Props) {
         sx={{
           flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          mt: { xs: "60px", sm: "0" }, // Add margin-top for AppBar on mobile
+          mt: { xs: "60px", sm: "0" },
         }}
       >
         {children}
