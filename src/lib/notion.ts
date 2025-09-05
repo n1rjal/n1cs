@@ -5,7 +5,7 @@ import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-interface BlogPost {
+export interface BlogPost {
   id: string;
   title: string;
   createdTime: string;
@@ -16,17 +16,20 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      property: "Status",
-      status: {
-        equals: "Done",
-      },
+      and: [
+        {
+          property: "Status",
+          status: {
+            equals: "Done",
+          },
+        },
+      ],
     },
   });
 
   return response.results
     .map((page) => {
       if (!("properties" in page)) {
-        // Handle partial page objects if necessary, or filter them out
         return null;
       }
 
@@ -56,7 +59,6 @@ export async function getSingleBlogPost(id: string): Promise<BlogPost | null> {
     }
 
     const typedPage = page as PageObjectResponse;
-
     const titleProperty = typedPage.properties.Name;
     const title =
       titleProperty && titleProperty.type === "title"

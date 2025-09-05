@@ -119,11 +119,7 @@ export default function Sidebar(props: Props) {
             icon: <MenuBookIcon />,
             href: "/reading-list", // Assuming a new page for reading list
           },
-          {
-            text: "White Papers",
-            icon: <DescriptionIcon />,
-            href: "/white-papers", // Assuming a new page for white papers
-          },
+          
         ].map((item) => (
           <ListItem key={item.text} disablePadding dense>
             <ListItemButton
