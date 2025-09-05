@@ -1,0 +1,49 @@
+{
+  "weekly": {
+    "name": "weekly",
+    "subject": "Weekly Update from Nirjal's Blog - {newsletter_date}",
+    "html_template": "\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{newsletter_title}</title>\n    <style>\n        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; }\n        .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }\n        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 30px; }\n        .header h1 { color: #333; margin: 0; }\n        .greeting { font-size: 16px; margin-bottom: 20px; }\n        .content { margin-bottom: 30px; }\n        .posts-section { margin-bottom: 30px; }\n        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; }\n        .footer a { color: #007cba; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>{newsletter_title}</h1>\n            <p>{newsletter_date}</p>\n        </div>\n        \n        <div class=\"greeting\">\n            <p>Hi there! 👋</p>\n            <p>{greeting_message}</p>\n        </div>\n        \n        <div class=\"content\">\n            {main_content}\n        </div>\n        \n        <div class=\"posts-section\">\n            <h2>Recent Posts</h2>\n            {recent_posts}\n        </div>\n        \n        <div class=\"footer\">\n            <p>Thank you for reading! Visit <a href=\"https://nirjalpaudel.com.np\">nirjalpaudel.com.np</a> for more content.</p>\n            <p>Follow me on <a href=\"https://twitter.com/n1rjal\">Twitter</a> | <a href=\"https://github.com/n1rjal\">GitHub</a> | <a href=\"https://linkedin.com/in/nirjalpaudel\">LinkedIn</a></p>\n            <p><em>You're receiving this because you subscribed to our newsletter.</em></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+    "text_template": "\n{newsletter_title}\n{separator}\n\nHi there! 👋\n\n{greeting_message}\n\n{main_content}\n\nRecent Posts:\n{recent_posts}\n\n---\n\nThank you for reading! Visit https://nirjalpaudel.com.np for more content.\nFollow me on Twitter (@n1rjal) | GitHub (n1rjal) | LinkedIn (nirjalpaudel)\n\nYou're receiving this because you subscribed to our newsletter.\n",
+    "description": "Weekly newsletter template with recent posts and updates",
+    "variables": [
+      "newsletter_title",
+      "newsletter_date",
+      "greeting_message",
+      "main_content",
+      "recent_posts",
+      "separator"
+    ],
+    "created_at": "2025-09-05T09:02:17.075297",
+    "updated_at": "2025-09-05T09:02:17.075311"
+  },
+  "announcement": {
+    "name": "announcement",
+    "subject": "📢 {announcement_title}",
+    "html_template": "\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>{announcement_title}</title>\n    <style>\n        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; }\n        .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }\n        .header { text-align: center; background-color: #007cba; color: white; padding: 20px; margin: -30px -30px 30px -30px; border-radius: 10px 10px 0 0; }\n        .header h1 { margin: 0; }\n        .announcement { background-color: #e8f4fd; padding: 20px; border-left: 4px solid #007cba; margin-bottom: 20px; }\n        .content { margin-bottom: 30px; }\n        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; }\n        .footer a { color: #007cba; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>{announcement_title}</h1>\n        </div>\n        \n        <div class=\"announcement\">\n            <h2>📢 Special Announcement</h2>\n            <p>{announcement_message}</p>\n        </div>\n        \n        <div class=\"content\">\n            {announcement_content}\n        </div>\n        \n        <div class=\"footer\">\n            <p>Thank you for reading! Visit <a href=\"https://nirjalpaudel.com.np\">nirjalpaudel.com.np</a> for more content.</p>\n            <p>Follow me on <a href=\"https://twitter.com/n1rjal\">Twitter</a> | <a href=\"https://github.com/n1rjal\">GitHub</a> | <a href=\"https://linkedin.com/in/nirjalpaudel\">LinkedIn</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+    "text_template": "\n{announcement_title}\n{separator}\n\n📢 Special Announcement\n\n{announcement_message}\n\n{announcement_content}\n\n---\n\nThank you for reading! Visit https://nirjalpaudel.com.np for more content.\nFollow me on Twitter (@n1rjal) | GitHub (n1rjal) | LinkedIn (nirjalpaudel)\n",
+    "description": "Template for special announcements and important updates",
+    "variables": [
+      "announcement_title",
+      "announcement_message",
+      "announcement_content",
+      "separator"
+    ],
+    "created_at": "2025-09-05T09:02:17.075307",
+    "updated_at": "2025-09-05T09:02:17.075461"
+  },
+  "post_notification": {
+    "name": "post_notification",
+    "subject": "📝 New Post: {post_title}",
+    "html_template": "\n<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>New Post: {post_title}</title>\n    <style>\n        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; }\n        .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }\n        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 30px; }\n        .post { background-color: #f9f9f9; padding: 20px; border-left: 4px solid #007cba; margin-bottom: 20px; }\n        .post h2 { margin-top: 0; color: #333; }\n        .post-meta { color: #666; font-size: 14px; margin-bottom: 15px; }\n        .read-more { display: inline-block; background-color: #007cba; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; }\n        .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; }\n        .footer a { color: #007cba; }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>📝 New Blog Post</h1>\n        </div>\n        \n        <div class=\"post\">\n            <h2>{post_title}</h2>\n            <div class=\"post-meta\">Published on {post_date}</div>\n            <p>{post_excerpt}</p>\n            <a href=\"{post_url}\" class=\"read-more\">Read Full Post →</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>Thank you for reading! Visit <a href=\"https://nirjalpaudel.com.np\">nirjalpaudel.com.np</a> for more content.</p>\n            <p>Follow me on <a href=\"https://twitter.com/n1rjal\">Twitter</a> | <a href=\"https://github.com/n1rjal\">GitHub</a> | <a href=\"https://linkedin.com/in/nirjalpaudel\">LinkedIn</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+    "text_template": "\n📝 New Blog Post\n\n{post_title}\nPublished on {post_date}\n\n{post_excerpt}\n\nRead the full post: {post_url}\n\n---\n\nThank you for reading! Visit https://nirjalpaudel.com.np for more content.\nFollow me on Twitter (@n1rjal) | GitHub (n1rjal) | LinkedIn (nirjalpaudel)\n",
+    "description": "Template for notifying subscribers about new blog posts",
+    "variables": [
+      "post_title",
+      "post_date",
+      "post_excerpt",
+      "post_url"
+    ],
+    "created_at": "2025-09-05T09:02:17.075310",
+    "updated_at": "2025-09-05T09:02:17.075650"
+  }
+}
