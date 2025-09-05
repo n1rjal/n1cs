@@ -20,6 +20,7 @@ import Testimonials from "@/components/Testimonials";
 import GradientText from "@/components/GradientText";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
@@ -42,12 +43,12 @@ export default async function Home() {
           >
             Hi 👋, I&apos;m
           </Typography>
-          <Typography component="h1" variant="h3">
-            Nirjal Paudel (n1rjal)
+          <Typography component="h1" variant="h1">
+            <GradientText>Nirjal Paudel (n1rjal)</GradientText>
           </Typography>
           <Box
             mt={{
-              lg: "1.5cm",
+              lg: "1.3cm",
               md: "1cm",
               sm: 0,
             }}
@@ -191,13 +192,7 @@ export default async function Home() {
           <Grid container spacing={4} sx={{ mt: 4 }}>
             {projects.slice(0, 3).map((project) => (
               <Grid key={project.id}>
-                <Link
-                  href={`/projects/${project.id}`}
-                  passHref
-                  style={{ textDecoration: "none" }}
-                >
-                  <ProjectCard {...project} />
-                </Link>
+                <ProjectCard {...project} />
               </Grid>
             ))}
           </Grid>
@@ -214,34 +209,7 @@ export default async function Home() {
         </Container>
       </Box>
 
-      <Box sx={{ bgcolor: "background.paper", py: 6 }}>
-        <Container maxWidth="sm">
-          <Typography variant="h5" component="h2" gutterBottom align="center">
-            <GradientText>Want more</GradientText>{" "}
-            <GlowedLink href="/blog">blogs ?</GlowedLink> Checkout{" "}
-            <GlowedLink href="/reading-list">reading lists</GlowedLink>
-          </Typography>
-          <Typography variant="body1" paragraph align="center">
-            Stay up-to-date with my latest projects, articles, and insights.
-          </Typography>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={2}
-            justifyContent="center"
-            sx={{ mt: 3 }}
-          >
-            <TextField
-              label="Your Email"
-              variant="outlined"
-              size="small"
-              sx={{ flexGrow: 1 }}
-            />
-            <Button variant="contained" size="medium" color="secondary">
-              Subscribe
-            </Button>
-          </Stack>
-        </Container>
-      </Box>
+      <NewsletterSubscribe />
 
       <Box id="keep-in-touch" sx={{ bgcolor: "background.default", py: 6 }}>
         <Container maxWidth="md" sx={{ textAlign: "center" }}>

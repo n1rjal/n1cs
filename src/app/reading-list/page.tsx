@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { getReadingListItems, ReadingListItem } from "@/lib/notion";
 import {
   Typography,
@@ -8,6 +9,12 @@ import {
   Link as MuiLink,
 } from "@mui/material";
 import { format } from "date-fns";
+import GradientText from "@/components/GradientText";
+
+export const metadata: Metadata = {
+  title: 'Reading List',
+  description: 'Explore the books, articles, and resources that Nirjal Paudel is currently reading or has read.',
+};
 
 type ReadingListGrouped = { [key: string]: ReadingListItem[] };
 
@@ -42,7 +49,7 @@ export default async function ReadingListPage({
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h3" component="h1" gutterBottom>
-        Reading List
+        <GradientText>Reading List</GradientText>
       </Typography>
 
       <Box

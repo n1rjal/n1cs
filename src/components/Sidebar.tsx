@@ -27,6 +27,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LaunchIcon from "@mui/icons-material/Launch";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import PersonIcon from "@mui/icons-material/Person";
 import ListSubheader from "@mui/material/ListSubheader";
 
 const drawerWidth = 240;
@@ -95,6 +96,11 @@ export default function Sidebar(props: Props) {
             text: "Home",
             icon: <HomeIcon />,
             href: "/",
+          },
+          {
+            text: "About Me",
+            icon: <PersonIcon />,
+            href: "/about",
           },
           {
             text: "Projects",
@@ -283,7 +289,8 @@ export default function Sidebar(props: Props) {
       <Box
         component="main"
         sx={{
-          flexGrow: 1,
+          m: 0,
+          p: 0,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >

@@ -1,10 +1,30 @@
 import { Typography, Box, Container, Chip } from "@mui/material";
+import { Metadata } from 'next';
 import { getPostContent, getSingleProject } from "@/lib/notion";
 import Image from "next/image";
 import ContentWrapper from "@/components/ContentWrapper";
 
 interface ProjectDetailPageProps {
   params: { id: string };
+}
+
+export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
+  const project = await getSingleProject(params.id);
+
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+      description: 'The project you are looking for does not exist.',
+    };
+  }
+
+  return {
+    title: project.name,
+    description: project.description,
+    openGraph: {
+      images: [project.imageUrl],
+    },
+  };
 }
 
 export default async function ProjectDetailPage({

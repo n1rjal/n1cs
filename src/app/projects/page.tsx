@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -5,6 +6,12 @@ import Grid from "@mui/material/Grid";
 import ProjectCard from "@/components/ProjectCard";
 import { getProjects } from "@/lib/notion";
 import Link from "next/link";
+import GradientText from "@/components/GradientText";
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Explore a collection of projects developed by Nirjal Paudel, showcasing expertise in various technologies and problem-solving.',
+};
 
 export default async function ProjectsPage() {
   let notionProjects = await getProjects();
@@ -48,7 +55,7 @@ export default async function ProjectsPage() {
     <Container sx={{ mt: 4, mb: 4 }}>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          My Projects
+          <GradientText>My Projects</GradientText>
         </Typography>
         <Typography variant="body1" paragraph>
           Here are some of the projects I&apos;ve worked on. Click on them to

@@ -94,6 +94,9 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             borderRadius: 8,
             fontWeight: 600,
           },
+          containedSecondary: {
+            color: mode === 'dark' ? '#fff' : '#000',
+          }
         },
       },
       MuiContainer: {

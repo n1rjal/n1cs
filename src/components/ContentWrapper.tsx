@@ -61,13 +61,12 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
 
   return (
     <Grid container spacing={4} my={4}>
-      <Grid item xs={12} md={headings.length > 0 ? 8 : 12}>
+      <Grid>
         <Box
           sx={{
             py: 3,
             borderRadius: 2,
             color: theme.palette.text.primary,
-            maxWidth: "md",
           }}
         >
           <Box component="hr" />
