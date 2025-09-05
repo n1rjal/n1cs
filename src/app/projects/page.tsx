@@ -51,27 +51,15 @@ export default async function ProjectsPage() {
           My Projects
         </Typography>
         <Typography variant="body1" paragraph>
-          Here are some of the projects I&apos;ve worked on. Click on them to learn
-          more!
+          Here are some of the projects I&apos;ve worked on. Click on them to
+          learn more!
         </Typography>
       </Box>
       <Grid container spacing={4} size={4}>
         {projects.length > 0 ? (
           projects.map((project: any) => (
-            <Grid
-              size={6}
-              key={project.id || project.name}
-              xs={12}
-              sm={6}
-              md={6}
-            >
-              <Link
-                href={`/projects/${project.id}`}
-                passHref
-                style={{ textDecoration: "none" }}
-              >
-                <ProjectCard {...project} />
-              </Link>
+            <Grid size={6} key={project.id || project.name}>
+              <ProjectCard {...project} />
             </Grid>
           ))
         ) : (

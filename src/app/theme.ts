@@ -41,7 +41,7 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             },
             background: {
               default: "#191A1A", // deep matte black background
-              paper: "#191A1A", // slightly lighter matte black for cards/paper
+              paper: "#2a2a2a", // slightly lighter matte black for cards/paper
             },
             text: {
               primary: "#f5f5f5", // off-white for text

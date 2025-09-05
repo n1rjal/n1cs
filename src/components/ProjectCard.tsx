@@ -85,21 +85,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           sx={{ borderRadius: "5px", mb: 2 }}
         />
       )}
-      <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
-        <Typography gutterBottom variant="h6" fontWeight="600" component="h2">
-          {name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
-        {tags && tags.length > 0 && (
-          <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap" }}>
-            {tags.map((tag, index) => (
-              <Chip key={index} label={tag} size="small" variant="outlined" />
-            ))}
-          </Stack>
-        )}
-      </CardContent>
+
+      <Link href={liveUrl} style={{ textDecoration: "none" }}>
+        <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
+          <Typography gutterBottom variant="h6" fontWeight="600" component="h2">
+            {name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+          {tags && tags.length > 0 && (
+            <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap" }}>
+              {tags.map((tag, index) => (
+                <Chip key={index} label={tag} size="small" variant="outlined" />
+              ))}
+            </Stack>
+          )}
+        </CardContent>
+      </Link>
       <CardActions sx={{ justifyContent: "flex-start", flexWrap: "wrap" }}>
         {githubUrl && (
           <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
