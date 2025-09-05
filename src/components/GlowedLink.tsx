@@ -56,22 +56,30 @@ export default function GlowedLink({
   ...props
 }: GlowedLinkProps) {
   // pick color per component instance
-  const randomColor = React.useMemo(() => getRandomNeonColor(), []);
+  const [randomColor, setRandomColor] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    setRandomColor(getRandomNeonColor());
+  }, []);
 
   const shouldRenderLaunchIcon = target === "_blank";
 
   return (
     <Link {...props} target={target} style={{ textDecoration: "none" }}>
       <StyledGlowedLink
-        sx={{
-          "&::after": {
-            backgroundColor: randomColor,
-            boxShadow: `0 0 6px ${randomColor}`,
-          },
-          "&:hover::after": {
-            boxShadow: `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`,
-          },
-        }}
+        sx={
+          randomColor
+            ? {
+                "&::after": {
+                  backgroundColor: randomColor,
+                  boxShadow: `0 0 6px ${randomColor}`,
+                },
+                "&:hover::after": {
+                  boxShadow: `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`,
+                },
+              }
+            : {}
+        }
       >
         {children ? children : null}
         {shouldRenderLaunchIcon && (

@@ -5,7 +5,7 @@ import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { useServerInsertedHTML } from "next/navigation";
-import type React from "react"; // Removed useEffect
+import React from "react";
 import { createContext, useMemo, useState } from "react";
 import { createCustomTheme } from "./theme";
 
@@ -17,17 +17,16 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
   const { children } = props;
 
   // Initialize mode based on localStorage only on the client
-  const [mode, setMode] = useState<"light" | "dark">(() => {
-    if (typeof window !== "undefined") {
-      const storedMode = localStorage.getItem("colorMode") as "light" | "dark";
-      if (storedMode) {
-        return storedMode;
-      } else if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
+  const [mode, setMode] = useState<"light" | "dark">("light");
+
+  React.useEffect(() => {
+    const storedMode = localStorage.getItem("colorMode") as "light" | "dark";
+    if (storedMode) {
+      setMode(storedMode);
+    } else if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+      setMode("dark");
     }
-    return "light"; // Default for server render or if no preference
-  });
+  }, []);
 
   const colorMode = useMemo(
     () => ({
