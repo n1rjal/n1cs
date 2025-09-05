@@ -27,8 +27,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LaunchIcon from "@mui/icons-material/Launch";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
-import DescriptionIcon from "@mui/icons-material/Description";
-import GlowBox from "./GlowBox"; // Import GlowBox
 import ListSubheader from "@mui/material/ListSubheader";
 
 const drawerWidth = 240;
@@ -45,12 +43,6 @@ export default function Sidebar(props: Props) {
   const colorMode = useContext(ColorModeContext);
   const pathname = usePathname(); // Get current path
 
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
-
   const socialMediaLinks = [
     {
       text: "GitHub",
@@ -65,12 +57,12 @@ export default function Sidebar(props: Props) {
     {
       text: "LinkedIn",
       icon: <LinkedInIcon />,
-      href: "https://linkedin.com/in/nirjalpaudel", // Placeholder
+      href: "https://linkedin.com/in/nirjalpaudel",
     },
     {
       text: "Facebook",
       icon: <FacebookIcon />,
-      href: "https://facebook.com/n1rjal", // Placeholder
+      href: "https://facebook.com/n1rjal",
     },
   ];
 
@@ -117,9 +109,8 @@ export default function Sidebar(props: Props) {
           {
             text: "Reading List",
             icon: <MenuBookIcon />,
-            href: "/reading-list", // Assuming a new page for reading list
+            href: "/reading-list",
           },
-          
         ].map((item) => (
           <ListItem key={item.text} disablePadding dense>
             <ListItemButton
@@ -133,14 +124,18 @@ export default function Sidebar(props: Props) {
                 my: "3px",
                 borderRadius: "5px",
                 "&.Mui-selected": {
-                  backgroundColor: theme.palette.action.hover,
-                  borderRight: `4px solid ${theme.palette.secondary.main}`, // Keep accent border
+                  borderRight: `4px solid ${theme.palette.secondary.main}`,
+                  "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+                    color: theme.palette.secondary.main,
+                  },
                   "&:hover": {
-                    bgcolor: theme.palette.action.hover,
+                    color: theme.palette.secondary.main,
                   },
                 },
                 "&:hover": {
-                  bgcolor: theme.palette.action.hover,
+                  "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+                    color: theme.palette.secondary.main,
+                  },
                 },
               }}
             >

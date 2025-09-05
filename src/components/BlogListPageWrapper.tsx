@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useTheme } from "@mui/material/styles";
 import BlogHeader from "./BlogHeader";
 import { BlogPost } from "@/lib/notion";
+import GradientText from "./GradientText";
 
 interface BlogListPageProps {
   blogPosts: BlogPost[];
@@ -23,7 +24,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
   return (
     <Box sx={{ my: 4 }}>
       <Typography component="h3" variant="h3" my="20px" mb="30px">
-        {title}
+        <GradientText>{title}</GradientText>
       </Typography>
       <Box>
         {blogPosts.map((post) => (

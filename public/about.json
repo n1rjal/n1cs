@@ -1,0 +1,102 @@
+{
+  "summary": "Software engineer with 5 years of experience who loves to solve real world problems and automate the solution. Contributor and maintainer of several open source projects.",
+  "skills": {
+    "Databases": ["MongoDB", "PostgreSQL", "Redis", "MySQL"],
+    "Languages": ["Python", "JavaScript", "Golang", "Rust"],
+    "Frontend": ["ReactJS", "Html5"],
+    "Backend": ["Nginx", "Rest API", "GraphQL", "MVC"],
+    "Tools": ["GIT", "Docker", "Kubernetes", "Makefile", "PNPM", "NPM", "yarn", "Husky", "ESLint", "Prettier", "Neovim", "Tmux", "Doppler"],
+    "Platforms": ["AWS", "Digital Ocean", "Heroku"],
+    "Concepts": ["Clean code", "dependency injection"]
+  },
+  "experience": [
+    {
+      "title": "Payment/Subscription, Devops and backend developer",
+      "company": "Nutrogen.io",
+      "location": "Brisbane, Australia",
+      "date": "Oct 2024 - Jul 2025",
+      "description": "Developed and lead the development of subscription module, architected and scaled the event driven nature of hierarchical user base, and developed, scaled and enhanced the existing system for aggregated payment collection for Nutrogen.",
+      "points": [
+        "Developed and lead the development of subscription module",
+        "Architect and scaled the event driven nature of hierarchical user base",
+        "Developed, scaled and enhanced the existing system for aggregated payment collection for Nutrogen",
+        "Developed work around stripes for features that stripe lacked",
+        "Setup platform using stripe connect"
+      ]
+    },
+    {
+      "title": "Database, backend, and merchandising developer",
+      "company": "morgenland-teppiche.de",
+      "location": "Hamburg, Germany",
+      "date": "Nov 2021 - Oct 2024",
+      "description": "Accomplished increased database reliability and scalability, by using AWS RDS. Enhanced operational efficiency by automating various manual tasks using Python. Boosted query performance by optimizing PostgreSQL database.",
+      "points": [
+        "Accomplished increased database reliability and scalability, as measured by consistent uptime and performance improvements, by using AWS Relational Database Service for AWS RDS.",
+        "Enhanced operational efficiency, as measured by reduction in manual processing time and error rate, by automating various manual tasks using Python.",
+        "Boosted query performance as measured by decreasing search and filtering time from 5 seconds to 300 milliseconds, by optimizing PostgreSQL database.",
+        "Accomplished streamlined data processing, as measured by improved accuracy and processing time, by performing global sorting of items using heuristics in a graphed environment.",
+        "Enhanced team productivity and project delivery, as measured by successful deployment and reduced setup time, by mentoring colleagues to set up the admin panel in both frontend and backend.",
+        "Accomplished increased automation and market reach as measured by faster deployment and integration across multiple platforms, by developing automated pipelines for various markets like Amazon, Otto, and Google merchandising."
+      ]
+    },
+    {
+      "title": "Database, cloud, and backend developer",
+      "company": "hyteno.com",
+      "location": "Paris, France",
+      "date": "Nov 2021 - Jan 2024",
+      "description": "Deployed the application in AWS, used AWS relational database service for Aurora DB and Firebase Cloud Messaging notification system made.",
+      "points": [
+        "Deployed the application in AWS",
+        "Used AWS relational database service for Aurora DB",
+        "Firebase Cloud Messaging notification system made",
+        "Faster dynamic and most frequently used data in Redis",
+        "Managed payment integration with stripe.",
+        "Mentored colleagues to set up CI/CD in both frontend, backend"
+      ]
+    },
+    {
+      "title": "Database, cloud, and backend developer",
+      "company": "SoftShala, Nepal",
+      "location": "Kathmandu, Nepal",
+      "date": "Nov 2019 - Nov 2020",
+      "description": "Made a video streaming platform with Node.js express and developed TikTok like app. Video storage with AWS S3 with CloudFront CDN enabled.",
+      "points": [
+        "Made a video streaming platform with Node.js express.",
+        "Developed TikTok like app",
+        "Video storage with AWS S3 with CloudFront CDN enabled.",
+        "Deployment of server with document DB (managed MongoDB service in AWS)",
+        "Video Processing with Amazon SNS was performed using FFmpeg package on a separate service."
+      ]
+    }
+  ],
+  "events": [
+    {
+      "title": "Renegade Challenge and Hackathon",
+      "location": "Kathmandu, Nepal",
+      "description": "Successfully implemented dynamic questionnaire via web sockets"
+    },
+    {
+      "title": "KMITL Workshop",
+      "location": "Bangkok, Thailand",
+      "description": "A workshop on web development with HTML5 for KMITL University"
+    }
+  ],
+  "accomplishments": [
+    {
+      "title": "Won International hackathon organized by Microsoft.",
+      "year": 2021
+    },
+    {
+      "title": "Won National hackathon organized by Renegade Insurance, a USA based company with office in Nepal.",
+      "year": 2021
+    },
+    {
+      "title": "Won National hackathon organized by CSIT association of Nepal",
+      "year": 2021
+    },
+    {
+      "title": "Complected Hacktoberfest Challenge 3 years in a row",
+      "year": 2021
+    }
+  ]
+}

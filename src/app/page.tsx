@@ -3,8 +3,6 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Link from "next/link";
 import GlowedLink from "../components/GlowedLink";
 import TextField from "@mui/material/TextField";
@@ -14,17 +12,24 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import TrustedCompanies from "@/components/TrustedCompanies";
 import ResumeDownloadButton from "@/components/ResumeDownloadButton";
-import { getBlogPosts } from "@/lib/notion";
+import { getBlogPosts, getProjects } from "@/lib/notion";
+import ProjectCard from "@/components/ProjectCard";
+import Grid from "@mui/material/Grid";
 import BlogListPageWrapper from "@/components/BlogListPageWrapper";
+import Testimonials from "@/components/Testimonials";
+import GradientText from "@/components/GradientText";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
+  const projects = await getProjects();
   return (
     <Box
       sx={{
         bgcolor: "background.paper",
         pt: 8,
-        pb: 6,
+        mb: 0,
       }}
     >
       <Container maxWidth="md" sx={{ mt: 4 }}>
@@ -132,12 +137,16 @@ export default async function Home() {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="secondary">
-              View My Work
-            </Button>
-            <Button variant="outlined" color="secondary">
-              Get In Touch
-            </Button>
+            <GlowedLink href="/about">
+              <Button variant="contained" color="secondary">
+                About Me
+              </Button>
+            </GlowedLink>
+            <Link href="/#keep-in-touch" passHref>
+              <Button variant="outlined" color="secondary">
+                Get In Touch
+              </Button>
+            </Link>
             <ResumeDownloadButton />
           </Stack>
         </Box>
@@ -145,71 +154,132 @@ export default async function Home() {
 
       <TrustedCompanies />
 
-      <Container maxWidth="md" sx={{ mt: 4 }}>
-        <Box
-          sx={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: 3,
-          }}
-        >
-          <BlogListPageWrapper
-            title="Latest Blog Posts"
-            blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
-          />
-        </Box>
+      <Testimonials />
 
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            pt: 6,
-            pb: 6,
-            mt: 8,
-            borderRadius: 2,
-            textAlign: "center",
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography variant="h5" component="h2" gutterBottom>
-              Want more <GlowedLink href="/blog">Read blogs</GlowedLink> or{" "}
-              <GlowedLink href="/reading-list">Reading Lists</GlowedLink>
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Stay up-to-date with my latest projects, articles, and insights.
-            </Typography>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={2}
-              justifyContent="center"
-              sx={{ mt: 3 }}
-            >
-              <TextField
-                label="Your Email"
-                variant="outlined"
-                size="small"
-                sx={{ flexGrow: 1 }}
-              />
-              <Button variant="contained" size="medium" color="secondary">
-                Subscribe
-              </Button>
-            </Stack>
-          </Container>
-        </Box>
+      <Box>
+        <Container maxWidth="md" sx={{ mt: 4 }}>
+          <Box
+            sx={{
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gap: 3,
+            }}
+          >
+            <BlogListPageWrapper
+              title="Latest Blog Posts"
+              blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
+            />
+          </Box>
+        </Container>
+      </Box>
 
-        {/* Contact Me Section */}
-        <Box sx={{ my: 4 }}>
+      <Box
+        sx={{
+          bgcolor: "background.default",
+          pt: 8,
+          pb: 6,
+        }}
+      >
+        <Container maxWidth="md">
           <Typography variant="h4" component="h1" gutterBottom>
-            Contact Me
+            <GradientText>My Projects</GradientText>
           </Typography>
           <Typography variant="body1" paragraph>
-            Have a question or want to work together? Fill out the form below or
-            reach out to me directly on{" "}
-            <GlowedLink href="https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F">
-              {" "}
-              WhatsApp
-            </GlowedLink>
+            Here are a few of my recent projects. I'm passionate about building
+            things that solve real-world problems and I'm always looking for new
+            challenges.
           </Typography>
-        </Box>
-      </Container>
+          <Grid container spacing={4} sx={{ mt: 4 }}>
+            {projects.slice(0, 3).map((project) => (
+              <Grid key={project.id}>
+                <Link
+                  href={`/projects/${project.id}`}
+                  passHref
+                  style={{ textDecoration: "none" }}
+                >
+                  <ProjectCard {...project} />
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
+          <Box sx={{ textAlign: "center", mt: 4 }}>
+            <Button
+              component={Link}
+              href="/projects"
+              variant="contained"
+              color="secondary"
+            >
+              View All Projects
+            </Button>
+          </Box>
+        </Container>
+      </Box>
+
+      <Box sx={{ bgcolor: "background.paper", py: 6 }}>
+        <Container maxWidth="sm">
+          <Typography variant="h5" component="h2" gutterBottom align="center">
+            <GradientText>Want more</GradientText>{" "}
+            <GlowedLink href="/blog">blogs ?</GlowedLink> Checkout{" "}
+            <GlowedLink href="/reading-list">reading lists</GlowedLink>
+          </Typography>
+          <Typography variant="body1" paragraph align="center">
+            Stay up-to-date with my latest projects, articles, and insights.
+          </Typography>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            justifyContent="center"
+            sx={{ mt: 3 }}
+          >
+            <TextField
+              label="Your Email"
+              variant="outlined"
+              size="small"
+              sx={{ flexGrow: 1 }}
+            />
+            <Button variant="contained" size="medium" color="secondary">
+              Subscribe
+            </Button>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Box id="keep-in-touch" sx={{ bgcolor: "background.default", py: 6 }}>
+        <Container maxWidth="md" sx={{ textAlign: "center" }}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            <GradientText>Keep in Touch</GradientText>
+          </Typography>
+          <Typography variant="body1" paragraph>
+            I'm always open to connecting with new people. Whether you have a
+            question, a project idea, or just want to say hi, feel free to reach
+            out.
+          </Typography>
+          <Stack
+            direction="row"
+            spacing={4}
+            justifyContent="center"
+            sx={{ mt: 3 }}
+          >
+            <GlowedLink href="https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F">
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<WhatsAppIcon />}
+              >
+                WhatsApp
+              </Button>
+            </GlowedLink>
+            <GlowedLink href="mailto:nirjalpaudel54312@gmail.com">
+              <Button
+                variant="outlined"
+                color="secondary"
+                startIcon={<EmailIcon />}
+              >
+                Email
+              </Button>
+            </GlowedLink>
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 }
