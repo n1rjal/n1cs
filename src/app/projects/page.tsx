@@ -1,12 +1,12 @@
-import { Metadata } from "next";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import ProjectCard from "@/components/ProjectCard";
-import { getProjects } from "@/lib/notion";
+import Typography from "@mui/material/Typography";
+import type { Metadata } from "next";
 import GradientText from "@/components/GradientText";
+import ProjectCard from "@/components/ProjectCard";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
+import { getProjects } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProjectsPage() {
-  let notionProjects = await getProjects();
+  const notionProjects = await getProjects();
   const dummyProjects = [
     {
       name: "My Awesome Project (Dummy)",

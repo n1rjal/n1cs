@@ -5,7 +5,21 @@
     "Languages": ["Python", "JavaScript", "Golang", "Rust"],
     "Frontend": ["ReactJS", "Html5"],
     "Backend": ["Nginx", "Rest API", "GraphQL", "MVC"],
-    "Tools": ["GIT", "Docker", "Kubernetes", "Makefile", "PNPM", "NPM", "yarn", "Husky", "ESLint", "Prettier", "Neovim", "Tmux", "Doppler"],
+    "Tools": [
+      "GIT",
+      "Docker",
+      "Kubernetes",
+      "Makefile",
+      "PNPM",
+      "NPM",
+      "yarn",
+      "Husky",
+      "ESLint",
+      "Prettier",
+      "Neovim",
+      "Tmux",
+      "Doppler"
+    ],
     "Platforms": ["AWS", "Digital Ocean", "Heroku"],
     "Concepts": ["Clean code", "dependency injection"]
   },

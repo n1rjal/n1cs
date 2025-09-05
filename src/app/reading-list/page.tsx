@@ -1,19 +1,20 @@
-import { Metadata } from 'next';
-import { getReadingListItems, ReadingListItem } from "@/lib/notion";
 import {
-  Typography,
   Box,
-  Container,
-  TextField,
   Button,
+  Container,
   Link as MuiLink,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { format } from "date-fns";
+import type { Metadata } from "next";
 import GradientText from "@/components/GradientText";
+import { getReadingListItems, type ReadingListItem } from "@/lib/notion";
 
 export const metadata: Metadata = {
-  title: 'Reading List',
-  description: 'Explore the books, articles, and resources that Nirjal Paudel is currently reading or has read.',
+  title: "Reading List",
+  description:
+    "Explore the books, articles, and resources that Nirjal Paudel is currently reading or has read.",
 };
 
 type ReadingListGrouped = { [key: string]: ReadingListItem[] };
@@ -21,9 +22,14 @@ type ReadingListGrouped = { [key: string]: ReadingListItem[] };
 export default async function ReadingListPage({
   searchParams,
 }: {
-  searchParams: { startDate?: string; endDate?: string; query?: string };
+  searchParams: Promise<{
+    query: string;
+    startDate: string;
+    endDate: string;
+  }>;
 }) {
-  const { startDate, endDate, query } = searchParams;
+  const { startDate, endDate, query } = await searchParams;
+
   const readingList = await getReadingListItems(startDate, endDate, query);
 
   const groupedByDate: ReadingListGrouped = readingList.reduce((acc, item) => {
@@ -62,7 +68,7 @@ export default async function ReadingListPage({
           defaultValue={query}
           variant="outlined"
           size="small"
-          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
+          sx={{ flexGrow: 1, minWidth: { xs: "100%", sm: "auto" } }}
         />
         <TextField
           label="Start Date"
@@ -72,7 +78,7 @@ export default async function ReadingListPage({
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           size="small"
-          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
+          sx={{ flexGrow: 1, minWidth: { xs: "100%", sm: "auto" } }}
         />
         <TextField
           label="End Date"
@@ -82,7 +88,7 @@ export default async function ReadingListPage({
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           size="small"
-          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
+          sx={{ flexGrow: 1, minWidth: { xs: "100%", sm: "auto" } }}
         />
         <Button type="submit" variant="contained" color="primary">
           Apply Filters

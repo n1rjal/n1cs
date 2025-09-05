@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { keyframes } from "@emotion/react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import { keyframes } from "@emotion/react";
+import * as React from "react";
 import { getRandomNeonColor } from "../utils/colors"; // Import random color utility
 
 // Define keyframes for box glow animation

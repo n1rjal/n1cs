@@ -9,7 +9,8 @@ table {
   margin-bottom: 1em;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ccc; /* Fallback color, will be overridden by theme if possible */
   padding: 0.5em;
   text-align: left;

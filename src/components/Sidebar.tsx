@@ -1,37 +1,36 @@
 "use client";
 
-import * as React from "react";
+import ArticleIcon from "@mui/icons-material/Article";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import HomeIcon from "@mui/icons-material/Home";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LaunchIcon from "@mui/icons-material/Launch";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import PersonIcon from "@mui/icons-material/Person";
+import WorkIcon from "@mui/icons-material/Work";
+import AppBar from "@mui/material/AppBar"; // Import AppBar
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton"; // Import IconButton
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import ListSubheader from "@mui/material/ListSubheader";
+import Switch from "@mui/material/Switch";
+import { useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import { useTheme } from "@mui/material/styles";
+import { usePathname } from "next/navigation"; // Import usePathname
+import * as React from "react";
 import { useContext } from "react";
 import { ColorModeContext } from "../app/ThemeRegistry";
-import { usePathname } from "next/navigation"; // Import usePathname
-import AppBar from "@mui/material/AppBar"; // Import AppBar
-import IconButton from "@mui/material/IconButton"; // Import IconButton
-import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
-
-import HomeIcon from "@mui/icons-material/Home";
-import WorkIcon from "@mui/icons-material/Work";
-import ArticleIcon from "@mui/icons-material/Article";
-import Switch from "@mui/material/Switch";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LaunchIcon from "@mui/icons-material/Launch";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import PersonIcon from "@mui/icons-material/Person";
-import ListSubheader from "@mui/material/ListSubheader";
 
 const drawerWidth = 240;
 

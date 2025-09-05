@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
 
 import GradientText from "./GradientText";
 
@@ -34,8 +34,8 @@ export default function Testimonials() {
           <GradientText>Testimonials</GradientText>
         </Typography>
         <Grid container spacing={4} sx={{ mt: 4 }}>
-          {testimonials.map((testimonial, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+          {testimonials.map((testimonial: any, index) => (
+            <Grid key={index}>
               <Card sx={{ height: "100%" }}>
                 <CardContent>
                   <Typography variant="body1" sx={{ fontStyle: "italic" }}>

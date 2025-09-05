@@ -1,21 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Link,
-  Card,
-  CardContent,
-  CardActions,
-} from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import StarIcon from "@mui/icons-material/Star";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Link,
+  Typography,
+} from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 interface ProjectCardProps {
   id: string;

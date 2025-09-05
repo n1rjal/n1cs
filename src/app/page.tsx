@@ -1,26 +1,25 @@
+import EmailIcon from "@mui/icons-material/Email";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Link from "next/link";
-import GlowedLink from "../components/GlowedLink";
-import TextField from "@mui/material/TextField";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import TrustedCompanies from "@/components/TrustedCompanies";
-import ResumeDownloadButton from "@/components/ResumeDownloadButton";
-import { getBlogPosts, getProjects } from "@/lib/notion";
-import ProjectCard from "@/components/ProjectCard";
-import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
 import BlogListPageWrapper from "@/components/BlogListPageWrapper";
-import Testimonials from "@/components/Testimonials";
 import GradientText from "@/components/GradientText";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import EmailIcon from "@mui/icons-material/Email";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
+import ProjectCard from "@/components/ProjectCard";
+import ResumeDownloadButton from "@/components/ResumeDownloadButton";
+import Testimonials from "@/components/Testimonials";
+import TrustedCompanies from "@/components/TrustedCompanies";
+import { getBlogPosts, getProjects } from "@/lib/notion";
+import GlowedLink from "../components/GlowedLink";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
@@ -135,7 +134,7 @@ export default async function Home() {
 
           <Stack
             sx={{ pt: 4 }}
-            direction={{ xs: 'column', sm: 'row' }}
+            direction={{ xs: "column", sm: "row" }}
             spacing={2}
             justifyContent="center"
           >
@@ -186,13 +185,13 @@ export default async function Home() {
             <GradientText>My Projects</GradientText>
           </Typography>
           <Typography variant="body1" paragraph>
-            Here are a few of my recent projects. I'm passionate about building
-            things that solve real-world problems and I'm always looking for new
-            challenges.
+            Here are a few of my recent projects. I&rsquo;m passionate about
+            building things that solve real-world problems and I&rsquo;m always
+            looking for new challenges.
           </Typography>
           <Grid container spacing={4} sx={{ mt: 4 }}>
             {projects.slice(0, 3).map((project) => (
-              <Grid item xs={12} sm={6} md={4} key={project.id}>
+              <Grid key={project.id}>
                 <ProjectCard {...project} />
               </Grid>
             ))}
@@ -218,12 +217,12 @@ export default async function Home() {
             <GradientText>Keep in Touch</GradientText>
           </Typography>
           <Typography variant="body1" paragraph>
-            I'm always open to connecting with new people. Whether you have a
-            question, a project idea, or just want to say hi, feel free to reach
-            out.
+            I&apos;m always open to connecting with new people. Whether you have
+            a question, a project idea, or just want to say hi, feel free to
+            reach out.
           </Typography>
           <Stack
-            direction={{ xs: 'column', sm: 'row' }}
+            direction={{ xs: "column", sm: "row" }}
             spacing={4}
             justifyContent="center"
             sx={{ mt: 3 }}

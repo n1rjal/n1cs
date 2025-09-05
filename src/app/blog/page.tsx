@@ -1,7 +1,7 @@
-import { Metadata } from "next";
-import { getBlogPosts } from "@/lib/notion";
+import type { Metadata } from "next";
 import BlogListPageWrapper from "@/components/BlogListPageWrapper";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
+import { getBlogPosts } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Blog",

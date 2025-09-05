@@ -1,5 +1,5 @@
-import Grid, { GridProps } from "@mui/material/Grid";
-import React, { ReactNode } from "react";
+import Grid, { type GridProps } from "@mui/material/Grid";
+import React, { type ReactNode } from "react";
 
 interface IResponsiveGridProps extends GridProps {
   children: ReactNode | ReactNode[];

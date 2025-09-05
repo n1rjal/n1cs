@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
-import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
-import Link from "next/link";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import Link from "next/link";
+import type React from "react";
 
 interface Heading {
   id: string;

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Modal, Box, IconButton, Slider, Typography } from "@mui/material";
+import { Box, IconButton, Modal, Slider, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 const CloseIcon = dynamic(() => import("@mui/icons-material/Close"), {
   ssr: false,

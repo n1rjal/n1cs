@@ -1,72 +1,84 @@
 "use client";
 
-import * as React from "react";
-import Link, { LinkProps } from "next/link";
-import { styled } from "@mui/material/styles";
 import { keyframes } from "@emotion/react";
-import { getRandomNeonColor } from "../utils/colors";
 import LaunchIcon from "@mui/icons-material/Launch";
+import { styled } from "@mui/material/styles";
+import { Url } from "next/dist/shared/lib/router/router";
+import Link, { type LinkProps } from "next/link";
+import * as React from "react";
+import { getRandomNeonColor } from "../utils/colors";
 
-// Define keyframes for underline glow animation
+// Glow animation for underline
 const underlineGlow = keyframes`
   0% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
   50% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.6); }
   100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
 `;
 
-// Define a styled component for the glowing link
-const StyledGlowedLink = styled(Link)<LinkProps>(({ theme }) => {
-  // Pass LinkProps as generic
-  const randomColor = React.useMemo(() => getRandomNeonColor(), []); // Get a random color once per component instance
+const StyledGlowedLink = styled("span")(({ theme }) => ({
+  textDecoration: "none",
+  position: "relative",
+  display: "inline-block",
+  transition: "color 0.3s ease-in-out",
+  color: theme.palette.text.primary,
 
-  return {
-    textDecoration: "none",
-    position: "relative", // Needed for pseudo-element positioning
-    display: "inline-block",
-    transition: "color 0.3s ease-in-out", // Only transition color
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    bottom: 0,
+    width: "100%",
+    height: "2px",
+    borderRadius: "1px",
+    opacity: 0.8,
+    transition: "all 0.3s ease-in-out",
+    animation: `${underlineGlow} 2s infinite alternate`,
+  },
 
-    // Base color for the text
-    color: theme.palette.text.primary,
-
+  "&:hover": {
     "&::after": {
-      content: '""',
-      position: "absolute",
-      left: 0,
-      bottom: "0px", // Position below text
-      width: "100%",
-      height: "2px", // Underline thickness
-      backgroundColor: randomColor, // Random color for underline
-      borderRadius: "1px",
-      opacity: 0.8,
-      transition: "all 0.3s ease-in-out",
-      animation: `${underlineGlow} 2s infinite alternate`, // Apply glow animation
+      height: "3px",
+      opacity: 1,
+      animation: "none",
     },
-
-    "&:hover": {
-      color: theme.palette.text.primary,
-      "&::after": {
-        height: "3px", // Slightly thicker on hover
-        opacity: 1,
-        boxShadow: `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`, // Intensify glow on hover
-        animation: "none", // Stop animation on hover to show intensified glow
-      },
-    },
-  };
-});
+  },
+}));
 
 interface GlowedLinkProps extends LinkProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  target?: React.HTMLAttributeAnchorTarget;
+  className?: string;
+  href: string | LinkProps["href"];
 }
 
-export default function GlowedLink({ children, ...props }: GlowedLinkProps) {
-  const shouldRenderLaunchIcon = props.target === "_blank";
+export default function GlowedLink({
+  children,
+  target,
+  ...props
+}: GlowedLinkProps) {
+  // pick color per component instance
+  const randomColor = React.useMemo(() => getRandomNeonColor(), []);
+
+  const shouldRenderLaunchIcon = target === "_blank";
 
   return (
-    <StyledGlowedLink {...props}>
-      {children}
-      {shouldRenderLaunchIcon && (
-        <LaunchIcon sx={{ fontSize: "0.8em", ml: 0.5 }} />
-      )}
-    </StyledGlowedLink>
+    <Link {...props} target={target} style={{ textDecoration: "none" }}>
+      <StyledGlowedLink
+        sx={{
+          "&::after": {
+            backgroundColor: randomColor,
+            boxShadow: `0 0 6px ${randomColor}`,
+          },
+          "&:hover::after": {
+            boxShadow: `0 0 10px ${randomColor}, 0 0 20px ${randomColor}`,
+          },
+        }}
+      >
+        {children ? children : null}
+        {shouldRenderLaunchIcon && (
+          <LaunchIcon sx={{ fontSize: "0.8em", ml: 0.5 }} />
+        )}
+      </StyledGlowedLink>
+    </Link>
   );
 }

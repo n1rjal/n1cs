@@ -1,12 +1,12 @@
-import { getBlogPosts, getPostContent, getSingleBlogPost } from "@/lib/notion";
-import ReadingProgressBar from "@/components/ReadingProgressBar";
-import ContentWrapper from "@/components/ContentWrapper";
-import { Typography, Box, Container } from "@mui/material";
-import SuggestedBlogs from "@/components/SuggestedBlogs";
+import { Box, Container, Typography } from "@mui/material";
+import type { Metadata } from "next";
 import BlogHeader from "@/components/BlogHeader";
+import ContentWrapper from "@/components/ContentWrapper";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
-import { Metadata } from "next";
+import SuggestedBlogs from "@/components/SuggestedBlogs";
+import { getBlogPosts, getPostContent, getSingleBlogPost } from "@/lib/notion";
 
 export async function generateMetadata({
   params,
@@ -24,10 +24,7 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.description,
-    openGraph: {
-      images: [post.coverImage],
-    },
+    description: post.summary,
   } as Metadata;
 }
 

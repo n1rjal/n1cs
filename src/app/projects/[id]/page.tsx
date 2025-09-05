@@ -1,10 +1,10 @@
-import { Typography, Container, Box } from "@mui/material";
-import { Metadata } from "next";
-import { getPostContent, getSingleProject } from "@/lib/notion";
+import { Box, Container, Typography } from "@mui/material";
+import type { Metadata } from "next";
 import ContentWrapper from "@/components/ContentWrapper";
-import ResponsiveGrid from "@/components/ResponsiveGrid";
 import ProjectHeader from "@/components/ProjectHeader";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
+import ResponsiveGrid from "@/components/ResponsiveGrid";
+import { getPostContent, getSingleProject } from "@/lib/notion";
 
 interface ProjectDetailPageProps {
   params: { id: string };
@@ -30,7 +30,13 @@ export async function generateMetadata({
     title: project.name,
     description: project.description,
     openGraph: {
-      images: [{ url: project.imageUrl }], // must be array of objects
+      images: project.imageUrl
+        ? [
+            {
+              url: project.imageUrl,
+            },
+          ]
+        : [],
     },
   };
 }

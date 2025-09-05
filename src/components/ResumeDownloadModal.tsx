@@ -1,6 +1,6 @@
-import React from "react";
-import { Modal, Box, Typography, Button, Stack } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
+import { Box, Button, Modal, Stack, Typography } from "@mui/material";
+import type React from "react";
 
 interface ResumeDownloadModalProps {
   open: boolean;

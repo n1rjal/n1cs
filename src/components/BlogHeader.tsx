@@ -1,5 +1,5 @@
-import { BlogPost } from "@/lib/notion";
 import { Typography } from "@mui/material";
+import type { BlogPost } from "@/lib/notion";
 import GradientText from "./GradientText";
 
 interface BlogHeaderProps {
@@ -24,12 +24,12 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       </Typography>
     )}
     <Typography
-        variant="subtitle1"
-        color="text.secondary"
-        gutterBottom
-        my={0}
-        mb={0.5}
-      >
+      variant="subtitle1"
+      color="text.secondary"
+      gutterBottom
+      my={0}
+      mb={0.5}
+    >
       Published: {new Date(post.createdTime).toISOString().split("T")[0]}
     </Typography>
 

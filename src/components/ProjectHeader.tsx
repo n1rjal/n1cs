@@ -1,5 +1,5 @@
-import { Project } from "@/lib/notion";
 import { Box, Chip, Typography } from "@mui/material";
+import type { Project } from "@/lib/notion";
 import GradientText from "./GradientText";
 
 interface BlogHeaderProps {

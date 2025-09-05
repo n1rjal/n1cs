@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { Box, LinearProgress, useTheme } from "@mui/material";
+import type React from "react";
+import { useEffect, useState } from "react";
 
 const ReadingProgressBar: React.FC = () => {
   const [progress, setProgress] = useState(0);

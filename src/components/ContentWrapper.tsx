@@ -1,24 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
-import python from "highlight.js/lib/languages/python";
-import javascript from "highlight.js/lib/languages/javascript";
-import typescript from "highlight.js/lib/languages/typescript";
-import shell from "highlight.js/lib/languages/shell";
-import docker from "highlight.js/lib/languages/dockerfile";
-import sql from "highlight.js/lib/languages/sql";
-import json from "highlight.js/lib/languages/json";
-import yaml from "highlight.js/lib/languages/yaml";
-import GlowedLink from "@/components/GlowedLink";
-import { useTheme } from "@mui/material/styles";
-import ImageModal from "@/components/ImageModal";
 import Grid from "@mui/material/Grid";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import docker from "highlight.js/lib/languages/dockerfile";
+import javascript from "highlight.js/lib/languages/javascript";
+import json from "highlight.js/lib/languages/json";
+import python from "highlight.js/lib/languages/python";
+import shell from "highlight.js/lib/languages/shell";
+import sql from "highlight.js/lib/languages/sql";
+import typescript from "highlight.js/lib/languages/typescript";
+import yaml from "highlight.js/lib/languages/yaml";
+import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
 import CopyCodeButton from "@/components/CopyCodeButton";
+import GlowedLink from "@/components/GlowedLink";
+import ImageModal from "@/components/ImageModal";
 
 interface Heading {
   id: string;
@@ -105,10 +105,14 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
 
                   const getTextContent = (node: React.ReactNode): string => {
                     if (typeof node === "string") return node;
+                    if (typeof node === "number") return node.toString();
                     if (Array.isArray(node))
                       return node.map(getTextContent).join("");
-                    if (React.isValidElement(node) && node.props.children) {
-                      return getTextContent(node.props.children);
+                    if (React.isValidElement(node)) {
+                      const element = node as React.ReactElement<any>;
+                      if (element.props.children) {
+                        return getTextContent(element.props.children);
+                      }
                     }
                     return "";
                   };
@@ -251,7 +255,9 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                     {...props}
                   />
                 ),
-                a: ({ node, ...props }) => <GlowedLink {...props} />,
+                a: ({ node, ...props }) => (
+                  <GlowedLink href={props.href!} {...props} />
+                ),
                 img: ({ node, ...props }) => (
                   <Box component="figure" sx={{ m: 0 }}>
                     <Box

@@ -1,26 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import CodeIcon from "@mui/icons-material/Code";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
+import {
+  Chip,
+  Collapse,
+  IconButton,
+  type IconButtonProps,
+  List,
+  ListItem,
+} from "@mui/material";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import CodeIcon from "@mui/icons-material/Code";
-import WorkIcon from "@mui/icons-material/Work";
-import SchoolIcon from "@mui/icons-material/School";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import { Chip, List, ListItem, Collapse, IconButton } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
 
 import GradientText from "./GradientText";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
+interface ExpandMoreProps extends IconButtonProps {
+  expand?: boolean;
+}
+
+const ExpandMore = styled(({ expand, ...other }: ExpandMoreProps) => {
   return <IconButton {...other} />;
-})(({ theme, expand }) => ({
+})(({ theme, expand }: { theme: any; expand?: boolean }) => ({
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
@@ -30,7 +40,8 @@ const ExpandMore = styled((props) => {
 
 export default function AboutPageClient() {
   const [aboutData, setAboutData] = useState<any>(null);
-  const [expanded, setExpanded] = useState({});
+  // ts-ignore no-explicit-any
+  const [expanded, setExpanded] = useState<any>({});
 
   useEffect(() => {
     fetch("/about.json")
@@ -38,8 +49,8 @@ export default function AboutPageClient() {
       .then((data) => setAboutData(data));
   }, []);
 
-  const handleExpandClick = (id) => {
-    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
+  const handleExpandClick = (id: string | number) => {
+    setExpanded((prev: any) => ({ ...prev, [id]: !prev[id] }));
   };
 
   if (!aboutData) {
@@ -59,7 +70,7 @@ export default function AboutPageClient() {
           <Typography component="h1" variant="h2" gutterBottom>
             <GradientText>About Me</GradientText>
           </Typography>
-          <Typography variant="h5" color="text.secondary" paragraph>
+          <Typography variant="h5" color="text.secondary" component="p">
             {aboutData.summary}
           </Typography>
         </Box>
@@ -80,7 +91,7 @@ export default function AboutPageClient() {
                   {group}
                 </Typography>
                 <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                  {skills.map((skill) => (
+                  {(skills as string[]).map((skill) => (
                     <Chip
                       key={skill}
                       label={skill}
@@ -104,7 +115,7 @@ export default function AboutPageClient() {
               <GradientText>Professional Experience</GradientText>
             </Typography>
             <Stack spacing={4} sx={{ mt: 4 }}>
-              {aboutData.experience.map((exp, index) => (
+              {(aboutData as any).experience.map((exp: any, index: number) => (
                 <Card
                   key={index}
                   sx={{ borderLeft: 2, borderColor: "secondary.main" }}
@@ -138,7 +149,7 @@ export default function AboutPageClient() {
                     </Box>
                     <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
                       <ul style={{ paddingLeft: "1.5rem", margin: 0 }}>
-                        {exp.points.map((point, i) => (
+                        {exp.points.map((point: string, i: number) => (
                           <li key={i} style={{ marginBottom: "4px" }}>
                             {point}
                           </li>
@@ -162,7 +173,7 @@ export default function AboutPageClient() {
               <GradientText>Events</GradientText>
             </Typography>
             <Stack spacing={4} sx={{ mt: 4 }}>
-              {aboutData.events.map((event, index) => (
+              {aboutData.events.map((event: any, index: number) => (
                 <Card key={index}>
                   <CardContent>
                     <Typography variant="h6">{event.title}</Typography>
@@ -189,7 +200,7 @@ export default function AboutPageClient() {
               <GradientText>Accomplishments</GradientText>
             </Typography>
             <List>
-              {aboutData.accomplishments.map((acc, index) => (
+              {aboutData.accomplishments.map((acc: any, index: number) => (
                 <ListItem key={index}>
                   <Typography variant="body1">
                     {acc.title} ({acc.year})

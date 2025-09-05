@@ -1,10 +1,10 @@
 "use client";
 
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
 
 const companies = [
   {
@@ -50,7 +50,12 @@ const TrustedCompanies = () => {
         {companies.map((company) => (
           <Box
             key={company.link}
-            sx={{ width: { xs: '40%', sm: 120 }, maxWidth: 120, height: 60, position: "relative" }}
+            sx={{
+              width: { xs: "40%", sm: 120 },
+              maxWidth: 120,
+              height: 60,
+              position: "relative",
+            }}
           >
             <a href={company.link} target="_blank" rel="noopener noreferrer">
               <Image

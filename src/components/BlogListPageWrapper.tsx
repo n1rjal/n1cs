@@ -1,17 +1,17 @@
 "use client";
 
-import React from "react";
-import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Link from "next/link";
-import { useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
+import type React from "react";
+import type { BlogPost } from "@/lib/notion";
 import BlogHeader from "./BlogHeader";
-import { BlogPost } from "@/lib/notion";
 import GradientText from "./GradientText";
-import { Grid } from "@mui/material";
 
 interface BlogListPageProps {
   blogPosts: BlogPost[];

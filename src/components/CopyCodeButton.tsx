@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { useTheme } from "@mui/material/styles";
+import type React from "react";
+import { useState } from "react";
 
 interface CopyCodeButtonProps {
   code: string;

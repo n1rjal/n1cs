@@ -1,6 +1,6 @@
 import { Client } from "@notionhq/client";
+import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { NotionToMarkdown } from "notion-to-md";
-import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { getNotionProperty } from "@/utils/getNotionProperty";
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
