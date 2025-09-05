@@ -1,3 +1,4 @@
+"use client";
 import Grid, { type GridProps } from "@mui/material/Grid";
 import type { ReactNode } from "react";
 

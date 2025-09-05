@@ -2,10 +2,8 @@
 
 import { CardActionArea, CardActions, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import type React from "react";

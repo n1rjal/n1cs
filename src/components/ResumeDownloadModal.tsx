@@ -1,3 +1,4 @@
+"use client";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import type React from "react";

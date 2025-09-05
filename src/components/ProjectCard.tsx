@@ -52,13 +52,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             `https://api.github.com/repos/${repoPath}`,
           );
           if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.statusText}`);
+            setErrorStars("Error");
+            setStars(null);
+          } else {
+            const data = await response.json();
+            setStars(data.stargazers_count);
           }
-          const data = await response.json();
-          setStars(data.stargazers_count);
         } catch (error: any) {
           setErrorStars(error.message);
           console.error("Failed to fetch GitHub stars:", error);
+          setStars(null);
         } finally {
           setLoadingStars(false);
         }

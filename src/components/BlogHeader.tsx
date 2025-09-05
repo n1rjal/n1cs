@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@mui/material";
 import type { BlogPost } from "@/lib/notion";
 import GradientText from "./GradientText";

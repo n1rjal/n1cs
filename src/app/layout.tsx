@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
-import Sidebar from "../components/Sidebar";
+import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
 
 export const metadata: Metadata = {
@@ -58,10 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning={true} data-lt-installed="true">
+    <html>
       <body>
         <ThemeRegistry>
-          <Sidebar>{children}</Sidebar>
+          <ClientSidebarWrapper>{children}</ClientSidebarWrapper>
         </ThemeRegistry>
       </body>
     </html>

@@ -1,3 +1,4 @@
+"use client";
 import Box from "@mui/material/Box";
 import type { BlogPost } from "@/lib/notion";
 import BlogListPageWrapper from "./BlogListPageWrapper";

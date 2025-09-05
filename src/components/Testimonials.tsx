@@ -1,5 +1,3 @@
-"use client";
-
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -7,19 +5,11 @@ import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
+import testimonials from "@/constants/testomonials";
 
 import GradientText from "./GradientText";
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState([]);
-
-  useEffect(() => {
-    fetch("/testimonials.json")
-      .then((res) => res.json())
-      .then((data) => setTestimonials(data));
-  }, []);
-
   return (
     <Box
       sx={{
