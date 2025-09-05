@@ -3,7 +3,6 @@
 import { keyframes } from "@emotion/react";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { styled } from "@mui/material/styles";
-import { Url } from "next/dist/shared/lib/router/router";
 import Link, { type LinkProps } from "next/link";
 import * as React from "react";
 import { getRandomNeonColor } from "../utils/colors";

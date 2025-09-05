@@ -99,8 +99,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </Typography>
           {tags && tags.length > 0 && (
             <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap" }}>
-              {tags.map((tag, index) => (
-                <Chip key={index} label={tag} size="small" variant="outlined" />
+              {tags.map((tag) => (
+                <Chip key={tag} label={tag} size="small" variant="outlined" />
               ))}
             </Stack>
           )}

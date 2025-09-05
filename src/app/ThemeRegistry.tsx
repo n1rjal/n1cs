@@ -22,10 +22,7 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
       const storedMode = localStorage.getItem("colorMode") as "light" | "dark";
       if (storedMode) {
         return storedMode;
-      } else if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
+      } else if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
         return "dark";
       }
     }

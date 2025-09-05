@@ -117,7 +117,7 @@ export default function AboutPageClient() {
             <Stack spacing={4} sx={{ mt: 4 }}>
               {(aboutData as any).experience.map((exp: any, index: number) => (
                 <Card
-                  key={index}
+                  key={exp.title}
                   sx={{ borderLeft: 2, borderColor: "secondary.main" }}
                 >
                   <CardContent>
@@ -149,8 +149,8 @@ export default function AboutPageClient() {
                     </Box>
                     <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
                       <ul style={{ paddingLeft: "1.5rem", margin: 0 }}>
-                        {exp.points.map((point: string, i: number) => (
-                          <li key={i} style={{ marginBottom: "4px" }}>
+                        {exp.points.map((point: string) => (
+                          <li key={point} style={{ marginBottom: "4px" }}>
                             {point}
                           </li>
                         ))}
@@ -173,8 +173,8 @@ export default function AboutPageClient() {
               <GradientText>Events</GradientText>
             </Typography>
             <Stack spacing={4} sx={{ mt: 4 }}>
-              {aboutData.events.map((event: any, index: number) => (
-                <Card key={index}>
+              {aboutData.events.map((event: any) => (
+                <Card key={`${event.title}-${event.description}`}>
                   <CardContent>
                     <Typography variant="h6">{event.title}</Typography>
                     <Typography variant="subtitle1" color="text.secondary">
@@ -200,8 +200,8 @@ export default function AboutPageClient() {
               <GradientText>Accomplishments</GradientText>
             </Typography>
             <List>
-              {aboutData.accomplishments.map((acc: any, index: number) => (
-                <ListItem key={index}>
+              {aboutData.accomplishments.map((acc: any) => (
+                <ListItem key={acc.title}>
                   <Typography variant="body1">
                     {acc.title} ({acc.year})
                   </Typography>

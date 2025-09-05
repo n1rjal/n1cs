@@ -57,7 +57,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
     }
   }, [open, originalWidth, originalHeight]);
 
-  const handleZoomChange = (event: Event, newValue: number | number[]) => {
+  const handleZoomChange = (_event: Event, newValue: number | number[]) => {
     setZoom(newValue as number);
   };
 
@@ -68,8 +68,8 @@ const ImageModal: React.FC<ImageModalProps> = ({
     }
   };
 
-  const scaledWidth = imageDimensions.width * (zoom / 100);
-  const scaledHeight = imageDimensions.height * (zoom / 100);
+  const _scaledWidth = imageDimensions.width * (zoom / 100);
+  const _scaledHeight = imageDimensions.height * (zoom / 100);
 
   return (
     <Modal

@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid } from "@mui/material";
+import { CardActionArea, CardActions, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -16,36 +16,35 @@ import GradientText from "./GradientText";
 interface BlogListPageProps {
   blogPosts: BlogPost[];
   title: string;
+  renderGradient?: boolean;
 }
 
 const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
   title,
   blogPosts,
+  renderGradient,
 }) => {
-  const theme = useTheme();
-
   return (
-    <Box sx={{ my: "15px" }}>
+    <Box sx={{ my: "10px" }}>
       <Typography component="h3" variant="h3" my="20px" mb="30px">
         <GradientText>{title}</GradientText>
       </Typography>
       <Box>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ mt: 0 }}>
           {blogPosts.map((post) => (
-            <Grid key={post.id}>
-              <Card sx={{ my: 4, height: "100%" }}>
-                <CardContent>
-                  <BlogHeader post={post} />
-                  <Button
-                    size="small"
-                    component={Link}
-                    href={`/blog/${post.id}`}
-                    sx={{ color: theme.palette.warning.main }}
-                  >
-                    Read More
-                  </Button>
-                </CardContent>
-              </Card>
+            <Grid key={post.id} m="0" p="0">
+              <Link
+                href={`/blog/${post.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Card sx={{ mt: 4, py: "2px" }}>
+                  <CardContent sx={{ m: "2px", py: "2px" }}>
+                    <BlogHeader renderGradient={!!renderGradient} post={post} />
+                  </CardContent>
+                  <CardActionArea></CardActionArea>
+                  <CardActions></CardActions>
+                </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>

@@ -158,7 +158,7 @@ export default async function Home() {
       <Testimonials />
 
       <Box>
-        <Container maxWidth="md" sx={{ mt: 4 }}>
+        <Container maxWidth="md" sx={{ my: 4 }}>
           <Box
             sx={{
               gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
@@ -189,7 +189,7 @@ export default async function Home() {
             building things that solve real-world problems and I&rsquo;m always
             looking for new challenges.
           </Typography>
-          <Grid container spacing={4} sx={{ mt: 4 }}>
+          <Grid container spacing={4} sx={{ my: 2 }}>
             {projects.slice(0, 3).map((project) => (
               <Grid key={project.id}>
                 <ProjectCard {...project} />

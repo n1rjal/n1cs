@@ -26,7 +26,7 @@ export default function NewsletterSubscribe() {
     formData.append("id", "d89017e618");
 
     try {
-      const response = await fetch(
+      const _response = await fetch(
         "https://nirjalpaudel.us22.list-manage.com/subscribe/post",
         {
           method: "POST",
