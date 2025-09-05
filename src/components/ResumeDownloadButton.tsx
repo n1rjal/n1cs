@@ -19,7 +19,7 @@ const ResumeDownloadButton: React.FC = () => {
         startIcon={<DownloadIcon />}
         sx={{
           maxWidth: {
-            xs: "68%",
+            xs: "100%",
           },
         }}
       >

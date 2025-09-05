@@ -28,11 +28,16 @@ export default async function Home() {
     <Box
       sx={{
         bgcolor: "background.paper",
-        pt: 8,
+        pt: {
+          xl: 8,
+          xm: 2,
+          sm: 3,
+          md: 4,
+        },
         mb: 0,
       }}
     >
-      <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Container maxWidth="md" sx={{ mt: { lg: 4, xl: 4, sl: 0, xs: 0 } }}>
         <Box>
           <Typography
             variant="h6"
@@ -135,33 +140,31 @@ export default async function Home() {
           <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
             <Grid
               size={{
-                xs: 5,
+                xs: 12,
                 sm: 5,
                 md: 4,
                 lg: 2,
               }}
               display="flex"
-              justifyContent="center"
             >
-              <GlowedLink href="/abouts">
-                <Button variant="contained" color="secondary">
-                  About Me
+              <Link href="/abouts" passHref>
+                <Button variant="outlined" color="secondary" fullWidth>
+                  About me
                 </Button>
-              </GlowedLink>
+              </Link>
             </Grid>
 
             <Grid
               size={{
-                xs: 5,
+                xs: 12,
                 sm: 5,
                 md: 4,
                 lg: 2,
               }}
               display="flex"
-              justifyContent="center"
             >
               <Link href="/#keep-in-touch" passHref>
-                <Button variant="outlined" color="secondary">
+                <Button variant="outlined" color="secondary" fullWidth>
                   Get In Touch
                 </Button>
               </Link>
@@ -175,7 +178,6 @@ export default async function Home() {
                 lg: 3,
               }}
               display="flex"
-              justifyContent="center"
             >
               <ResumeDownloadButton />
             </Grid>
