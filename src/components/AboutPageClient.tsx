@@ -44,7 +44,7 @@ export default function AboutPageClient() {
   const [expanded, setExpanded] = useState<any>({});
 
   useEffect(() => {
-    fetch("/about.json")
+    fetch("/abouts.json")
       .then((res) => res.json())
       .then((data) => setAboutData(data));
   }, []);

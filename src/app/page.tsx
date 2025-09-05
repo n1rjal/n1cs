@@ -138,7 +138,7 @@ export default async function Home() {
             spacing={2}
             justifyContent="center"
           >
-            <GlowedLink href="/about">
+            <GlowedLink href="/abouts">
               <Button variant="contained" color="secondary">
                 About Me
               </Button>

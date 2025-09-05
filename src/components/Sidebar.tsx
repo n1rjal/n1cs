@@ -134,7 +134,7 @@ export default function Sidebar(props: Props) {
           {
             text: "Reading List",
             icon: <MenuBookIcon />,
-            href: "/reading-list",
+            href: "/reading-lists",
           },
         ].map((item) => (
           <ListItem key={item.text} disablePadding dense>

@@ -34,7 +34,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
           {blogPosts.map((post) => (
             <Grid key={post.id} m="0" p="0">
               <Link
-                href={`/blog/${post.id}`}
+                href={`/blogs/${post.id}`}
                 style={{ textDecoration: "none" }}
               >
                 <Card sx={{ mt: 4, py: "2px" }}>

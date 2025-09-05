@@ -52,7 +52,7 @@ export default function NewsletterSubscribe() {
       <Container maxWidth="sm">
         <Typography variant="h5" component="h2" gutterBottom align="center">
           <GradientText>Want more</GradientText>{" "}
-          <GlowedLink href="/blog">blogs ?</GlowedLink> Checkout{" "}
+          <GlowedLink href="/blogs">blogs ?</GlowedLink> Checkout{" "}
           <GlowedLink href="/reading-list">reading lists</GlowedLink>
         </Typography>
         <Typography variant="body1" paragraph align="center">
