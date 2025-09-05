@@ -1,7 +1,15 @@
-import { getReadingListItems } from "@/lib/notion";
-import { Typography, Box, Container, TextField, Button, Link as MuiLink } from "@mui/material";
+import { getReadingListItems, ReadingListItem } from "@/lib/notion";
+import {
+  Typography,
+  Box,
+  Container,
+  TextField,
+  Button,
+  Link as MuiLink,
+} from "@mui/material";
 import { format } from "date-fns";
-import { useState } from "react";
+
+type ReadingListGrouped = { [key: string]: ReadingListItem[] };
 
 export default async function ReadingListPage({
   searchParams,
@@ -11,19 +19,25 @@ export default async function ReadingListPage({
   const { startDate, endDate, query } = searchParams;
   const readingList = await getReadingListItems(startDate, endDate, query);
 
-  const groupedByDate: { [key: string]: typeof readingList } = readingList.reduce(
-    (acc, item) => {
-      const date = format(new Date(item.date), "yyyy-MM-dd");
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-      acc[date].push(item);
-      return acc;
-    },
-    {},
-  );
+  const groupedByDate: ReadingListGrouped = readingList.reduce((acc, item) => {
+    const date = format(new Date(item.date), "MMMM yyyy");
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(item);
+    return acc;
+  }, {} as ReadingListGrouped);
 
-  const sortedDates = Object.keys(groupedByDate).sort((a, b) => b.localeCompare(a));
+  // Sort dates in descending order (e.g., "December 2023" before "November 2023")
+  const sortedDates = Object.keys(groupedByDate).sort((a, b) => {
+    const [monthA, yearA] = a.split(" ");
+    const [monthB, yearB] = b.split(" ");
+
+    const dateA = new Date(`${monthA} 1, ${yearA}`);
+    const dateB = new Date(`${monthB} 1, ${yearB}`);
+
+    return dateB.getTime() - dateA.getTime();
+  });
 
   return (
     <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
@@ -31,7 +45,10 @@ export default async function ReadingListPage({
         Reading List
       </Typography>
 
-      <Box component="form" sx={{ mb: 4, display: "flex", gap: 2, flexWrap: "wrap" }}>
+      <Box
+        component="form"
+        sx={{ mb: 4, display: "flex", gap: 2, flexWrap: "wrap" }}
+      >
         <TextField
           label="Search"
           name="query"
@@ -68,14 +85,24 @@ export default async function ReadingListPage({
         sortedDates.map((date) => (
           <Box key={date} sx={{ mb: 4 }}>
             <Typography variant="h5" component="h2" gutterBottom>
-              {format(new Date(date), "MMMM d, yyyy")}
+              {date}
             </Typography>
             <Box>
               {groupedByDate[date].map((item) => (
                 <Box key={item.id} sx={{ mb: 2 }}>
-                  <Typography variant="h6" component="h3">
-                    <MuiLink href={item.url} target="_blank" rel="noopener" sx={{ textDecoration: "none" }}>
-                      {item.title}
+                  <Typography variant="h6" component="h6">
+                    <MuiLink
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener"
+                      sx={{
+                        textDecoration: "none",
+                        ml: "20px",
+                        my: "2px",
+                        fontSize: "15px",
+                      }}
+                    >
+                      # {item.title}
                     </MuiLink>
                   </Typography>
                   {item.description && (

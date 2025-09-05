@@ -255,7 +255,7 @@ export async function getSingleProject(id: string): Promise<Project | null> {
   }
 }
 
-interface ReadingListItem {
+export interface ReadingListItem {
   id: string;
   title: string;
   url: string;
@@ -269,53 +269,54 @@ export async function getReadingListItems(
   query?: string,
 ): Promise<ReadingListItem[]> {
   const databaseId = "2f9e511d9a074163bd3a813b80fccbbd"; // User provided Notion DB ID
-  let filter: any = {
-    and: [
-      {
-        property: "Status",
-        status: {
-          equals: "Done",
-        },
-      },
-    ],
-  };
+  let filter: any = {};
 
   if (startDate || endDate) {
-    const dateFilter: any = { property: "Date", date: {} };
+    const dateFilterStart: any = { property: "Created", date: {} };
+    const dateFilterEnd: any = { property: "Created", date: {} };
+
     if (startDate) {
-      dateFilter.date.on_or_after = startDate;
+      if (!filter.and) filter.and = [];
+      dateFilterStart.date.on_or_after = startDate;
+      filter.and.push(dateFilterStart);
     }
+
     if (endDate) {
-      dateFilter.date.on_or_before = endDate;
+      if (!filter.and) filter.and = [];
+      dateFilterEnd.date.on_or_before = endDate;
+      filter.and.push(dateFilterEnd);
     }
-    filter.and.push(dateFilter);
   }
 
   if (query) {
+    if (!filter.and) filter.and = [];
     filter.and.push({
-      or: [
-        {
-          property: "Name",
-          title: {
-            contains: query,
-          },
-        },
-        {
-          property: "Description",
-          rich_text: {
-            contains: query,
-          },
-        },
-      ],
+      property: "Name",
+      title: {
+        contains: query,
+      },
     });
   }
+  console.log(
+    JSON.stringify(
+      {
+        ...(Object.keys(filter).length > 0 && {
+          filter: filter,
+        }),
+      },
+      null,
+      2,
+    ),
+  );
 
   const response = await notion.databases.query({
     database_id: databaseId,
-    filter: filter,
+    ...(Object.keys(filter).length > 0 && {
+      filter: filter,
+    }),
     sorts: [
       {
-        property: "Date",
+        property: "Created",
         direction: "descending",
       },
     ],
@@ -337,14 +338,12 @@ export async function getReadingListItems(
 
       const urlProperty = typedPage.properties.URL;
       const url =
-        urlProperty && urlProperty.type === "url"
-          ? urlProperty.url || ""
-          : "";
+        urlProperty && urlProperty.type === "url" ? urlProperty.url || "" : "";
 
-      const dateProperty = typedPage.properties.Date;
+      const dateProperty = typedPage.properties.Created;
       const date =
-        dateProperty && dateProperty.type === "date"
-          ? dateProperty.date.start || ""
+        dateProperty && dateProperty.type === "created_time"
+          ? dateProperty.created_time || ""
           : "";
 
       const descriptionProperty = typedPage.properties.Description;
