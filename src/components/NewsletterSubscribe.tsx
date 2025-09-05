@@ -51,9 +51,9 @@ export default function NewsletterSubscribe() {
     <Box sx={{ bgcolor: "background.paper", py: 6 }}>
       <Container maxWidth="sm">
         <Typography variant="h5" component="h2" gutterBottom align="center">
-          <GradientText>Want more</GradientText>{" "}
-          <GlowedLink href="/blogs">blogs ?</GlowedLink> Checkout{" "}
-          <GlowedLink href="/reading-list">reading lists</GlowedLink>
+          <GradientText>Want </GradientText>{" "}
+          <GlowedLink href="/blogs">more?</GlowedLink> Check{" "}
+          <GlowedLink href="/reading-list">reading lists too</GlowedLink>
         </Typography>
         <Typography variant="body1" paragraph align="center">
           Stay up-to-date with my latest projects, articles, and insights.

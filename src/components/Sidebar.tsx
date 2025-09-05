@@ -107,11 +107,16 @@ export default function Sidebar(props: Props) {
           py: 2,
         }}
       >
-        <Typography variant="h5" noWrap component="div" color="text.primary">
+        <Typography
+          variant="h5"
+          noWrap
+          component="div"
+          color={theme.palette.mode === "light" ? "#000000" : "text.primary"}
+        >
           Nirjal&apos;s Blog
         </Typography>
         <IconButton
-          color="inherit"
+          color={theme.palette.mode === "light" ? "#000000" : "inherit"}
           aria-label="close drawer"
           edge="end"
           onClick={handleDrawerClose}
@@ -131,7 +136,7 @@ export default function Sidebar(props: Props) {
           {
             text: "About Me",
             icon: <PersonIcon />,
-            href: "/about",
+            href: "/abouts",
           },
           {
             text: "Projects",
@@ -141,7 +146,7 @@ export default function Sidebar(props: Props) {
           {
             text: "Blog",
             icon: <ArticleIcon />,
-            href: "/blog",
+            href: "/blogs",
           },
           {
             text: "Reading List",
@@ -154,6 +159,7 @@ export default function Sidebar(props: Props) {
               component={Link}
               href={item.href}
               selected={pathname === item.href}
+              onClick={handleDrawerClose}
               sx={{
                 fontSize: "14px",
                 p: "2px",
@@ -303,13 +309,13 @@ export default function Sidebar(props: Props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           display: { sm: "none" }, // Only show AppBar on mobile
-          bgcolor: theme.palette.background.default,
+          bgcolor: theme.palette.background.paper,
           boxShadow: theme.shadows[1],
         }}
       >
         <Toolbar>
           <IconButton
-            color="inherit"
+            color={theme.palette.mode === "light" ? "#000000" : "inherit"}
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -317,12 +323,25 @@ export default function Sidebar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" color="text.primary">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            color={theme.palette.mode === "light" ? "#000000" : "text.primary"}
+          >
             Nirjal&apos;s Blog
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color={theme.palette.mode === "light" ? "#000000" : "inherit"}
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -355,7 +374,7 @@ export default function Sidebar(props: Props) {
           variant="permanent"
           sx={{
             display: { xs: "none", sm: "block" },
-            bgcolor: theme.palette.background.default,
+            bgcolor: theme.palette.background.paper,
 
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
