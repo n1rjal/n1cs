@@ -231,27 +231,37 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 ),
                 a: ({ node, ...props }) => <GlowedLink {...props} />,
                 img: ({ node, ...props }) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    {...props}
-                    alt={props.alt || ""}
-                    style={{
-                      width: "50%",
-                      height: "auto",
-                      display: "block",
-                      margin: "auto",
-                      cursor: "pointer",
-                    }}
-                    onClick={(e) => {
-                      const imgElement = e.target as HTMLImageElement;
-                      handleImageClick(
-                        imgElement.src,
-                        imgElement.alt,
-                        imgElement.naturalWidth,
-                        imgElement.naturalHeight,
-                      );
-                    }}
-                  />
+                  <Box component="figure">
+                    <img
+                      {...props}
+                      alt={props.alt || ""}
+                      style={{
+                        width: "50%",
+                        height: "auto",
+                        display: "block",
+                        margin: "auto",
+                        cursor: "pointer",
+                      }}
+                      onClick={(e) => {
+                        const imgElement = e.target as HTMLImageElement;
+                        handleImageClick(
+                          imgElement.src,
+                          imgElement.alt,
+                          imgElement.naturalWidth,
+                          imgElement.naturalHeight,
+                        );
+                      }}
+                    />
+                    {props.alt ? (
+                      <Box
+                        component="figcaption"
+                        textAlign="center"
+                        sx={{ fontSize: "12px", fontStyle: "italic" }}
+                      >
+                        {props.alt}
+                      </Box>
+                    ) : null}
+                  </Box>
                 ),
                 blockquote: ({ node, ...props }) => (
                   <Box

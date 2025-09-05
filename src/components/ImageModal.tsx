@@ -111,21 +111,21 @@ const ImageModal: React.FC<ImageModalProps> = ({
         >
           {CloseIcon && <CloseIcon />}
         </IconButton>
-        <Image
+        <img
           src={src}
           alt={alt}
           width={scaledWidth}
           height={scaledHeight}
-          layout="intrinsic"
-          objectFit="contain"
           style={{
             cursor: "grab",
-            maxWidth: "100%",
-            maxHeight: "100%",
+            maxWidth: "80%",
+            maxHeight: "80%",
           }}
         />
         <Box
           sx={{
+            position: "absolute",
+            bottom: "20px",
             width: "200px",
             mt: 2,
             display: "flex",
