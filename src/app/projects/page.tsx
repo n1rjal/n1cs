@@ -1,0 +1,87 @@
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import ProjectCard from "@/components/ProjectCard";
+import { getProjects } from "@/lib/notion";
+import Link from "next/link";
+
+export default async function ProjectsPage() {
+  let notionProjects = await getProjects();
+  const dummyProjects = [
+    {
+      name: "My Awesome Project (Dummy)",
+      description:
+        "A brief description of my awesome project. It does amazing things and solves real-world problems.",
+      liveUrl: "https://example.com",
+      githubUrl: "https://github.com/n1rjal/n1cs",
+      tags: ["tag1", "tag2"],
+    },
+    {
+      name: "Another Cool Project (Dummy)",
+      description:
+        "This project is also very cool. It demonstrates my skills in various technologies.",
+      liveUrl: "https://another-example.com",
+      githubUrl: "https://github.com/mui/material-ui",
+      tags: ["tag1", "tag2"],
+    },
+    {
+      name: "Simple CLI Tool (Dummy)",
+      description:
+        "A command-line interface tool for automating daily tasks. Written in Python.",
+      githubUrl: "https://github.com/pallets/flask",
+      tags: ["tag1", "tag2"],
+    },
+    {
+      name: "Personal Website (Dummy)",
+      description:
+        "This is my personal website, built with Next.js and Material-UI.",
+      liveUrl: "https://nirjalpaudel.com.np",
+      githubUrl: "https://github.com/n1rjal/n1cs",
+      tags: ["tag1", "tag2"],
+    },
+  ];
+
+  const projects = notionProjects.length > 0 ? notionProjects : dummyProjects;
+
+  return (
+    <Container sx={{ mt: 4, mb: 4 }}>
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          My Projects
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Here are some of the projects I&apos;ve worked on. Click on them to learn
+          more!
+        </Typography>
+      </Box>
+      <Grid container spacing={4} size={4}>
+        {projects.length > 0 ? (
+          projects.map((project: any) => (
+            <Grid
+              size={6}
+              key={project.id || project.name}
+              xs={12}
+              sm={6}
+              md={6}
+            >
+              <Link
+                href={`/projects/${project.id}`}
+                passHref
+                style={{ textDecoration: "none" }}
+              >
+                <ProjectCard {...project} />
+              </Link>
+            </Grid>
+          ))
+        ) : (
+          <Typography variant="body2">
+            No projects found. Please ensure your Notion database is set up
+            correctly and has published projects, or set
+            NOTION_PROJECTS_DATABASE_ID.
+          </Typography>
+        )}
+      </Grid>
+    </Container>
+  );
+}
