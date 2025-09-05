@@ -17,6 +17,11 @@ const ResumeDownloadButton: React.FC = () => {
         color="secondary"
         onClick={handleOpen}
         startIcon={<DownloadIcon />}
+        sx={{
+          maxWidth: {
+            xs: "68%",
+          },
+        }}
       >
         Resume
       </Button>

@@ -132,24 +132,54 @@ export default async function Home() {
             </ListItem>
           </List>
 
-          <Stack
-            sx={{ pt: 4 }}
-            direction={{ xs: "column", sm: "row" }}
-            spacing={2}
-            justifyContent="center"
-          >
-            <GlowedLink href="/abouts">
-              <Button variant="contained" color="secondary">
-                About Me
-              </Button>
-            </GlowedLink>
-            <Link href="/#keep-in-touch" passHref>
-              <Button variant="outlined" color="secondary">
-                Get In Touch
-              </Button>
-            </Link>
-            <ResumeDownloadButton />
-          </Stack>
+          <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
+            <Grid
+              size={{
+                xs: 5,
+                sm: 5,
+                md: 4,
+                lg: 2,
+              }}
+              display="flex"
+              justifyContent="center"
+            >
+              <GlowedLink href="/abouts">
+                <Button variant="contained" color="secondary">
+                  About Me
+                </Button>
+              </GlowedLink>
+            </Grid>
+
+            <Grid
+              size={{
+                xs: 5,
+                sm: 5,
+                md: 4,
+                lg: 2,
+              }}
+              display="flex"
+              justifyContent="center"
+            >
+              <Link href="/#keep-in-touch" passHref>
+                <Button variant="outlined" color="secondary">
+                  Get In Touch
+                </Button>
+              </Link>
+            </Grid>
+
+            <Grid
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+                lg: 3,
+              }}
+              display="flex"
+              justifyContent="center"
+            >
+              <ResumeDownloadButton />
+            </Grid>
+          </Grid>
         </Box>
       </Container>
 

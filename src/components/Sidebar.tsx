@@ -8,6 +8,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LaunchIcon from "@mui/icons-material/Launch";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
@@ -308,6 +310,10 @@ export default function Sidebar(props: Props) {
           <Typography variant="h6" noWrap component="div" color="text.primary">
             Nirjal&apos;s Blog
           </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Box
