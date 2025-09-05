@@ -12,7 +12,7 @@ import GradientText from "./GradientText";
 
 export default function NewsletterSubscribe() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState(""); // 'loading', 'success', 'error'
+  const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubscribe = async () => {
@@ -21,16 +21,11 @@ export default function NewsletterSubscribe() {
 
     const formData = new URLSearchParams();
     formData.append("EMAIL", email);
-    // Mailchimp's hidden anti-bot field (f_id)
-    // The value for f_id is usually empty for legitimate submissions
-    formData.append("f_id", "00f0cfe1f0"); // Use the f_id from the provided URL
-    formData.append("u", "b6088a7da5e588b35ee18a982"); // User ID from URL
-    formData.append("id", "d89017e618"); // List ID from URL
+    formData.append("f_id", "00f0cfe1f0");
+    formData.append("u", "b6088a7da5e588b35ee18a982");
+    formData.append("id", "d89017e618");
 
     try {
-      // Mailchimp typically uses JSONP, direct fetch might have CORS issues.
-      // For a real application, a server-side proxy or a dedicated Mailchimp API client is recommended.
-      // Here, we'll attempt a direct POST, which might be blocked by CORS.
       const response = await fetch(
         "https://nirjalpaudel.us22.list-manage.com/subscribe/post",
         {
@@ -40,10 +35,6 @@ export default function NewsletterSubscribe() {
         },
       );
 
-      // Since mode is 'no-cors', response.ok will always be true and response.json() will fail.
-      // We can't directly read the response from Mailchimp in this mode.
-      // For proper feedback, a server-side proxy is almost always required for Mailchimp forms.
-      // For demonstration, we'll assume success if no network error.
       setStatus("success");
       setMessage("Subscription request sent!");
       setEmail("");

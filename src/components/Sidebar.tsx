@@ -85,7 +85,7 @@ export default function Sidebar(props: Props) {
           py: 2,
         }}
       >
-        <Typography variant="h6" noWrap component="div" color="text.primary">
+        <Typography variant="h5" noWrap component="div" color="text.primary">
           Nirjal&apos;s Blog
         </Typography>
       </Toolbar>
