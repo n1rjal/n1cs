@@ -21,7 +21,7 @@ export default async function BlogPage() {
       maxWidth="100%"
       bgcolor="background.paper"
     >
-      <Grid size={8}>
+      <Grid size={7}>
         <BlogListPageWrapper title="All Blogs" blogPosts={blogPosts} />
       </Grid>
     </Grid>

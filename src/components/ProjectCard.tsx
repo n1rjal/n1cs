@@ -18,6 +18,7 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
 interface ProjectCardProps {
+  id: string;
   name: string;
   description: string;
   liveUrl?: string;
@@ -27,6 +28,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
+  id,
   name,
   description,
   liveUrl,
@@ -86,7 +88,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         />
       )}
 
-      <Link href={liveUrl} style={{ textDecoration: "none" }}>
+      <Link href={`/projects/${id}`} style={{ textDecoration: "none" }}>
         <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
           <Typography gutterBottom variant="h6" fontWeight="600" component="h2">
             {name}
