@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LaunchIcon from "@mui/icons-material/Launch";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
@@ -99,7 +100,7 @@ export default function Sidebar(props: Props) {
       <Toolbar
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-between", // Changed to space-between
           alignItems: "center",
           minHeight: 64,
           borderBottom: `1px solid ${theme.palette.divider}`,
@@ -109,6 +110,15 @@ export default function Sidebar(props: Props) {
         <Typography variant="h5" noWrap component="div" color="text.primary">
           Nirjal&apos;s Blog
         </Typography>
+        <IconButton
+          color="inherit"
+          aria-label="close drawer"
+          edge="end"
+          onClick={handleDrawerClose}
+          sx={{ display: { sm: "none" } }} // Only show on mobile
+        >
+          <CloseIcon />
+        </IconButton>
       </Toolbar>
       <Divider />
       <List>
@@ -335,7 +345,7 @@ export default function Sidebar(props: Props) {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
+              width: mobileOpen ? "100vw" : drawerWidth, // Full screen on mobileOpen
             },
           }}
         >
