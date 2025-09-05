@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import ReactMarkdown, { Components, CodeProps } from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import python from "highlight.js/lib/languages/python";
@@ -18,7 +18,6 @@ import GlowedLink from "@/components/GlowedLink";
 import { useTheme } from "@mui/material/styles";
 import ImageModal from "@/components/ImageModal";
 import Grid from "@mui/material/Grid";
-import TableOfContents from "@/components/TableOfContents";
 import CopyCodeButton from "@/components/CopyCodeButton";
 
 interface Heading {
@@ -93,10 +92,8 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 ],
               ]}
               components={{
-                code: (props: Components["code"]) => {
-                  const { className, children } = props as CodeProps;
-
-                  const inline = !(props?.children as any)?.includes("\n");
+                code: (props) => {
+                  const { className, children } = props;
 
                   const getTextContent = (node: React.ReactNode): string => {
                     if (typeof node === "string") return node;
@@ -110,48 +107,57 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
 
                   const codeContent = getTextContent(children);
 
-                  // Inline `code`
+                  // Inline heuristic:
+                  // - No newline
+                  // - No language class
+                  const inline =
+                    !codeContent.includes("\n") &&
+                    !className?.startsWith("language-");
+
                   if (inline) {
                     return (
                       <Box
-                        component="span"
-                        sx={{
-                          backgroundColor: theme.palette.action.hover,
-                          color: theme.palette.error.main, // red-ish like Notion
-                          fontFamily: "monospace",
-                          px: 0.5,
-                          py: 0.2,
-                          borderRadius: "4px",
-                          fontSize: "0.85em",
-                        }}
+                        component="code"
                         className={className}
+                        sx={{
+                          color: "#f73b3b",
+                        }}
                       >
                         {children}
                       </Box>
                     );
                   }
 
-                  // Block ```code```
+                  // Block code
                   return (
-                    <Box sx={{ position: "relative", my: 2 }}>
+                    <Box
+                      component="pre"
+                      sx={{
+                        fontFamily: "monospace",
+                        fontSize: "0.9em",
+                        backgroundColor:
+                          theme.palette.mode === "dark"
+                            ? theme.palette.background.default
+                            : theme.palette.background.paper, // light mode
+                        color: theme.palette.text.primary,
+                        p: 2,
+                        borderRadius: theme.shape.borderRadius,
+                        overflowX: "auto",
+                        position: "relative",
+                      }}
+                      className={className}
+                    >
                       <CopyCodeButton code={codeContent} />
-                      <pre
-                        style={{
-                          fontSize: "0.9em",
-                          backgroundColor: theme.palette.background.paper,
-                          color: theme.palette.text.primary,
-                          padding: theme.spacing(2),
-                          borderRadius: theme.shape.borderRadius,
-                          overflowX: "auto",
+                      <Box
+                        component="code"
+                        sx={{
+                          display: "block",
+                          wordBreak: "break-word",
+                          color: "inherit",
                         }}
                       >
-                        <code
-                          className={className}
-                          style={{ wordBreak: "break-word" }}
-                        >
-                          {children}
-                        </code>
-                      </pre>
+                        {children}
+                      </Box>
                     </Box>
                   );
                 },

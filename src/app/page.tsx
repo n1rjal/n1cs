@@ -16,8 +16,6 @@ import TrustedCompanies from "@/components/TrustedCompanies";
 import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 
 export default async function Home() {
-  const blogPosts = [];
-
   return (
     <Box
       sx={{

@@ -4,8 +4,8 @@ import ContentWrapper from "@/components/ContentWrapper";
 import { Typography, Box, Container } from "@mui/material";
 import SuggestedBlogs from "@/components/SuggestedBlogs";
 import Grid from "@mui/material/Grid";
+import BlogHeader from "@/components/BlogHeader";
 
-// Explicitly define PageProps to match Next.js's expected type for route parameters
 interface PageProps {
   params: { id: string };
 }
@@ -44,21 +44,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         <Box sx={{ my: 4 }}>
           <Grid container spacing={4}>
             <Grid size={8}>
-              <Typography variant="h3" component="h1" gutterBottom>
-                {post.title}
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                gutterBottom
-              >
-                Published:{" "}
-                {new Date(post.createdTime).toISOString().split("T")[0]}
-              </Typography>
-
+              <BlogHeader post={post} />
               <ContentWrapper content={content} headings={headings} />
-            </Grid>
-            <Grid size={4}>
               <SuggestedBlogs blogPosts={suggestedBlogs} />
             </Grid>
           </Grid>
