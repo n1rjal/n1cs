@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Box, IconButton, Slider, Typography } from "@mui/material";
-import dynamic from "next/dynamic"; // Import dynamic
+import dynamic from "next/dynamic";
 
-// Dynamically import Material-UI icons
 const CloseIcon = dynamic(() => import("@mui/icons-material/Close"), {
   ssr: false,
 });
@@ -14,8 +13,6 @@ const ZoomInIcon = dynamic(() => import("@mui/icons-material/ZoomIn"), {
 const ZoomOutIcon = dynamic(() => import("@mui/icons-material/ZoomOut"), {
   ssr: false,
 });
-
-import Image from "next/image";
 
 interface ImageModalProps {
   src: string;
@@ -87,6 +84,16 @@ const ImageModal: React.FC<ImageModalProps> = ({
       }}
     >
       <Box
+        width={{
+          lg: "50%",
+          sm: "100%",
+          md: "75%",
+        }}
+        maxWidth={{
+          lg: "50%",
+          sm: "100%",
+          md: "75%",
+        }}
         sx={{
           position: "relative",
           outline: "none",
@@ -94,8 +101,6 @@ const ImageModal: React.FC<ImageModalProps> = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          maxWidth: "90vw",
-          maxHeight: "90vh",
         }}
       >
         <IconButton
@@ -111,15 +116,26 @@ const ImageModal: React.FC<ImageModalProps> = ({
         >
           {CloseIcon && <CloseIcon />}
         </IconButton>
-        <img
+        <Box
+          component="img"
           src={src}
           alt={alt}
-          width={scaledWidth}
-          height={scaledHeight}
-          style={{
+          sx={{
+            display: "block",
+            margin: "auto",
             cursor: "grab",
-            maxWidth: "80%",
-            maxHeight: "80%",
+
+            width: {
+              xs: "90%", // mobile: take 90% of screen width
+              sm: "75%", // tablet
+              md: "60%", // desktop
+            },
+            maxWidth: "100%", // never overflow container width
+            height: "auto", // preserve aspect ratio
+            maxHeight: {
+              xs: "80vh", // mobile: max 80% of viewport height
+              md: "100vh", // desktop: max 100% of viewport height
+            },
           }}
         />
         <Box

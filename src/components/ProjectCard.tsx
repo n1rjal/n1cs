@@ -72,8 +72,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        py: "10px",
-        px: "15px",
+        py: 1.25,
+        px: 1.875,
         borderRadius: "5px",
         width: "100%",
       }}

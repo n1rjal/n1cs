@@ -55,7 +55,7 @@ export default async function ProjectDetailPage({
       bgcolor="background.paper"
       sx={{ py: 4 }}
     >
-      <Grid size={7}>
+      <Grid item xs={12} sm={10} md={8} lg={7}>
         <Box sx={{ my: 4 }}>
           <Typography variant="h3" component="h1" gutterBottom>
             <GradientText>{project.name}</GradientText>

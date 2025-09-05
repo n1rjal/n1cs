@@ -65,12 +65,21 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
         <Box
           sx={{
             py: 3,
+            px: {
+              sm: 2,
+            },
             borderRadius: 2,
             color: theme.palette.text.primary,
+            maxWidth: {
+              xl: "md",
+              lg: "md",
+              md: "lg",
+              sm: "100%",
+            },
           }}
         >
           <Box component="hr" />
-          <Box sx={{ mt: 4 }}>
+          <Box sx={{ pt: 4 }}>
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[
@@ -212,7 +221,14 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 ul: ({ node, ...props }) => (
                   <Box
                     component="ul"
-                    sx={{ ml: 3, mb: 1.5, listStyleType: "disc" }}
+                    sx={{
+                      ml: {
+                        lg: 3,
+                        sm: 1,
+                      },
+                      mb: 1.5,
+                      listStyleType: "disc",
+                    }}
                     {...props}
                   />
                 ),
@@ -236,16 +252,24 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 ),
                 a: ({ node, ...props }) => <GlowedLink {...props} />,
                 img: ({ node, ...props }) => (
-                  <Box component="figure">
-                    <img
+                  <Box component="figure" sx={{ m: 0 }}>
+                    <Box
+                      component="img"
                       {...props}
                       alt={props.alt || ""}
-                      style={{
-                        width: "50%",
-                        height: "auto",
+                      sx={{
                         display: "block",
                         margin: "auto",
                         cursor: "pointer",
+
+                        width: {
+                          xs: "90%", // mobile
+                          sm: "75%",
+                          md: "60%",
+                        },
+                        maxWidth: "100%", // never overflow horizontally
+                        height: "auto",
+                        maxHeight: "100vh", // never exceed viewport height
                       }}
                       onClick={(e) => {
                         const imgElement = e.target as HTMLImageElement;

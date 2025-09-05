@@ -11,6 +11,7 @@ import CardContent from "@mui/material/CardContent";
 import BlogHeader from "./BlogHeader";
 import { BlogPost } from "@/lib/notion";
 import GradientText from "./GradientText";
+import { Grid } from "@mui/material";
 
 interface BlogListPageProps {
   blogPosts: BlogPost[];
@@ -29,21 +30,25 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
         <GradientText>{title}</GradientText>
       </Typography>
       <Box>
-        {blogPosts.map((post) => (
-          <Card sx={{ my: 4 }} key={post.id}>
-            <CardContent>
-              <BlogHeader post={post} />
-              <Button
-                size="small"
-                component={Link}
-                href={`/blog/${post.id}`}
-                sx={{ color: theme.palette.warning.main }}
-              >
-                Read More
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
+        <Grid container spacing={4}>
+          {blogPosts.map((post) => (
+            <Grid item xs={12} sm={6} md={4} key={post.id}>
+              <Card sx={{ my: 4, height: "100%" }}>
+                <CardContent>
+                  <BlogHeader post={post} />
+                  <Button
+                    size="small"
+                    component={Link}
+                    href={`/blog/${post.id}`}
+                    sx={{ color: theme.palette.warning.main }}
+                  >
+                    Read More
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Box>
   );

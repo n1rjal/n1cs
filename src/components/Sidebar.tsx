@@ -16,6 +16,9 @@ import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
 import { ColorModeContext } from "../app/ThemeRegistry";
 import { usePathname } from "next/navigation"; // Import usePathname
+import AppBar from "@mui/material/AppBar"; // Import AppBar
+import IconButton from "@mui/material/IconButton"; // Import IconButton
+import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
 
 import HomeIcon from "@mui/icons-material/Home";
 import WorkIcon from "@mui/icons-material/Work";
@@ -38,7 +41,24 @@ interface Props {
 }
 
 export default function Sidebar(props: Props) {
-  const { children } = props;
+  const { window, children } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false); // State for mobile drawer
+  const [isClosing, setIsClosing] = React.useState(false);
+
+  const handleDrawerClose = () => {
+    setIsClosing(true);
+    setMobileOpen(false);
+  };
+
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
+  };
+
+  const handleDrawerToggle = () => {
+    if (!isClosing) {
+      setMobileOpen(!mobileOpen);
+    }
+  };
 
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
@@ -261,13 +281,61 @@ export default function Sidebar(props: Props) {
     </Box>
   );
 
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <Box sx={{ display: "flex" }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+          display: { sm: "none" }, // Only show AppBar on mobile
+          bgcolor: theme.palette.background.default,
+          boxShadow: theme.shadows[1],
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div" color="text.primary">
+            Nirjal&apos;s Blog
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
+        {/* The implementation can be swapped with js to avoid SEO duplication of the NavLink */}
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
         <Drawer
           variant="permanent"
           sx={{
@@ -289,9 +357,9 @@ export default function Sidebar(props: Props) {
       <Box
         component="main"
         sx={{
-          m: 0,
-          p: 0,
+          flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          mt: { xs: "64px", sm: "0" }, // Add margin-top for AppBar on mobile
         }}
       >
         {children}

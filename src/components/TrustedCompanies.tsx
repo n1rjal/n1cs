@@ -50,7 +50,7 @@ const TrustedCompanies = () => {
         {companies.map((company) => (
           <Box
             key={company.link}
-            sx={{ width: 120, height: 60, position: "relative" }}
+            sx={{ width: { xs: '40%', sm: 120 }, maxWidth: 120, height: 60, position: "relative" }}
           >
             <a href={company.link} target="_blank" rel="noopener noreferrer">
               <Image

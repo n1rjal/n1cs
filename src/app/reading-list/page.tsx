@@ -62,6 +62,7 @@ export default async function ReadingListPage({
           defaultValue={query}
           variant="outlined"
           size="small"
+          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
         />
         <TextField
           label="Start Date"
@@ -71,6 +72,7 @@ export default async function ReadingListPage({
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           size="small"
+          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
         />
         <TextField
           label="End Date"
@@ -80,6 +82,7 @@ export default async function ReadingListPage({
           InputLabelProps={{ shrink: true }}
           variant="outlined"
           size="small"
+          sx={{ flexGrow: 1, minWidth: { xs: '100%', sm: 'auto' } }}
         />
         <Button type="submit" variant="contained" color="primary">
           Apply Filters

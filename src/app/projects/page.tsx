@@ -62,10 +62,10 @@ export default async function ProjectsPage() {
           learn more!
         </Typography>
       </Box>
-      <Grid container spacing={4} size={4}>
+      <Grid container spacing={4}>
         {projects.length > 0 ? (
           projects.map((project: any) => (
-            <Grid size={6} key={project.id || project.name}>
+            <Grid item xs={12} sm={6} md={4} key={project.id || project.name}>
               <ProjectCard {...project} />
             </Grid>
           ))

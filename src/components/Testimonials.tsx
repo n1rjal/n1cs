@@ -35,7 +35,7 @@ export default function Testimonials() {
         </Typography>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {testimonials.map((testimonial, index) => (
-            <Grid key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <Card sx={{ height: "100%" }}>
                 <CardContent>
                   <Typography variant="body1" sx={{ fontStyle: "italic" }}>

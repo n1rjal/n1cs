@@ -48,9 +48,10 @@ export default async function Home() {
           </Typography>
           <Box
             mt={{
-              lg: "1.3cm",
-              md: "1cm",
-              sm: 0,
+              xs: 2,
+              sm: 4,
+              md: 6,
+              lg: 8,
             }}
           >
             <Typography variant="h6" color="text.primary" gutterBottom>
@@ -134,7 +135,7 @@ export default async function Home() {
 
           <Stack
             sx={{ pt: 4 }}
-            direction="row"
+            direction={{ xs: 'column', sm: 'row' }}
             spacing={2}
             justifyContent="center"
           >
@@ -191,7 +192,7 @@ export default async function Home() {
           </Typography>
           <Grid container spacing={4} sx={{ mt: 4 }}>
             {projects.slice(0, 3).map((project) => (
-              <Grid key={project.id}>
+              <Grid item xs={12} sm={6} md={4} key={project.id}>
                 <ProjectCard {...project} />
               </Grid>
             ))}
@@ -222,7 +223,7 @@ export default async function Home() {
             out.
           </Typography>
           <Stack
-            direction="row"
+            direction={{ xs: 'column', sm: 'row' }}
             spacing={4}
             justifyContent="center"
             sx={{ mt: 3 }}
