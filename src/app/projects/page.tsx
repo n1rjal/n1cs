@@ -1,16 +1,17 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProjectCard from "@/components/ProjectCard";
 import { getProjects } from "@/lib/notion";
-import Link from "next/link";
 import GradientText from "@/components/GradientText";
+import ResponsiveGrid from "@/components/ResponsiveGrid";
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Explore a collection of projects developed by Nirjal Paudel, showcasing expertise in various technologies and problem-solving.',
+  title: "Projects",
+  description:
+    "Explore a collection of projects developed by Nirjal Paudel, showcasing expertise in various technologies and problem-solving.",
 };
 
 export default async function ProjectsPage() {
@@ -52,7 +53,7 @@ export default async function ProjectsPage() {
   const projects = notionProjects.length > 0 ? notionProjects : dummyProjects;
 
   return (
-    <Container sx={{ mt: 4, mb: 4 }}>
+    <ResponsiveGrid>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
           <GradientText>My Projects</GradientText>
@@ -63,20 +64,12 @@ export default async function ProjectsPage() {
         </Typography>
       </Box>
       <Grid container spacing={4}>
-        {projects.length > 0 ? (
-          projects.map((project: any) => (
-            <Grid item xs={12} sm={6} md={4} key={project.id || project.name}>
-              <ProjectCard {...project} />
-            </Grid>
-          ))
-        ) : (
-          <Typography variant="body2">
-            No projects found. Please ensure your Notion database is set up
-            correctly and has published projects, or set
-            NOTION_PROJECTS_DATABASE_ID.
-          </Typography>
-        )}
+        {projects.map((project: any) => (
+          <Grid key={project.id || project.name}>
+            <ProjectCard {...project} />
+          </Grid>
+        ))}
       </Grid>
-    </Container>
+    </ResponsiveGrid>
   );
 }

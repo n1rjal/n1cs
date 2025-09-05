@@ -32,7 +32,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
       <Box>
         <Grid container spacing={4}>
           {blogPosts.map((post) => (
-            <Grid item xs={12} sm={6} md={4} key={post.id}>
+            <Grid key={post.id}>
               <Card sx={{ my: 4, height: "100%" }}>
                 <CardContent>
                   <BlogHeader post={post} />

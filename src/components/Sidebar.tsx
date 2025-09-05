@@ -91,7 +91,7 @@ export default function Sidebar(props: Props) {
     <Box
       sx={{
         px: 2,
-        bgcolor: theme.palette.background.default,
+        bgcolor: theme.palette.background.paper,
         height: "100%",
       }}
     >
@@ -359,7 +359,7 @@ export default function Sidebar(props: Props) {
         sx={{
           flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          mt: { xs: "64px", sm: "0" }, // Add margin-top for AppBar on mobile
+          mt: { xs: "60px", sm: "0" }, // Add margin-top for AppBar on mobile
         }}
       >
         {children}

@@ -1,24 +1,20 @@
 import { getBlogPosts, getPostContent, getSingleBlogPost } from "@/lib/notion";
-import { Metadata } from "next";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import ContentWrapper from "@/components/ContentWrapper";
 import { Typography, Box, Container } from "@mui/material";
 import SuggestedBlogs from "@/components/SuggestedBlogs";
-import Grid from "@mui/material/Grid";
 import BlogHeader from "@/components/BlogHeader";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
-
+import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { Metadata } from "next";
-
-interface PageProps {
-  params: { id: string };
-}
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
-  const post = await getSingleBlogPost(params.id);
-
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const post = await getSingleBlogPost(id);
   if (!post) {
     return {
       title: "Post Not Found",
@@ -32,7 +28,7 @@ export async function generateMetadata({
     openGraph: {
       images: [post.coverImage],
     },
-  };
+  } as Metadata;
 }
 
 export async function generateStaticParams() {
@@ -42,8 +38,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getSingleBlogPost(params.id);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const post = await getSingleBlogPost(id);
 
   if (!post) {
     return (
@@ -63,20 +64,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { content, headings } = await getPostContent(post.id);
 
   return (
-    <Grid container justifyContent="center" bgcolor="background.paper">
+    <ResponsiveGrid py="20px">
       <ReadingProgressBar />
-      <Container maxWidth="md">
-        <Box sx={{ my: 4 }}>
-          <Grid container spacing={4} justifyContent="center">
-            <Grid>
-              <BlogHeader post={post} renderGradient />
-              <ContentWrapper content={content} headings={headings} />
-              <SuggestedBlogs blogPosts={suggestedBlogs} />
-              <NewsletterSubscribe />
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Grid>
+      <Box my="20px">
+        <BlogHeader post={post} renderGradient />
+        <ContentWrapper content={content} headings={headings} />
+        <SuggestedBlogs blogPosts={suggestedBlogs} />
+        <NewsletterSubscribe />
+      </Box>
+    </ResponsiveGrid>
   );
 }

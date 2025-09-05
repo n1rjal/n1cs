@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getBlogPosts } from "@/lib/notion";
 import BlogListPageWrapper from "@/components/BlogListPageWrapper";
-import { Grid } from "@mui/material";
+import ResponsiveGrid from "@/components/ResponsiveGrid";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -13,17 +13,8 @@ export default async function BlogPage() {
   const blogPosts = await getBlogPosts();
 
   return (
-    <Grid
-      container
-      spacing={4}
-      justifyContent="center"
-      width="100%"
-      maxWidth="100%"
-      bgcolor="background.paper"
-    >
-      <Grid size={7}>
-        <BlogListPageWrapper title="All Blogs" blogPosts={blogPosts} />
-      </Grid>
-    </Grid>
+    <ResponsiveGrid>
+      <BlogListPageWrapper title="All Blogs" blogPosts={blogPosts} />
+    </ResponsiveGrid>
   );
 }

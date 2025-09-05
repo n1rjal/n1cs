@@ -29,8 +29,9 @@ const CopyCodeButton: React.FC<CopyCodeButtonProps> = ({ code }) => {
     <Box
       sx={{
         position: "absolute",
-        top: theme.spacing(1),
-        right: theme.spacing(1),
+        top: 1,
+        right: 1,
+        display: "inline-block",
         zIndex: 1,
       }}
     >

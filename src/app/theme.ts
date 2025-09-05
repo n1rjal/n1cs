@@ -40,8 +40,8 @@ export const createCustomTheme = (mode: "light" | "dark") => {
               main: "#ef5350",
             },
             background: {
-              default: "#191A1A", // deep matte black background
-              paper: "#2a2a2a", // slightly lighter matte black for cards/paper
+              paper: "#191A1A", // deep matte black background
+              default: "#2a2a2a", // slightly lighter matte black for cards/paper
             },
             text: {
               primary: "#f5f5f5", // off-white for text
@@ -95,8 +95,8 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             fontWeight: 600,
           },
           containedSecondary: {
-            color: mode === 'dark' ? '#fff' : '#000',
-          }
+            color: mode === "dark" ? "#fff" : "#000",
+          },
         },
       },
       MuiContainer: {

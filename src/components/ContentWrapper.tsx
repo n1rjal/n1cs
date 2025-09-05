@@ -60,7 +60,7 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
   };
 
   return (
-    <Grid container spacing={4} my={4}>
+    <Grid container my={4}>
       <Grid>
         <Box
           sx={{
@@ -137,33 +137,34 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                   }
 
                   return (
-                    <Box
-                      component="pre"
-                      sx={{
-                        fontFamily: "monospace",
-                        fontSize: "0.9em",
-                        backgroundColor:
-                          theme.palette.mode === "dark"
-                            ? theme.palette.background.default
-                            : theme.palette.background.paper, // light mode
-                        color: theme.palette.text.primary,
-                        p: 2,
-                        borderRadius: theme.shape.borderRadius,
-                        overflowX: "auto",
-                        position: "relative",
-                      }}
-                      className={className}
-                    >
+                    <Box position="relative" maxWidth="90dvw">
                       <CopyCodeButton code={codeContent} />
                       <Box
-                        component="code"
+                        component="pre"
                         sx={{
-                          display: "block",
-                          wordBreak: "break-word",
-                          color: "inherit",
+                          fontFamily: "monospace",
+                          fontSize: "0.9em",
+                          backgroundColor:
+                            theme.palette.mode === "dark"
+                              ? theme.palette.background.default
+                              : theme.palette.background.paper, // light mode
+                          color: theme.palette.text.primary,
+                          p: 2,
+                          borderRadius: theme.shape.borderRadius,
+                          overflowX: "auto",
                         }}
+                        className={className}
                       >
-                        {children}
+                        <Box
+                          component="code"
+                          sx={{
+                            display: "block",
+                            wordBreak: "break-word",
+                            color: "inherit",
+                          }}
+                        >
+                          {children}
+                        </Box>
                       </Box>
                     </Box>
                   );
