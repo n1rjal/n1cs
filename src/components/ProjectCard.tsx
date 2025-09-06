@@ -81,6 +81,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         borderRadius: "5px",
         width: "100%",
       }}
+      color="textSecondary"
     >
       {imageUrl && (
         <CardMedia
@@ -92,15 +93,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         />
       )}
 
-      <Link href={`/projects/${id}`} style={{ textDecoration: "none" }}>
+      <Link
+        href={`/projects/${id}`}
+        color="textPrimary"
+        style={{ textDecoration: "none" }}
+      >
         <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
-          <Typography
-            gutterBottom
-            my="7px"
-            variant="h4"
-            fontWeight="600"
-            component="h2"
-          >
+          <Typography my="7px" variant="h4" component="h2">
             {name}
           </Typography>
           <Typography variant="body1" color="textSecondary">

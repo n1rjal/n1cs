@@ -16,11 +16,11 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       </Typography>
     ) : null}
     {renderGradient ? (
-      <Typography variant="h4" component="h1" my={0} gutterBottom>
+      <Typography variant="h4" component="h2" my={0} gutterBottom>
         <GradientText>{post.title}</GradientText>
       </Typography>
     ) : (
-      <Typography variant="h4" component="h1" my={0} gutterBottom>
+      <Typography variant="h4" component="h2" my={0} gutterBottom>
         {post.title}
       </Typography>
     )}
