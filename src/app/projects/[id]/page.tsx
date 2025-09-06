@@ -7,6 +7,8 @@ import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { getPostContent, getSingleProject } from "@/lib/notion";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
+export const revalidate = 3600; // 1 hour
+
 export async function generateMetadata({
   params,
 }: {
