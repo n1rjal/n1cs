@@ -94,7 +94,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
       <Link href={`/projects/${id}`} style={{ textDecoration: "none" }}>
         <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
-          <Typography gutterBottom variant="h6" fontWeight="600" component="h2">
+          <Typography gutterBottom variant="h4" fontWeight="600" component="h2">
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">

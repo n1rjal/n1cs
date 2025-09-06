@@ -45,7 +45,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
                 href={`/blogs/${post.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Card sx={{ mt: 4, py: "2px" }}>
+                <Card sx={{ mt: "5px", py: "10px", px: "3px" }}>
                   <CardContent sx={{ m: "2px", py: "2px" }}>
                     <BlogHeader renderGradient={!!renderGradient} post={post} />
                   </CardContent>

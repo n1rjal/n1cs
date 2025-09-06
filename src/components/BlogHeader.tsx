@@ -16,11 +16,11 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       </Typography>
     ) : null}
     {renderGradient ? (
-      <Typography variant="h3" component="h1" my={0} gutterBottom>
+      <Typography variant="h4" component="h1" my={0} gutterBottom>
         <GradientText>{post.title}</GradientText>
       </Typography>
     ) : (
-      <Typography variant="h3" component="h1" my={0} gutterBottom>
+      <Typography variant="h4" component="h1" my={0} gutterBottom>
         {post.title}
       </Typography>
     )}
@@ -34,7 +34,7 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       Published: {new Date(post.createdTime).toISOString().split("T")[0]}
     </Typography>
 
-    <Typography component="p" my={2}>
+    <Typography component="p" my={2} variant="body2">
       {post.summary}
     </Typography>
   </>

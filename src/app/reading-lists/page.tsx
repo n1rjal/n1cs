@@ -1,15 +1,18 @@
+import { Metadata } from "next";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { getReadingListItems, ReadingListItem } from "@/lib/notion";
 import {
-  Box,
-  Button,
-  Container,
-  Link as MuiLink,
-  TextField,
   Typography,
+  Box,
+  Container,
+  TextField,
+  Button,
+  Grid,
+  Stack,
 } from "@mui/material";
 import { format } from "date-fns";
-import type { Metadata } from "next";
 import GradientText from "@/components/GradientText";
-import { getReadingListItems, type ReadingListItem } from "@/lib/notion";
+import ReadingListCard from "@/components/ReadingListCard";
 
 export const metadata: Metadata = {
   title: "Reading List",
@@ -99,36 +102,29 @@ export default async function ReadingListPage({
         <Typography variant="body1">No reading list items found.</Typography>
       ) : (
         sortedDates.map((date) => (
-          <Box key={date} sx={{ mb: 4 }}>
-            <Typography variant="h5" component="h2" gutterBottom>
-              {date}
-            </Typography>
-            <Box>
+          <Box key={date} sx={{ my: 4 }}>
+            <Stack direction="row" spacing="10px" my="5px" alignItems="center">
+              <CalendarMonthIcon />
+              <Typography variant="h5" component="h2" gutterBottom>
+                {date}
+              </Typography>
+            </Stack>
+            <Grid container spacing="10px">
               {groupedByDate[date].map((item) => (
-                <Box key={item.id} sx={{ mb: 2 }}>
-                  <Typography variant="h6" component="h6">
-                    <MuiLink
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener"
-                      sx={{
-                        textDecoration: "none",
-                        ml: "20px",
-                        my: "2px",
-                        fontSize: "15px",
-                      }}
-                    >
-                      # {item.title}
-                    </MuiLink>
-                  </Typography>
-                  {item.description && (
-                    <Typography variant="body2" color="text.secondary">
-                      {item.description}
-                    </Typography>
-                  )}
-                </Box>
+                <Grid
+                  size={{
+                    xs: 12,
+                    sm: 12,
+                    md: 4,
+                    lg: 4,
+                    xl: 4,
+                  }}
+                  key={item.id}
+                >
+                  <ReadingListCard {...{ item }} />
+                </Grid>
               ))}
-            </Box>
+            </Grid>
           </Box>
         ))
       )}
