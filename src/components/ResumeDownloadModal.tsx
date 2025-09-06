@@ -48,7 +48,7 @@ const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({
           <Button
             variant="contained"
             color="primary"
-            href="/cv_js.pdf"
+            href="/Nirjal_Resume_5_years_javascript.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download
@@ -60,7 +60,7 @@ const ResumeDownloadModal: React.FC<ResumeDownloadModalProps> = ({
           <Button
             variant="contained"
             color="secondary"
-            href="/cv_py.pdf"
+            href="/Nirjal_Resume_5_years_python.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download
