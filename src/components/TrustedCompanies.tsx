@@ -35,6 +35,7 @@ const companies = [
 ];
 
 const TrustedCompanies = () => {
+  const theme = useTheme();
   return (
     <ResponsiveGrid sx={{ my: "20px" }}>
       <Typography textAlign="center" variant="h4" component="h4" gutterBottom>
@@ -62,6 +63,7 @@ const TrustedCompanies = () => {
               mb: 2, // Add margin-bottom
               mr: 2, // Add margin-right
               p: 1, // Add padding
+              boxShadow: theme.shadows[1], // Add background shadow
             }}
           >
             <a
