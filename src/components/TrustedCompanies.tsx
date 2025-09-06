@@ -29,8 +29,8 @@ const companies = [
     image: "mero-padhai.svg",
   },
   {
-    link: "https://softshalanepal.com/",
-    image: "softshala.png",
+    link: "https://givewheel.com/",
+    image: "gw-logo.png",
   },
 ];
 
