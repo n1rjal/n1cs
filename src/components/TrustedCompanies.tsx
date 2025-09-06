@@ -58,12 +58,20 @@ const TrustedCompanies = () => {
               position: "relative",
             }}
           >
-            <a href={company.link} target="_blank" rel="noopener noreferrer">
-              <Image
+            <a
+              href={company.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ position: "relative" }}
+            >
+              <img
                 src={`/${company.image}`}
                 alt={company.link}
-                fill
-                style={{ objectFit: "contain" }}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "100%",
+                }}
               />
             </a>
           </Box>

@@ -1,3 +1,4 @@
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
@@ -60,9 +61,11 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <ThemeRegistry>
-          <ClientSidebarWrapper>{children}</ClientSidebarWrapper>
-        </ThemeRegistry>
+        <AppRouterCacheProvider options={{ key: "css" }}>
+          <ThemeRegistry>
+            <ClientSidebarWrapper>{children}</ClientSidebarWrapper>
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
