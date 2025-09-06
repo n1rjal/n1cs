@@ -5,6 +5,7 @@ import ProjectHeader from "@/components/ProjectHeader";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { getPostContent, getSingleProject } from "@/lib/notion";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 interface ProjectDetailPageProps {
   params: { id: string };
@@ -66,6 +67,9 @@ export default async function ProjectDetailPage({
       <Box my="40px">
         <ProjectHeader project={project} renderGradient />
         <ContentWrapper content={content} headings={headings} />
+        <Box my="20px">
+          <NewsletterSubscribe />
+        </Box>
       </Box>
     </ResponsiveGrid>
   );

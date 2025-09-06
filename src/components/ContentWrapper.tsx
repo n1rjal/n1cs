@@ -148,13 +148,17 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                         sx={{
                           fontFamily: "monospace",
                           fontSize: "0.9em",
+
+                          color:
+                            theme.palette.mode === "dark"
+                              ? "#1e1e1e"
+                              : "#fefefe",
                           backgroundColor:
                             theme.palette.mode === "dark"
-                              ? theme.palette.background.default
-                              : theme.palette.background.paper, // light mode
-                          color: theme.palette.text.primary,
+                              ? "#fefefe" // light bg for dark mode
+                              : "#1e1e1e", // dark bg for light mode
                           p: 2,
-                          borderRadius: theme.shape.borderRadius,
+                          borderRadius: "4px",
                           overflowX: "auto",
                         }}
                         className={className}
