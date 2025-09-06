@@ -3,9 +3,9 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
 import ResponsiveGrid from "./ResponsiveGrid";
 import GradientText from "./GradientText";
+import { useTheme } from "@emotion/react";
 
 const companies = [
   {
@@ -18,15 +18,15 @@ const companies = [
   },
   {
     link: "https://hyteno.com",
-    image: "hyteno.webp",
+    image: "hyteno.png",
   },
   {
     link: "https://nutrogen.io",
-    image: "nutrogen.png",
+    image: "nutrogen.svg",
   },
   {
-    link: "https://lancemeup.com",
-    image: "lmu.png",
+    link: "https://meropadhai.com/",
+    image: "mero-padhai.svg",
   },
   {
     link: "https://softshalanepal.com/",
@@ -42,7 +42,7 @@ const TrustedCompanies = () => {
       </Typography>
       <Stack
         direction="row"
-        spacing={4}
+        spacing={2}
         justifyContent="center"
         alignItems="center"
         flexWrap="wrap"
@@ -53,24 +53,33 @@ const TrustedCompanies = () => {
             key={company.link}
             sx={{
               width: { xs: "40%", sm: 120 },
-              maxWidth: 120,
+              maxWidth: 120 * 2,
               height: 60,
-              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 1,
+              bgcolor: "#fefefe",
             }}
           >
             <a
               href={company.link}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ position: "relative" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
               <img
                 src={`/${company.image}`}
                 alt={company.link}
                 style={{
+                  maxWidth: "90%",
+                  maxHeight: "90%",
+                  padding: "5px",
                   objectFit: "contain",
-                  width: "100%",
-                  height: "100%",
                 }}
               />
             </a>

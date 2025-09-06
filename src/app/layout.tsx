@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Nirjal Paudel",
     images: [
       {
-        url: "/nirjal.jpeg",
+        url: "/nirjal.jpg",
         width: 800,
         height: 600,
       },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       "The personal website and blog of Nirjal Paudel, a software developer passionate about building things for the web.",
     creator: "@n1rjal",
-    images: ["/nirjal.jpeg"],
+    images: ["/nirjal.jpg"],
   },
 };
 
