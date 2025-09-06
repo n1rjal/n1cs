@@ -4,7 +4,7 @@ import ContentWrapper from "@/components/ContentWrapper";
 import ProjectHeader from "@/components/ProjectHeader";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
-import { getPostContent, getSingleProject } from "@/lib/notion";
+import { getPostContent, getProjects, getSingleProject } from "@/lib/notion";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const revalidate = 3600; // 1 hour
@@ -38,6 +38,12 @@ export async function generateMetadata({
     },
   };
 }
+
+export async function generateStaticParams() {
+  const projects = await getProjects();
+  return projects.map((p) => ({ id: p.id }));
+}
+
 export default async function ProjectDetailPage({
   params,
 }: {
