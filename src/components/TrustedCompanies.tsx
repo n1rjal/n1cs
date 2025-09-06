@@ -42,7 +42,6 @@ const TrustedCompanies = () => {
       </Typography>
       <Stack
         direction="row"
-        spacing={2}
         justifyContent="center"
         alignItems="center"
         flexWrap="wrap"
@@ -60,6 +59,9 @@ const TrustedCompanies = () => {
               justifyContent: "center",
               borderRadius: 1,
               bgcolor: "#fefefe",
+              mb: 2, // Add margin-bottom
+              mr: 2, // Add margin-right
+              p: 1, // Add padding
             }}
           >
             <a
@@ -76,9 +78,8 @@ const TrustedCompanies = () => {
                 src={`/${company.image}`}
                 alt={company.link}
                 style={{
-                  maxWidth: "90%",
-                  maxHeight: "90%",
-                  padding: "5px",
+                  maxWidth: "80%",
+                  maxHeight: "80%",
                   objectFit: "contain",
                 }}
               />
