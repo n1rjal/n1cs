@@ -34,7 +34,7 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       Published: {new Date(post.createdTime).toISOString().split("T")[0]}
     </Typography>
 
-    <Typography component="p" my={2} variant="body2">
+    <Typography component="p" my={2} variant="body1">
       {post.summary}
     </Typography>
   </>

@@ -1,12 +1,12 @@
-import { Box, Container, Typography } from "@mui/material";
-import type { Metadata } from "next";
-import BlogHeader from "@/components/BlogHeader";
-import ContentWrapper from "@/components/ContentWrapper";
-import NewsletterSubscribe from "@/components/NewsletterSubscribe";
-import ReadingProgressBar from "@/components/ReadingProgressBar";
-import ResponsiveGrid from "@/components/ResponsiveGrid";
-import SuggestedBlogs from "@/components/SuggestedBlogs";
 import { getBlogPosts, getPostContent, getSingleBlogPost } from "@/lib/notion";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
+import ContentWrapper from "@/components/ContentWrapper";
+import { Typography, Box, Container } from "@mui/material";
+import SuggestedBlogs from "@/components/SuggestedBlogs";
+import BlogHeader from "@/components/BlogHeader";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
+import ResponsiveGrid from "@/components/ResponsiveGrid";
+import { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -67,7 +67,9 @@ export default async function BlogPostPage({
         <BlogHeader post={post} renderGradient />
         <ContentWrapper content={content} headings={headings} />
         <SuggestedBlogs blogPosts={suggestedBlogs} />
-        <NewsletterSubscribe />
+        <Box my="20px">
+          <NewsletterSubscribe />
+        </Box>
       </Box>
     </ResponsiveGrid>
   );
