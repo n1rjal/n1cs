@@ -7,11 +7,6 @@ import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { getPostContent, getSingleProject } from "@/lib/notion";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
-interface ProjectDetailPageProps {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
 export async function generateMetadata({
   params,
 }: {

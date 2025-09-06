@@ -202,25 +202,6 @@ export default async function Home() {
 
       <TrustedCompanies />
 
-      <Testimonials />
-
-      <Box>
-        <Container maxWidth="md" sx={{ my: 4 }}>
-          <Box
-            sx={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-              gap: 3,
-            }}
-          >
-            <BlogListPageWrapper
-              center
-              title="Latest Blogs"
-              blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
-            />
-          </Box>
-        </Container>
-      </Box>
-
       <Box
         sx={{
           bgcolor: "background.default",
@@ -249,18 +230,52 @@ export default async function Home() {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ textAlign: "center", mt: 4 }}>
-            <Button
-              component={Link}
-              href="/projects"
-              variant="contained"
-              color="secondary"
-            >
-              View All Projects
-            </Button>
-          </Box>
+          {projects.length > 3 ? (
+            <Box sx={{ textAlign: "center", mt: 4 }}>
+              <Button
+                component={Link}
+                href="/projects"
+                variant="contained"
+                color="secondary"
+              >
+                View All Projects
+              </Button>
+            </Box>
+          ) : null}
         </Container>
       </Box>
+
+      <Box>
+        <Container maxWidth="md" sx={{ my: 4 }}>
+          <Box
+            sx={{
+              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gap: 3,
+            }}
+          >
+            <BlogListPageWrapper
+              center
+              title="Latest Blogs"
+              blogPosts={blogPosts.sort(() => 0.5 - Math.random()).slice(0, 3)}
+            />
+          </Box>
+
+          {blogPosts.length > 3 ? (
+            <Box sx={{ textAlign: "center", mt: 4 }}>
+              <Button
+                component={Link}
+                href="/blogs"
+                variant="contained"
+                color="secondary"
+              >
+                View All Blogs
+              </Button>
+            </Box>
+          ) : null}
+        </Container>
+      </Box>
+
+      <Testimonials />
 
       <NewsletterSubscribe />
 
