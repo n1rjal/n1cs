@@ -69,9 +69,10 @@ export default function RootLayout({
         </AppRouterCacheProvider>
         <Script
           async
+          id="gtag"
           src="https://www.googletagmanager.com/gtag/js?id=G-LZ4S5KBNWY"
         ></Script>
-        <Script>
+        <Script id="analytics">
           {`
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
