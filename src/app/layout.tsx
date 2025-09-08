@@ -4,6 +4,7 @@ import "./globals.css";
 import "highlight.js/styles/github.css";
 import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -59,13 +60,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="en">
       <body>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeRegistry>
             <ClientSidebarWrapper>{children}</ClientSidebarWrapper>
           </ThemeRegistry>
         </AppRouterCacheProvider>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LZ4S5KBNWY"
+        ></Script>
+        <Script>
+          {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LZ4S5KBNWY');
+  `}
+        </Script>
       </body>
     </html>
   );
