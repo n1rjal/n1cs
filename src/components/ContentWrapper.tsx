@@ -262,47 +262,73 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                 a: ({ node, ...props }) => (
                   <GlowedLink href={props.href!} {...props} />
                 ),
-                img: ({ node, ...props }) => (
-                  <Box component="figure" sx={{ m: 0 }}>
-                    <Box
-                      component="img"
-                      {...props}
-                      alt={props.alt || ""}
-                      sx={{
-                        display: "block",
-                        margin: "auto",
-                        cursor: "pointer",
+                img: ({ node, ...props }) => {
+                  const getBlockIdFromUrl = (url: string | undefined): string | null => {
+                    if (!url || !url.includes("notion-static.com")) {
+                      return null;
+                    }
+                    try {
+                      const urlObject = new URL(url);
+                      // The block ID is usually the first part of the pathname, without slashes
+                      const blockId = urlObject.pathname.split("/")[1];
+                      // Basic UUID check
+                      if (blockId && blockId.length === 36) {
+                        return blockId;
+                      }
+                    } catch (error) {
+                      // Fallback for relative URLs or other parsing errors
+                      const match = url.match(/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/);
+                      return match ? match[0] : null;
+                    }
+                    return null;
+                  };
 
-                        width: {
-                          xs: "90%", // mobile
-                          sm: "75%",
-                          md: "60%",
-                        },
-                        maxWidth: "100%", // never overflow horizontally
-                        height: "auto",
-                        maxHeight: "100vh", // never exceed viewport height
-                      }}
-                      onClick={(e) => {
-                        const imgElement = e.target as HTMLImageElement;
-                        handleImageClick(
-                          imgElement.src,
-                          imgElement.alt,
-                          imgElement.naturalWidth,
-                          imgElement.naturalHeight,
-                        );
-                      }}
-                    />
-                    {props.alt ? (
+                  const blockId = getBlockIdFromUrl(props.src);
+                  const proxiedSrc = blockId ? `/api/image?blockId=${blockId}` : props.src;
+
+                  return (
+                    <Box component="figure" sx={{ m: 0 }}>
                       <Box
-                        component="figcaption"
-                        textAlign="center"
-                        sx={{ fontSize: "12px", fontStyle: "italic" }}
-                      >
-                        {props.alt}
-                      </Box>
-                    ) : null}
-                  </Box>
-                ),
+                        component="img"
+                        {...props}
+                        src={proxiedSrc}
+                        alt={props.alt || ""}
+                        sx={{
+                          display: "block",
+                          margin: "auto",
+                          cursor: "pointer",
+
+                          width: {
+                            xs: "90%", // mobile
+                            sm: "75%",
+                            md: "60%",
+                          },
+                          maxWidth: "100%", // never overflow horizontally
+                          height: "auto",
+                          maxHeight: "100vh", // never exceed viewport height
+                        }}
+                        onClick={(e) => {
+                          const imgElement = e.target as HTMLImageElement;
+                          handleImageClick(
+                            imgElement.src, // Use the potentially proxied src
+                            imgElement.alt,
+                            imgElement.naturalWidth,
+                            imgElement.naturalHeight,
+                          );
+                        }}
+                      />
+                      {props.alt ? (
+                        <Box
+                          component="figcaption"
+                          textAlign="center"
+                          sx={{ fontSize: "12px", fontStyle: "italic" }}
+                        >
+                          {props.alt}
+                        </Box>
+                      ) : null}
+                    </Box>
+                  );
+                },
                 blockquote: ({ node, ...props }) => (
                   <Box
                     component="blockquote"

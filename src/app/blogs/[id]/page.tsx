@@ -8,7 +8,7 @@ import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { Metadata } from "next";
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 86400; // 24 hours
 
 export async function generateMetadata({
   params,
