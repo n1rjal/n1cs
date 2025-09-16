@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   try {
     const block = await notion.blocks.retrieve({ block_id: blockId });
 
-    if (block.type !== "image") {
+    if ((block as any).type !== "image") {
       return new NextResponse("Block is not an image", { status: 400 });
     }
 
@@ -27,7 +27,9 @@ export async function GET(request: Request) {
 
     const imageResponse = await fetch(imageUrl);
     if (!imageResponse.ok) {
-      return new NextResponse("Failed to fetch image from Notion", { status: imageResponse.status });
+      return new NextResponse("Failed to fetch image from Notion", {
+        status: imageResponse.status,
+      });
     }
 
     const imageBuffer = await imageResponse.arrayBuffer();

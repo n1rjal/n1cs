@@ -263,7 +263,9 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                   <GlowedLink href={props.href!} {...props} />
                 ),
                 img: ({ node, ...props }) => {
-                  const getBlockIdFromUrl = (url: string | undefined): string | null => {
+                  const getBlockIdFromUrl = (
+                    url: string | undefined,
+                  ): string | null => {
                     if (!url || !url.includes("notion-static.com")) {
                       return null;
                     }
@@ -277,14 +279,18 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
                       }
                     } catch (error) {
                       // Fallback for relative URLs or other parsing errors
-                      const match = url.match(/([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/);
+                      const match = url.match(
+                        /([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/,
+                      );
                       return match ? match[0] : null;
                     }
                     return null;
                   };
 
-                  const blockId = getBlockIdFromUrl(props.src);
-                  const proxiedSrc = blockId ? `/api/image?blockId=${blockId}` : props.src;
+                  const blockId = getBlockIdFromUrl(props.src as string);
+                  const proxiedSrc = blockId
+                    ? `/api/image?blockId=${blockId}`
+                    : props.src;
 
                   return (
                     <Box component="figure" sx={{ m: 0 }}>
