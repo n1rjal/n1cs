@@ -20,6 +20,7 @@ import Testimonials from "@/components/Testimonials";
 import TrustedCompanies from "@/components/TrustedCompanies";
 import { getBlogPosts, getProjects } from "@/lib/notion";
 import GlowedLink from "../components/GlowedLink";
+import WorkingDeveloper from "@/components/WorkingDeveloper";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
@@ -37,7 +38,22 @@ export default async function Home() {
         mb: 0,
       }}
     >
-      <Container maxWidth="md" sx={{ pt: { lg: 8, xl: 8, sl: 4, xs: 4 } }}>
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        flexDirection={{
+          sm: "column-reverse",
+          xs: "column-reverse",
+          md: "row",
+          xl: "row",
+          lg: "row",
+        }}
+        marginX="auto"
+        maxWidth="md"
+        sx={{
+          pt: { lg: 8, xl: 8, sl: 4, xs: 4 },
+        }}
+      >
         <Box>
           <Typography
             variant="h6"
@@ -136,69 +152,34 @@ export default async function Home() {
               <Typography>Boast / Roast my opinions</Typography>
             </ListItem>
           </List>
-
-          <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
-            <Grid
-              size={{
-                xs: 12,
-                sm: 5,
-                md: 4,
-                lg: 2,
-              }}
-              display="flex"
-            >
-              <Box
-                sx={{
-                  width: {
-                    sm: "100%",
-                    xs: "100%",
-                  },
-                }}
-              >
-                <Button
-                  href="/abouts"
-                  variant="outlined"
-                  color="secondary"
-                  fullWidth
-                >
-                  About me
-                </Button>
-              </Box>
-            </Grid>
-
-            <Grid
-              size={{
-                xs: 12,
-                sm: 5,
-                md: 4,
-                lg: 2,
-              }}
-              display="flex"
-            >
-              <Button
-                href="/#keep-in-touch"
-                variant="outlined"
-                color="secondary"
-                fullWidth
-              >
-                Get In Touch
-              </Button>
-            </Grid>
-
-            <Grid
-              size={{
-                xs: 12,
-                sm: 5,
-                md: 4,
-                lg: 2,
-              }}
-              display="flex"
-            >
-              <ResumeDownloadButton />
-            </Grid>
-          </Grid>
         </Box>
-      </Container>
+        <Box>
+          <WorkingDeveloper />
+        </Box>
+      </Stack>
+
+      <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
+        <Box>
+          <Button href="/abouts" variant="outlined" color="secondary">
+            About me
+          </Button>
+        </Box>
+
+        <Box>
+          <Button
+            href="/#keep-in-touch"
+            variant="outlined"
+            color="secondary"
+            fullWidth
+          >
+            Get In Touch
+          </Button>
+        </Box>
+
+        <Box>
+          <ResumeDownloadButton />
+        </Box>
+      </Grid>
 
       <TrustedCompanies />
 

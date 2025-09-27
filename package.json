@@ -19,6 +19,7 @@
     "@notionhq/client": "4.0.2",
     "date-fns": "^4.1.0",
     "eslint-config-next": "^15.5.2",
+    "lottie-react": "^2.4.1",
     "next": "15.5.2",
     "notion-to-md": "^3.1.9",
     "react": "19.1.0",
