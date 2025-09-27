@@ -15,7 +15,7 @@ export interface BlogPost {
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const databaseId = process.env.NOTION_BLOG_DATABASE_ID!;
+  const databaseId = process.env.NOTION_BLOG_DATABASE_ID as string;
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: { property: "Status", status: { equals: "Done" } },

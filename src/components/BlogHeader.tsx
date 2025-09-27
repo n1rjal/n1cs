@@ -1,7 +1,13 @@
 "use client";
-import { Typography } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import type { BlogPost } from "@/lib/notion";
 import GradientText from "./GradientText";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import getRelativeDuration from "@/utils/getRelativeDuration";
+import type { SvgIconComponent } from "@mui/icons-material";
+
+import Category from "@mui/icons-material/Category";
 
 interface BlogHeaderProps {
   post: BlogPost;
@@ -9,17 +15,31 @@ interface BlogHeaderProps {
   reducedOpacity?: boolean;
 }
 
+type BlogStatRenderer = {
+  renderIf: (b: BlogPost) => boolean;
+  render: (b: BlogPost) => string;
+  icon: SvgIconComponent;
+};
+
+const renderers: BlogStatRenderer[] = [
+  {
+    renderIf: (b) => !!b.category,
+    icon: Category,
+    render: (b) => b.category,
+  },
+  {
+    renderIf: (_) => true,
+    icon: AccessTimeIcon,
+    render: (b) => getRelativeDuration(b.createdTime),
+  },
+];
+
 const BlogHeader = ({
   post,
   renderGradient,
   reducedOpacity,
 }: BlogHeaderProps) => (
   <>
-    {post.category ? (
-      <Typography fontSize="12px" my={0} gutterBottom>
-        #{post.category.replace(" ", "_").toLowerCase()}
-      </Typography>
-    ) : null}
     {renderGradient ? (
       <Typography variant="h4" component="h2" my={0} gutterBottom>
         <GradientText>{post.title}</GradientText>
@@ -29,15 +49,33 @@ const BlogHeader = ({
         {post.title}
       </Typography>
     )}
-    <Typography
-      variant="subtitle1"
-      color="text.secondary"
-      gutterBottom
-      my={0}
-      mb={0.5}
-    >
-      Published: {new Date(post.createdTime).toISOString().split("T")[0]}
-    </Typography>
+
+    <Stack alignItems="center" direction="row" columnGap={"16px"} useFlexGap>
+      {renderers
+        .filter((f) => f.renderIf(post))
+        .map((f) => (
+          <>
+            <Stack
+              alignItems="center"
+              direction="row"
+              columnGap={"4px"}
+              useFlexGap
+            >
+              <f.icon fontSize="medium" color="disabled" />{" "}
+              <Typography
+                variant="subtitle1"
+                color="text.secondary"
+                gutterBottom
+                my={0}
+                mb={0.5}
+                component="span"
+              >
+                {f.render(post)}
+              </Typography>
+            </Stack>
+          </>
+        ))}
+    </Stack>
 
     <Typography
       component="p"
