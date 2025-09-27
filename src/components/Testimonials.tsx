@@ -1,4 +1,3 @@
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,8 +5,10 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import testimonials from "@/constants/testomonials";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 
 import GradientText from "./GradientText";
+import { Stack } from "@mui/material";
 
 export default function Testimonials() {
   return (
@@ -22,27 +23,50 @@ export default function Testimonials() {
         <Typography component="h2" variant="h4" align="center" gutterBottom>
           <GradientText>Testimonials</GradientText>
         </Typography>
+
+        <Typography variant="body1" color="textSecondary">
+          The best reflections of my work come from the people I’ve worked with.
+          Their words capture the craft, collaboration, and impact behind every
+          project. Here are some of their experiences.
+        </Typography>
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {testimonials.map((testimonial: any, index) => (
             <Grid key={index}>
               <Card sx={{ height: "100%" }}>
                 <CardContent>
-                  <Typography variant="body1" sx={{ fontStyle: "italic" }}>
-                    “{testimonial.quote}”
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
-                    <Avatar sx={{ bgcolor: "secondary.main", mr: 2 }}>
-                      {testimonial.author.charAt(0)}
-                    </Avatar>
-                    <Box>
-                      <Typography variant="subtitle1">
-                        {testimonial.author}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {testimonial.date}{" "}
-                        {testimonial.verified && " - Verified"}
-                      </Typography>
-                    </Box>
+                  <Stack
+                    p={4}
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <FormatQuoteIcon
+                      color="secondary"
+                      sx={{ fontSize: "5rem" }}
+                    />
+                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                      {testimonial.quote}
+                    </Typography>
+                  </Stack>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      mt: 2,
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Typography
+                      variant="subtitle1"
+                      color="text.primary"
+                      fontSize="1.3rem"
+                    >
+                      {testimonial.author}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {testimonial.position}
+                    </Typography>
                   </Box>
                 </CardContent>
               </Card>

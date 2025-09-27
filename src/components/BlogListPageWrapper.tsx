@@ -26,17 +26,26 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
 }) => {
   return (
     <Box sx={{ my: "10px" }}>
-      <Typography
-        {...{
-          component: "h3",
-          variant: "h3",
-          my: "20px",
-          mb: "30px",
-          ...(center && { textAlign: "center" }),
-        }}
-      >
-        <GradientText>{title}</GradientText>
-      </Typography>
+      <Box my="20px" mb="30px">
+        <Typography
+          {...{
+            component: "h3",
+            variant: "h3",
+            ...(center && { textAlign: "center" }),
+          }}
+          color="textSecondary"
+          gutterBottom
+        >
+          <GradientText>{title}</GradientText>
+        </Typography>
+
+        <Typography variant="body1" color="textSecondary">
+          I enjoy sharing my journey through tech and beyond — documenting the
+          lessons I’ve learned, the projects I’ve built, and the ideas that
+          inspire me. Here are some of my stories and experiences you might find
+          interesting.
+        </Typography>
+      </Box>
       <Box>
         <Grid container spacing={4} sx={{ mt: 0 }}>
           {blogPosts.map((post) => (

@@ -35,9 +35,10 @@ function ReadingListCard({ item: { title, url, date } }: ReadingListCardProps) {
             size="small"
             sx={{ my: "10px" }}
             label={getHostNameFromUrl(url)}
+            variant="outlined"
           />
 
-          <Typography component="p" variant="body2">
+          <Typography component="p" variant="body2" color="textSecondary">
             Added {format(date, "yyyy-MM-dd")}
           </Typography>
         </CardContent>

@@ -61,12 +61,22 @@ export default async function ReadingListPage({
         <GradientText>Reading List</GradientText>
       </Typography>
 
+      <Typography component="p" color="textSecondary" gutterBottom>
+        I like to keep a curated collection of articles, essays, and resources
+        that catch my attention — things I find worth reading, learning from, or
+        sharing. This reading list reflects my curiosity, interests, and the
+        ideas that inspire me, offering a glimpse into the content that shapes
+        my thinking and growth.
+      </Typography>
+
+      <Box component="hr" my="2rem" />
+
       <Box
         component="form"
         sx={{ mb: 4, display: "flex", gap: 2, flexWrap: "wrap" }}
       >
         <TextField
-          label="Search"
+          label="Search Query"
           name="query"
           defaultValue={query}
           variant="outlined"
@@ -93,41 +103,40 @@ export default async function ReadingListPage({
           size="small"
           sx={{ flexGrow: 1, minWidth: { xs: "100%", sm: "auto" } }}
         />
-        <Button type="submit" variant="contained" color="primary">
-          Apply Filters
+        <Button variant="contained" color="secondary" type="submit">
+          Search
         </Button>
       </Box>
 
-      {sortedDates.length === 0 ? (
-        <Typography variant="body1">No reading list items found.</Typography>
-      ) : (
-        sortedDates.map((date) => (
-          <Box key={date} sx={{ my: 4 }}>
-            <Stack direction="row" spacing="10px" my="5px" alignItems="center">
-              <CalendarMonthIcon />
+      <Stack direction="column" rowGap="1rem">
+        {sortedDates.length === 0 ? (
+          <Typography variant="body1">No reading list items found.</Typography>
+        ) : (
+          sortedDates.map((date) => (
+            <Box key={date} sx={{ my: 4 }}>
               <Typography variant="h5" component="h2" gutterBottom>
-                {date}
+                <GradientText>{date}</GradientText>
               </Typography>
-            </Stack>
-            <Grid container spacing="10px">
-              {groupedByDate[date].map((item) => (
-                <Grid
-                  size={{
-                    xs: 12,
-                    sm: 12,
-                    md: 4,
-                    lg: 4,
-                    xl: 4,
-                  }}
-                  key={item.id}
-                >
-                  <ReadingListCard {...{ item }} />
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        ))
-      )}
+              <Grid container spacing="10px">
+                {groupedByDate[date].map((item) => (
+                  <Grid
+                    size={{
+                      xs: 12,
+                      sm: 12,
+                      md: 4,
+                      lg: 4,
+                      xl: 4,
+                    }}
+                    key={item.id}
+                  >
+                    <ReadingListCard {...{ item }} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          ))
+        )}
+      </Stack>
     </Container>
   );
 }

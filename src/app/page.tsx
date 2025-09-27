@@ -73,8 +73,9 @@ export default async function Home() {
               md: 6,
               lg: 8,
             }}
+            color="text.secondary"
           >
-            <Typography variant="h6" color="text.primary" gutterBottom>
+            <Typography component="h4" variant="h4" gutterBottom>
               I am
             </Typography>
             <Box ml="0px">
@@ -124,33 +125,35 @@ export default async function Home() {
             component="ul"
             sx={{ listStyleType: "none", pl: 0, mb: "10px" }}
           >
-            <Typography variant="h6" color="text.primary" gutterBottom>
-              Welcome to my corner of the internet
-            </Typography>
-            <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: "24px" }}>
-                <FiberManualRecordIcon
-                  sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                />
-              </ListItemIcon>
-              <Typography>Experience my experiences</Typography>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: "24px" }}>
-                <FiberManualRecordIcon
-                  sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                />
-              </ListItemIcon>
-              <Typography>Think with me</Typography>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemIcon sx={{ minWidth: "24px" }}>
-                <FiberManualRecordIcon
-                  sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                />
-              </ListItemIcon>
-              <Typography>Boast / Roast my opinions</Typography>
-            </ListItem>
+            <Box color="text.secondary">
+              <Typography variant="h6" gutterBottom>
+                Welcome to my corner of the internet
+              </Typography>
+              <ListItem disablePadding>
+                <ListItemIcon sx={{ minWidth: "24px" }}>
+                  <FiberManualRecordIcon
+                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                  />
+                </ListItemIcon>
+                <Typography>Experience my experiences</Typography>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemIcon sx={{ minWidth: "24px" }}>
+                  <FiberManualRecordIcon
+                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                  />
+                </ListItemIcon>
+                <Typography>Think with me</Typography>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemIcon sx={{ minWidth: "24px" }}>
+                  <FiberManualRecordIcon
+                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                  />
+                </ListItemIcon>
+                <Typography>Boast / Roast my opinions</Typography>
+              </ListItem>
+            </Box>
           </List>
         </Box>
         <Box>
@@ -199,7 +202,7 @@ export default async function Home() {
           >
             <GradientText>My Projects</GradientText>
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" color="textSecondary" paragraph>
             Here are a few of my recent projects. I&rsquo;m passionate about
             building things that solve real-world problems and I&rsquo;m always
             looking for new challenges.
@@ -265,7 +268,7 @@ export default async function Home() {
           <Typography variant="h4" component="h1" gutterBottom>
             <GradientText>Keep in Touch</GradientText>
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" paragraph color="textSecondary">
             I&apos;m always open to connecting with new people. Whether you have
             a question, a project idea, or just want to say hi, feel free to
             reach out.

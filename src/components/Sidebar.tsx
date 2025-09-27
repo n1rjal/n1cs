@@ -109,11 +109,16 @@ export default function Sidebar(props: Props) {
       >
         <Typography
           variant="h5"
+          sx={{
+            textTransform: "uppercase",
+            letterSpacing: "-1px",
+            fontWeight: "bold",
+          }}
           noWrap
           component="div"
-          color={theme.palette.mode === "light" ? "#000000" : "text.primary"}
+          color="secondary"
         >
-          Nirjal&apos;s Blog
+          Nirjal&apos; Blog
         </Typography>
         <IconButton
           aria-label="close drawer"

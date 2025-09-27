@@ -55,7 +55,7 @@ export default function NewsletterSubscribe() {
           <GlowedLink href="/blogs">more?</GlowedLink> Check{" "}
           <GlowedLink href="/reading-lists">reading lists too</GlowedLink>
         </Typography>
-        <Typography variant="body1" paragraph align="center">
+        <Typography variant="body1" color="textSecondary" align="center">
           Stay up-to-date with my latest projects, articles, and insights.
         </Typography>
         <Stack

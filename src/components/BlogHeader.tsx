@@ -41,11 +41,11 @@ const BlogHeader = ({
 }: BlogHeaderProps) => (
   <>
     {renderGradient ? (
-      <Typography variant="h4" component="h2" my={0} gutterBottom>
+      <Typography variant="h5" component="h2" my={0} gutterBottom>
         <GradientText>{post.title}</GradientText>
       </Typography>
     ) : (
-      <Typography variant="h4" component="h2" my={0} gutterBottom>
+      <Typography variant="h5" component="h2" my={0} gutterBottom>
         {post.title}
       </Typography>
     )}
@@ -81,7 +81,19 @@ const BlogHeader = ({
       component="p"
       my={2}
       variant="body1"
-      color={`${reducedOpacity ? "textSecondary" : "textPrimary"}`}
+      color={reducedOpacity ? "textSecondary" : "textPrimary"}
+      sx={{
+        ...(reducedOpacity
+          ? {
+              display: "-webkit-box",
+              WebkitLineClamp: 2, // clamp to 3 lines
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              lineHeight: "1.5rem", // keeps consistent line height
+            }
+          : {}),
+      }}
     >
       {post.summary}
     </Typography>
