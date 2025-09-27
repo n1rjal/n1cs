@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 
 const NirjalsBlog = () => (
   <Typography
-    variant="h5"
+    variant="h6"
     sx={{
       fontFamily: "Edu NSW ACT Cursive, cursive",
       fontStyle: "normal",
@@ -14,7 +14,7 @@ const NirjalsBlog = () => (
     className=".intro"
     width="100%"
   >
-    Nirjal&apos;s Blog
+    Nirjal&apos;s Corner
   </Typography>
 );
 

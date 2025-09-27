@@ -51,7 +51,8 @@ export default async function Home() {
         marginX="auto"
         maxWidth="md"
         sx={{
-          pt: { lg: 8, xl: 8, sl: 4, xs: 4 },
+          pt: { lg: 8, xl: 8, sm: 4, xs: 4 },
+          mx: { lg: 0, xl: 0, sm: 2, xs: 2 },
         }}
       >
         <Box>
