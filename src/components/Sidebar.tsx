@@ -34,6 +34,7 @@ import { usePathname } from "next/navigation"; // Import usePathname
 import * as React from "react";
 import { useContext } from "react";
 import { ColorModeContext } from "../app/ThemeRegistry";
+import NirjalsBlog from "./NirjalsBlog";
 
 const drawerWidth = 240;
 
@@ -107,19 +108,7 @@ export default function Sidebar(props: Props) {
           py: 2,
         }}
       >
-        <Typography
-          variant="h5"
-          sx={{
-            textTransform: "uppercase",
-            letterSpacing: "-1px",
-            fontWeight: "bold",
-          }}
-          noWrap
-          component="div"
-          color="secondary"
-        >
-          Nirjal&apos; Blog
-        </Typography>
+        <NirjalsBlog />
         <IconButton
           aria-label="close drawer"
           edge="end"
@@ -334,14 +323,7 @@ export default function Sidebar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            color={theme.palette.mode === "light" ? "#000000" : "text.primary"}
-          >
-            Nirjal&apos;s Blog
-          </Typography>
+          <NirjalsBlog />
           <Box sx={{ flexGrow: 1 }} />
           <IconButton
             sx={{

@@ -44,7 +44,7 @@ export default function Testimonials() {
                       color="secondary"
                       sx={{ fontSize: "5rem" }}
                     />
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                    <Typography variant="body1" fontWeight={600}>
                       {testimonial.quote}
                     </Typography>
                   </Stack>

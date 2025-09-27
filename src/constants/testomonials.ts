@@ -8,8 +8,8 @@ export default [
   {
     quote:
       "I hired Nirjal to create a new product search and filters for our e-commerce, Nirjal did an amazing job and was very responsive the whole time, Amazing talented developer, I recommend anyone to hire Nirjal for their needs.",
-    author: "Adish Kattel - Hyteno",
-    position: "CEO",
+    author: "Adish Kattel",
+    position: "CEO - Hyteno",
   },
   {
     quote:
