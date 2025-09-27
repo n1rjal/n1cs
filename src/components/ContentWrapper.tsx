@@ -31,10 +31,7 @@ interface ContentWrapperProps {
   headings: Heading[];
 }
 
-const ContentWrapper: React.FC<ContentWrapperProps> = ({
-  content,
-  headings,
-}) => {
+const ContentWrapper: React.FC<ContentWrapperProps> = ({ content }) => {
   const theme = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState("");
@@ -67,6 +64,8 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
             py: 3,
             px: {
               sm: 2,
+              lg: 0,
+              xl: 0,
             },
             borderRadius: 2,
             color: theme.palette.text.primary,

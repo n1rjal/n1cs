@@ -2,7 +2,7 @@ export default [
   {
     quote:
       "Working with Nirjal Paudel on Upwork was a great experience. His expertise and clear communication made the process efficient, and he delivered backend solutions that met my goals. I highly recommend him as a skilled and professional developer.",
-    author: "Sailesg S.",
+    author: "Sailesh S.",
     date: "Sep 2024",
     verified: true,
   },

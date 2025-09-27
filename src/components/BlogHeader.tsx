@@ -6,9 +6,14 @@ import GradientText from "./GradientText";
 interface BlogHeaderProps {
   post: BlogPost;
   renderGradient?: boolean;
+  reducedOpacity?: boolean;
 }
 
-const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
+const BlogHeader = ({
+  post,
+  renderGradient,
+  reducedOpacity,
+}: BlogHeaderProps) => (
   <>
     {post.category ? (
       <Typography fontSize="12px" my={0} gutterBottom>
@@ -34,7 +39,12 @@ const BlogHeader = ({ post, renderGradient }: BlogHeaderProps) => (
       Published: {new Date(post.createdTime).toISOString().split("T")[0]}
     </Typography>
 
-    <Typography component="p" my={2} variant="body1">
+    <Typography
+      component="p"
+      my={2}
+      variant="body1"
+      color={`${reducedOpacity ? "textSecondary" : "textPrimary"}`}
+    >
       {post.summary}
     </Typography>
   </>

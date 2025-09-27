@@ -47,7 +47,11 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
               >
                 <Card sx={{ mt: "5px", py: "10px", px: "3px" }}>
                   <CardContent sx={{ m: "2px", py: "2px" }}>
-                    <BlogHeader renderGradient={!!renderGradient} post={post} />
+                    <BlogHeader
+                      reducedOpacity
+                      renderGradient={!!renderGradient}
+                      post={post}
+                    />
                   </CardContent>
                   <CardActionArea></CardActionArea>
                   <CardActions></CardActions>
