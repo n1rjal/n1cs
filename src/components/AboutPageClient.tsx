@@ -1,5 +1,4 @@
 "use client";
-
 import CodeIcon from "@mui/icons-material/Code";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -13,14 +12,15 @@ import {
   List,
   ListItem,
 } from "@mui/material";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Container from "@mui/material/Container";
+import CardContent from "@mui/material/CardContent";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import aboutData from "@/constants/about-me.json";
 
 import GradientText from "./GradientText";
 
@@ -39,22 +39,15 @@ const ExpandMore = styled(({ expand, ...other }: ExpandMoreProps) => {
 }));
 
 export default function AboutPageClient() {
-  const [aboutData, setAboutData] = useState<any>(null);
   // ts-ignore no-explicit-any
   const [expanded, setExpanded] = useState<any>({});
-
-  useEffect(() => {
-    fetch("/abouts.json")
-      .then((res) => res.json())
-      .then((data) => setAboutData(data));
-  }, []);
 
   const handleExpandClick = (id: string | number) => {
     setExpanded((prev: any) => ({ ...prev, [id]: !prev[id] }));
   };
 
   if (!aboutData) {
-    return <Container>Loading...</Container>;
+    return <Box>Loading...</Box>;
   }
 
   return (
