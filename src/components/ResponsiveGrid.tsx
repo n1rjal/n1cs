@@ -17,8 +17,6 @@ export default function ResponsiveGrid({
       justifyContent="center"
       width="100%"
       maxWidth="100%"
-      minHeight="100%"
-      height="fit-content"
       py={{
         lg: "10px",
         sm: "20px",

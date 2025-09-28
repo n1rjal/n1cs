@@ -1,3 +1,4 @@
+"use client";
 import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "next/link";
@@ -51,77 +52,86 @@ const footerGroups = [
   },
 ];
 
-const Footer = () => (
-  <Box component="footer" bgcolor="background.paper" borderTop="1px">
-    <Grid
-      container
-      spacing={4}
+const Footer = () => {
+  return (
+    <Box
+      component="footer"
+      bgcolor="background.paper"
+      boxShadow={3}
       sx={{
-        p: { lg: 8, xl: 8, sm: 4, xs: 4 },
-        mx: { lg: "auto", xl: "auto", sm: 2, xs: 2 },
-        lineHeight: "20px",
+        borderTop: (theme) => `1px solid ${theme.palette.divider}`,
       }}
-      alignItems="start"
     >
       <Grid
-        size={{
-          lg: 3,
-          xl: 3,
-          sm: 12,
-          xs: 12,
-          md: 4,
+        container
+        spacing={4}
+        sx={{
+          p: { lg: 8, xl: 8, sm: 4, xs: 4 },
+          mx: { lg: "auto", xl: "auto", sm: 2, xs: 2 },
+          lineHeight: "20px",
         }}
-        lineHeight="400%"
+        alignItems="start"
       >
-        <NirjalsBlog increasedLine />
-        <Typography color="textSecondary" lineHeight="200%" textAlign="left">
-          Software engineer (5+ yrs) in backend, databases, and cloud.
-          Open-source contributor.
-        </Typography>
-      </Grid>
-      {footerGroups.map((group) => (
         <Grid
           size={{
             lg: 3,
             xl: 3,
-            sm: 6,
-            xs: 6,
-            md: 4,
+            sm: 12,
+            xs: 12,
+            md: 6,
           }}
-          key={group.title}
+          lineHeight="400%"
         >
-          <Typography
-            sx={{
-              fontStyle: "normal",
-              fontWeight: "bold",
-            }}
-            noWrap
-            component="div"
-            color="textPrimary"
-            className=".intro"
-            width="100%"
-            fontSize="medium"
-            lineHeight="400%"
-          >
-            {group.title}
+          <NirjalsBlog increasedLine />
+          <Typography color="textSecondary" lineHeight="200%" textAlign="left">
+            Software engineer (5+ yrs) in backend, databases, and cloud.
+            Open-source contributor.
           </Typography>
-          {group.children.map(({ name, href }) => (
-            <Box component="div" key={href}>
-              <Link href={href} style={{ textDecoration: "none" }}>
-                <Typography
-                  lineHeight="200%"
-                  color="textSecondary"
-                  fontSize="medium"
-                >
-                  {name}
-                </Typography>
-              </Link>
-            </Box>
-          ))}
         </Grid>
-      ))}
-    </Grid>
-  </Box>
-);
+        {footerGroups.map((group) => (
+          <Grid
+            size={{
+              lg: 3,
+              xl: 3,
+              sm: 6,
+              xs: 6,
+              md: 6,
+            }}
+            key={group.title}
+          >
+            <Typography
+              sx={{
+                fontStyle: "normal",
+                fontWeight: "bold",
+              }}
+              noWrap
+              component="div"
+              color="textPrimary"
+              className=".intro"
+              width="100%"
+              fontSize="medium"
+              lineHeight="400%"
+            >
+              {group.title}
+            </Typography>
+            {group.children.map(({ name, href }) => (
+              <Box component="div" key={href}>
+                <Link href={href} style={{ textDecoration: "none" }}>
+                  <Typography
+                    lineHeight="200%"
+                    color="textSecondary"
+                    fontSize="medium"
+                  >
+                    {name}
+                  </Typography>
+                </Link>
+              </Box>
+            ))}
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+};
 
 export default Footer;
