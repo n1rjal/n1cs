@@ -1,7 +1,7 @@
 "use client";
+import { Box } from "@mui/material";
 import Lottie from "lottie-react";
 import animationData from "@/constants/Developer.json";
-import { Box } from "@mui/material";
 
 const WorkingDeveloper = () => (
   <Box

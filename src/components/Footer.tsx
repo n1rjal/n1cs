@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import NirjalsBlog from "./NirjalsBlog";
 import Link from "next/link";
+import NirjalsBlog from "./NirjalsBlog";
 
 const footerGroups = [
   {

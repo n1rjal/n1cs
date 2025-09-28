@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import {
+  Alert,
   Box,
   Button,
-  Typography,
   Container,
   Paper,
   Stack,
-  Alert,
+  Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 // This component will handle the revalidation logic
 function RevalidationManager() {

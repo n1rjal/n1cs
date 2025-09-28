@@ -276,7 +276,7 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({ content }) => {
                       if (blockId && blockId.length === 36) {
                         return blockId;
                       }
-                    } catch (error) {
+                    } catch (_error) {
                       // Fallback for relative URLs or other parsing errors
                       const match = url.match(
                         /([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/,

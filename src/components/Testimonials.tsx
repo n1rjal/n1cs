@@ -1,3 +1,5 @@
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -5,10 +7,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import testimonials from "@/constants/testomonials";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-
 import GradientText from "./GradientText";
-import { Stack } from "@mui/material";
 
 export default function Testimonials() {
   return (

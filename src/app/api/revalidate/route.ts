@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
+import { type NextRequest, NextResponse } from "next/server";
 
 // This is a private API route, secured by a secret token.
 export async function GET(request: NextRequest) {

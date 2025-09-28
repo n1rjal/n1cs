@@ -2,9 +2,7 @@
 
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { useServerInsertedHTML } from "next/navigation";
-import React from "react";
-import { createContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { createCustomTheme } from "./theme";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });

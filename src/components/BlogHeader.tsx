@@ -1,13 +1,12 @@
 "use client";
+import type { SvgIconComponent } from "@mui/icons-material";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import Category from "@mui/icons-material/Category";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { BlogPost } from "@/lib/notion";
-import GradientText from "./GradientText";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import getRelativeDuration from "@/utils/getRelativeDuration";
-import type { SvgIconComponent } from "@mui/icons-material";
-
-import Category from "@mui/icons-material/Category";
+import GradientText from "./GradientText";
 
 interface BlogHeaderProps {
   post: BlogPost;

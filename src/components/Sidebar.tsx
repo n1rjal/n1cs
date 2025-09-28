@@ -1,16 +1,16 @@
 "use client";
 
 import ArticleIcon from "@mui/icons-material/Article";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from "@mui/icons-material/Home";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LaunchIcon from "@mui/icons-material/Launch";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
@@ -28,7 +28,6 @@ import ListSubheader from "@mui/material/ListSubheader";
 import Switch from "@mui/material/Switch";
 import { useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import usePathname
 import * as React from "react";

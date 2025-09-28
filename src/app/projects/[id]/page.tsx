@@ -1,11 +1,11 @@
 import { Box, Container, Typography } from "@mui/material";
 import type { Metadata } from "next";
 import ContentWrapper from "@/components/ContentWrapper";
+import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 import ProjectHeader from "@/components/ProjectHeader";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import ResponsiveGrid from "@/components/ResponsiveGrid";
 import { getPostContent, getProjects, getSingleProject } from "@/lib/notion";
-import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 
 export const revalidate = 3600; // 1 hour
 

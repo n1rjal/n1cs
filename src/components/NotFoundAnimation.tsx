@@ -1,9 +1,9 @@
 "use client";
 
+import { Box, Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Lottie from "lottie-react";
 import animationData from "@/constants/404.json";
-import { Box, Button } from "@mui/material";
 
 const NotFoundAnimation = () => (
   <Stack
@@ -25,7 +25,7 @@ const NotFoundAnimation = () => (
       }}
     />
     <Box textAlign="center">
-      <Box my={2}>We couldn't find the resource you are looking for</Box>
+      <Box my={2}>We couldn&apos;t find the resource you are looking for</Box>
       <Button variant="contained" color="secondary" href="/">
         Go Home
       </Button>

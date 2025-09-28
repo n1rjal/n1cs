@@ -1,18 +1,17 @@
-import { Metadata } from "next";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { getReadingListItems, ReadingListItem } from "@/lib/notion";
 import {
-  Typography,
   Box,
-  Container,
-  TextField,
   Button,
+  Container,
   Grid,
   Stack,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { format } from "date-fns";
+import type { Metadata } from "next";
 import GradientText from "@/components/GradientText";
 import ReadingListCard from "@/components/ReadingListCard";
+import { getReadingListItems, type ReadingListItem } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Reading List",

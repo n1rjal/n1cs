@@ -1,9 +1,8 @@
 "use client";
 
-import { ReadingListItem } from "@/lib/notion";
 import { Card, CardContent, Chip, Link, Typography } from "@mui/material";
 import { format } from "date-fns";
-import React from "react";
+import type { ReadingListItem } from "@/lib/notion";
 
 interface ReadingListCardProps {
   item: ReadingListItem;

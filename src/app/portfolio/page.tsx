@@ -1,5 +1,5 @@
-import PortfolioPageClient from "@/components/PortfolioPageClient";
 import type { Metadata } from "next";
+import PortfolioPageClient from "@/components/PortfolioPageClient";
 
 export const metadata: Metadata = {
   title: "Portfolio",

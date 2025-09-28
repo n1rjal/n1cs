@@ -18,9 +18,9 @@ import ProjectCard from "@/components/ProjectCard";
 import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 import Testimonials from "@/components/Testimonials";
 import TrustedCompanies from "@/components/TrustedCompanies";
+import WorkingDeveloper from "@/components/WorkingDeveloper";
 import { getBlogPosts, getProjects } from "@/lib/notion";
 import GlowedLink from "../components/GlowedLink";
-import WorkingDeveloper from "@/components/WorkingDeveloper";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();

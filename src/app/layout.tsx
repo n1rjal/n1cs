@@ -2,11 +2,11 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
+import { Poppins } from "next/font/google";
+import Script from "next/script";
+import Footer from "@/components/Footer";
 import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
-import Script from "next/script";
-import { Poppins } from "next/font/google";
-import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],

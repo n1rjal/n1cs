@@ -1,11 +1,11 @@
 "use client";
 
+import { useTheme } from "@emotion/react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import ResponsiveGrid from "./ResponsiveGrid";
 import GradientText from "./GradientText";
-import { useTheme } from "@emotion/react";
+import ResponsiveGrid from "./ResponsiveGrid";
 
 const companies = [
   {

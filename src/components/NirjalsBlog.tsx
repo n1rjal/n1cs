@@ -1,6 +1,6 @@
-import { type FC } from "react";
-import Link from "next/link";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
+import type { FC } from "react";
 
 interface INirjalsBlogProps {
   increasedLine?: boolean;

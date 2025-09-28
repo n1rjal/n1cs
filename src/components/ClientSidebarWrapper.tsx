@@ -1,7 +1,7 @@
 "use client";
 
+import type * as React from "react";
 import Sidebar from "./Sidebar";
-import * as React from "react";
 
 interface ClientSidebarWrapperProps {
   children: React.ReactNode;

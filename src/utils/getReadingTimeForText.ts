@@ -1,7 +1,7 @@
-function estimateReadingTime(markdown: string, wpm: number = 200): string {
+function _estimateReadingTime(markdown: string, wpm: number = 200): string {
   // Remove markdown syntax (links, formatting, etc.)
   const text = markdown
-    .replace(/[#_*>\-\[\]()`~]/g, "") // remove markdown symbols
+    .replace(/[#_*>\-[\]()`~]/g, "") // remove markdown symbols
     .replace(/!\[.*?\]\(.*?\)/g, "") // remove images
     .replace(/\[.*?\]\(.*?\)/g, "") // remove links
     .replace(/\s+/g, " ") // normalize whitespace
@@ -13,7 +13,6 @@ function estimateReadingTime(markdown: string, wpm: number = 200): string {
   if (minutes < 1) {
     return "< 1 min read";
   }
-
 
   return `${Math.ceil(minutes)} mins read`;
 }
