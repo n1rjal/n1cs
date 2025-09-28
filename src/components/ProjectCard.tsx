@@ -99,7 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         style={{ textDecoration: "none" }}
       >
         <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
-          <Typography my="7px" variant="h4" component="h2">
+          <Typography my="7px" variant="h5" component="h2">
             {name}
           </Typography>
           <Typography variant="body1" color="textSecondary">

@@ -60,7 +60,7 @@ const BlogHeader = ({
               columnGap={"4px"}
               useFlexGap
             >
-              <f.icon fontSize="medium" color="disabled" />{" "}
+              <f.icon fontSize="medium" color="disabled" />
               <Typography
                 variant="subtitle1"
                 color="text.secondary"
