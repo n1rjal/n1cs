@@ -90,6 +90,34 @@ export default function Sidebar(props: Props) {
     },
   ];
 
+  const links = [
+    {
+      text: "Home",
+      icon: <HomeIcon />,
+      href: "/",
+    },
+    {
+      text: "About Me",
+      icon: <PersonIcon />,
+      href: "/about-me",
+    },
+    {
+      text: "Projects",
+      icon: <WorkIcon />,
+      href: "/projects",
+    },
+    {
+      text: "Blog",
+      icon: <ArticleIcon />,
+      href: "/blogs",
+    },
+    {
+      text: "Reading List",
+      icon: <MenuBookIcon />,
+      href: "/reading-lists",
+    },
+  ];
+
   const drawer = (
     <Box
       sx={{
@@ -123,33 +151,7 @@ export default function Sidebar(props: Props) {
       </Toolbar>
       <Divider />
       <List>
-        {[
-          {
-            text: "Home",
-            icon: <HomeIcon />,
-            href: "/",
-          },
-          {
-            text: "About Me",
-            icon: <PersonIcon />,
-            href: "/abouts",
-          },
-          {
-            text: "Projects",
-            icon: <WorkIcon />,
-            href: "/projects",
-          },
-          {
-            text: "Blog",
-            icon: <ArticleIcon />,
-            href: "/blogs",
-          },
-          {
-            text: "Reading List",
-            icon: <MenuBookIcon />,
-            href: "/reading-lists",
-          },
-        ].map((item) => (
+        {links.map((item) => (
           <ListItem key={item.text} disablePadding dense>
             <ListItemButton
               component={Link}

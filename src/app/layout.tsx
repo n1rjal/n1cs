@@ -6,6 +6,7 @@ import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
 import Script from "next/script";
 import { Poppins } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -70,7 +71,10 @@ export default function RootLayout({
       <body className={`${poppins.className}`}>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeRegistry>
-            <ClientSidebarWrapper>{children}</ClientSidebarWrapper>
+            <ClientSidebarWrapper>
+              {children}
+              <Footer />
+            </ClientSidebarWrapper>
           </ThemeRegistry>
         </AppRouterCacheProvider>
         <Script

@@ -54,13 +54,18 @@ export const createCustomTheme = (mode: "light" | "dark") => {
     },
     typography: {
       fontFamily: ["Poppins", "sans-serif"].join(","),
-      h1: { fontSize: "3rem", fontWeight: 700 },
+      h1: {
+        fontSize: "3rem",
+        fontWeight: 700,
+      },
       h2: {
         fontSize: "2.5rem",
         fontWeight: 700,
-        fontFamily: "DM Serif Display",
       },
-      h3: { fontSize: "2rem", fontWeight: 600 },
+      h3: {
+        fontSize: "2rem",
+        fontWeight: 600,
+      },
       h4: {
         fontSize: "1.75rem",
         fontWeight: 600,

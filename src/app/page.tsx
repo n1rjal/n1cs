@@ -274,7 +274,7 @@ export default async function Home() {
             reach out.
           </Typography>
           <Stack
-            direction={{ xs: "column", sm: "row" }}
+            direction="row"
             spacing={4}
             justifyContent="center"
             sx={{ mt: 3 }}
