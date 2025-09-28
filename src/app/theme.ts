@@ -57,25 +57,31 @@ export const createCustomTheme = (mode: "light" | "dark") => {
       h1: {
         fontSize: "3rem",
         fontWeight: 700,
+        fontFamily: "Oswald, sans-serif",
       },
       h2: {
         fontSize: "2.5rem",
         fontWeight: 700,
+        fontFamily: "Oswald, sans-serif",
       },
       h3: {
         fontSize: "2rem",
+        fontFamily: "Oswald, sans-serif",
         fontWeight: 600,
       },
       h4: {
         fontSize: "1.75rem",
+        fontFamily: "Oswald, sans-serif",
         fontWeight: 600,
       },
       h5: {
         fontSize: "1.5rem",
+        fontFamily: "Oswald, sans-serif",
         fontWeight: 500,
       },
       h6: {
         fontSize: "1.25rem",
+        fontFamily: "Oswald, sans-serif",
         fontWeight: 500,
       },
       body1: { fontSize: "1rem", lineHeight: 1.6 },
