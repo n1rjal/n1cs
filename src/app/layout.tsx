@@ -91,6 +91,11 @@ export default function RootLayout({
   gtag('config', 'G-LZ4S5KBNWY');
   `}
         </Script>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="da85841d-0165-4c74-b279-0c42ea6339a5"
+        ></Script>
       </body>
     </html>
   );
