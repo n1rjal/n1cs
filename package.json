@@ -2,6 +2,7 @@
   "name": "n1cs",
   "version": "0.1.0",
   "private": true,
+  "baseUrl": "https://nirjalpaudel.com.np",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
