@@ -100,7 +100,7 @@ export default async function Home() {
                     />
                   </ListItemIcon>
                   <Typography>
-                    Helping people around the globe on{" "}
+                    Rising Talent and 100% Job success on{" "}
                     <GlowedLink
                       href="https://www.upwork.com/freelancers/~0102d4b4b099a771b2"
                       target="_blank"
