@@ -163,7 +163,7 @@ export default async function Home() {
 
       <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
         <Box>
-          <Button href="/abouts" variant="outlined" color="secondary">
+          <Button href="/about-me" variant="outlined" color="secondary">
             About me
           </Button>
         </Box>
