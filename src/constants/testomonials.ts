@@ -23,4 +23,11 @@ export default [
     author: "Ayush Mainali",
     position: "Frontend Developer Freelancer",
   },
+
+  {
+    quote:
+      "Working with Nirjal was a great experience. He helped me set up n8n automation flows and successfully installed Discourse on my domain Sanjal.com. His technical knowledge, communication, and willingness to troubleshoot every small issue made the entire process smooth and efficient. Highly recommended for anyone looking to build reliable backend systems or community platforms",
+    author: "Laxman Kafle",
+    position: "Founder, Evemoo",
+  },
 ];
