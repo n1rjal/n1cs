@@ -21,6 +21,7 @@ import TrustedCompanies from "@/components/TrustedCompanies";
 import WorkingDeveloper from "@/components/WorkingDeveloper";
 import { getBlogPosts, getProjects } from "@/lib/notion";
 import GlowedLink from "../components/GlowedLink";
+import InView from "../components/motion/InView";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
@@ -54,135 +55,142 @@ export default async function Home() {
           mx: { lg: "auto", xl: "auto", sm: 2, xs: 2 },
         }}
       >
-        <Box>
-          <Typography
-            variant="h6"
-            color="text.primary"
-            gutterBottom
-            component="span"
-          >
-            Hi 👋, I&apos;m
-          </Typography>
-          <Typography component="h1" variant="h1">
-            <GradientText>Nirjal Paudel (n1rjal)</GradientText>
-          </Typography>
-          <Box
-            mt={{
-              xs: 2,
-              sm: 4,
-              md: 6,
-              lg: 8,
-            }}
-            color="text.secondary"
-          >
-            <Typography component="h4" variant="h4" gutterBottom>
-              I am
+        <InView skipFirstScreen>
+          <Box>
+            <Typography
+              variant="h6"
+              color="text.primary"
+              gutterBottom
+              component="span"
+            >
+              Hi 👋, I&apos;m
             </Typography>
-            <Box ml="0px">
-              <List component="ul" sx={{ listStyleType: "none", pl: 0 }}>
-                <ListItem disablePadding>
-                  <ListItemIcon sx={{ minWidth: "24px" }}>
-                    <FiberManualRecordIcon
-                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                    />
-                  </ListItemIcon>
-                  <Typography>
-                    Top technical contributor for{" "}
-                    <GlowedLink href="https://nepal.gnome.org/" target="_blank">
-                      GNOME Nepal
-                    </GlowedLink>
-                  </Typography>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemIcon sx={{ minWidth: "24px" }}>
-                    <FiberManualRecordIcon
-                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                    />
-                  </ListItemIcon>
-                  <Typography>
-                    Rising Talent and 100% Job success on{" "}
-                    <GlowedLink
-                      href="https://www.upwork.com/freelancers/~0102d4b4b099a771b2"
-                      target="_blank"
-                    >
-                      Upwork
-                    </GlowedLink>
-                  </Typography>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemIcon sx={{ minWidth: "24px" }}>
-                    <FiberManualRecordIcon
-                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                    />
-                  </ListItemIcon>
-                  <Typography>Tinkerer and experimenter</Typography>
-                </ListItem>
-              </List>
-            </Box>
-          </Box>
-
-          <List
-            component="ul"
-            sx={{ listStyleType: "none", pl: 0, mb: "10px" }}
-          >
-            <Box color="text.secondary">
-              <Typography variant="h6" gutterBottom>
-                Welcome to my corner of the internet
+            <Typography component="h1" variant="h1">
+              <GradientText>Nirjal Paudel (n1rjal)</GradientText>
+            </Typography>
+            <Box
+              mt={{
+                xs: 2,
+                sm: 4,
+                md: 6,
+                lg: 8,
+              }}
+              color="text.secondary"
+            >
+              <Typography component="h4" variant="h4" gutterBottom>
+                I am
               </Typography>
-              <ListItem disablePadding>
-                <ListItemIcon sx={{ minWidth: "24px" }}>
-                  <FiberManualRecordIcon
-                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                  />
-                </ListItemIcon>
-                <Typography>Experience my experiences</Typography>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemIcon sx={{ minWidth: "24px" }}>
-                  <FiberManualRecordIcon
-                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                  />
-                </ListItemIcon>
-                <Typography>Think with me</Typography>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemIcon sx={{ minWidth: "24px" }}>
-                  <FiberManualRecordIcon
-                    sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                  />
-                </ListItemIcon>
-                <Typography>Boast / Roast my opinions</Typography>
-              </ListItem>
+              <Box ml="0px">
+                <List component="ul" sx={{ listStyleType: "none", pl: 0 }}>
+                  <ListItem disablePadding>
+                    <ListItemIcon sx={{ minWidth: "24px" }}>
+                      <FiberManualRecordIcon
+                        sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                      />
+                    </ListItemIcon>
+                    <Typography>
+                      Top technical contributor for{" "}
+                      <GlowedLink href="https://nepal.gnome.org/" target="_blank">
+                        GNOME Nepal
+                      </GlowedLink>
+                    </Typography>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon sx={{ minWidth: "24px" }}>
+                      <FiberManualRecordIcon
+                        sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                      />
+                    </ListItemIcon>
+                    <Typography>
+                      Rising Talent and 100% Job success on{" "}
+                      <GlowedLink
+                        href="https://www.upwork.com/freelancers/~0102d4b4b099a771b2"
+                        target="_blank"
+                      >
+                        Upwork
+                      </GlowedLink>
+                    </Typography>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemIcon sx={{ minWidth: "24px" }}>
+                      <FiberManualRecordIcon
+                        sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                      />
+                    </ListItemIcon>
+                    <Typography>Tinkerer and experimenter</Typography>
+                  </ListItem>
+                </List>
+              </Box>
             </Box>
-          </List>
-        </Box>
-        <Box>
-          <WorkingDeveloper />
-        </Box>
+
+            <List
+              component="ul"
+              sx={{ listStyleType: "none", pl: 0, mb: "10px" }}
+            >
+              <Box color="text.secondary">
+                <Typography variant="h6" gutterBottom>
+                  Welcome to my corner of the internet
+                </Typography>
+                <ListItem disablePadding>
+                  <ListItemIcon sx={{ minWidth: "24px" }}>
+                    <FiberManualRecordIcon
+                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                    />
+                  </ListItemIcon>
+                  <Typography>Experience my experiences</Typography>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemIcon sx={{ minWidth: "24px" }}>
+                    <FiberManualRecordIcon
+                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                    />
+                  </ListItemIcon>
+                  <Typography>Think with me</Typography>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemIcon sx={{ minWidth: "24px" }}>
+                    <FiberManualRecordIcon
+                      sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                    />
+                  </ListItemIcon>
+                  <Typography>Boast / Roast my opinions</Typography>
+                </ListItem>
+              </Box>
+            </List>
+          </Box>
+        </InView>
+        
+        <InView direction="right" skipFirstScreen>
+          <Box>
+            <WorkingDeveloper />
+          </Box>
+        </InView>
       </Stack>
 
-      <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
-        <Box>
-          <Button href="/about-me" variant="outlined" color="secondary">
-            About me
-          </Button>
-        </Box>
+      <InView>
+        <Grid container spacing={1} justifyContent="center" sx={{ pt: 4 }}>
+          <Box>
+            <Button href="/about-me" variant="outlined" color="secondary">
+              About me
+            </Button>
+          </Box>
 
-        <Box>
-          <Button
-            href="/#keep-in-touch"
-            variant="outlined"
-            color="secondary"
-            fullWidth
-          >
-            Get In Touch
-          </Button>
-        </Box>
+          <Box>
+            <Button
+              href="/#keep-in-touch"
+              variant="outlined"
+              color="secondary"
+              fullWidth
+            >
+              Get In Touch
+            </Button>
+          </Box>
 
-        <Box>
-          <ResumeDownloadButton />
-        </Box>
-      </Grid>
+          <Box>
+            <ResumeDownloadButton />
+          </Box>
+        </Grid>
+      </InView>
 
       <TrustedCompanies />
 
@@ -194,37 +202,45 @@ export default async function Home() {
         }}
       >
         <Container maxWidth="md">
-          <Typography
-            variant="h4"
-            textAlign="center"
-            component="h1"
-            gutterBottom
-          >
-            <GradientText>My Projects</GradientText>
-          </Typography>
-          <Typography variant="body1" color="textSecondary" paragraph>
-            Here are a few of my recent projects. I&rsquo;m passionate about
-            building things that solve real-world problems and I&rsquo;m always
-            looking for new challenges.
-          </Typography>
-          <Grid container spacing={4} sx={{ my: 2 }}>
-            {projects.slice(0, 3).map((project) => (
-              <Grid key={project.id}>
-                <ProjectCard {...project} />
-              </Grid>
-            ))}
-          </Grid>
+          <InView>
+            <Typography
+              variant="h4"
+              textAlign="center"
+              component="h1"
+              gutterBottom
+            >
+              <GradientText>My Projects</GradientText>
+            </Typography>
+            <Typography variant="body1" color="textSecondary" paragraph>
+              Here are a few of my recent projects. I&rsquo;m passionate about
+              building things that solve real-world problems and I&rsquo;m always
+              looking for new challenges.
+            </Typography>
+          </InView>
+          
+          <InView stagger={0.1}>
+            <Grid container spacing={4} sx={{ my: 2 }}>
+              {projects.slice(0, 3).map((project) => (
+                <Grid key={project.id}>
+                  <ProjectCard {...project} />
+                </Grid>
+              ))}
+            </Grid>
+          </InView>
+          
           {projects.length > 3 ? (
-            <Box sx={{ textAlign: "center", mt: 4 }}>
-              <Button
-                component={Link}
-                href="/projects"
-                variant="contained"
-                color="secondary"
-              >
-                View All Projects
-              </Button>
-            </Box>
+            <InView>
+              <Box sx={{ textAlign: "center", mt: 4 }}>
+                <Button
+                  component={Link}
+                  href="/projects"
+                  variant="contained"
+                  color="secondary"
+                >
+                  View All Projects
+                </Button>
+              </Box>
+            </InView>
           ) : null}
         </Container>
       </Box>
@@ -245,16 +261,18 @@ export default async function Home() {
           </Box>
 
           {blogPosts.length > 3 ? (
-            <Box sx={{ textAlign: "center", mt: 4 }}>
-              <Button
-                component={Link}
-                href="/blogs"
-                variant="contained"
-                color="secondary"
-              >
-                View All Blogs
-              </Button>
-            </Box>
+            <InView>
+              <Box sx={{ textAlign: "center", mt: 4 }}>
+                <Button
+                  component={Link}
+                  href="/blogs"
+                  variant="contained"
+                  color="secondary"
+                >
+                  View All Blogs
+                </Button>
+              </Box>
+            </InView>
           ) : null}
         </Container>
       </Box>
@@ -265,39 +283,44 @@ export default async function Home() {
 
       <Box id="keep-in-touch" sx={{ bgcolor: "background.default", py: 6 }}>
         <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            <GradientText>Keep in Touch</GradientText>
-          </Typography>
-          <Typography variant="body1" paragraph color="textSecondary">
-            I&apos;m always open to connecting with new people. Whether you have
-            a question, a project idea, or just want to say hi, feel free to
-            reach out.
-          </Typography>
-          <Stack
-            direction="row"
-            spacing={4}
-            justifyContent="center"
-            sx={{ mt: 3 }}
-          >
-            <GlowedLink href="https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F">
-              <Button
-                variant="outlined"
-                color="secondary"
-                startIcon={<WhatsAppIcon />}
-              >
-                WhatsApp
-              </Button>
-            </GlowedLink>
-            <GlowedLink href="mailto:nirjalpaudel54312@gmail.com">
-              <Button
-                variant="outlined"
-                color="secondary"
-                startIcon={<EmailIcon />}
-              >
-                Email
-              </Button>
-            </GlowedLink>
-          </Stack>
+          <InView>
+            <Typography variant="h4" component="h1" gutterBottom>
+              <GradientText>Keep in Touch</GradientText>
+            </Typography>
+            <Typography variant="body1" paragraph color="textSecondary">
+              I&apos;m always open to connecting with new people. Whether you have
+              a question, a project idea, or just want to say hi, feel free to
+              reach out.
+            </Typography>
+          </InView>
+          
+          <InView stagger={0.1}>
+            <Stack
+              direction="row"
+              spacing={4}
+              justifyContent="center"
+              sx={{ mt: 3 }}
+            >
+              <GlowedLink href="https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  startIcon={<WhatsAppIcon />}
+                >
+                  WhatsApp
+                </Button>
+              </GlowedLink>
+              <GlowedLink href="mailto:nirjalpaudel54312@gmail.com">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  startIcon={<EmailIcon />}
+                >
+                  Email
+                </Button>
+              </GlowedLink>
+            </Stack>
+          </InView>
         </Container>
       </Box>
     </Box>

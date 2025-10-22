@@ -15,8 +15,10 @@ import {
 import CardMedia from "@mui/material/CardMedia";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import { motion, useReducedMotion } from "framer-motion";
 import type React from "react";
 import { useEffect, useState } from "react";
+import { hoverLift, tapPress } from "./motion/MotionUtils";
 
 interface ProjectCardProps {
   id: string;
@@ -40,6 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [stars, setStars] = useState<number | null>(null);
   const [loadingStars, setLoadingStars] = useState<boolean>(false);
   const [errorStars, setErrorStars] = useState<string | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (githubUrl) {
@@ -71,18 +74,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, [githubUrl]);
 
   return (
-    <Card
-      sx={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        py: 1.25,
-        px: 1.875,
-        borderRadius: "5px",
-        width: "100%",
-      }}
-      color="textSecondary"
+    <motion.div
+      whileHover={shouldReduceMotion ? {} : hoverLift}
+      whileTap={shouldReduceMotion ? {} : tapPress}
+      style={{ height: "100%" }}
     >
+      <Card
+        sx={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          py: 1.25,
+          px: 1.875,
+          borderRadius: "5px",
+          width: "100%",
+        }}
+        color="textSecondary"
+      >
       {imageUrl && (
         <CardMedia
           component="img"
@@ -166,7 +174,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </Button>
         )}
       </CardActions>
-    </Card>
+      </Card>
+    </motion.div>
   );
 };
 

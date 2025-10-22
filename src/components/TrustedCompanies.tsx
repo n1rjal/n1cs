@@ -4,8 +4,11 @@ import { useTheme } from "@emotion/react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { motion, useReducedMotion } from "framer-motion";
 import GradientText from "./GradientText";
 import ResponsiveGrid from "./ResponsiveGrid";
+import InView from "./motion/InView";
+import { hoverScaleSubtle } from "./motion/MotionUtils";
 
 const companies = [
   {
@@ -36,61 +39,72 @@ const companies = [
 
 const TrustedCompanies = () => {
   const theme = useTheme();
+  const shouldReduceMotion = useReducedMotion();
+  
   return (
     <ResponsiveGrid sx={{ my: "20px" }}>
-      <Typography textAlign="center" variant="h4" component="h4" gutterBottom>
-        <GradientText>Trusted by Companies</GradientText>
-      </Typography>
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        flexWrap="wrap"
-        mt={4}
-      >
-        {companies.map((company) => (
-          <Box
-            key={company.link}
-            sx={{
-              width: { xs: "40%", sm: 120 },
-              maxWidth: 120 * 2,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: 1,
-              bgcolor: "#fefefe",
-              mb: 2, // Add margin-bottom
-              mr: 2, // Add margin-right
-              p: 1, // Add padding
-              boxShadow: theme.shadows[1], // Add background shadow
-            }}
-          >
-            <a
-              href={company.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%",
-              }}
+      <InView>
+        <Typography textAlign="center" variant="h4" component="h4" gutterBottom>
+          <GradientText>Trusted by Companies</GradientText>
+        </Typography>
+      </InView>
+      
+      <InView stagger={0.08}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          flexWrap="wrap"
+          mt={4}
+        >
+          {companies.map((company) => (
+            <motion.div
+              key={company.link}
+              whileHover={shouldReduceMotion ? {} : hoverScaleSubtle}
             >
-              <img
-                src={`/${company.image}`}
-                alt={company.link}
-                style={{
-                  maxWidth: "80%",
-                  maxHeight: "80%",
-                  objectFit: "contain",
+              <Box
+                sx={{
+                  width: { xs: "40%", sm: 120 },
+                  maxWidth: 120 * 2,
+                  height: 60,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 1,
+                  bgcolor: "#fefefe",
+                  mb: 2, // Add margin-bottom
+                  mr: 2, // Add margin-right
+                  p: 1, // Add padding
+                  boxShadow: theme.shadows[1], // Add background shadow
                 }}
-              />
-            </a>
-          </Box>
-        ))}
-      </Stack>
+              >
+                <a
+                  href={company.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <img
+                    src={`/${company.image}`}
+                    alt={company.link}
+                    style={{
+                      maxWidth: "80%",
+                      maxHeight: "80%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              </Box>
+            </motion.div>
+          ))}
+        </Stack>
+      </InView>
     </ResponsiveGrid>
   );
 };
