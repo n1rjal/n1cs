@@ -47,7 +47,7 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
 
           <Typography variant="body1" color="textSecondary">
             I enjoy sharing my journey through tech and beyond — documenting the
-            lessons I've learned, the projects I've built, and the ideas that
+            lessons I&apos;ve learned, the projects I&apos;ve built, and the ideas that
             inspire me. Here are some of my stories and experiences you might find
             interesting.
           </Typography>

@@ -25,11 +25,11 @@ export default function Testimonials() {
             <GradientText>Testimonials</GradientText>
           </Typography>
 
-          <Typography variant="body1" color="textSecondary">
-            The best reflections of my work come from the people I've worked with.
-            Their words capture the craft, collaboration, and impact behind every
-            project. Here are some of their experiences.
-          </Typography>
+        <Typography variant="body1" color="textSecondary">
+          The best reflections of my work come from the people I&apos;ve worked with.
+          Their words capture the craft, collaboration, and impact behind every
+          project. Here are some of their experiences.
+        </Typography>
         </InView>
         
         <InView stagger={0.1}>

@@ -90,15 +90,16 @@ const TrustedCompanies = () => {
                     height: "100%",
                   }}
                 >
-                  <img
-                    src={`/${company.image}`}
-                    alt={company.link}
-                    style={{
-                      maxWidth: "80%",
-                      maxHeight: "80%",
-                      objectFit: "contain",
-                    }}
-                  />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/${company.image}`}
+                alt={company.link}
+                style={{
+                  maxWidth: "80%",
+                  maxHeight: "80%",
+                  objectFit: "contain",
+                }}
+              />
                 </a>
               </Box>
             </motion.div>
