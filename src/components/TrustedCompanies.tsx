@@ -50,60 +50,66 @@ const TrustedCompanies = () => {
       </InView>
 
       <InView stagger={0.08}>
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-          sx={{ mt: 4 }}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(2, 1fr)",
+              sm: "repeat(3, 1fr)",
+              md: "repeat(4, 1fr)",
+              lg: "repeat(6, 1fr)",
+            },
+            gap: 2,
+            mt: 4,
+            maxWidth: { xs: "400px", sm: "600px", md: "800px" },
+            mx: "auto",
+          }}
         >
           {companies.map((company) => (
-            <Grid item xs={6} sm={4} md={3} lg={2} key={company.link}>
-              <motion.div
-                whileHover={shouldReduceMotion ? {} : hoverScaleSubtle}
-                style={{ height: "100%" }}
+            <motion.div
+              key={company.link}
+              whileHover={shouldReduceMotion ? {} : hoverScaleSubtle}
+            >
+              <Box
+                sx={{
+                  width: "100%",
+                  aspectRatio: "2/1",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: 1,
+                  bgcolor: "#fefefe",
+                  p: 1,
+                  boxShadow: theme.shadows[1],
+                }}
               >
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: 60,
+                <a
+                  href={company.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    borderRadius: 1,
-                    bgcolor: "#fefefe",
-                    p: 1,
-                    boxShadow: theme.shadows[1],
+                    width: "100%",
+                    height: "100%",
                   }}
                 >
-                  <a
-                    href={company.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/${company.image}`}
+                    alt={company.link}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "100%",
-                      height: "100%",
+                      maxWidth: "80%",
+                      maxHeight: "80%",
+                      objectFit: "contain",
                     }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/${company.image}`}
-                      alt={company.link}
-                      style={{
-                        maxWidth: "80%",
-                        maxHeight: "80%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </a>
-                </Box>
-              </motion.div>
-            </Grid>
+                  />
+                </a>
+              </Box>
+            </motion.div>
           ))}
-        </Grid>
+        </Box>
       </InView>
     </ResponsiveGrid>
   );
