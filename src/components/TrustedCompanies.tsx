@@ -2,7 +2,7 @@
 
 import { useTheme } from "@emotion/react";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { motion, useReducedMotion } from "framer-motion";
 import GradientText from "./GradientText";
@@ -40,7 +40,7 @@ const companies = [
 const TrustedCompanies = () => {
   const theme = useTheme();
   const shouldReduceMotion = useReducedMotion();
-  
+
   return (
     <ResponsiveGrid sx={{ my: "20px" }}>
       <InView>
@@ -48,63 +48,62 @@ const TrustedCompanies = () => {
           <GradientText>Trusted by Companies</GradientText>
         </Typography>
       </InView>
-      
+
       <InView stagger={0.08}>
-        <Stack
-          direction="row"
+        <Grid
+          container
+          spacing={2}
           justifyContent="center"
           alignItems="center"
-          flexWrap="wrap"
-          mt={4}
+          sx={{ mt: 4 }}
         >
           {companies.map((company) => (
-            <motion.div
-              key={company.link}
-              whileHover={shouldReduceMotion ? {} : hoverScaleSubtle}
-            >
-              <Box
-                sx={{
-                  width: { xs: "40%", sm: 120 },
-                  maxWidth: 120 * 2,
-                  height: 60,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 1,
-                  bgcolor: "#fefefe",
-                  mb: 2, // Add margin-bottom
-                  mr: 2, // Add margin-right
-                  p: 1, // Add padding
-                  boxShadow: theme.shadows[1], // Add background shadow
-                }}
+            <Grid item xs={6} sm={4} md={3} lg={2} key={company.link}>
+              <motion.div
+                whileHover={shouldReduceMotion ? {} : hoverScaleSubtle}
+                style={{ height: "100%" }}
               >
-                <a
-                  href={company.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: 60,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: "100%",
-                    height: "100%",
+                    borderRadius: 1,
+                    bgcolor: "#fefefe",
+                    p: 1,
+                    boxShadow: theme.shadows[1],
                   }}
                 >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`/${company.image}`}
-                alt={company.link}
-                style={{
-                  maxWidth: "80%",
-                  maxHeight: "80%",
-                  objectFit: "contain",
-                }}
-              />
-                </a>
-              </Box>
-            </motion.div>
+                  <a
+                    href={company.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/${company.image}`}
+                      alt={company.link}
+                      style={{
+                        maxWidth: "80%",
+                        maxHeight: "80%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </a>
+                </Box>
+              </motion.div>
+            </Grid>
           ))}
-        </Stack>
+        </Grid>
       </InView>
     </ResponsiveGrid>
   );
