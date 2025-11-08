@@ -82,6 +82,20 @@ export default async function Home() {
               </Typography>
               <Box ml="0px">
                 <List component="ul" sx={{ listStyleType: "none", pl: 0 }}>
+
+                  <ListItem disablePadding>
+                    <ListItemIcon sx={{ minWidth: "24px" }}>
+                      <FiberManualRecordIcon
+                        sx={{ fontSize: "0.7rem", color: "primary.main" }}
+                      />
+                    </ListItemIcon>
+                    <Typography>
+                      Working as a Software Engineer at{" "}
+                      <GlowedLink href="https://ailytics.ai" target="_blank">
+                        Ailytics.ai
+                      </GlowedLink>
+                    </Typography>
+                  </ListItem>
                   <ListItem disablePadding>
                     <ListItemIcon sx={{ minWidth: "24px" }}>
                       <FiberManualRecordIcon
@@ -111,14 +125,7 @@ export default async function Home() {
                       </GlowedLink>
                     </Typography>
                   </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemIcon sx={{ minWidth: "24px" }}>
-                      <FiberManualRecordIcon
-                        sx={{ fontSize: "0.7rem", color: "primary.main" }}
-                      />
-                    </ListItemIcon>
-                    <Typography>Tinkerer and experimenter</Typography>
-                  </ListItem>
+
                 </List>
               </Box>
             </Box>
@@ -159,7 +166,7 @@ export default async function Home() {
             </List>
           </Box>
         </InView>
-        
+
         <InView direction="right" skipFirstScreen>
           <Box>
             <WorkingDeveloper />
@@ -217,7 +224,7 @@ export default async function Home() {
               looking for new challenges.
             </Typography>
           </InView>
-          
+
           <InView stagger={0.1}>
             <Grid container spacing={4} sx={{ my: 2 }}>
               {projects.slice(0, 3).map((project) => (
@@ -227,7 +234,7 @@ export default async function Home() {
               ))}
             </Grid>
           </InView>
-          
+
           {projects.length > 3 ? (
             <InView>
               <Box sx={{ textAlign: "center", mt: 4 }}>
@@ -293,7 +300,7 @@ export default async function Home() {
               reach out.
             </Typography>
           </InView>
-          
+
           <InView stagger={0.1}>
             <Stack
               direction="row"
