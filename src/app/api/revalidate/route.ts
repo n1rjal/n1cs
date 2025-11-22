@@ -20,8 +20,16 @@ export async function GET(request: NextRequest) {
   if (path) {
     // Using revalidatePath instead of revalidateTag for broader compatibility
     // as we haven't implemented tagging in the Notion fetch functions yet.
-    revalidatePath(path);
-    console.log(`Revalidated path: ${path}`);
+    
+    // For dynamic routes like /blogs/[id], we use 'page' type to revalidate all instances
+    if (path.includes("[id]")) {
+      revalidatePath(path, "page");
+      console.log(`Revalidated all pages matching: ${path}`);
+    } else {
+      revalidatePath(path);
+      console.log(`Revalidated path: ${path}`);
+    }
+    
     return NextResponse.json({ revalidated: true, path, now: Date.now() });
   }
 
