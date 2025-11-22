@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import ContentWrapper from "@/components/ContentWrapper";
 import GradientText from "@/components/GradientText";
 import { getPostContent, getSingleBook } from "@/lib/notion";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -88,7 +89,7 @@ export default async function BookDetailPage({
 
       <Box component="hr" my={4} />
 
-      <ContentWrapper content={book.content} headings={headings} />
+      <MarkdownRenderer content={book.content} />
     </Container>
   );
 }
