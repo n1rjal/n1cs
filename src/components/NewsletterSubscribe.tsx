@@ -48,7 +48,7 @@ export default function NewsletterSubscribe() {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper", py: 6 }}>
+    <Box sx={{ bgcolor: "background.default", pt: 6 }}>
       <Container maxWidth="sm">
         <Typography variant="h5" component="h2" gutterBottom align="center">
           <GradientText>Want </GradientText>{" "}

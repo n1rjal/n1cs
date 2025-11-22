@@ -57,6 +57,8 @@ export const getNotionProperty = (
       return prop.relation.map((r) => r.id) || [];
     case "created_time":
       return prop.created_time ?? "";
+    case "status":
+      return prop.status?.name ?? "";
     default:
       return;
   }

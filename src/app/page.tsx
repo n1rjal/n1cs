@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import BlogListPageWrapper from "@/components/BlogListPageWrapper";
+import DeepThoughtsAndBooksSection from "@/components/DeepThoughtsAndBooksSection";
 import GradientText from "@/components/GradientText";
 import NewsletterSubscribe from "@/components/NewsletterSubscribe";
 import ProjectCard from "@/components/ProjectCard";
@@ -19,13 +20,15 @@ import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 import Testimonials from "@/components/Testimonials";
 import TrustedCompanies from "@/components/TrustedCompanies";
 import WorkingDeveloper from "@/components/WorkingDeveloper";
-import { getBlogPosts, getProjects } from "@/lib/notion";
+import { getBlogPosts, getProjects, getDeepThoughts, getBooks } from "@/lib/notion";
 import GlowedLink from "../components/GlowedLink";
 import InView from "../components/motion/InView";
 
 export default async function Home() {
   const blogPosts = await getBlogPosts();
   const projects = await getProjects();
+  const deepThoughts = await getDeepThoughts();
+  const books = await getBooks();
   return (
     <Box
       sx={{
@@ -286,6 +289,10 @@ export default async function Home() {
 
       <Testimonials />
 
+      <DeepThoughtsAndBooksSection
+        deepThoughts={deepThoughts}
+        books={books}
+      />
       <NewsletterSubscribe />
 
       <Box id="keep-in-touch" sx={{ bgcolor: "background.default", py: 6 }}>
@@ -330,6 +337,7 @@ export default async function Home() {
           </InView>
         </Container>
       </Box>
+
     </Box>
   );
 }

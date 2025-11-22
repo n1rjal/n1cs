@@ -191,3 +191,114 @@ export async function getPostContent(
 
   return { content: mdString.parent, headings };
 }
+
+export interface DeepThought {
+  id: string;
+  title: string;
+  content: string;
+  createdTime: string;
+}
+
+export async function getDeepThoughts(): Promise<DeepThought[]> {
+  const databaseId = process.env.NOTION_DEEP_THOUGHTS_DATABASE_ID as string;
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    sorts: [{ property: "Created", direction: "descending" }],
+  });
+
+  return Promise.all(
+    response.results.map(async (page) => {
+      if (!("properties" in page)) return null;
+      const typedPage = page as PageObjectResponse;
+      const mdblocks = await n2m.pageToMarkdown(typedPage.id);
+      const mdString = n2m.toMarkdownString(mdblocks);
+
+      return {
+        id: typedPage.id,
+        title: (getNotionProperty(typedPage, "Title") as string) || "",
+        content: mdString.parent || "",
+        createdTime: (getNotionProperty(typedPage, "Created") as string) || typedPage.created_time,
+      };
+    }),
+  ).then((items) => items.filter(Boolean) as DeepThought[]);
+}
+
+export async function getSingleDeepThought(id: string): Promise<DeepThought | null> {
+  try {
+    const page = await notion.pages.retrieve({ page_id: id });
+    if (!("properties" in page)) return null;
+    const typedPage = page as PageObjectResponse;
+    const mdblocks = await n2m.pageToMarkdown(id);
+    const mdString = n2m.toMarkdownString(mdblocks);
+
+    return {
+      id: typedPage.id,
+      title: (getNotionProperty(typedPage, "Title") as string) || "",
+      content: mdString.parent || "",
+      createdTime: (getNotionProperty(typedPage, "Created") as string) || typedPage.created_time,
+    };
+  } catch (error) {
+    console.error("Error retrieving single deep thought:", error);
+    return null;
+  }
+}
+
+export interface Book {
+  id: string;
+  title: string;
+  author: string;
+  readPercentage: number;
+  summary: string;
+  content: string;
+  dateRead: string;
+}
+
+export async function getBooks(): Promise<Book[]> {
+  const databaseId = process.env.NOTION_BOOKS_DATABASE_ID as string;
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    sorts: [{ property: "dateRead", direction: "descending" }],
+  });
+
+  return Promise.all(
+    response.results.map(async (page) => {
+      if (!("properties" in page)) return null;
+      const typedPage = page as PageObjectResponse;
+      const mdblocks = await n2m.pageToMarkdown(typedPage.id);
+      const mdString = n2m.toMarkdownString(mdblocks);
+
+      return {
+        id: typedPage.id,
+        title: (getNotionProperty(typedPage, "Title") as string) || (getNotionProperty(typedPage, "Name") as string) || "",
+        author: (getNotionProperty(typedPage, "Author") as string) || "",
+        readPercentage: (Number(getNotionProperty(typedPage, "Progress")) || 0) * 100,
+        summary: (getNotionProperty(typedPage, "Summary") as string) || "",
+        content: mdString.parent || "",
+        dateRead: (getNotionProperty(typedPage, "dateRead") as string) || "",
+      };
+    }),
+  ).then((items) => items.filter(Boolean) as Book[]);
+}
+
+export async function getSingleBook(id: string): Promise<Book | null> {
+  try {
+    const page = await notion.pages.retrieve({ page_id: id });
+    if (!("properties" in page)) return null;
+    const typedPage = page as PageObjectResponse;
+    const mdblocks = await n2m.pageToMarkdown(id);
+    const mdString = n2m.toMarkdownString(mdblocks);
+
+    return {
+      id: typedPage.id,
+      title: (getNotionProperty(typedPage, "Title") as string) || (getNotionProperty(typedPage, "Name") as string) || "",
+      author: (getNotionProperty(typedPage, "Author") as string) || "",
+      readPercentage: (Number(getNotionProperty(typedPage, "Progress")) || 0) * 100,
+      summary: (getNotionProperty(typedPage, "Summary") as string) || "",
+      content: mdString.parent || "",
+      dateRead: (getNotionProperty(typedPage, "dateRead") as string) || "",
+    };
+  } catch (error) {
+    console.error("Error retrieving single book:", error);
+    return null;
+  }
+}

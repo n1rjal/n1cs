@@ -72,7 +72,9 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeRegistry>
             <ClientSidebarWrapper>
-              {children}
+              <div style={{ flexGrow: 1 }}>
+                {children}
+              </div>
               <Footer />
             </ClientSidebarWrapper>
           </ThemeRegistry>

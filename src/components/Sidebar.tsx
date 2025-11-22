@@ -1,6 +1,7 @@
 "use client";
 
 import ArticleIcon from "@mui/icons-material/Article";
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
@@ -9,6 +10,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeIcon from "@mui/icons-material/Home";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LaunchIcon from "@mui/icons-material/Launch";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MenuIcon from "@mui/icons-material/Menu"; // Import MenuIcon
 import MenuBookIcon from "@mui/icons-material/MenuBook";
@@ -114,6 +116,16 @@ export default function Sidebar(props: Props) {
       text: "Reading List",
       icon: <MenuBookIcon />,
       href: "/reading-lists",
+    },
+    {
+      text: "Deep Thoughts",
+      icon: <LightbulbIcon />,
+      href: "/deep-thoughts",
+    },
+    {
+      text: "Books",
+      icon: <AutoStoriesIcon />,
+      href: "/books",
     },
   ];
 
@@ -390,6 +402,9 @@ export default function Sidebar(props: Props) {
           flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: { xs: "60px", sm: "0" },
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {children}
