@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     template: "%s | Nirjal Paudel",
     default: "Nirjal Paudel - Software Developer",
   },
-  viewport: "width=device-width, initial-scale=1",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
   description:
     "The personal website and blog of Nirjal Paudel, a software developer passionate about building things for the web.",
   keywords: [

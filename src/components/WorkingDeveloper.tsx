@@ -5,14 +5,18 @@ import animationData from "@/constants/Developer.json";
 
 const WorkingDeveloper = () => (
   <Box
-    maxWidth={{
-      lg: "35vw",
-      xl: "35vw",
-      md: "35vw",
-      xs: "90vw",
-      sm: "90vw",
+    sx={{
+      maxWidth: {
+        lg: "35vw",
+        xl: "35vw",
+        md: "35vw",
+        xs: "100%",
+        sm: "100%",
+      },
+      width: "100%",
+      height: { xs: "50vh", sm: "50vh", md: "50vh" },
+      px: { xs: 2, sm: 2 },
     }}
-    height={{ xs: "50vh", sm: "50vh", md: "50vh" }}
   >
     <Lottie
       animationData={animationData}

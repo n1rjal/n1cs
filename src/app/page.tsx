@@ -40,6 +40,9 @@ export default async function Home() {
           md: 4,
         },
         mb: 0,
+        overflow: "hidden",
+        width: "100%",
+        maxWidth: "100vw",
       }}
     >
       <Stack
@@ -54,8 +57,10 @@ export default async function Home() {
         }}
         maxWidth="md"
         sx={{
-          pt: { lg: 8, xl: 8, sm: 4, xs: 4 },
+          pt: { lg: 8, xl: 8, sm: 0, xs: 0 },
           mx: { lg: "auto", xl: "auto", sm: 2, xs: 2 },
+          width: "90%",
+          boxSizing: "border-box",
         }}
       >
         <InView skipFirstScreen>

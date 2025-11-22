@@ -6,11 +6,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* Markdown Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1em;
+  overflow-x: auto;
+  display: block;
 }
 
 th,

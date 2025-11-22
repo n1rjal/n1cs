@@ -1,4 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Alert, Box, Container, Typography } from "@mui/material";
+import WarningAmberOutlinedIcon from "@mui/icons-material/WarningAmberOutlined";
 import { format } from "date-fns";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -54,9 +55,32 @@ export default async function DeepThoughtPage({
         </Typography>
       </Box>
 
+
       <Box component="hr" my={2} sx={{ borderColor: "divider" }} />
 
       <MarkdownRenderer content={thought.content} />
+
+      <Alert
+        severity="warning"
+        variant="outlined"
+        icon={<WarningAmberOutlinedIcon fontSize="small" />}
+        sx={{
+          my: 2,
+          borderRadius: 2,
+          backgroundColor: 'transparent',
+          '& .MuiAlert-message': {
+            width: '100%',
+          },
+          '& .MuiAlert-icon': {
+            opacity: 0.7,
+          }
+        }}
+      >
+        <Typography variant="body2" sx={{ fontStyle: 'italic', opacity: 0.85 }}>
+          This is a thought of mine — it can change over time, and I&apos;m only human after all.
+          I evolve, may disagree with you now, but hopefully we may agree on a few things.
+        </Typography>
+      </Alert>
     </Container>
   );
 }
