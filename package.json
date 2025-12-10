@@ -22,7 +22,7 @@
     "eslint-config-next": "^15.5.2",
     "framer-motion": "^12.23.24",
     "lottie-react": "^2.4.1",
-    "next": "15.5.2",
+    "next": "15.5.7",
     "notion-to-md": "^3.1.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
