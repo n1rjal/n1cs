@@ -11,6 +11,11 @@ import InView from "./motion/InView";
 import { hoverScaleSubtle } from "./motion/MotionUtils";
 
 const companies = [
+
+  {
+    link: "https://ailytics.ai",
+    image: "ailytics.png",
+  },
   {
     link: "https://morgenland-teppiche.de",
     image: "morgenland-teppiche.png",

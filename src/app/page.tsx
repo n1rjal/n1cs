@@ -111,12 +111,16 @@ export default async function Home() {
                       />
                     </ListItemIcon>
                     <Typography>
-                      Top technical contributor for{" "}
-                      <GlowedLink href="https://nepal.gnome.org/" target="_blank">
-                        GNOME Nepal
+                      Top Rated and 100% Job success on{" "}
+                      <GlowedLink
+                        href="https://www.upwork.com/freelancers/~0102d4b4b099a771b2"
+                        target="_blank"
+                      >
+                        Upwork
                       </GlowedLink>
                     </Typography>
                   </ListItem>
+
                   <ListItem disablePadding>
                     <ListItemIcon sx={{ minWidth: "24px" }}>
                       <FiberManualRecordIcon
@@ -124,12 +128,9 @@ export default async function Home() {
                       />
                     </ListItemIcon>
                     <Typography>
-                      Rising Talent and 100% Job success on{" "}
-                      <GlowedLink
-                        href="https://www.upwork.com/freelancers/~0102d4b4b099a771b2"
-                        target="_blank"
-                      >
-                        Upwork
+                      Top technical contributor for{" "}
+                      <GlowedLink href="https://nepal.gnome.org/" target="_blank">
+                        GNOME Nepal
                       </GlowedLink>
                     </Typography>
                   </ListItem>
