@@ -25,61 +25,95 @@
   },
   "experience": [
     {
-      "title": "Payment/Subscription, Devops and backend developer",
-      "company": "Nutrogen.io",
-      "location": "Brisbane, Australia",
-      "date": "Oct 2024 - Jul 2025",
-      "description": "Developed and lead the development of subscription module, architected and scaled the event driven nature of hierarchical user base, and developed, scaled and enhanced the existing system for aggregated payment collection for Nutrogen.",
+      "title": "Django Developer",
+      "company": "Ailytics.ai",
+      "location": "Remote - Singapore",
+      "date": "Nov 2025 - Present",
+      "description": "Migrating to the revamped platform whilst production is running and building various modules with cross-platform communication between the AI and backend teams.",
       "points": [
-        "Developed and lead the development of subscription module",
-        "Architect and scaled the event driven nature of hierarchical user base",
-        "Developed, scaled and enhanced the existing system for aggregated payment collection for Nutrogen",
-        "Developed work around stripes for features that stripe lacked",
-        "Setup platform using stripe connect"
+        "Migrate to the revamp platform whilst production is running",
+        "Build various modules and setup cross platform communication between AI and backend team",
+        "Migrate from core legacy code to industry standard code",
+        "Made the company presentable to industry leaders like Nvidia",
+        "Made module which tracks crowd movement, intention and direction"
       ]
     },
     {
-      "title": "Database, backend, and merchandising developer",
+      "title": "Fullstack Developer (Contract)",
+      "company": "Carboon Zero",
+      "location": "Remote - Greater London, England, United Kingdom",
+      "date": "May 2025 - Oct 2025",
+      "description": "Built web dashboards in Django and Django REST Framework, ingested UK-wide meter readings into PostgreSQL and delivered quality software without the need of QA.",
+      "points": [
+        "Made up web dashboard for various works in Django and Django rest framework",
+        "Ingested meters reading across United Kingdom into PostgreSQL database",
+        "Made fullstack solutions in React and Django REST Framework",
+        "Done extensive tests and delivered quality software without the need of QA",
+        "Changed core legacy code logic for issuing invoices"
+      ]
+    },
+    {
+      "title": "Senior Software Engineer - Backend Developer",
+      "company": "Nutrogen",
+      "location": "Brisbane, Queensland, Australia",
+      "date": "Nov 2024 - Jul 2025",
+      "description": "Led end-to-end development of a subscription module, architected and scaled an event-driven system for a hierarchical user base, and optimized aggregated payment collection.",
+      "points": [
+        "Led the end-to-end development of a subscription module, enabling recurring revenue streams and improving customer retention.",
+        "Architected and scaled an event-driven system for a hierarchical user base, ensuring high reliability and seamless scalability as user activity grew.",
+        "Enhanced and optimized aggregated payment collection for Nutrogen, improving efficiency and reducing payment processing overhead.",
+        "Engineered custom workarounds for Stripe's feature gaps, unlocking business-critical functionality not natively supported.",
+        "Set up platform infrastructure with Stripe Connect, enabling secure multi-party payments and streamlined onboarding for partners."
+      ]
+    },
+    {
+      "title": "Database, Backend, and Merchandising Developer",
       "company": "morgenland-teppiche.de",
-      "location": "Hamburg, Germany",
-      "date": "Nov 2021 - Oct 2024",
-      "description": "Accomplished increased database reliability and scalability, by using AWS RDS. Enhanced operational efficiency by automating various manual tasks using Python. Boosted query performance by optimizing PostgreSQL database.",
+      "location": "Remote - Hamburg, Germany",
+      "date": "Aug 2023 - Mar 2024",
+      "description": "Built web dashboards in Django, automated manual tasks with Python, and optimized PostgreSQL search and filtering from 5s to 300ms.",
       "points": [
-        "Accomplished increased database reliability and scalability, as measured by consistent uptime and performance improvements, by using AWS Relational Database Service for AWS RDS.",
-        "Enhanced operational efficiency, as measured by reduction in manual processing time and error rate, by automating various manual tasks using Python.",
-        "Boosted query performance as measured by decreasing search and filtering time from 5 seconds to 300 milliseconds, by optimizing PostgreSQL database.",
-        "Accomplished streamlined data processing, as measured by improved accuracy and processing time, by performing global sorting of items using heuristics in a graphed environment.",
-        "Enhanced team productivity and project delivery, as measured by successful deployment and reduced setup time, by mentoring colleagues to set up the admin panel in both frontend and backend.",
-        "Accomplished increased automation and market reach as measured by faster deployment and integration across multiple platforms, by developing automated pipelines for various markets like Amazon, Otto, and Google merchandising."
+        "Made up web dashboard for various works in Django and Django rest framework",
+        "Automated manual tasks using Python",
+        "Optimized search and filtering efficiency from 5s to 300ms in PostgreSQL",
+        "Performed global sorting of items using heuristics in a graphed environment",
+        "Mentored colleagues to set up admin panel in both frontend and backend",
+        "Developed automated pipelines for various markets like Amazon, Otto, Google merchandising etc",
+        "Implemented global automated items ordering in GO Lang",
+        "Cloud cost optimization(s) and database architecture for maximum efficiency",
+        "Setup asynchronous communication between Python, Laravel and other languages"
       ]
     },
     {
-      "title": "Database, cloud, and backend developer",
+      "title": "Database, Cloud, and Backend Developer",
       "company": "hyteno.com",
-      "location": "Paris, France",
-      "date": "Nov 2021 - Jan 2024",
-      "description": "Deployed the application in AWS, used AWS relational database service for Aurora DB and Firebase Cloud Messaging notification system made.",
+      "location": "Remote - Paris, France",
+      "date": "Jan 2021 - Aug 2023",
+      "description": "Deployed the application on AWS EC2, built a Firebase Cloud Messaging notification system and set up async communication between Django and Node.js using RabbitMQ.",
       "points": [
-        "Deployed the application in AWS",
-        "Used AWS relational database service for Aurora DB",
+        "Deployed the application in AWS EC2",
         "Firebase Cloud Messaging notification system made",
         "Faster dynamic and most frequently used data in Redis",
-        "Managed payment integration with stripe.",
-        "Mentored colleagues to set up CI/CD in both frontend, backend"
+        "Managed payment integration with Stripe",
+        "Mentored colleagues to set up CI/CD in both frontend, backend",
+        "Setup communication between Django and Node.js using RabbitMQ",
+        "Solved timezone based problems for global application"
       ]
     },
     {
-      "title": "Database, cloud and backend developer",
+      "title": "Database, Cloud and Backend Developer",
       "company": "SoftShala, Nepal",
-      "location": "Kathmandu, Nepal",
+      "location": "Onsite - Kathmandu, Nepal",
       "date": "Nov 2019 - Nov 2020",
-      "description": "Made a video streaming platform with Node.js express and developed TikTok like app. Video storage with AWS S3 with CloudFront CDN enabled.",
+      "description": "Optimized MongoDB access patterns and built a TikTok-like video streaming platform with Node.js, AWS S3 + CloudFront and FFmpeg-based video processing.",
       "points": [
-        "Made a video streaming platform with Node.js express.",
-        "Developed TikTok like app",
-        "Video storage with AWS S3 with CloudFront CDN enabled.",
-        "Deployment of server with document DB (managed MongoDB service in AWS)",
-        "Video Processing with Amazon SNS was performed using FFmpeg package on a separate service."
+        "Optimized MongoDB access patterns",
+        "Used MongoDB aggregation framework",
+        "Made a video streaming platform with Node.js express",
+        "Developed TikTok like application",
+        "Video storage with AWS S3 with CloudFront CDN enabled",
+        "Deployment of server with Document DB (managed MongoDB service in AWS)",
+        "Video Processing with Amazon SNS was performed using FFmpeg package on a separate service"
       ]
     }
   ],
@@ -93,6 +127,61 @@
       "title": "KMITL Workshop",
       "location": "Bangkok, Thailand",
       "description": "A workshop on web development with HTML5 for KMITL University"
+    }
+  ],
+  "givingBack": [
+    {
+      "title": "KMITL Web Development Workshop",
+      "role": "Instructor",
+      "location": "Bangkok, Thailand",
+      "description": "4 weeks workshop on web development with HTML5 for KMITL University PhD students.",
+      "points": [
+        "Introduced attendees to HTML, CSS and JavaScript",
+        "Conducted, evaluated and cross checked student's work on correctness and readability"
+      ]
+    },
+    {
+      "title": "IdeaX Hackathon",
+      "role": "Judge",
+      "location": "Kathmandu, Nepal",
+      "description": "Evaluated idea pitches from 100+ student teams across technology, fintech, health, and open-category tracks.",
+      "points": [
+        "Assessed technical feasibility, problem-solution fit, and startup viability of submitted prototypes",
+        "Shortlisted finalist teams for the onsite 48-hour hackathon round",
+        "Provided structured feedback to help teams refine their solutions"
+      ]
+    },
+    {
+      "title": "KU HackFest",
+      "role": "Mentor",
+      "location": "Dhulikhel, Nepal",
+      "description": "Guided student teams through technical problem-solving during the 48-hour onsite hackathon.",
+      "points": [
+        "Provided feedback on architecture decisions, implementation approach, and project scope",
+        "Helped teams prioritize features and stay on track within time constraints",
+        "Connected participants with practical industry perspective on building real-world solutions"
+      ]
+    },
+    {
+      "title": "GNOME Nepal",
+      "role": "Backend Lead",
+      "location": "Kathmandu, Nepal",
+      "description": "Led backend development of the GNOME Nepal community website server.",
+      "points": [
+        "Architected the backend template integrating Celery, Redis, and Flower for async task processing and monitoring",
+        "Implemented newsletter system, admin panel, and event management backend for community operations"
+      ]
+    },
+    {
+      "title": "GNOME Asia Summit",
+      "role": "Speaker",
+      "location": "Bangalore Engineering Office, India",
+      "description": "Delivered a talk on accessibility in open source at the annual GNOME Asia Summit.",
+      "points": [
+        "Covered challenges faced by users with disabilities and how inclusive design shapes GNOME application development",
+        "Advocated for building GNOME communities that support members of every ability",
+        "Represented GNOME Nepal as a remote speaker alongside a co-presenter"
+      ]
     }
   ],
   "accomplishments": [

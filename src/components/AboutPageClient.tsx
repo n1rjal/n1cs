@@ -3,6 +3,7 @@ import CodeIcon from "@mui/icons-material/Code";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SchoolIcon from "@mui/icons-material/School";
+import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import WorkIcon from "@mui/icons-material/Work";
 import {
   Chip,
@@ -200,6 +201,67 @@ export default function AboutPageClient() {
                           <Typography variant="body2" sx={{ mt: 1 }}>
                             {event.description}
                           </Typography>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </Stack>
+              </InView>
+            </Box>
+          </InView>
+
+          <InView>
+            <Box>
+              <Typography
+                variant="h4"
+                component="h2"
+                gutterBottom
+                sx={{ display: "flex", alignItems: "center", gap: 1 }}
+              >
+                <VolunteerActivismIcon color="secondary" />{" "}
+                <GradientText>Giving Back to the Community</GradientText>
+              </Typography>
+              <InView stagger={0.08}>
+                <Stack spacing={4} sx={{ mt: 4 }}>
+                  {(aboutData as any).givingBack.map((item: any) => (
+                    <motion.div
+                      key={`${item.title}-${item.role}`}
+                      whileHover={shouldReduceMotion ? {} : hoverLiftSubtle}
+                      whileTap={shouldReduceMotion ? {} : tapPress}
+                    >
+                      <Card
+                        sx={{ borderLeft: 2, borderColor: "secondary.main" }}
+                      >
+                        <CardContent>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 1,
+                              flexWrap: "wrap",
+                            }}
+                          >
+                            <Typography variant="h6">{item.title}</Typography>
+                            <Chip
+                              label={item.role}
+                              color="secondary"
+                              variant="outlined"
+                              size="small"
+                            />
+                          </Box>
+                          <Typography variant="subtitle1" color="text.secondary">
+                            {item.location}
+                          </Typography>
+                          <Typography variant="body2" sx={{ mt: 1 }}>
+                            {item.description}
+                          </Typography>
+                          <ul style={{ paddingLeft: "1.5rem", marginTop: "8px", marginBottom: 0 }}>
+                            {item.points.map((point: string) => (
+                              <li key={point} style={{ marginBottom: "4px" }}>
+                                {point}
+                              </li>
+                            ))}
+                          </ul>
                         </CardContent>
                       </Card>
                     </motion.div>
