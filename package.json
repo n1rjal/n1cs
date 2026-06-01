@@ -21,6 +21,7 @@
     "date-fns": "^4.1.0",
     "eslint-config-next": "^15.5.2",
     "framer-motion": "^12.23.24",
+    "highlight.js": "^11.11.1",
     "lottie-react": "^2.4.1",
     "next": "15.5.7",
     "notion-to-md": "^3.1.9",
