@@ -2,9 +2,11 @@
 import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { decodeContactLink, encodedContactLinks } from "@/utils/contactLinks";
 import NirjalsBlog from "./NirjalsBlog";
 
-const footerGroups = [
+const staticFooterGroups = [
   {
     title: "Connect",
     children: [
@@ -32,15 +34,6 @@ const footerGroups = [
     title: "Message",
     children: [
       {
-        name: "WhatsApp",
-        href: "https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F",
-      },
-      {
-        name: "Email",
-        href: "mailto: nirjalpaudel54312@gmail.com",
-      },
-
-      {
         name: "LinkedIn",
         href: "https://linkedin.com/in/nirjalpaudel",
       },
@@ -53,6 +46,39 @@ const footerGroups = [
 ];
 
 const Footer = () => {
+  const [contactLinks, setContactLinks] = useState({
+    email: "#",
+    whatsapp: "#",
+  });
+
+  useEffect(() => {
+    setContactLinks({
+      email: decodeContactLink(encodedContactLinks.email),
+      whatsapp: decodeContactLink(encodedContactLinks.whatsapp),
+    });
+  }, []);
+
+  const footerGroups = staticFooterGroups.map((group) => {
+    if (group.title !== "Message") {
+      return group;
+    }
+
+    return {
+      ...group,
+      children: [
+        {
+          name: "WhatsApp",
+          href: contactLinks.whatsapp,
+        },
+        {
+          name: "Email",
+          href: contactLinks.email,
+        },
+        ...group.children,
+      ],
+    };
+  });
+
   return (
     <Box
       component="footer"
