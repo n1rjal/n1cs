@@ -1,6 +1,4 @@
-import EmailIcon from "@mui/icons-material/Email";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -20,6 +18,7 @@ import ResumeDownloadButton from "@/components/ResumeDownloadButton";
 import Testimonials from "@/components/Testimonials";
 import TrustedCompanies from "@/components/TrustedCompanies";
 import WorkingDeveloper from "@/components/WorkingDeveloper";
+import KeepInTouchActions from "@/components/KeepInTouchActions";
 import { getBlogPosts, getProjects, getDeepThoughts, getBooks } from "@/lib/notion";
 import GlowedLink from "../components/GlowedLink";
 import InView from "../components/motion/InView";
@@ -315,31 +314,7 @@ export default async function Home() {
           </InView>
 
           <InView stagger={0.1}>
-            <Stack
-              direction="row"
-              spacing={4}
-              justifyContent="center"
-              sx={{ mt: 3 }}
-            >
-              <GlowedLink href="https://api.whatsapp.com/send?phone=9779863948081&text=Hi%20Nirjal%2C%20I%20am%20here%20from%20your%20website%2C%20I%20am%20willing%20to%20chat%20to%20you%20on%20few%20things.%20Are%20you%20up%20for%20it%20%3F">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  startIcon={<WhatsAppIcon />}
-                >
-                  WhatsApp
-                </Button>
-              </GlowedLink>
-              <GlowedLink href="mailto:nirjalpaudel54312@gmail.com">
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  startIcon={<EmailIcon />}
-                >
-                  Email
-                </Button>
-              </GlowedLink>
-            </Stack>
+            <KeepInTouchActions />
           </InView>
         </Container>
       </Box>
