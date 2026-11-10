@@ -2,17 +2,13 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
-import {
-  Edu_NSW_ACT_Cursive,
-  Montserrat,
-  Playfair_Display,
-} from "next/font/google";
+import { Edu_NSW_ACT_Cursive, Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
 import Footer from "@/components/Footer";
 import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
@@ -88,7 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.className} ${playfair.variable} ${montserrat.variable} ${cursive.variable}`}
+        className={`${inter.className} ${inter.variable} ${montserrat.variable} ${cursive.variable}`}
       >
         <a href="#main-content" className="skip-link">
           Skip to content

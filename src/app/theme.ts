@@ -47,7 +47,7 @@ export const createCustomTheme = (mode: "light" | "dark") => {
           }),
     },
     typography: {
-      fontFamily: ["var(--font-body)", "Playfair Display", "serif"].join(","),
+      fontFamily: ["var(--font-body)", "Inter", "sans-serif"].join(","),
       h1: {
         fontSize: "3rem",
         fontWeight: 700,
