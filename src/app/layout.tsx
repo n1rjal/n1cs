@@ -2,22 +2,25 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
-import { Edu_NSW_ACT_Cursive, Oswald, Poppins } from "next/font/google";
+import {
+  Edu_NSW_ACT_Cursive,
+  Montserrat,
+  Playfair_Display,
+} from "next/font/google";
 import Script from "next/script";
 import Footer from "@/components/Footer";
 import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
 
-const poppins = Poppins({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
-  variable: "--font-poppins",
+  variable: "--font-body",
 });
-const oswald = Oswald({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-oswald",
+  variable: "--font-heading",
 });
 const cursive = Edu_NSW_ACT_Cursive({
   subsets: ["latin"],
@@ -85,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${poppins.variable} ${oswald.variable} ${cursive.variable}`}
+        className={`${playfair.className} ${playfair.variable} ${montserrat.variable} ${cursive.variable}`}
       >
         <a href="#main-content" className="skip-link">
           Skip to content
@@ -93,9 +96,7 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeRegistry>
             <ClientSidebarWrapper>
-              <div style={{ flexGrow: 1 }}>
-                {children}
-              </div>
+              <div style={{ flexGrow: 1 }}>{children}</div>
               <Footer />
             </ClientSidebarWrapper>
           </ThemeRegistry>

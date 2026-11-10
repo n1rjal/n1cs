@@ -47,35 +47,35 @@ export const createCustomTheme = (mode: "light" | "dark") => {
           }),
     },
     typography: {
-      fontFamily: ["var(--font-poppins)", "Poppins", "sans-serif"].join(","),
+      fontFamily: ["var(--font-body)", "Playfair Display", "serif"].join(","),
       h1: {
         fontSize: "3rem",
         fontWeight: 700,
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
       },
       h2: {
         fontSize: "2.5rem",
         fontWeight: 700,
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
       },
       h3: {
         fontSize: "2rem",
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
         fontWeight: 600,
       },
       h4: {
         fontSize: "1.75rem",
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
         fontWeight: 600,
       },
       h5: {
         fontSize: "1.5rem",
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
         fontWeight: 500,
       },
       h6: {
         fontSize: "1.25rem",
-        fontFamily: "var(--font-oswald), Oswald, sans-serif",
+        fontFamily: "var(--font-heading), Montserrat, sans-serif",
         fontWeight: 500,
       },
       body1: { fontSize: "1rem", lineHeight: 1.7 },
