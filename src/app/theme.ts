@@ -8,10 +8,10 @@ export const createCustomTheme = (mode: "light" | "dark") => {
         ? {
             // Gunmetal Grey inspired (Light mode)
             primary: {
-              main: "#5a5a5a", // gunmetal grey
+              main: "#3f3f46", // gunmetal grey
             },
             secondary: {
-              main: "#ff6f00", // royal enfield orange stripe
+              main: "#c2410c", // burnt orange: 5.2:1 on light surfaces
             },
             error: {
               main: "#d32f2f",
@@ -22,10 +22,7 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             },
             text: {
               primary: "#212121", // dark grey for primary text
-              secondary: "#4f4f4f", // softer dark grey for secondary text
-            },
-            border: {
-              primary: "#2f11f0",
+              secondary: "#52525b", // softer dark grey (7:1 on paper)
             },
           }
         : {
@@ -34,61 +31,69 @@ export const createCustomTheme = (mode: "light" | "dark") => {
               main: "#e0e0e0", // metallic silver/white for primary elements
             },
             secondary: {
-              main: "#ff8f00", // warm orange stripe accent (slightly brighter for dark mode)
+              main: "#ffa040", // warm orange accent, brightened for dark mode
             },
             error: {
               main: "#ef5350",
             },
             background: {
-              paper: "#191A1A", // deep matte black background
-              default: "#2a2a2a", // slightly lighter matte black for cards/paper
+              default: "#121314", // page background
+              paper: "#1c1d1f", // raised surfaces sit lighter than the page
             },
             text: {
               primary: "#f5f5f5", // off-white for text
-              secondary: "#bdbdbd", // light grey for secondary text
-            },
-            border: {
-              primary: "#2f11f0",
+              secondary: "#b4b4bb", // light grey for secondary text
             },
           }),
     },
     typography: {
-      fontFamily: ["Poppins", "sans-serif"].join(","),
+      fontFamily: ["var(--font-poppins)", "Poppins", "sans-serif"].join(","),
       h1: {
         fontSize: "3rem",
         fontWeight: 700,
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
       },
       h2: {
         fontSize: "2.5rem",
         fontWeight: 700,
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
       },
       h3: {
         fontSize: "2rem",
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
         fontWeight: 600,
       },
       h4: {
         fontSize: "1.75rem",
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
         fontWeight: 600,
       },
       h5: {
         fontSize: "1.5rem",
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
         fontWeight: 500,
       },
       h6: {
         fontSize: "1.25rem",
-        fontFamily: "Oswald, sans-serif",
+        fontFamily: "var(--font-oswald), Oswald, sans-serif",
         fontWeight: 500,
       },
-      body1: { fontSize: "1rem", lineHeight: 1.6 },
+      body1: { fontSize: "1rem", lineHeight: 1.7 },
       body2: { fontSize: "0.875rem", lineHeight: 1.5 },
       button: { textTransform: "none", fontWeight: 600 },
     },
+    shape: { borderRadius: 10 },
     components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          "a:focus-visible, button:focus-visible, [role='button']:focus-visible, input:focus-visible":
+            {
+              outline: `3px solid ${mode === "dark" ? "#ffa040" : "#c2410c"}`,
+              outlineOffset: "2px",
+              borderRadius: 4,
+            },
+        },
+      },
       MuiAppBar: {
         styleOverrides: {
           root: {
@@ -107,7 +112,7 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             fontWeight: 600,
           },
           containedSecondary: {
-            color: mode === "dark" ? "#fff" : "#000",
+            color: mode === "dark" ? "#111" : "#fff",
           },
         },
       },
@@ -118,6 +123,10 @@ export const createCustomTheme = (mode: "light" | "dark") => {
             paddingBottom: "24px",
           },
         },
+      },
+      MuiButtonBase: {
+        defaultProps: { disableRipple: false },
+        styleOverrides: { root: { minHeight: 40 } },
       },
     },
   });

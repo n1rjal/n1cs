@@ -84,7 +84,7 @@ export default async function Home() {
               }}
               color="text.secondary"
             >
-              <Typography component="h4" variant="h4" gutterBottom>
+              <Typography component="h2" variant="h4" gutterBottom>
                 I am
               </Typography>
               <Box ml="0px">
@@ -221,12 +221,12 @@ export default async function Home() {
             <Typography
               variant="h4"
               textAlign="center"
-              component="h1"
+              component="h2"
               gutterBottom
             >
               <GradientText>My Projects</GradientText>
             </Typography>
-            <Typography variant="body1" color="textSecondary" paragraph>
+            <Typography variant="body1" color="text.secondary" paragraph>
               Here are a few of my recent projects. I&rsquo;m passionate about
               building things that solve real-world problems and I&rsquo;m always
               looking for new challenges.
@@ -303,10 +303,10 @@ export default async function Home() {
       <Box id="keep-in-touch" sx={{ bgcolor: "background.default", py: 6 }}>
         <Container maxWidth="md" sx={{ textAlign: "center" }}>
           <InView>
-            <Typography variant="h4" component="h1" gutterBottom>
+            <Typography variant="h4" component="h2" gutterBottom>
               <GradientText>Keep in Touch</GradientText>
             </Typography>
-            <Typography variant="body1" paragraph color="textSecondary">
+            <Typography variant="body1" paragraph color="text.secondary">
               I&apos;m always open to connecting with new people. Whether you have
               a question, a project idea, or just want to say hi, feel free to
               reach out.

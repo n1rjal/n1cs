@@ -11,7 +11,7 @@ const NirjalsBlog: FC<INirjalsBlogProps> = ({ increasedLine = false }) => (
     <Typography
       variant="h6"
       sx={{
-        fontFamily: "Edu NSW ACT Cursive, cursive",
+        fontFamily: "var(--font-cursive), cursive",
         fontStyle: "normal",
         fontWeight: "bold",
         ...(increasedLine && {
@@ -21,8 +21,7 @@ const NirjalsBlog: FC<INirjalsBlogProps> = ({ increasedLine = false }) => (
       noWrap
       component="div"
       color="secondary"
-      className=".intro"
-      width="100%"
+            width="100%"
     >
       Nirjal&apos;s Corner
     </Typography>

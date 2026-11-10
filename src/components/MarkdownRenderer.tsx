@@ -85,7 +85,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
                 component="code"
                 className={className}
                 sx={{
-                  color: "#f73b3b",
+                  color: theme.palette.mode === "dark" ? "#ff8a80" : "#b3261e",
+                  fontFamily: "monospace",
+                  fontSize: "0.9em",
                 }}
               >
                 {children}

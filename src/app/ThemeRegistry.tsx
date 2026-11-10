@@ -11,7 +11,6 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
   const { children } = props;
 
   // Initialize mode based on localStorage only on the client
-  const [clientLoaded, setClientLoaded] = useState(false);
   const [mode, setMode] = useState<"light" | "dark">("light");
 
   React.useEffect(() => {
@@ -21,7 +20,6 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
     } else if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
       setMode("dark");
     }
-    setClientLoaded(true);
   }, []);
 
   const colorMode = useMemo(
@@ -38,8 +36,6 @@ export default function ThemeRegistry(props: { children: React.ReactNode }) {
   );
 
   const theme = useMemo(() => createCustomTheme(mode), [mode]);
-
-  if (!clientLoaded) return <></>;
 
   return (
     <ColorModeContext.Provider value={colorMode}>
