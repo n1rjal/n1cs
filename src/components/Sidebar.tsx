@@ -154,7 +154,7 @@ export default function Sidebar(props: Props) {
           onClick={handleDrawerClose}
           sx={{
             display: { sm: "none" },
-            color: theme.palette.mode === "light" ? "#000000" : "inherit",
+            color: "text.primary",
           }} // Only show on mobile
         >
           <CloseIcon />
@@ -168,15 +168,18 @@ export default function Sidebar(props: Props) {
               component={Link}
               href={item.href}
               selected={pathname === item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               onClick={handleDrawerClose}
               sx={{
                 fontSize: "14px",
-                p: "2px",
+                py: "6px",
+                px: "8px",
                 mx: "5px",
                 my: "3px",
-                borderRadius: "5px",
+                borderRadius: "8px",
                 "&.Mui-selected": {
                   borderRight: `4px solid ${theme.palette.secondary.main}`,
+                  bgcolor: theme.palette.action.selected,
                   "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
                     color: theme.palette.secondary.main,
                   },
@@ -331,7 +334,7 @@ export default function Sidebar(props: Props) {
               mr: 2,
               display: { sm: "none" },
 
-              color: theme.palette.mode === "light" ? "#000000" : "inherit",
+              color: "text.primary",
             }}
           >
             <MenuIcon />
@@ -342,9 +345,14 @@ export default function Sidebar(props: Props) {
             sx={{
               ml: 1,
 
-              color: theme.palette.mode === "light" ? "#000000" : "inherit",
+              color: "text.primary",
             }}
             onClick={colorMode.toggleColorMode}
+            aria-label={
+              theme.palette.mode === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
           >
             {theme.palette.mode === "dark" ? (
               <Brightness7Icon />
@@ -357,7 +365,7 @@ export default function Sidebar(props: Props) {
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
+        aria-label="Primary"
       >
         <Drawer
           container={container}
@@ -398,7 +406,10 @@ export default function Sidebar(props: Props) {
       </Box>
       <Box
         component="main"
+        id="main-content"
+        tabIndex={-1}
         sx={{
+          outline: "none",
           flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mt: { xs: "60px", sm: "0" },

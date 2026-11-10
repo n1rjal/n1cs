@@ -2,15 +2,26 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
 import "highlight.js/styles/github.css";
-import { Poppins } from "next/font/google";
+import { Edu_NSW_ACT_Cursive, Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
 import Footer from "@/components/Footer";
 import ClientSidebarWrapper from "../components/ClientSidebarWrapper";
 import ThemeRegistry from "./ThemeRegistry";
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: "300",
+  display: "swap",
+  variable: "--font-body",
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+});
+const cursive = Edu_NSW_ACT_Cursive({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-cursive",
 });
 
 export const metadata: Metadata = {
@@ -72,13 +83,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className}`}>
+      <body
+        className={`${inter.className} ${inter.variable} ${montserrat.variable} ${cursive.variable}`}
+      >
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeRegistry>
             <ClientSidebarWrapper>
-              <div style={{ flexGrow: 1 }}>
-                {children}
-              </div>
+              <div style={{ flexGrow: 1 }}>{children}</div>
               <Footer />
             </ClientSidebarWrapper>
           </ThemeRegistry>
