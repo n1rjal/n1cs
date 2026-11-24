@@ -12,13 +12,12 @@ const ResumeDownloadButton: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box width="100%">
+    <Box>
       <Button
         variant="outlined"
         color="secondary"
         onClick={handleOpen}
         startIcon={<DownloadIcon />}
-        fullWidth
       >
         Resume
       </Button>

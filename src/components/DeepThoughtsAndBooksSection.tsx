@@ -2,10 +2,11 @@
 
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import type { Book, DeepThought } from "@/lib/notion";
 import GradientText from "./GradientText";
+import ViewAllLink from "./ViewAllLink";
 import InView from "./motion/InView";
 import getRelativeDuration from "@/utils/getRelativeDuration";
 import { format } from "date-fns";
@@ -24,8 +25,7 @@ export default function DeepThoughtsAndBooksSection({
             <Container maxWidth="lg">
                 <InView>
                     <Typography
-                        variant="h4"
-                        textAlign="center"
+                        variant="h3"
                         component="h2"
                         gutterBottom
                         mb={6}
@@ -109,17 +109,7 @@ export default function DeepThoughtsAndBooksSection({
                                 </Box>
 
                                 {deepThoughts.length > 5 && (
-                                    <Box sx={{ textAlign: "center", mt: 3 }}>
-                                        <Button
-                                            component={Link}
-                                            href="/deep-thoughts"
-                                            variant="outlined"
-                                            color="secondary"
-                                            size="small"
-                                        >
-                                            View All Deep Thoughts
-                                        </Button>
-                                    </Box>
+                                    <ViewAllLink href="/deep-thoughts" label="View all deep thoughts" />
                                 )}
                             </Box>
                         </InView>
@@ -199,17 +189,7 @@ export default function DeepThoughtsAndBooksSection({
                                 </Box>
 
                                 {books.length > 5 && (
-                                    <Box sx={{ textAlign: "center", mt: 3 }}>
-                                        <Button
-                                            component={Link}
-                                            href="/books"
-                                            variant="outlined"
-                                            color="secondary"
-                                            size="small"
-                                        >
-                                            View All Books
-                                        </Button>
-                                    </Box>
+                                    <ViewAllLink href="/books" label="View all books" />
                                 )}
                             </Box>
                         </InView>

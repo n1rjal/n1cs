@@ -60,8 +60,9 @@ export const createCustomTheme = (mode: "light" | "dark") => {
       },
       h3: {
         fontSize: "2rem",
+        letterSpacing: "0.03em",
         fontFamily: "var(--font-heading), Montserrat, sans-serif",
-        fontWeight: 600,
+        fontWeight: 700,
       },
       h4: {
         fontSize: "1.75rem",
