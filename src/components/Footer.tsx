@@ -141,7 +141,7 @@ const Footer = () => {
               {group.title}
             </Typography>
             {group.children.map(({ name, href }) => (
-              <Box component="div" key={href}>
+              <Box component="div" key={name}>
                 <Link href={href} style={{ textDecoration: "none" }}>
                   <Typography
                     lineHeight="200%"

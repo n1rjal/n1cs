@@ -1,24 +1,12 @@
 "use client";
 
-import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import StarIcon from "@mui/icons-material/Star";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Link,
-  Typography,
-} from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
+import { Box, Link, Typography } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { motion, useReducedMotion } from "framer-motion";
 import type React from "react";
 import { useEffect, useState } from "react";
-import { hoverLift, tapPress } from "./motion/MotionUtils";
 
 interface ProjectCardProps {
   id: string;
@@ -42,7 +30,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [stars, setStars] = useState<number | null>(null);
   const [loadingStars, setLoadingStars] = useState<boolean>(false);
   const [errorStars, setErrorStars] = useState<string | null>(null);
-  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (githubUrl) {
@@ -74,108 +61,134 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, [githubUrl]);
 
   return (
-    <motion.div
-      whileHover={shouldReduceMotion ? {} : hoverLift}
-      whileTap={shouldReduceMotion ? {} : tapPress}
-      style={{ height: "100%" }}
+    <Box
+      component="article"
+      sx={{
+        display: "flex",
+        gap: 3,
+        py: 3,
+        borderBottom: (t) => `1px solid ${t.palette.divider}`,
+        "&:last-of-type": { borderBottom: "none" },
+      }}
     >
-      <Card
-        sx={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          py: 1.25,
-          px: 1.875,
-          borderRadius: "5px",
-          width: "100%",
-        }}
-        color="textSecondary"
-      >
-      {imageUrl && (
-        <CardMedia
-          component="img"
-          height="140"
-          image={imageUrl}
-          alt={name}
-          sx={{ borderRadius: "5px", mb: 2 }}
-        />
-      )}
-
-      <Link
-        href={`/projects/${id}`}
-        color="textPrimary"
-        style={{ textDecoration: "none" }}
-      >
-        <CardContent sx={{ flexGrow: 1, p: 0, m: 0 }}>
-          <Typography my="7px" variant="h5" component="h2">
+      <Box sx={{ flex: 1, minWidth: 0 }}>
+        {/* 1. title: strongest element */}
+        <Link
+          href={`/projects/${id}`}
+          color="text.primary"
+          underline="hover"
+          sx={{ display: "block" }}
+        >
+          <Typography
+            variant="h5"
+            component="h2"
+            sx={{
+              fontWeight: 600,
+              fontSize: { xs: "1.125rem", sm: "1.25rem" },
+              lineHeight: 1.3,
+              mb: 1,
+            }}
+          >
             {name}
           </Typography>
-          <Typography variant="body1" color="textSecondary">
-            {description}
-          </Typography>
-          {tags && tags.length > 0 && (
-            <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: "wrap" }}>
-              {tags.map((tag) => (
-                <Chip key={tag} label={tag} size="small" variant="outlined" />
-              ))}
-            </Stack>
-          )}
-        </CardContent>
-      </Link>
-      <CardActions sx={{ justifyContent: "flex-start", flexWrap: "wrap" }}>
-        {githubUrl && (
-          <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
-            <Button
-              size="small"
-              component={Link}
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              startIcon={<GitHubIcon fontSize="small" />}
-            >
-              Github
-            </Button>
-            {loadingStars && (
-              <Typography variant="body1" color="text.secondary" sx={{ ml: 1 }}>
-                Loading...
-              </Typography>
-            )}
-            {errorStars && (
-              <Typography variant="body1" color="error" sx={{ ml: 1 }}>
-                Error
-              </Typography>
-            )}
-            {stars !== null && !loadingStars && !errorStars && (
-              <Box sx={{ display: "flex", alignItems: "center", ml: 1 }}>
-                <StarIcon
-                  sx={{
-                    mx: 0.2,
-                    color: "gold",
-                  }}
-                  fontSize="small"
-                />
-                <Typography variant="body1" color="text.secondary">
-                  {stars}
-                </Typography>
-              </Box>
-            )}
-          </Box>
-        )}
-        {liveUrl && (
-          <Button
-            size="small"
-            component={Link}
-            href={liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            startIcon={<OpenInNewIcon fontSize="small" />}
+        </Link>
+
+        {/* 2. description: muted, clamped so rows stay even */}
+        <Typography
+          color="text.secondary"
+          sx={{
+            fontSize: "1rem",
+            lineHeight: 1.6,
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {description}
+        </Typography>
+
+        {/* 3. meta: tags, then stars + links, quietest */}
+        {(tags.length > 0 || githubUrl || liveUrl) && (
+          <Stack
+            direction="row"
+            alignItems="center"
+            flexWrap="wrap"
+            columnGap={3}
+            rowGap={1}
+            sx={{ mt: 2, color: "text.secondary", typography: "body2" }}
           >
-            Live Demo
-          </Button>
+            {tags.map((tag) => (
+              <Chip key={tag} label={tag} size="small" />
+            ))}
+            {githubUrl && (
+              <Link
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="text.primary"
+                underline="hover"
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  opacity: 0.85,
+                  "&:hover": { opacity: 1 },
+                }}
+              >
+                Source code
+                {stars !== null && !loadingStars && !errorStars && (
+                  <Box component="span" sx={{ opacity: 0.7 }}>
+                    (
+                    <StarIcon
+                      sx={{
+                        fontSize: "0.95em",
+                        verticalAlign: "-0.12em",
+                        mr: "0.2em",
+                      }}
+                    />
+                    {stars})
+                  </Box>
+                )}
+              </Link>
+            )}
+            {liveUrl && (
+              <Link
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="text.primary"
+                underline="hover"
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  opacity: 0.85,
+                  "&:hover": { opacity: 1 },
+                }}
+              >
+                <OpenInNewIcon sx={{ fontSize: 16 }} /> Live demo
+              </Link>
+            )}
+          </Stack>
         )}
-      </CardActions>
-      </Card>
-    </motion.div>
+      </Box>
+
+      {imageUrl && (
+        <Box
+          component="img"
+          src={imageUrl}
+          alt={name}
+          sx={{
+            width: { xs: 88, sm: 160 },
+            height: { xs: 88, sm: 107 },
+            objectFit: "cover",
+            borderRadius: 1,
+            flexShrink: 0,
+          }}
+        />
+      )}
+    </Box>
   );
 };
 

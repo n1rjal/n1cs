@@ -1,18 +1,13 @@
 "use client";
 
-import { CardActionArea, CardActions, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import type React from "react";
 import type { BlogPost } from "@/lib/notion";
-import BlogHeader from "./BlogHeader";
+import getRelativeDuration from "@/utils/getRelativeDuration";
 import GradientText from "./GradientText";
 import InView from "./motion/InView";
-import { hoverLiftSubtle, tapPress } from "./motion/MotionUtils";
 
 interface BlogListPageProps {
   blogPosts: BlogPost[];
@@ -27,8 +22,6 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
   renderGradient,
   center,
 }) => {
-  const shouldReduceMotion = useReducedMotion();
-  
   return (
     <Box sx={{ my: "10px" }}>
       <InView>
@@ -46,44 +39,73 @@ const BlogListPageWrapper: React.FC<BlogListPageProps> = ({
           </Typography>
 
           <Typography variant="body1" color="textSecondary">
-            I enjoy sharing my journey through tech and beyond — documenting the
-            lessons I&apos;ve learned, the projects I&apos;ve built, and the ideas that
-            inspire me. Here are some of my stories and experiences you might find
-            interesting.
+            I enjoy sharing my journey through tech and beyond, documenting the
+            lessons I&apos;ve learned, the projects I&apos;ve built, and the
+            ideas that inspire me. Here are some of my stories and experiences
+            you might find interesting.
           </Typography>
         </Box>
       </InView>
-      
+
       <InView stagger={0.08}>
         <Box>
-          <Grid container spacing={4} sx={{ mt: 0 }}>
-            {blogPosts.map((post) => (
-              <Grid key={post.id} m="0" p="0">
-                <motion.div
-                  whileHover={shouldReduceMotion ? {} : hoverLiftSubtle}
-                  whileTap={shouldReduceMotion ? {} : tapPress}
-                  style={{ height: "100%" }}
+          {blogPosts.map((post) => (
+            <Box
+              key={post.id}
+              component="article"
+              sx={{
+                py: 3,
+                borderBottom: (t) => `1px solid ${t.palette.divider}`,
+                "&:last-of-type": { borderBottom: "none" },
+              }}
+            >
+              {/* 1. title */}
+              <Link
+                href={`/blogs/${post.id}`}
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: { xs: "1.125rem", sm: "1.25rem" },
+                    lineHeight: 1.3,
+                    mb: 1,
+                    "a:hover > &": { textDecoration: "underline" },
+                  }}
                 >
-                  <Link
-                    href={`/blogs/${post.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Card sx={{ mt: "5px", py: "10px", px: "3px", height: "100%" }}>
-                      <CardContent sx={{ m: "2px", py: "2px" }}>
-                        <BlogHeader
-                          reducedOpacity
-                          renderGradient={!!renderGradient}
-                          post={post}
-                        />
-                      </CardContent>
-                      <CardActionArea></CardActionArea>
-                      <CardActions></CardActions>
-                    </Card>
-                  </Link>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
+                  {renderGradient ? (
+                    <GradientText>{post.title}</GradientText>
+                  ) : (
+                    post.title
+                  )}
+                </Typography>
+              </Link>
+
+              {/* 2. summary */}
+              <Typography
+                color="text.secondary"
+                sx={{
+                  fontSize: "1rem",
+                  lineHeight: 1.6,
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }}
+              >
+                {post.summary}
+              </Typography>
+
+              {/* 3. meta */}
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                {[post.category, getRelativeDuration(post.createdTime)]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </Typography>
+            </Box>
+          ))}
         </Box>
       </InView>
     </Box>

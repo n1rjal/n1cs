@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import type { Metadata } from "next";
 import GradientText from "@/components/GradientText";
@@ -62,13 +61,11 @@ export default async function ProjectsPage() {
           learn more!
         </Typography>
       </Box>
-      <Grid container spacing={4}>
+      <Box>
         {projects.map((project: any) => (
-          <Grid key={project.id || project.name}>
-            <ProjectCard {...project} />
-          </Grid>
+          <ProjectCard key={project.id || project.name} {...project} />
         ))}
-      </Grid>
+      </Box>
     </ResponsiveGrid>
   );
 }

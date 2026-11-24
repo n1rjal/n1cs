@@ -52,27 +52,26 @@ const BlogHeader = ({
     <Stack alignItems="center" direction="row" columnGap={"16px"} useFlexGap>
       {renderers
         .filter((f) => f.renderIf(post))
-        .map((f) => (
-          <>
-            <Stack
-              alignItems="center"
-              direction="row"
-              columnGap={"4px"}
-              useFlexGap
+        .map((f, i) => (
+          <Stack
+            key={i}
+            alignItems="center"
+            direction="row"
+            columnGap={"4px"}
+            useFlexGap
+          >
+            <f.icon fontSize="medium" color="disabled" />
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              gutterBottom
+              my={0}
+              mb={0.5}
+              component="span"
             >
-              <f.icon fontSize="medium" color="disabled" />
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                gutterBottom
-                my={0}
-                mb={0.5}
-                component="span"
-              >
-                {f.render(post)}
-              </Typography>
-            </Stack>
-          </>
+              {f.render(post)}
+            </Typography>
+          </Stack>
         ))}
     </Stack>
 
